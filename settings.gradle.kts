@@ -3,6 +3,6 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-rootProject.name = "llmgate"
+rootProject.name = "outputgate"
 
-include("llmgate-core", "llmgate-junit", "llmgate-example")
+include("outputgate-core", "outputgate-junit", "outputgate-example")
