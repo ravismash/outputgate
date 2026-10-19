@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["invoice_number", "invoice_date", "vendor", "currency", "line_items", "subtotal", "tax", "total"],
+  "additionalProperties": false,
+  "properties": {
+    "invoice_number": { "type": "string" },
+    "invoice_date": { "type": "string" },
+    "vendor": { "type": "string" },
+    "currency": { "type": "string" },
+    "subtotal": { "type": "number" },
+    "tax": { "type": "number" },
+    "total": { "type": "number" },
+    "line_items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["description", "quantity", "unit_price", "amount"],
+        "additionalProperties": false,
+        "properties": {
+          "description": { "type": "string" },
+          "quantity": { "type": "integer", "minimum": 1 },
+          "unit_price": { "type": "number" },
+          "amount": { "type": "number" }
+        }
+      }
+    }
+  }
+}

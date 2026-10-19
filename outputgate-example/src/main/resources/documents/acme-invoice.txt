@@ -1,0 +1,14 @@
+ACME SUPPLIES LTD
+14 Industrial Estate, Pune 411001
+TAX INVOICE
+Invoice No: INV-2041
+Invoice Date: 02 Oct 2026
+Bill to: Globex Retail Pvt Ltd
+(Synthetic sample invoice for outputgate's example. Not a real company.)
+
+Description           Qty  Unit     Amount
+Steel widgets          2    20.00    40.00
+Hex bolts (box)        3    11.50    34.50
+Subtotal                         74.50
+GST 18%                          13.41
+Total due (INR)                  87.91
