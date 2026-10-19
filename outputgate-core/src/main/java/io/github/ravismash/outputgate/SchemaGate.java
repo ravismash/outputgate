@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.networknt.schema.JsonNodePath;
 import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
+import com.networknt.schema.SchemaLocation;
 import com.networknt.schema.SpecVersion;
 import com.networknt.schema.ValidationMessage;
 import java.io.IOException;
@@ -13,11 +14,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Validates the output against a JSON Schema 2020-12 (R3), loaded from a string or the
  * classpath. Evidence objects ({@code {"value": ...}}) are read as their value first (R9).
- * Each violation names the schema keyword that failed and the field it concerns.
+ * Each violation names the schema keyword that failed and the field it concerns. The schema
+ * itself is checked against the 2020-12 meta-schema when the gate is built.
  */
 public final class SchemaGate implements Gate {
 
@@ -25,6 +28,9 @@ public final class SchemaGate implements Gate {
     private static final String DRAFT_2020_12 = "https://json-schema.org/draft/2020-12/schema";
     private static final JsonSchemaFactory FACTORY =
             JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V202012);
+
+    /** The official 2020-12 meta-schema; networknt resolves it from its own bundled copy, not the network. */
+    private static final JsonSchema META_SCHEMA = FACTORY.getSchema(SchemaLocation.of(DRAFT_2020_12));
 
     private final JsonSchema schema;
 
@@ -52,6 +58,13 @@ public final class SchemaGate implements Gate {
         JsonNode declared = node.get("$schema");
         if (declared != null && !(declared.isTextual() && declared.asText().replaceAll("#$", "").equals(DRAFT_2020_12))) {
             throw new IllegalArgumentException("schema must be JSON Schema 2020-12, but declares " + declared);
+        }
+        // A malformed keyword (e.g. "required": "vendor") would otherwise be ignored and let
+        // every output through, so the schema itself is checked against the meta-schema first.
+        Set<ValidationMessage> problems = META_SCHEMA.validate(node);
+        if (!problems.isEmpty()) {
+            throw new IllegalArgumentException("not a valid JSON Schema 2020-12: " + problems.stream()
+                    .map(m -> m.getType() + ": " + m.getMessage()).sorted().collect(Collectors.joining("; ")));
         }
         try {
             JsonSchema schema = FACTORY.getSchema(node);
