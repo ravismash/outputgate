@@ -38,8 +38,19 @@ final class Paths {
     }
 
     static List<Hit> resolve(JsonNode root, String path) {
+        return resolve(root, path, true);
+    }
+
+    /**
+     * Like {@link #resolve(JsonNode, String)}, but when {@code unwrapLast} is false the
+     * value found at the end of the path is returned as written, evidence object and all.
+     */
+    static List<Hit> resolve(JsonNode root, String path, boolean unwrapLast) {
         List<Hit> current = List.of(new Hit("", unwrap(root)));
-        for (String segment : path.split("\\.")) {
+        String[] segments = path.split("\\.");
+        for (int s = 0; s < segments.length; s++) {
+            String segment = segments[s];
+            boolean last = s == segments.length - 1;
             boolean each = segment.endsWith("[*]");
             String name = each ? segment.substring(0, segment.length() - 3) : segment;
             List<Hit> next = new ArrayList<>();
@@ -49,14 +60,16 @@ final class Paths {
                     next.add(hit);
                     continue;
                 }
-                JsonNode child = unwrap(hit.node().path(name));
+                JsonNode raw = hit.node().path(name);
+                JsonNode child = each || !last || unwrapLast ? unwrap(raw) : raw;
                 if (!each) {
                     next.add(new Hit(here, child));
                 } else if (!child.isArray()) {
                     next.add(new Hit(here, MissingNode.getInstance()));
                 } else {
                     for (int i = 0; i < child.size(); i++) {
-                        next.add(new Hit(here + "[" + i + "]", unwrap(child.get(i))));
+                        JsonNode element = child.get(i);
+                        next.add(new Hit(here + "[" + i + "]", last && !unwrapLast ? element : unwrap(element)));
                     }
                 }
             }
