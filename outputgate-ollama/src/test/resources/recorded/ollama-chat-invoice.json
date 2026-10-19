@@ -1,0 +1,17 @@
+{
+  "model": "qwen2.5:14b",
+  "created_at": "2026-10-19T06:41:53.48043Z",
+  "message": {
+    "role": "assistant",
+    "content": "{\n\"invoice_number\": {\"value\": \"INV-2041\", \"source_span\": {\"page\": 1, \"text\": \"Invoice No: INV-2041\"}},\n\"invoice_date\": {\"value\": \"2026-10-02\", \"source_span\": {\"page\": 1, \"text\": \"Invoice Date: 02 Oct 2026\"}},\n\"vendor\": {\"value\": \"ACME SUPPLIES LTD\", \"source_span\": {\"page\": 1, \"text\": \"ACME SUPPLIES LTD\"}},\n\"currency\": {\"value\": \"INR\", \"source_span\": {\"page\": 2, \"text\": \"Total due (INR)\"}},\n\"line_items\": [\n{\"description\": {\"value\": \"Steel widgets\", \"source_span\": {\"page\": 2, \"text\": \"Steel widgets\"}}, \"quantity\": {\"value\": 2, \"source_span\": {\"page\": 2, \"text\": \"2\"}}, \"unit_price\": {\"value\": 20.00, \"source_span\": {\"page\": 2, \"text\": \"20.00\"}}, \"amount\": {\"value\": 40.00, \"source_span\": {\"page\": 2, \"text\": \"40.00\"}}},\n{\"description\": {\"value\": \"Hex bolts (box)\", \"source_span\": {\"page\": 2, \"text\": \"Hex bolts (box)\"}}, \"quantity\": {\"value\": 3, \"source_span\": {\"page\": 2, \"text\": \"3\"}}, \"unit_price\": {\"value\": 11.50, \"source_span\": {\"page\": 2, \"text\": \"11.50\"}}, \"amount\": {\"value\": 34.50, \"source_span\": {\"page\": 2, \"text\": \"34.50\"}}}\n],\n\"subtotal\": {\"value\": 74.50, \"source_span\": {\"page\": 2, \"text\": \"Subtotal                         74.50\"}},\n\"tax\": {\"value\": 13.41, \"source_span\": {\"page\": 2, \"text\": \"GST 18%                          13.41\"}},\n\"total\": {\"value\": 87.91, \"source_span\": {\"page\": 2, \"text\": \"Total due (INR)                  87.91\"}}\n}"
+  },
+  "done": true,
+  "done_reason": "stop",
+  "total_duration": 64172574958,
+  "load_duration": 11212662041,
+  "prompt_eval_count": 342,
+  "prompt_eval_cached_count": 0,
+  "prompt_eval_duration": 2960410000,
+  "eval_count": 529,
+  "eval_duration": 49970464000
+}
