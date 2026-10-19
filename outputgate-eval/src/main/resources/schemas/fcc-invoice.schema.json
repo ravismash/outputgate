@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["invoice_number", "invoice_date", "advertiser", "agency", "gross_total", "deductions", "net_amount_due"],
+  "additionalProperties": false,
+  "properties": {
+    "invoice_number": { "type": "string", "minLength": 1 },
+    "invoice_date": { "type": "string" },
+    "advertiser": { "type": "string", "minLength": 1 },
+    "agency": { "type": ["string", "null"] },
+    "gross_total": { "type": "number", "minimum": 0 },
+    "deductions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "amount"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "amount": { "type": "number", "minimum": 0 }
+        }
+      }
+    },
+    "net_amount_due": { "type": "number" }
+  }
+}
