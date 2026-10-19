@@ -1,7 +1,11 @@
 package io.github.ravismash.outputgate;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.MissingNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -59,6 +63,26 @@ final class Paths {
             current = next;
         }
         return current;
+    }
+
+    /** A copy of {@code node} with every evidence object replaced by its value, at any depth. */
+    static JsonNode unwrapAll(JsonNode node) {
+        JsonNode n = unwrap(node);
+        if (n.isObject()) {
+            ObjectNode copy = JsonNodeFactory.instance.objectNode();
+            for (Map.Entry<String, JsonNode> e : n.properties()) {
+                copy.set(e.getKey(), unwrapAll(e.getValue()));
+            }
+            return copy;
+        }
+        if (n.isArray()) {
+            ArrayNode copy = JsonNodeFactory.instance.arrayNode(n.size());
+            for (JsonNode element : n) {
+                copy.add(unwrapAll(element));
+            }
+            return copy;
+        }
+        return n;
     }
 
     static JsonNode unwrap(JsonNode node) {
