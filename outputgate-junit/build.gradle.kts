@@ -5,3 +5,9 @@ dependencies {
     api("org.junit.jupiter:junit-jupiter-api")
     api("org.junit.jupiter:junit-jupiter-params")
 }
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.platform:junit-platform-testkit")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}

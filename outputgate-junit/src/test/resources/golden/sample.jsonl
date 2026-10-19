@@ -1,0 +1,5 @@
+{"name": "clean invoice", "output": {"vendor": "Acme", "subtotal": 74.50, "line_items": [{"description": "Widgets", "amount": 40.00}, {"description": "Bolts", "amount": 34.50}]}, "expected": {"vendor": "Acme", "subtotal": 74.5}}
+{"name": "clean invoice with evidence", "output": {"vendor": {"value": "Acme", "source_span": {"page": 1, "text": "ACME"}}, "subtotal": {"value": 74.50, "source_span": {"page": 2, "text": "74.50"}}, "line_items": [{"description": "Widgets", "amount": 74.50}]}, "expected": {"subtotal": 74.50}}
+{"name": "dropped line item", "output": {"vendor": "Acme", "subtotal": 100.00, "line_items": [{"description": "Widgets", "amount": 40.00}, {"description": "Bolts", "amount": 34.50}]}, "expect_reject": "math"}
+
+{"name": "chatty prose", "output": "Sure! Here is the invoice: {\"subtotal\": 1}", "expect_reject": "json-parse"}
