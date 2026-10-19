@@ -123,36 +123,47 @@ public final class LlmAssert {
          * @return the verdict
          */
         public Verdict matches(Contract contract) {
-            Verdict v = contract.evaluate(LlmOutput.of(golden.output()), context);
-            String label = "golden case \"" + golden.name() + "\": ";
-            if (golden.mustReject()) {
-                String gate = golden.expectReject();
-                if (v.passed()) {
-                    throw new AssertionError(label + "expected rejection"
-                            + ("*".equals(gate) ? "" : " by gate '" + gate + "'") + ", but it PASSED");
-                }
-                if (!"*".equals(gate) && !failingGates(v).contains(gate)) {
-                    throw new AssertionError(label + "expected rejection by gate '" + gate
-                            + "', but the failing gates were " + failingGates(v) + ":\n" + list(v));
-                }
-                return v;
+            Outcome outcome = evaluate(golden, contract, context);
+            if (outcome.problem() != null) {
+                throw new AssertionError("golden case \"" + golden.name() + "\": " + outcome.problem());
             }
-            if (!v.passed()) {
-                throw new AssertionError(label + "expected to pass, but it was REJECTED:\n" + list(v));
-            }
-            if (golden.expected() != null) {
-                List<String> problems = new ArrayList<>();
-                try {
-                    compare("", golden.expected(), StrictJson.parse(golden.output()), problems);
-                } catch (JsonProcessingException e) {
-                    problems.add("output is not JSON: " + e.getOriginalMessage());
-                }
-                if (!problems.isEmpty()) {
-                    throw new AssertionError(label + "output differs from expected:\n  " + String.join("\n  ", problems));
-                }
-            }
-            return v;
+            return outcome.verdict();
         }
+    }
+
+    /** A golden case's verdict, and why it didn't behave as recorded (null when it did). */
+    record Outcome(Verdict verdict, String problem) {}
+
+    /** Checks one golden case without throwing; shared by {@link GoldenAssert} and {@link GoldenRunner}. */
+    static Outcome evaluate(GoldenCase golden, Contract contract, EvalContext context) {
+        Verdict v = contract.evaluate(LlmOutput.of(golden.output()), context);
+        if (golden.mustReject()) {
+            String gate = golden.expectReject();
+            if (v.passed()) {
+                return new Outcome(v, "expected rejection" + ("*".equals(gate) ? "" : " by gate '" + gate + "'")
+                        + ", but it PASSED");
+            }
+            if (!"*".equals(gate) && !failingGates(v).contains(gate)) {
+                return new Outcome(v, "expected rejection by gate '" + gate + "', but the failing gates were "
+                        + failingGates(v) + ":\n" + list(v));
+            }
+            return new Outcome(v, null);
+        }
+        if (!v.passed()) {
+            return new Outcome(v, "expected to pass, but it was REJECTED:\n" + list(v));
+        }
+        if (golden.expected() != null) {
+            List<String> problems = new ArrayList<>();
+            try {
+                compare("", golden.expected(), StrictJson.parse(golden.output()), problems);
+            } catch (JsonProcessingException e) {
+                problems.add("output is not JSON: " + e.getOriginalMessage());
+            }
+            if (!problems.isEmpty()) {
+                return new Outcome(v, "output differs from expected:\n  " + String.join("\n  ", problems));
+            }
+        }
+        return new Outcome(v, null);
     }
 
     private static List<String> failingGates(Verdict v) {

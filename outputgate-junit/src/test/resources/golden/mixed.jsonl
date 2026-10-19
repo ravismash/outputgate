@@ -1,0 +1,4 @@
+{"name": "clean invoice", "output": {"subtotal": 74.50, "line_items": [{"description": "Widgets", "amount": 74.50}]}, "expected": {"subtotal": 74.50}}
+{"name": "dropped line item", "output": {"subtotal": 100.00, "line_items": [{"description": "Widgets", "amount": 74.50}]}, "expect_reject": "math"}
+{"name": "apology in description", "output": {"subtotal": 74.50, "line_items": [{"description": "Sorry, unreadable", "amount": 74.50}]}, "expect_reject": "regex"}
+{"name": "wrongly expected to pass", "output": {"subtotal": 100.00, "line_items": [{"description": "Widgets", "amount": 74.50}]}, "expected": {"subtotal": 100.00}}

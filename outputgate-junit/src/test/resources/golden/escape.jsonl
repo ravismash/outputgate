@@ -1,0 +1,1 @@
+{"name": "<script>alert('x')</script> & co", "output": "not json <b>bold</b>", "expect_reject": "json-parse"}
