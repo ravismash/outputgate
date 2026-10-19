@@ -30,6 +30,28 @@ public final class Contract {
         return evaluate(rawOutput, EvalContext.empty());
     }
 
+    /**
+     * Evaluates a model output; its usage is visible to gates such as {@link BudgetGate}.
+     *
+     * @param output the model's raw text and usage
+     * @return the verdict
+     */
+    public Verdict evaluate(LlmOutput output) {
+        return evaluate(output, EvalContext.empty());
+    }
+
+    /**
+     * Evaluates a model output with extra context (e.g. a source document); the output's
+     * usage replaces any usage in {@code context}.
+     *
+     * @param output the model's raw text and usage
+     * @param context the source document and other facts
+     * @return the verdict
+     */
+    public Verdict evaluate(LlmOutput output, EvalContext context) {
+        return evaluate(output.text(), context.withUsage(output.usage()));
+    }
+
     /** Evaluates raw model text. */
     public Verdict evaluate(String rawOutput, EvalContext context) {
         JsonNode output;

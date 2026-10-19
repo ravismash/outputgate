@@ -4,16 +4,18 @@ import java.util.Optional;
 
 /**
  * Facts about a call that gates may need beyond the output itself: the source document
- * for grounding (R6). Usage for BudgetGate (R7) arrives with {@code LlmOutput}.
+ * for grounding (R6) and the call's {@link Usage} (R7).
  */
 public final class EvalContext {
 
-    private static final EvalContext EMPTY = new EvalContext(null);
+    private static final EvalContext EMPTY = new EvalContext(null, Usage.UNKNOWN);
 
     private final SourceDocument source;
+    private final Usage usage;
 
-    private EvalContext(SourceDocument source) {
+    private EvalContext(SourceDocument source, Usage usage) {
         this.source = source;
+        this.usage = usage;
     }
 
     /** A context with nothing in it. */
@@ -31,7 +33,17 @@ public final class EvalContext {
         if (source == null) {
             throw new IllegalArgumentException("source is null");
         }
-        return new EvalContext(source);
+        return new EvalContext(source, usage);
+    }
+
+    /**
+     * A copy of this context that carries {@code usage}.
+     *
+     * @param usage what the call cost; null means unknown
+     * @return the new context
+     */
+    public EvalContext withUsage(Usage usage) {
+        return new EvalContext(source, usage == null ? Usage.UNKNOWN : usage);
     }
 
     /**
@@ -41,5 +53,14 @@ public final class EvalContext {
      */
     public Optional<SourceDocument> source() {
         return Optional.ofNullable(source);
+    }
+
+    /**
+     * What the call cost; {@link Usage#UNKNOWN} unless set.
+     *
+     * @return the usage
+     */
+    public Usage usage() {
+        return usage;
     }
 }
