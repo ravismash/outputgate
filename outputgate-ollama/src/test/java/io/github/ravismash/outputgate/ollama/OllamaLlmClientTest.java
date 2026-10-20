@@ -60,12 +60,43 @@ class OllamaLlmClientTest {
     }
 
     @Test
+    @DisplayName("R11: contextSize is sent as options.num_ctx, so Ollama doesn't silently cut a long prompt to its default")
+    void contextSizeSent() throws Exception {
+        try (FakeOllama server = FakeOllama.recorded(Recording.RESOURCE)) {
+            OllamaLlmClient.builder().baseUrl(server.baseUrl()).model("m").contextSize(16384).build().complete("p");
+            JsonNode body = new ObjectMapper().readTree(server.requests().get(0).body());
+            assertEquals(16384, body.path("options").path("num_ctx").asInt(-1));
+        }
+        assertThrows(IllegalArgumentException.class, () -> OllamaLlmClient.builder().model("m").contextSize(0));
+    }
+
+    @Test
     @DisplayName("R11: a base URL with a trailing slash still reaches /api/chat")
     void trailingSlash() throws Exception {
         try (FakeOllama server = FakeOllama.recorded(Recording.RESOURCE)) {
-            OllamaLlmClient.builder().baseUrl(server.baseUrl() + "/").model("m").build().complete("p");
+            OllamaLlmClient.builder().baseUrl(server.baseUrl() + "///").model("m").build().complete("p");
             assertEquals("/api/chat", server.requests().get(0).path());
         }
+    }
+
+    @Test
+    @DisplayName("R11: format is sent as Ollama's format, either \"json\" or a JSON Schema object; none by default")
+    void formatSent() throws Exception {
+        try (FakeOllama server = FakeOllama.recorded(Recording.RESOURCE)) {
+            OllamaLlmClient.builder().baseUrl(server.baseUrl()).model("m").build().complete("p");
+            OllamaLlmClient.builder().baseUrl(server.baseUrl()).model("m").format("json").build().complete("p");
+            OllamaLlmClient.builder().baseUrl(server.baseUrl()).model("m")
+                    .format("{\"type\": \"object\", \"required\": [\"a\"]}").build().complete("p");
+            ObjectMapper json = new ObjectMapper();
+            assertTrue(json.readTree(server.requests().get(0).body()).path("format").isMissingNode());
+            assertEquals("json", json.readTree(server.requests().get(1).body()).path("format").asText());
+            JsonNode schema = json.readTree(server.requests().get(2).body()).path("format");
+            assertEquals("object", schema.path("type").asText());
+            assertEquals("a", schema.path("required").get(0).asText());
+        }
+        assertThrows(IllegalArgumentException.class, () -> OllamaLlmClient.builder().model("m").format(""));
+        assertThrows(IllegalArgumentException.class, () -> OllamaLlmClient.builder().model("m").format("{not json"));
+        assertThrows(IllegalArgumentException.class, () -> OllamaLlmClient.builder().model("m").format("[1]"));
     }
 
     @Test

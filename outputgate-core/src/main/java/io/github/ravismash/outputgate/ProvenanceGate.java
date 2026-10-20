@@ -5,23 +5,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /**
  * Requires fields to carry evidence, {@code {"value": ..., "source_span": {"page": n, "text": "..."}}}
- * (R6). With grounding on, each span's text must occur in the source document from the
- * {@link EvalContext}, compared literally. A missing field, a bare value or a malformed span
- * is a violation, never a pass.
+ * (R6). With grounding on, each span's text must occur on the page the span names, in the source
+ * document from the {@link EvalContext}, compared literally, or with
+ * {@link Builder#groundedIgnoringWhitespace()} ignoring only differences in whitespace. A page the
+ * document doesn't have is a violation. A missing required field, a bare value or a malformed span
+ * is a violation, never a pass; an {@link Builder#optional optional} field may be missing or null,
+ * but when it has a value it is checked like a required one.
  */
 public final class ProvenanceGate implements Gate {
 
     private static final String NAME = "provenance";
 
-    private final List<String> paths;
-    private final boolean grounded;
+    /** Any run of whitespace, Unicode included (non-breaking spaces are common in PDF text). */
+    private static final Pattern WHITESPACE = Pattern.compile("(?U)\\s+");
 
-    private ProvenanceGate(List<String> paths, boolean grounded) {
+    private final List<String> paths;
+    private final List<String> optionalPaths;
+    private final boolean grounded;
+    private final boolean ignoreWhitespace;
+
+    private ProvenanceGate(List<String> paths, List<String> optionalPaths, boolean grounded, boolean ignoreWhitespace) {
         this.paths = List.copyOf(paths);
+        this.optionalPaths = List.copyOf(optionalPaths);
         this.grounded = grounded;
+        this.ignoreWhitespace = ignoreWhitespace;
     }
 
     /** Starts a new provenance gate. */
@@ -37,30 +48,65 @@ public final class ProvenanceGate implements Gate {
     @Override
     public List<Violation> check(JsonNode output, EvalContext context) {
         List<Violation> out = new ArrayList<>();
-        String text = null;
+        List<String> pages = null;
         if (grounded) {
             Optional<SourceDocument> source = context.source();
             if (source.isEmpty()) {
                 out.add(new Violation(NAME, "", "grounding is on but the context has no source document"));
             } else {
-                text = String.join("\n", source.get().pages());
+                pages = ignoreWhitespace
+                        ? source.get().pages().stream().map(ProvenanceGate::collapse).toList()
+                        : source.get().pages();
             }
         }
-        for (String path : paths) {
+        check(output, paths, false, pages, out);
+        check(output, optionalPaths, true, pages, out);
+        return out;
+    }
+
+    private void check(JsonNode output, List<String> fieldPaths, boolean optional, List<String> pages, List<Violation> out) {
+        for (String path : fieldPaths) {
             for (Paths.Hit hit : Paths.resolve(output, path, false)) {
+                if (optional && (hit.node().isMissingNode() || hit.node().isNull())) {
+                    continue;
+                }
                 String problem = problem(hit.node());
-                if (problem == null && text != null) {
-                    String span = hit.node().get("source_span").get("text").asText();
-                    if (!text.contains(span)) {
-                        problem = "source_span.text \"" + span + "\" not found in the source document";
-                    }
+                if (problem == null && pages != null) {
+                    problem = ungrounded(hit.node().get("source_span"), pages);
                 }
                 if (problem != null) {
                     out.add(new Violation(NAME, hit.path(), problem));
                 }
             }
         }
-        return out;
+    }
+
+    /** Why a well-formed span is not on the page it names, or null when it is. */
+    private String ungrounded(JsonNode span, List<String> pages) {
+        long page = span.get("page").asLong();
+        if (page > pages.size()) {
+            return "source_span.page " + page + " is past the end of the document (" + pages.size() + " pages)";
+        }
+        String quote = span.get("text").asText();
+        String wanted = ignoreWhitespace ? collapse(quote) : quote;
+        if (wanted.isEmpty()) {
+            return "source_span.text is only whitespace";
+        }
+        if (pages.get((int) page - 1).contains(wanted)) {
+            return null;
+        }
+        String where = ignoreWhitespace ? " (whitespace ignored)" : "";
+        for (int i = 0; i < pages.size(); i++) {
+            if (pages.get(i).contains(wanted)) {
+                return "source_span.text \"" + quote + "\" is not on page " + page + " (it is on page " + (i + 1) + ")" + where;
+            }
+        }
+        return "source_span.text \"" + quote + "\" not found in the source document" + where;
+    }
+
+    /** Every run of whitespace becomes one space; leading and trailing whitespace is dropped. */
+    private static String collapse(String s) {
+        return WHITESPACE.matcher(s).replaceAll(" ").strip();
     }
 
     /** What is wrong with the evidence object, or null when it is well formed. */
@@ -93,7 +139,9 @@ public final class ProvenanceGate implements Gate {
     public static final class Builder {
 
         private final List<String> paths = new ArrayList<>();
+        private final List<String> optionalPaths = new ArrayList<>();
         private boolean grounded;
+        private boolean ignoreWhitespace;
 
         private Builder() {}
 
@@ -109,12 +157,41 @@ public final class ProvenanceGate implements Gate {
         }
 
         /**
-         * Also check that each span's text occurs in the source document from {@link EvalContext}.
+         * Fields that may be missing or null (e.g. an agency that isn't printed), but must carry
+         * evidence, checked like a required field, whenever they have a value.
+         *
+         * @param paths field paths
+         * @return this builder
+         */
+        public Builder optional(String... paths) {
+            Arrays.stream(paths).map(Paths::validate).forEach(this.optionalPaths::add);
+            return this;
+        }
+
+        /**
+         * Also check that each span's text occurs on the page it names, in the source document from
+         * {@link EvalContext}.
          *
          * @return this builder
          */
         public Builder grounded() {
             this.grounded = true;
+            this.ignoreWhitespace = false;
+            return this;
+        }
+
+        /**
+         * Like {@link #grounded()}, but differences in whitespace don't count: in both the span and
+         * the document, every run of spaces, tabs and line breaks is read as one space. Everything
+         * else still has to match exactly: case, punctuation, currency signs, digits and separators.
+         * Use it when the document's text comes from a PDF or OCR, where a quote the model copied
+         * faithfully can still differ from the extracted text in spacing or line breaks.
+         *
+         * @return this builder
+         */
+        public Builder groundedIgnoringWhitespace() {
+            this.grounded = true;
+            this.ignoreWhitespace = true;
             return this;
         }
 
@@ -127,7 +204,7 @@ public final class ProvenanceGate implements Gate {
             if (paths.isEmpty()) {
                 throw new IllegalStateException("ProvenanceGate needs at least one required field");
             }
-            return new ProvenanceGate(paths, grounded);
+            return new ProvenanceGate(paths, optionalPaths, grounded, ignoreWhitespace);
         }
     }
 }
