@@ -1,0 +1,67 @@
+# Publish the library modules to Maven Central when a version tag (v0.1.0, ...) is pushed.
+# The tag sets the version; gradle.properties keeps the -SNAPSHOT for day-to-day builds.
+#
+# Repository secrets this needs (Settings > Secrets and variables > Actions):
+#   MAVEN_CENTRAL_USERNAME       user-token name from central.sonatype.com > View Account > Generate User Token
+#   MAVEN_CENTRAL_PASSWORD       user-token password from the same screen
+#   SIGNING_KEY                  ASCII-armored private key: gpg --export-secret-keys --armor <KEY_ID>
+#   SIGNING_KEY_PASSWORD         that key's passphrase
+# The public key must be on a keyserver Central checks (keyserver.ubuntu.com or keys.openpgp.org).
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Validate the Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6.4.0
+
+      - uses: actions/setup-java@v6.0.1
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v6.4.0
+
+      - name: Read the version from the tag
+        id: version
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]] || [[ "$version" == *SNAPSHOT* ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME is not a release version (expected v1.2.3)"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Build and test
+        run: ./gradlew build -Pversion=${{ steps.version.outputs.version }} --no-daemon --console=plain
+
+      # Uploads, signs and releases in one step: the deployment is published as soon as
+      # Central's validation passes. Use publishToMavenCentral instead to release by hand
+      # from central.sonatype.com > Deployments.
+      - name: Publish to Maven Central
+        run: ./gradlew publishAndReleaseToMavenCentral -Pversion=${{ steps.version.outputs.version }} --no-daemon --no-configuration-cache --console=plain
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
+
+      - name: Create the GitHub release
+        run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
+        env:
+          GH_TOKEN: ${{ github.token }}
