@@ -87,6 +87,47 @@ class ProvenanceGateTest {
     }
 
     @Test
+    @DisplayName("R6: a quote that spans a line break fails literal grounding but passes ignoring whitespace")
+    void whitespaceIgnoredOnlyWhenAsked() {
+        String json = "{\"vendor\": " + ev("\"Acme Supplies Ltd\"", 1, "ACME SUPPLIES LTD Invoice no. INV-2041")
+                + ", \"subtotal\": " + ev("74.50", 2, "Subtotal 74.50") + "}";
+        Verdict literal = run(groundedVendorAndSubtotal(), json, WITH_SOURCE);
+        assertEquals(List.of("vendor", "subtotal"), literal.violations().stream().map(Violation::path).toList());
+
+        ProvenanceGate relaxed = ProvenanceGate.builder().require("vendor", "subtotal").groundedIgnoringWhitespace().build();
+        Verdict v = run(relaxed, json, WITH_SOURCE);
+        assertTrue(v.passed(), () -> v.violations().toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"subtotal 74.50", "Subtotal 74,50", "Subtotal $74.50", "Subtotal 75.50"})
+    @DisplayName("R6: ignoring whitespace still requires case, punctuation, currency signs and digits to match")
+    void onlyWhitespaceIsIgnored(String quote) {
+        ProvenanceGate relaxed = ProvenanceGate.builder().require("subtotal").groundedIgnoringWhitespace().build();
+        Verdict v = run(relaxed, "{\"subtotal\": " + ev("74.50", 2, quote) + "}", WITH_SOURCE);
+        assertEquals(List.of("subtotal"), v.violations().stream().map(Violation::path).toList());
+        assertTrue(v.violations().get(0).message().contains("whitespace ignored"), v.violations().toString());
+    }
+
+    @Test
+    @DisplayName("R6: a quote that is only whitespace is rejected, not matched against everything")
+    void whitespaceOnlyQuoteRejected() {
+        ProvenanceGate relaxed = ProvenanceGate.builder().require("subtotal").groundedIgnoringWhitespace().build();
+        Verdict v = run(relaxed, "{\"subtotal\": " + ev("74.50", 2, "   ") + "}", WITH_SOURCE);
+        assertEquals(Status.REJECTED, v.status());
+        assertTrue(v.violations().get(0).message().contains("only whitespace"), v.violations().toString());
+    }
+
+    @Test
+    @DisplayName("R6: non-breaking spaces in PDF text count as whitespace")
+    void nonBreakingSpaces() {
+        ProvenanceGate relaxed = ProvenanceGate.builder().require("subtotal").groundedIgnoringWhitespace().build();
+        EvalContext nbsp = EvalContext.empty().withSource(SourceDocument.of("Subtotal\u00A0\u00A074.50"));
+        Verdict v = run(relaxed, "{\"subtotal\": " + ev("74.50", 1, "Subtotal 74.50") + "}", nbsp);
+        assertTrue(v.passed(), () -> v.violations().toString());
+    }
+
+    @Test
     @DisplayName("R6: grounding on but no source document is a violation, not a pass")
     void groundingWithoutSourceFails() {
         Verdict v = run(groundedVendorAndSubtotal(), GOOD, EvalContext.empty());
@@ -131,6 +172,45 @@ class ProvenanceGateTest {
         Verdict v = run(gate, json, WITH_SOURCE);
         assertEquals(List.of("line_items[1].amount", "line_items[2].amount"),
                 v.violations().stream().map(Violation::path).toList());
+    }
+
+    @Test
+    @DisplayName("R6: a real quote cited with the wrong page is rejected, and the message names the right page")
+    void wrongPageRejected() {
+        String json = "{\"vendor\": " + ev("\"Acme Supplies Ltd\"", 1, "ACME SUPPLIES LTD")
+                + ", \"subtotal\": " + ev("74.50", 1, "Subtotal   74.50") + "}";
+        for (ProvenanceGate gate : List.of(groundedVendorAndSubtotal(),
+                ProvenanceGate.builder().require("vendor", "subtotal").groundedIgnoringWhitespace().build())) {
+            Verdict v = run(gate, json, WITH_SOURCE);
+            assertEquals(List.of("subtotal"), v.violations().stream().map(Violation::path).toList());
+            assertTrue(v.violations().get(0).message().contains("not on page 1 (it is on page 2)"), v.violations().toString());
+        }
+    }
+
+    @Test
+    @DisplayName("R6: a page past the end of the document is rejected")
+    void pagePastEndRejected() {
+        String json = "{\"vendor\": " + ev("\"Acme Supplies Ltd\"", 3, "ACME SUPPLIES LTD")
+                + ", \"subtotal\": " + ev("74.50", 2, "Subtotal   74.50") + "}";
+        Verdict v = run(groundedVendorAndSubtotal(), json, WITH_SOURCE);
+        assertEquals(List.of("vendor"), v.violations().stream().map(Violation::path).toList());
+        assertTrue(v.violations().get(0).message().contains("past the end"), v.violations().toString());
+    }
+
+    @Test
+    @DisplayName("R6: an optional field may be missing or null, but a value must carry grounded evidence")
+    void optionalFieldCheckedWhenPresent() {
+        ProvenanceGate gate = ProvenanceGate.builder().require("subtotal").optional("vendor").grounded().build();
+        String subtotal = "\"subtotal\": " + ev("74.50", 2, "Subtotal   74.50");
+        assertTrue(run(gate, "{" + subtotal + "}", WITH_SOURCE).passed());
+        assertTrue(run(gate, "{\"vendor\": null, " + subtotal + "}", WITH_SOURCE).passed());
+        assertTrue(run(gate, "{\"vendor\": " + ev("\"Acme Supplies Ltd\"", 1, "ACME SUPPLIES LTD") + ", " + subtotal + "}",
+                WITH_SOURCE).passed());
+
+        Verdict bare = run(gate, "{\"vendor\": \"Acme Supplies Ltd\", " + subtotal + "}", WITH_SOURCE);
+        assertEquals(List.of("vendor"), bare.violations().stream().map(Violation::path).toList());
+        Verdict invented = run(gate, "{\"vendor\": " + ev("\"Acme\"", 1, "ACME LTD") + ", " + subtotal + "}", WITH_SOURCE);
+        assertEquals(List.of("vendor"), invented.violations().stream().map(Violation::path).toList());
     }
 
     @Test
