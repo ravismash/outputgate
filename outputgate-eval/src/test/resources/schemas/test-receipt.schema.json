@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["company", "date", "items", "total"],
+  "additionalProperties": false,
+  "properties": {
+    "company": { "type": "string", "minLength": 1 },
+    "date": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "price"],
+        "additionalProperties": false,
+        "properties": { "name": { "type": "string" }, "price": { "type": "number" } }
+      }
+    },
+    "total": { "type": "number" }
+  }
+}

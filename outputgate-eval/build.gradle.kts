@@ -1,9 +1,19 @@
 // Evaluation harness for real documents (FRD Days 11-15): reads PDFs into SourceDocuments and runs
 // models over them. Not part of the library: it is never published, and core never depends on it.
+plugins {
+    application
+}
+
+// The benchmark over an EvalRun: ./gradlew :outputgate-eval:run --args="report /abs/docs /abs/run" (see BenchmarkCli).
+application {
+    mainClass = "io.github.ravismash.outputgate.eval.BenchmarkCli"
+}
+
 dependencies {
     implementation(project(":outputgate-core"))
     implementation(project(":outputgate-ollama"))
     implementation("org.apache.pdfbox:pdfbox:3.0.8")
+    runtimeOnly("org.slf4j:slf4j-nop:2.0.17")
 
     testImplementation(project(":outputgate-junit"))
     testImplementation(platform("org.junit:junit-bom:5.11.4"))
