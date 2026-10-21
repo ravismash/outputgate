@@ -168,8 +168,22 @@ or telemetry. No prompt management, retries or re-asking the model.
 
 ## Benchmark
 
-Not run yet. The plan: 200 public invoices plus 50 corrupted ones, comparing a naive prompt,
-schema-only checks and the full contract.
+Not run yet. The harness is in [`outputgate-eval`](outputgate-eval): it scores the same model
+answers three ways (naive parse-only, schema only, the full contract), on a folder of real
+documents plus a corrupted set made from them. The documents stay outside the repo.
+
+```bash
+D=/abs/path/to/invoices; R=/abs/path/to/run
+./gradlew :outputgate-eval:runFccOllama -Ppdfs=$D -Pout=$R           # the only step that calls a model (local Ollama)
+./gradlew :outputgate-eval:run --args="corrupt $D $R --count 50 --seed 42"   # offline
+./gradlew :outputgate-eval:run --args="report  $D $R"                        # offline: $R/benchmark.md and .html
+```
+
+`corrupt` copies answers the full contract accepts and adds exactly one defect to each, spread
+over 13 kinds: a dropped line item, swapped digits, a re-formatted or invented quote, a wrong
+page, a bare value, a non-ISO date, an apology, an amount as text, a missing or extra field, a
+code fence and a trailing note. The same answers, count and seed give the same files. The report
+lists every answer the contract rejected and every corruption it let through.
 
 ## License
 
