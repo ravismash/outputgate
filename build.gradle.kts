@@ -65,7 +65,7 @@ subprojects {
                 developers {
                     developer {
                         id.set("ravismash")
-                        name.set("Ravi") // TODO(release): full name as it should appear on Central
+                        name.set("Ravi Prakash Meena")
                         url.set("https://github.com/ravismash")
                     }
                 }
