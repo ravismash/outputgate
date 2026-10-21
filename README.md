@@ -11,6 +11,24 @@ or is rejected with every violation listed. **No gate calls a model.**
 
 > **Status:** `0.1.0-SNAPSHOT`, not yet on Maven Central. Java 21. MIT.
 
+## Install
+
+Once 0.1.0 is released, the modules are on Maven Central under `io.github.ravismash`:
+
+```kotlin
+dependencies {
+    implementation("io.github.ravismash:outputgate-core:0.1.0")
+    testImplementation("io.github.ravismash:outputgate-junit:0.1.0")
+    // One adapter, if you call a model through it:
+    // implementation("io.github.ravismash:outputgate-spring-ai:0.1.0")
+    // implementation("io.github.ravismash:outputgate-langchain4j:0.1.0")
+    // implementation("io.github.ravismash:outputgate-ollama:0.1.0")
+}
+```
+
+`outputgate-example` and `outputgate-eval` (the harness that reads real PDF invoices and runs
+models over them) stay in this repository and are not published.
+
 ## Why
 
 Output can match its JSON Schema and still be wrong. Here a model extracted an invoice, dropped
@@ -165,6 +183,12 @@ OUTPUTGATE_LIVE_OLLAMA=1 ./gradlew :outputgate-ollama:test
 No LLM-as-judge, semantic similarity, toxicity or relevance scoring. No runtime request
 filtering module (you can still call `Contract.evaluate` at runtime). No web UI, hosted service
 or telemetry. No prompt management, retries or re-asking the model.
+
+## Releasing
+
+Push a tag such as `v0.1.0`. The [Release workflow](.github/workflows/release.yml) builds and
+tests at that version, signs the five library modules, publishes them to Maven Central and creates
+the GitHub release. It needs the four repository secrets listed at the top of that file.
 
 ## Benchmark
 
