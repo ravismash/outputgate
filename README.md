@@ -1,6 +1,7 @@
 # outputgate
 
 [![CI](https://github.com/ravismash/outputgate/actions/workflows/ci.yml/badge.svg)](https://github.com/ravismash/outputgate/actions/workflows/ci.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ravismash/outputgate-core)](https://central.sonatype.com/artifact/io.github.ravismash/outputgate-core)
 
 **Deterministic contract tests for LLM output on the JVM.**
 
@@ -9,11 +10,11 @@ the build. A contract composes gates (JSON schema, strict type binding, cross-fi
 source-span provenance, regex, cost and latency ceilings). An output either passes every gate
 or is rejected with every violation listed. **No gate calls a model.**
 
-> **Status:** `0.1.0-SNAPSHOT`, not yet on Maven Central. Java 21. MIT.
+> **Status:** `0.1.0` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Java 21. MIT.
 
 ## Install
 
-Once 0.1.0 is released, the modules are on Maven Central under `io.github.ravismash`:
+The modules are on Maven Central under `io.github.ravismash`. Gradle:
 
 ```kotlin
 dependencies {
@@ -24,6 +25,22 @@ dependencies {
     // implementation("io.github.ravismash:outputgate-langchain4j:0.1.0")
     // implementation("io.github.ravismash:outputgate-ollama:0.1.0")
 }
+```
+
+Maven:
+
+```xml
+<dependency>
+    <groupId>io.github.ravismash</groupId>
+    <artifactId>outputgate-core</artifactId>
+    <version>0.1.0</version>
+</dependency>
+<dependency>
+    <groupId>io.github.ravismash</groupId>
+    <artifactId>outputgate-junit</artifactId>
+    <version>0.1.0</version>
+    <scope>test</scope>
+</dependency>
 ```
 
 `outputgate-example` and `outputgate-eval` (the harness that reads real PDF invoices and runs
