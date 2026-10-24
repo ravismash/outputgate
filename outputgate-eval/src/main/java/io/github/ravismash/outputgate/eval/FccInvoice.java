@@ -32,9 +32,10 @@ public final class FccInvoice {
               invoice_number: text, exactly as printed. Always a JSON string, even when it is all digits
                 ("2112-1", "000451", "77123"), so nothing is lost.
               invoice_date (yyyy-MM-dd), advertiser,
-              agency: the advertising agency that placed the order, usually printed just below or after the
-                advertiser and product near the order number, or as the name in the billing address. If the invoice
-                deducts an agency commission, an agency is printed: find it. It is never the advertiser itself, the station, its sales office, account
+              agency: the advertising agency that placed the order. Stations bill the agency, so it is usually the
+                company named first under "Billing Address:" or "Bill To:", or after "In Account With:"; it can also be
+                printed just below or after the advertiser and product near the order number. If the invoice deducts
+                an agency commission, an agency is printed: find it. It is never the advertiser itself, the station, its sales office, account
                 executive or rep firm (names like "...Reps"). null only if no agency is printed at all.
               gross_total (the gross / airtime total before any deduction),
               deductions: a list of {"label": <text>, "amount": <evidence>}, one for every amount the invoice
@@ -53,18 +54,19 @@ public final class FccInvoice {
             label sits directly before the value on the same line of the page text; when the label is in a table
             header or on another line, quote only the value itself (for example "2112-1" or "$15,750.00").
             Never quote a whole table row or several lines, and never write a label next to a value yourself.
-            Never add or remove a space, colon or "$" sign: the example below shows the shape, not how any invoice prints.
+            Never add or remove a space, colon or "$" sign. Many invoices print amounts without "$" ("39,080.00"):
+            then the quote has no "$" either. The example below shows the shape, not how any invoice prints.
             Money values are plain JSON numbers (2319.00, not "$2,319.00"). Only money values are numbers.
             Do not compute or guess a value that is not printed; leave the field out instead.
             Example of the shape (made-up values):
             {"invoice_number": {"value": "900123-1", "source_span": {"page": 1, "text": "900123-1"}},
              "invoice_date": {"value": "2012-10-21", "source_span": {"page": 1, "text": "10/21/12"}},
              "advertiser": {"value": "Example Committee", "source_span": {"page": 1, "text": "Example Committee"}},
-             "agency": null,
+             "agency": {"value": "Example Media Buying", "source_span": {"page": 1, "text": "Example Media Buying"}},
              "gross_total": {"value": 2319.00, "source_span": {"page": 2, "text": "$2,319.00"}},
              "deductions": [{"label": "Agency Commission",
                              "amount": {"value": 347.85, "source_span": {"page": 2, "text": "347.85"}}}],
-             "net_amount_due": {"value": 1971.15, "source_span": {"page": 2, "text": "$1,971.15"}}}
+             "net_amount_due": {"value": 1971.15, "source_span": {"page": 2, "text": "1,971.15"}}}
             """;
 
     /** Prose, apologies and placeholders that are never a real name or invoice number. */
