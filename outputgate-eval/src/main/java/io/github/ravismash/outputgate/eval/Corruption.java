@@ -355,7 +355,8 @@ public enum Corruption {
     private static boolean allZero(JsonNode node) {
         List<BigDecimal> numbers = new ArrayList<>();
         walk(node, "", (path, n) -> {
-            if (n.isNumber()) {
+            // a quote's page number is where the evidence is, not an amount
+            if (n.isNumber() && !path.contains("source_span")) {
                 numbers.add(n.decimalValue());
             }
         });
@@ -383,7 +384,10 @@ public enum Corruption {
         return pages == 1 ? 2 : page % pages + 1;
     }
 
-    /** Whether any page prints {@code text}, counting any run of whitespace as one space, so no near-copy counts as a break. */
+    /**
+     * Whether any page prints {@code text}, read the way the provenance gate's
+     * {@code groundedIgnoringWhitespace()} reads it, so no near-copy counts as a break.
+     */
     private static boolean inDocument(SourceDocument doc, String text) {
         String t = squash(text);
         return doc.pages().stream().anyMatch(p -> squash(p).contains(t));
@@ -393,8 +397,9 @@ public enum Corruption {
         return page >= 1 && page <= doc.pages().size() && squash(doc.pages().get(page - 1)).contains(squash(text));
     }
 
+    /** Whitespace dropped and every kind of hyphen read as "-", as the provenance gate does. */
     private static String squash(String s) {
-        return s.replaceAll("\\s+", " ").strip();
+        return s.replaceAll("(?U)\\s+", "").replaceAll("[\u00AD\u2010-\u2015\u2212]", "-");
     }
 
     private static String grouped(BigDecimal amount) {

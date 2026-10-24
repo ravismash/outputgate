@@ -70,6 +70,15 @@ class CorruptionTest {
     }
 
     @Test
+    @DisplayName("dropping a zero-amount list element is no break, even though its quote names a page")
+    void zeroItemNotDropped() {
+        SourceDocument doc = SourceDocument.of("Gross Total $0.00 Commission $0.00 Net Total $0.00");
+        String zero = "{\"deductions\": [{\"label\": \"Commission\", \"amount\": "
+                + "{\"value\": 0.00, \"source_span\": {\"page\": 1, \"text\": \"Commission $0.00\"}}}]}";
+        assertTrue(Corruption.DROPPED_ITEM.apply(zero, doc, List.of(), new Random(1)).isEmpty());
+    }
+
+    @Test
     @DisplayName("the same seed makes the same corruption")
     void deterministic() {
         for (Corruption kind : Corruption.values()) {
