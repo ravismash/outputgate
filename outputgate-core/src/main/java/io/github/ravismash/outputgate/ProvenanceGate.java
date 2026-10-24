@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * Requires fields to carry evidence, {@code {"value": ..., "source_span": {"page": n, "text": "..."}}}
  * (R6). With grounding on, each span's text must occur on the page the span names, in the source
  * document from the {@link EvalContext}, compared literally, or with
- * {@link Builder#groundedIgnoringWhitespace()} ignoring only differences in whitespace. A page the
+ * {@link Builder#groundedIgnoringWhitespace()} ignoring whitespace and the style of hyphen. A page the
  * document doesn't have is a violation. A missing required field, a bare value or a malformed span
  * is a violation, never a pass; an {@link Builder#optional optional} field may be missing or null,
  * but when it has a value it is checked like a required one.
@@ -22,6 +22,9 @@ public final class ProvenanceGate implements Gate {
 
     /** Any run of whitespace, Unicode included (non-breaking spaces are common in PDF text). */
     private static final Pattern WHITESPACE = Pattern.compile("(?U)\\s+");
+
+    /** Soft hyphen, the Unicode hyphens and dashes, and minus: PDF text uses them where a model types "-". */
+    private static final Pattern HYPHEN = Pattern.compile("[\\u00AD\\u2010-\\u2015\\u2212]");
 
     private final List<String> paths;
     private final List<String> optionalPaths;
@@ -55,7 +58,7 @@ public final class ProvenanceGate implements Gate {
                 out.add(new Violation(NAME, "", "grounding is on but the context has no source document"));
             } else {
                 pages = ignoreWhitespace
-                        ? source.get().pages().stream().map(ProvenanceGate::collapse).toList()
+                        ? source.get().pages().stream().map(ProvenanceGate::loosen).toList()
                         : source.get().pages();
             }
         }
@@ -88,7 +91,7 @@ public final class ProvenanceGate implements Gate {
             return "source_span.page " + page + " is past the end of the document (" + pages.size() + " pages)";
         }
         String quote = span.get("text").asText();
-        String wanted = ignoreWhitespace ? collapse(quote) : quote;
+        String wanted = ignoreWhitespace ? loosen(quote) : quote;
         if (wanted.isEmpty()) {
             return "source_span.text is only whitespace";
         }
@@ -104,9 +107,9 @@ public final class ProvenanceGate implements Gate {
         return "source_span.text \"" + quote + "\" not found in the source document" + where;
     }
 
-    /** Every run of whitespace becomes one space; leading and trailing whitespace is dropped. */
-    private static String collapse(String s) {
-        return WHITESPACE.matcher(s).replaceAll(" ").strip();
+    /** All whitespace is dropped and every kind of hyphen becomes "-". */
+    private static String loosen(String s) {
+        return HYPHEN.matcher(WHITESPACE.matcher(s).replaceAll("")).replaceAll("-");
     }
 
     /** What is wrong with the evidence object, or null when it is well formed. */
@@ -181,11 +184,12 @@ public final class ProvenanceGate implements Gate {
         }
 
         /**
-         * Like {@link #grounded()}, but differences in whitespace don't count: in both the span and
-         * the document, every run of spaces, tabs and line breaks is read as one space. Everything
-         * else still has to match exactly: case, punctuation, currency signs, digits and separators.
-         * Use it when the document's text comes from a PDF or OCR, where a quote the model copied
-         * faithfully can still differ from the extracted text in spacing or line breaks.
+         * Like {@link #grounded()}, but whitespace doesn't count: in both the span and the document,
+         * spaces, tabs and line breaks are dropped (so "$ 3,450.00" matches "$3,450.00"), and a soft
+         * hyphen, Unicode hyphen, dash or minus is read as "-". Everything else still has to match
+         * exactly: case, punctuation, currency signs, digits and separators. Use it when the
+         * document's text comes from a PDF or OCR, where a quote the model copied faithfully can
+         * still differ from the extracted text in spacing, line breaks or hyphen characters.
          *
          * @return this builder
          */

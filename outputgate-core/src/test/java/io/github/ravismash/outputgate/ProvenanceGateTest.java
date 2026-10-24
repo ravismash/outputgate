@@ -128,6 +128,28 @@ class ProvenanceGateTest {
     }
 
     @Test
+    @DisplayName("R6: ignoring whitespace also ignores a space the document doesn't have, or lacks")
+    void spacesAddedOrDropped() {
+        ProvenanceGate relaxed = ProvenanceGate.builder().require("total").groundedIgnoringWhitespace().build();
+        EvalContext doc = EvalContext.empty().withSource(SourceDocument.of("Gross Total $3,450.00"));
+        Verdict v = run(relaxed, "{\"total\": " + ev("3450.00", 1, "$ 3,450.00") + "}", doc);
+        assertTrue(v.passed(), () -> v.violations().toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"­", "‐", "–", "−"})
+    @DisplayName("R6: ignoring whitespace reads a soft hyphen, Unicode hyphen, dash or minus as \"-\"")
+    void hyphenStyleIgnored(String hyphen) {
+        ProvenanceGate relaxed = ProvenanceGate.builder().require("number").groundedIgnoringWhitespace().build();
+        EvalContext doc = EvalContext.empty().withSource(SourceDocument.of("Invoice 62291921" + hyphen + "0100"));
+        Verdict v = run(relaxed, "{\"number\": " + ev("\"62291921-0100\"", 1, "62291921-0100") + "}", doc);
+        assertTrue(v.passed(), () -> v.violations().toString());
+        Verdict literal = run(ProvenanceGate.builder().require("number").grounded().build(),
+                "{\"number\": " + ev("\"62291921-0100\"", 1, "62291921-0100") + "}", doc);
+        assertEquals(Status.REJECTED, literal.status());
+    }
+
+    @Test
     @DisplayName("R6: grounding on but no source document is a violation, not a pass")
     void groundingWithoutSourceFails() {
         Verdict v = run(groundedVendorAndSubtotal(), GOOD, EvalContext.empty());
