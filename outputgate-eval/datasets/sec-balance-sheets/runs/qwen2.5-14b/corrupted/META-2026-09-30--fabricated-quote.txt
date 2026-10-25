@@ -1,0 +1,102 @@
+{
+  "period_end" : {
+    "value" : "2026-09-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-09-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 11222,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 11,222"
+      }
+    }
+  }, {
+    "label" : "Marketable securities",
+    "amount" : {
+      "value" : 71227,
+      "source_span" : {
+        "page" : 1,
+        "text" : "71,227"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 22716,
+      "source_span" : {
+        "page" : 1,
+        "text" : "22,716"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 14735,
+      "source_span" : {
+        "page" : 1,
+        "text" : "14,735"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 119900,
+    "source_span" : {
+      "page" : 1,
+      "text" : "119,900"
+    }
+  },
+  "total_assets" : {
+    "value" : 478836,
+    "source_span" : {
+      "page" : 1,
+      "text" : "478,836"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 19097,
+      "source_span" : {
+        "page" : 1,
+        "text" : "19,097"
+      }
+    }
+  }, {
+    "label" : "Operating lease liabilities, current",
+    "amount" : {
+      "value" : 2522,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,522"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other current liabilities",
+    "amount" : {
+      "value" : 41392,
+      "source_span" : {
+        "page" : 1,
+        "text" : "41,392"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 63011,
+    "source_span" : {
+      "page" : 1,
+      "text" : "63,011"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 478836,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 478,836"
+    }
+  }
+}
