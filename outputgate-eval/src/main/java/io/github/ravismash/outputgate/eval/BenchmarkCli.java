@@ -106,8 +106,10 @@ public final class BenchmarkCli {
                 boolean gemini = client.equals("gemini");
                 String url = opts.getOrDefault("base-url",
                         gemini ? "https://generativelanguage.googleapis.com/v1beta/openai" : "http://localhost:1234/v1");
-                llm = new OpenAiCompatibleClient(url, model, schema, Duration.ofMinutes(15), apiKey(opts, gemini));
+                llm = new OpenAiCompatibleClient(url, model, schema, Duration.ofMinutes(15), apiKey(opts, gemini),
+                        gemini ? null : 42);
                 label = model + " (" + (gemini ? "Gemini API" : "OpenAI-compatible server at " + url) + ", temperature 0"
+                        + (gemini ? "" : ", seed 42")
                         + (schema == null ? "" : ", response_format: " + task.name() + " output schema") + ")";
             }
             default -> throw new IllegalArgumentException("unknown client " + client + "; use ollama, openai or gemini");

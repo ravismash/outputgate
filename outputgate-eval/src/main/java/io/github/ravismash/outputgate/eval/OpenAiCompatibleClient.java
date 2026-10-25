@@ -17,7 +17,7 @@ import java.time.Duration;
 /**
  * A model behind an OpenAI-compatible {@code chat/completions} endpoint, such as LM Studio's local
  * server or Gemini's OpenAI-compatible API, for the eval only (the library's adapters are Spring AI,
- * LangChain4j and Ollama). Sends one user message at temperature 0 and, when given, the answer's
+ * LangChain4j and Ollama). Sends one user message at temperature 0 (and a seed, where the server takes one) and, when given, the answer's
  * JSON Schema as {@code response_format}. A rate-limited call (HTTP 429 or 503) is retried with backoff.
  */
 final class OpenAiCompatibleClient implements LlmClient {
@@ -29,6 +29,7 @@ final class OpenAiCompatibleClient implements LlmClient {
     private final JsonNode schema;
     private final Duration timeout;
     private final String apiKey;
+    private final Integer seed;
     private final HttpClient http = HttpClient.newHttpClient();
 
     /**
@@ -37,8 +38,10 @@ final class OpenAiCompatibleClient implements LlmClient {
      * @param schema the answer's JSON Schema as text, or null for free text
      * @param timeout how long to wait for one answer
      * @param apiKey sent as a bearer token, or null for none
+     * @param seed sampling seed, or null for a server that does not take one (Gemini)
      */
-    OpenAiCompatibleClient(String baseUrl, String model, String schema, Duration timeout, String apiKey) {
+    OpenAiCompatibleClient(String baseUrl, String model, String schema, Duration timeout, String apiKey, Integer seed) {
+        this.seed = seed;
         this.endpoint = URI.create(baseUrl.replaceAll("/+$", "") + "/chat/completions");
         this.apiKey = apiKey;
         this.model = model;
@@ -52,7 +55,10 @@ final class OpenAiCompatibleClient implements LlmClient {
 
     @Override
     public LlmOutput complete(String prompt) {
-        ObjectNode body = JSON.createObjectNode().put("model", model).put("temperature", 0.0).put("seed", 42);
+        ObjectNode body = JSON.createObjectNode().put("model", model).put("temperature", 0.0);
+        if (seed != null) {
+            body.put("seed", seed);
+        }
         body.putArray("messages").addObject().put("role", "user").put("content", prompt);
         if (schema != null) {
             ObjectNode format = body.putObject("response_format").put("type", "json_schema");
