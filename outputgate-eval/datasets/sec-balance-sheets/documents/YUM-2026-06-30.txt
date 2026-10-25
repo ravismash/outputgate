@@ -1,0 +1,28 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current Assets
+Cash and cash equivalents   $ 674   $ 709
+Accounts and notes receivable, net   623   841
+Prepaid Expense and Other Assets, Current   498   489
+Disposal Group, Including Discontinued Operation, Assets   746   1
+Total Current Assets   2,541   2,040
+Property, plant and equipment, net   1,614   1,605
+Goodwill   716   969
+Intangible assets, net   807   909
+Other assets   1,629   1,708
+Deferred Income Taxes   1,373   965
+Total Assets   8,682   8,197
+Current Liabilities
+Accounts payable and other current liabilities   1,191   1,433
+Income taxes payable   26   46
+Short-term borrowings   2,813   38
+Disposal Group, Including Discontinued Operation, Liabilities   262   0
+Total Current Liabilities   4,292   1,516
+Long-term debt   9,462   11,872
+Other liabilities and deferred credits   2,035   2,133
+Total Liabilities   15,789   15,521
+Shareholders' Equity
+Common Stock, no par value, 750 shares authorized; 280 shares issued in 2024 and 281 issued in 2023   0   0
+Accumulated Deficit   (6,809)   (7,014)
+Accumulated other comprehensive loss   (298)   (311)
+Total Shareholders' Deficit   (7,107)   (7,325)
+Total Liabilities and Shareholders' Deficit   $ 8,682   $ 8,197

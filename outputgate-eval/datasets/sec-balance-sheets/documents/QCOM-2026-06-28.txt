@@ -1,0 +1,41 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) shares in Millions, $ in Millions   Jun. 28, 2026   Sep. 28, 2025
+Current assets:
+Cash and cash equivalents   $ 4,533   $ 5,520
+Restricted cash   0   2,323
+Marketable securities   3,771   4,635
+Accounts receivable, net   4,668   4,315
+Inventories   8,379   6,526
+Other current assets   1,653   2,435
+Total current assets   23,004   25,754
+Deferred tax assets   5,679   743
+Property, plant and equipment, net   5,217   4,690
+Goodwill   14,274   11,358
+Other intangible assets, net   1,510   1,148
+Other assets   7,683   6,450
+Total assets   57,367   50,143
+Current liabilities:
+Trade accounts payable   2,897   2,791
+Payroll and other benefits related liabilities   1,470   1,839
+Unearned revenues   280   358
+Short-term debt   2,489   0
+Other current liabilities   4,277   4,156
+Total current liabilities   11,413   9,144
+Unearned revenues   81   71
+Long-term debt   12,781   14,811
+Other liabilities   5,434   4,911
+Total liabilities   29,709   28,937
+Commitments and contingencies (Note 5)
+Stockholders’ equity:
+Preferred stock, $0.0001 par value; 8 shares authorized; none outstanding   $ 0   $ 0
+Preferred stock, par value   $ 0.0001   $ 0.0001
+Preferred stock, shares authorized   8   8
+Preferred stock, shares outstanding   0   0
+Common stock and paid-in capital, $0.0001 par value; 6,000 shares authorized; 1,057 and 1,074 shares issued and outstanding, respectively   $ 0   $ 0
+Common stock, par value   $ 0.0001   $ 0.0001
+Common stock, shares authorized   6,000   6,000
+Common stock, shares, issued   1,057   1,074
+Common stock, shares, outstanding   1,057   1,074
+Retained earnings   $ 27,263   $ 20,646
+Accumulated other comprehensive income   395   560
+Total stockholders’ equity   27,658   21,206
+Total liabilities and stockholders’ equity   $ 57,367   $ 50,143

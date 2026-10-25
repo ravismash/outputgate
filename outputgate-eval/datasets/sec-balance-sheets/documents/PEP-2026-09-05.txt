@@ -1,0 +1,43 @@
+CONDENSED CONSOLIDATED BALANCE SHEET - USD ($) shares in Thousands, $ in Millions   Sep. 05, 2026   Dec. 27, 2025
+Current Assets
+Cash and cash equivalents   $ 10,675   $ 9,159
+Short-term investments   488   371
+Accounts and Financing Receivable, after Allowance for Credit Loss, Current   13,623   11,506
+Inventories:
+Raw materials and packaging   2,792   2,581
+Work-in-process   175   143
+Finished goods   3,467   3,121
+Inventory, Net, Total   6,434   5,845
+Prepaid expenses and other current assets   1,339   1,068
+Total Current Assets   32,559   27,949
+Property, plant and equipment   62,383   60,909
+Accumulated depreciation   (32,652)   (31,004)
+Property, Plant and Equipment, net   29,731   29,905
+Amortizable Intangible Assets, net   1,165   1,219
+Goodwill   18,884   18,916
+Intangible Asset, Excluding Goodwill, Indefinite-Lived   13,977   13,847
+Investments in Noncontrolled Affiliates   2,215   2,038
+Deferred Income Taxes   4,328   4,541
+Other Assets   9,117   8,984
+Total Assets   111,976   107,399
+Current Liabilities
+Short-term debt obligations   9,223   6,861
+Accounts payable and other current liabilities   25,306   25,903
+Total Current Liabilities   34,529   32,764
+Long-Term Debt Obligations   42,658   42,321
+Deferred Income Taxes   4,107   3,802
+Other Liabilities   8,195   7,965
+Total Liabilities   $ 89,489   $ 86,852
+Common stock, issued (in shares)   1,364,000   1,367,000
+PepsiCo Common Shareholders’ Equity
+Common stock, par value 12/3¢ per share (authorized 3,600 shares; issued, net of repurchased common stock at par value: 1,364 and 1,367 shares, respectively)   $ 23   $ 23
+Capital in excess of par value   4,522   4,451
+Retained earnings   75,140   72,788
+Accumulated other comprehensive loss   (14,987)   (15,024)
+Repurchased common stock, in excess of par value (503 and 500 shares, respectively)   (42,406)   (41,832)
+Total PepsiCo Common Shareholders’ Equity   22,292   20,406
+Noncontrolling interests   195   141
+Total Equity   22,487   20,547
+Total Liabilities and Equity   $ 111,976   $ 107,399
+Treasury Stock, Common, Shares   503,000   500,000
+Common stock, authorized (in shares)   3,600,000   3,600,000

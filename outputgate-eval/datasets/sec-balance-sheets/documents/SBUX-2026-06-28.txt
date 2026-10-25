@@ -1,0 +1,42 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 28, 2026   Sep. 28, 2025
+Statement of Financial Position [Abstract]
+Par value of common stock   $ 0.001   $ 0.001
+Authorized shares of common stock   2,400,000,000   2,400,000,000
+Common Stock, Shares, Issued   1,139,800,000   1,136,900,000
+Assets [Abstract]
+Cash and cash equivalents   $ 3,449.8   $ 3,219.8
+Short-term investments   160.5   247.2
+Accounts receivable, net   1,304.2   1,277.5
+Inventories   2,208.9   2,185.6
+Prepaid expenses and other current assets   410.8   452.2
+Total current assets   7,534.2   7,382.3
+Long-term investments   313.2   246.9
+Equity investments   1,700.0   466.2
+Property, plant and equipment, net   6,991.8   8,493.5
+Operating lease, right-of-use asset   7,980.8   9,315.7
+Deferred income taxes, net   1,506.4   1,826.9
+Other long-term assets   857.2   752.5
+Other intangible assets   172.3   166.8
+Goodwill   1,238.8   3,368.9
+TOTAL ASSETS   28,294.7   32,019.7
+Liabilities and Equity [Abstract]
+Accounts payable   1,777.2   1,852.8
+Accrued liabilities   2,688.6   2,359.7
+Accrued payroll and benefits   863.3   1,093.9
+Current portion of operating lease liability   1,271.3   1,564.5
+Stored value card liability and current portion of deferred revenue   1,818.1   1,840.6
+Current portion of long-term debt   1,498.4   1,498.9
+Total current liabilities   9,916.9   10,210.4
+Long-term debt   11,780.2   14,575.9
+Operating lease liability   7,884.2   8,972.2
+Deferred revenue   5,632.5   5,772.6
+Other long-term liabilities   748.0   577.8
+Total liabilities   35,961.8   40,108.9
+Common stock ($0.001 par value) — authorized, 2,400.0 shares; issued and outstanding, 1,139.8 and 1,136.9 shares, respectively   1.1   1.1
+Additional paid-in capital   915.0   634.1
+Retained deficit   (8,542.5)   (8,272.5)
+Accumulated other comprehensive income/(loss)   (47.9)   (459.3)
+Total shareholders’ deficit   (7,674.3)   (8,096.6)
+Noncontrolling interests   7.2   7.4
+Total deficit   (7,667.1)   (8,089.2)
+TOTAL LIABILITIES AND SHAREHOLDERS’ EQUITY/(DEFICIT)   $ 28,294.7   $ 32,019.7

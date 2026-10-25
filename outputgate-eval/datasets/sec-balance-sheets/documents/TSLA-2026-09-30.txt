@@ -1,0 +1,41 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Sep. 30, 2026   Dec. 31, 2025
+Current assets
+Cash and cash equivalents   $ 17,853   $ 16,513
+Short-term investments   27,594   27,546
+Accounts receivable, net   4,636   4,576
+Inventory   14,092   12,392
+Prepaid expenses and other current assets   6,227   7,615
+Total current assets   70,402   68,642
+Property, plant and equipment, net   50,591   40,643
+Operating lease right-of-use assets   6,555   6,027
+Digital assets   962   1,008
+Deferred tax assets   7,908   6,925
+Other non-current assets   12,599   5,045
+Total assets   157,517   137,806
+Current liabilities
+Accounts payable   17,239   13,371
+Accrued liabilities and other   17,205   13,279
+Deferred revenue   4,661   3,424
+Current portion of debt and finance leases   1,387   1,640
+Total current liabilities   40,492   31,714
+Debt and finance leases, net of current portion   8,136   6,736
+Deferred revenue, net of current portion   4,126   3,631
+Other long-term liabilities   14,874   12,860
+Total liabilities   67,628   54,941
+Commitments and contingencies (Note 11)
+Redeemable noncontrolling interests in subsidiaries   54   58
+Stockholders’ equity
+Preferred stock; $0.001 par value; 100 shares authorized; no shares issued and outstanding   0   0
+Common stock; $0.001 par value; 6,000 shares authorized; 3,953 and 3,751 shares issued and outstanding as of September 30, 2026 and December 31, 2025, respectively   4   3
+Additional paid-in capital   47,415   42,770
+Accumulated other comprehensive income   489   361
+Retained earnings   41,381   39,003
+Total stockholders’ equity   89,289   82,137
+Noncontrolling interests in subsidiaries   546   670
+Total liabilities and equity   157,517   137,806
+Operating lease vehicles, net
+Current assets
+Operating lease vehicles, net   4,047   4,912
+Energy generation and storage systems, net
+Current assets
+Energy generation and storage systems, net   $ 4,453   $ 4,604

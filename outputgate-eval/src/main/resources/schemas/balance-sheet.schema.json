@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["period_end", "current_assets", "total_current_assets", "total_assets",
+               "current_liabilities", "total_current_liabilities", "total_liabilities_and_equity"],
+  "additionalProperties": false,
+  "properties": {
+    "period_end": { "type": "string" },
+    "current_assets": { "$ref": "#/$defs/lines" },
+    "total_current_assets": { "type": "number" },
+    "total_assets": { "type": "number" },
+    "current_liabilities": { "$ref": "#/$defs/lines" },
+    "total_current_liabilities": { "type": "number" },
+    "total_liabilities_and_equity": { "type": "number" }
+  },
+  "$defs": {
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "amount"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "amount": { "type": "number" }
+        }
+      }
+    }
+  }
+}

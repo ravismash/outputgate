@@ -16,21 +16,32 @@ import java.util.function.Supplier;
 /**
  * What the benchmark measures for one dataset: the full contract, the schema the schema-only arm
  * uses, and the prompt {@code record} sends. The corruption generator and the report only need
- * these, so another dataset (CORD, SROIE) is one more task, not a new harness.
+ * these, so another dataset is one more task, not a new harness.
  *
  * @param name how the command line names it
  * @param schemaResource the JSON Schema on the classpath; the schema-only arm and the missing-field corruption read it
  * @param contract builds the full contract
  * @param prompt builds the extraction prompt for one document
+ * @param outputSchema the answer's shape with evidence, for clients that constrain output; null for none
  */
 public record BenchmarkTask(String name, String schemaResource, Supplier<Contract> contract,
-        Function<SourceDocument, String> prompt) {
+        Function<SourceDocument, String> prompt, Supplier<String> outputSchema) {
 
     /** Broadcast advertising invoices (the FCC set in amazon/ConfBench), see {@link FccInvoice}. */
-    public static final BenchmarkTask FCC =
-            new BenchmarkTask("fcc", "schemas/fcc-invoice.schema.json", FccInvoice::contract, FccInvoice::prompt);
+    public static final BenchmarkTask FCC = new BenchmarkTask("fcc", "schemas/fcc-invoice.schema.json",
+            FccInvoice::contract, FccInvoice::prompt, FccInvoice::outputSchema);
 
-    private static final Map<String, BenchmarkTask> BUILT_IN = Map.of(FCC.name(), FCC);
+    /** Company balance sheets from SEC 10-Q filings, see {@link BalanceSheet}. */
+    public static final BenchmarkTask BALANCE_SHEET = new BenchmarkTask("balance-sheet", "schemas/balance-sheet.schema.json",
+            BalanceSheet::contract, BalanceSheet::prompt, BalanceSheet::outputSchema);
+
+    private static final Map<String, BenchmarkTask> BUILT_IN = Map.of(FCC.name(), FCC, BALANCE_SHEET.name(), BALANCE_SHEET);
+
+    /** A task with no output schema. */
+    public BenchmarkTask(String name, String schemaResource, Supplier<Contract> contract,
+            Function<SourceDocument, String> prompt) {
+        this(name, schemaResource, contract, prompt, null);
+    }
 
     /** @param name a built-in task's name @return the task */
     public static BenchmarkTask byName(String name) {

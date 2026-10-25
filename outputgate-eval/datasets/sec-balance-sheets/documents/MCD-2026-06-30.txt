@@ -1,0 +1,41 @@
+Condensed Consolidated Balance Sheet - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets
+Cash and equivalents   $ 822.0   $ 774.0
+Accounts and notes receivable   2,485.0   2,466.0
+Inventories, at cost, not in excess of market   58.0   61.0
+Prepaid expenses and other current assets   980.0   863.0
+Total current assets   4,345.0   4,163.0
+Other assets
+Investments in and advances to affiliates   2,896.0   2,820.0
+Goodwill   3,347.0   3,354.0
+Miscellaneous   6,393.0   6,331.0
+Total other assets   12,637.0   12,505.0
+Lease right-of-use asset, net   14,459.0   14,606.0
+Property and equipment
+Property and equipment, at cost   49,943.0   49,290.0
+Accumulated depreciation and amortization   (21,464.0)   (21,049.0)
+Net property and equipment   28,479.0   28,241.0
+Total assets   59,920.0   59,515.0
+Current liabilities
+Accounts payable   1,114.0   1,149.0
+Lease liability   690.0   694.0
+Income taxes   327.0   250.0
+Other taxes   261.0   247.0
+Accrued interest   428.0   533.0
+Accrued payroll and other liabilities   1,198.0   1,488.0
+Total current liabilities   4,018.0   4,361.0
+Long-term debt   39,863.0   39,973.0
+Long-term lease liability   14,039.0   14,147.0
+Long-term income taxes   176.0   139.0
+Deferred revenues - initial franchise fees   946.0   945.0
+Other long-term liabilities   677.0   704.0
+Deferred income taxes   1,222.0   1,038.0
+Shareholders' equity (deficit)
+Preferred stock, no par value; authorized—165.0 million shares; issued—none   0.0   0.0
+Common stock, $0.01 par value; authorized—3.5 billion shares; issued—1,660.6 million shares   17.0   17.0
+Additional paid-in capital   9,841.0   9,641.0
+Retained earnings   71,987.0   70,282.0
+Accumulated other comprehensive income (loss)   (2,340.0)   (2,414.0)
+Common stock in treasury, at cost; 953.0 and 950.0 million shares   (80,527.0)   (79,316.0)
+Total shareholders' equity (deficit)   (1,023.0)   (1,791.0)
+Total liabilities and shareholders' equity (deficit)   $ 59,920.0   $ 59,515.0

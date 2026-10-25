@@ -1,0 +1,36 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current Assets
+Cash and cash equivalents   $ 1,370   $ 1,288
+Receivables (net of allowances of $91 and $90, respectively)   1,962   1,675
+Inventories   2,181   2,032
+Other current assets   795   714
+Total current assets   6,308   5,709
+Property, plant and equipment:
+Cost   11,020   10,856
+Less: Accumulated depreciation   (6,381)   (6,196)
+Property, plant and equipment, net   4,639   4,660
+Goodwill   3,100   3,122
+Other intangible assets, net   1,495   1,536
+Deferred income taxes   221   205
+Other assets   1,027   1,098
+Total assets   16,790   16,330
+Current Liabilities
+Debt payable within one-year   34   1,117
+Accounts payable   2,115   2,089
+Accrued income taxes   410   383
+Other accruals   3,589   3,264
+Total current liabilities   6,148   6,853
+Long-term debt   7,823   6,871
+Deferred income taxes   201   181
+Other liabilities   2,052   2,060
+Total liabilities   16,224   15,965
+Shareholders’ Equity
+Common stock, $1 par value (2,000,000,000 shares authorized, 1,465,706,360 shares issued)   1,466   1,466
+Additional paid-in capital   4,432   4,322
+Retained earnings   27,085   26,595
+Accumulated other comprehensive income (loss)   (3,816)   (3,879)
+Treasury stock, at cost   (28,931)   (28,450)
+Total Colgate-Palmolive Company shareholders’ equity   236   54
+Noncontrolling interests   330   311
+Total equity   566   365
+Total liabilities and equity   $ 16,790   $ 16,330

@@ -1,0 +1,38 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Jul. 31, 2026   Jan. 31, 2026   Jul. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 11,529   $ 10,727   $ 9,431
+Receivables, net   11,075   11,172   10,518
+Inventories   61,600   58,851   57,729
+Prepaid expenses and other   4,499   4,124   4,355
+Total current assets   88,703   84,874   82,033
+Property and equipment, net   142,482   136,083   125,476
+Operating lease right-of-use assets   15,650   14,750   13,953
+Finance lease right-of-use assets, net   6,178   6,123   6,128
+Goodwill   28,260   28,735   29,060
+Other long-term assets   12,641   14,103   14,187
+Total assets   293,914   284,668   270,837
+Current liabilities:
+Short-term borrowings   10,479   6,596   3,837
+Accounts payable   64,318   63,061   60,086
+Dividends payable   3,949   0   3,783
+Accrued liabilities   30,074   31,187   28,821
+Accrued income taxes   746   596   620
+Long-term debt due within one year   3,470   3,542   4,011
+Operating lease obligations due within one year   1,714   1,631   1,580
+Finance lease obligations due within one year   880   856   828
+Total current liabilities   115,630   107,469   103,566
+Long-term debt   36,462   34,624   35,640
+Long-term operating lease obligations   14,798   13,941   13,171
+Long-term finance lease obligations   5,952   5,905   5,947
+Deferred income taxes and other   16,273   16,549   15,656
+Commitments and contingencies
+Redeemable noncontrolling interest   293   293   307
+Shareholders' equity:
+Common stock   794   797   797
+Capital in excess of par value   7,046   6,816   5,718
+Retained earnings   103,601   104,774   96,328
+Accumulated other comprehensive loss   (13,203)   (12,770)   (12,733)
+Total Walmart shareholders' equity   98,238   99,617   90,110
+Nonredeemable noncontrolling interest   6,268   6,270   6,440
+Total shareholders' equity   104,506   105,887   96,550
+Total liabilities, redeemable noncontrolling interest, and shareholders' equity   $ 293,914   $ 284,668   $ 270,837

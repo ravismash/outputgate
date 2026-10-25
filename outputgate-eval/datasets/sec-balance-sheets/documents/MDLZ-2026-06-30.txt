@@ -1,0 +1,43 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+ASSETS
+Cash and cash equivalents   $ 1,716   $ 2,125
+Trade receivables, less allowance ($30 and $35, respectively)   4,010   3,903
+Other receivables, less allowance ($35 and $35, respectively)   998   955
+Inventories   4,405   4,419
+Other current assets   1,809   1,549
+Total current assets   12,938   12,951
+Property, plant and equipment, net   10,649   10,667
+Operating lease right-of-use assets   732   731
+Goodwill   24,180   24,336
+Intangible assets, net   19,509   19,628
+Prepaid pension assets   1,251   1,220
+Deferred income taxes   184   336
+Equity method investments   619   667
+Other assets   1,185   951
+TOTAL ASSETS   71,247   71,487
+LIABILITIES
+Short-term borrowings   2,327   2,688
+Current portion of long-term debt   2,663   1,295
+Accounts payable   9,411   10,139
+Accrued marketing   2,612   2,787
+Accrued employment costs   875   1,000
+Other current liabilities   3,705   3,955
+Total current liabilities   21,593   21,864
+Long-term debt   16,460   17,222
+Long-term operating lease liabilities   609   599
+Deferred income taxes   3,539   3,530
+Accrued pension costs   370   422
+Accrued postretirement health care costs   72   74
+Other liabilities   1,912   1,885
+TOTAL LIABILITIES   44,555   45,596
+Commitments and Contingencies (Note 8)
+EQUITY
+Common Stock, no par value (5,000,000,000 shares authorized, 1,996,537,778 shares issued)   0   0
+Additional paid-in capital   32,333   32,322
+Retained earnings   37,233   36,413
+Accumulated other comprehensive losses   (11,283)   (11,364)
+Treasury stock, at cost (716,000,458 and 714,961,364 shares, respectively)   (31,644)   (31,533)
+Total Mondelēz International Shareholders’ Equity   26,639   25,838
+Noncontrolling interest   53   53
+TOTAL EQUITY   26,692   25,891
+TOTAL LIABILITIES AND EQUITY   $ 71,247   $ 71,487

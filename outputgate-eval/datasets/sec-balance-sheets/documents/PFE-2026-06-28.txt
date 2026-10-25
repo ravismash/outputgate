@@ -1,0 +1,40 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 28, 2026   Dec. 31, 2025
+Assets
+Cash and cash equivalents   $ 976   $ 1,142
+Short-term investments   10,723   12,454
+Trade accounts receivable, net of allowance for doubtful accounts: 2026—$423; 2025—$427   12,490   11,874
+Inventories   9,945   10,654
+Current tax assets   3,702   3,967
+Other current assets   3,522   2,808
+Total current assets   41,358   42,898
+Long-term investments   1,559   1,621
+Property, plant and equipment, net of accumulated depreciation: 2026—$18,104; 2025—$17,386   19,029   19,317
+Identifiable intangible assets, net   47,053   53,731
+Goodwill   71,419   71,264
+Noncurrent deferred tax assets and other noncurrent tax assets   10,774   9,699
+Other noncurrent assets   9,939   9,631
+Total assets   201,131   208,160
+Liabilities and Equity
+Short-term borrowings, including current portion of long-term debt: 2026—$2,605; 2025—$2,997   2,699   3,154
+Trade accounts payable   4,581   5,240
+Dividends payable   2,451   2,445
+Income taxes payable   653   3,103
+Accrued compensation and related items   2,554   3,610
+Other current liabilities   19,709   19,432
+Total current liabilities   32,646   36,984
+Long-term debt   60,495   61,641
+Pension and postretirement benefit obligations   1,937   2,041
+Noncurrent deferred tax liabilities   1,964   2,401
+Other taxes payable   3,816   3,591
+Other noncurrent liabilities   14,780   14,725
+Total liabilities   115,639   121,385
+Commitments and Contingencies
+Common stock   482   481
+Additional paid-in capital   95,033   94,469
+Treasury stock   (115,194)   (115,015)
+Retained earnings   112,087   114,610
+Accumulated other comprehensive loss   (7,218)   (8,069)
+Total Pfizer Inc. shareholders’ equity   85,190   86,476
+Equity attributable to noncontrolling interests   302   299
+Total equity   85,492   86,775
+Total liabilities and equity   $ 201,131   $ 208,160

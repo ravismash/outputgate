@@ -1,0 +1,36 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) - USD ($) $ in Millions   Jun. 27, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 4,064   $ 9,852
+Short-term investments   0   253
+Accounts receivable, less allowances of $148 and $147   9,451   8,900
+Inventories   5,627   5,425
+Contract assets, net   1,688   1,666
+Other current assets   2,536   2,612
+Total current assets   23,365   28,707
+Property, plant and equipment, net   10,755   10,565
+Acquisition-related intangible assets, net   18,606   15,838
+Other assets   5,616   5,871
+Goodwill   54,832   49,362
+Total assets   113,174   110,343
+Current liabilities:
+Short-term obligations and current maturities of long-term obligations   3,368   3,533
+Accounts payable   3,268   3,622
+Accrued payroll and employee benefits   1,694   1,995
+Contract liabilities   2,918   2,710
+Other accrued expenses   3,823   3,329
+Total current liabilities   15,069   15,189
+Deferred income taxes   1,579   1,493
+Other long-term liabilities   4,538   4,273
+Long-term obligations   39,181   35,852
+Redeemable noncontrolling interest   121   122
+Thermo Fisher Scientific Inc. shareholders’ equity:
+Preferred stock, $100 par value, 50,000 shares authorized; none issued   0   0
+Common stock, $1 par value, 1,200,000,000 shares authorized; 445,673,899 and 445,160,301 shares issued   446   445
+Capital in excess of par value   18,870   18,563
+Retained earnings   62,194   59,156
+Treasury stock at cost, 75,926,613 and 68,938,831 shares   (26,370)   (22,309)
+Accumulated other comprehensive income/(loss)   (2,460)   (2,448)
+Total Thermo Fisher Scientific Inc. shareholders’ equity   52,679   53,407
+Noncontrolling interests   7   7
+Total equity   52,686   53,415
+Total liabilities, redeemable noncontrolling interest and equity   $ 113,174   $ 110,343

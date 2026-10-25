@@ -1,0 +1,39 @@
+Consolidated Balance Sheet - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current Assets
+Cash and cash equivalents   $ 956   $ 688
+Accounts receivable, net   1,858   1,892
+Inventories   1,539   1,475
+Other current assets   636   535
+Current assets of discontinued operations   1,365   720
+Total Current Assets   6,354   5,310
+Property, Plant and Equipment, Net   6,948   6,775
+Investments in Equity Companies   381   330
+Goodwill   1,831   1,839
+Other Intangible Assets, Net   73   77
+Other Assets   1,036   1,062
+Non-current Assets of Discontinued Operations   1,931   1,705
+TOTAL ASSETS   18,554   17,098
+Current Liabilities
+Debt payable within one year   43   694
+Trade accounts payable   3,372   3,388
+Accrued expenses and other current liabilities   2,269   1,888
+Dividends payable   423   415
+Current liabilities of discontinued operations   881   740
+Total Current Liabilities   6,988   7,125
+Long-Term Debt   6,474   6,474
+Non-current Employee Benefits   561   605
+Deferred Income Taxes   473   445
+Other Liabilities   622   646
+Non-current Liabilities of Discontinued Operations   1,540   151
+Redeemable Preferred Securities of Subsidiaries   22   22
+Stockholders' Equity
+Preferred stock - no par value - authorized 20.0 million shares, none issued   0   0
+Common stock - $1.25 par value - authorized 1,200.0 million shares; issued 378.6 million shares as of June 30, 2026 and December 31, 2025   473   473
+Additional paid-in capital   788   849
+Common stock held in treasury, at cost - 46.0 and 46.7 million shares as of June 30, 2026 and December 31, 2025, respectively   5,890   5,987
+Retained earnings   9,765   9,611
+Accumulated other comprehensive income (loss)   (3,386)   (3,444)
+Total Kimberly-Clark Corporation Stockholders' Equity   1,750   1,502
+Noncontrolling Interests   124   128
+Total Stockholders' Equity   1,874   1,630
+TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY   $ 18,554   $ 17,098

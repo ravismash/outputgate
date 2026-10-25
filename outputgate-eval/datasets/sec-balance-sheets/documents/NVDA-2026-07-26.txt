@@ -1,0 +1,35 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Jul. 26, 2026   Jan. 25, 2026
+Current assets:
+Cash and cash equivalents   $ 22,443   $ 10,605
+Marketable debt securities   34,143   39,065
+Marketable equity securities   42,783   12,886
+Accounts receivable, net   63,059   38,466
+Inventories   31,575   21,403
+Prepaid expenses and other current assets   3,409   3,180
+Total current assets   197,412   125,605
+Property and equipment, net   14,285   10,383
+Operating lease assets   5,390   2,867
+Goodwill   21,125   20,832
+Intangible assets, net   2,998   3,306
+Deferred income tax assets   12,159   13,258
+Non-marketable securities   51,157   22,251
+Other assets   15,746   8,301
+Total assets   320,272   206,803
+Current liabilities:
+Accounts payable   15,059   9,812
+Accrued and other current liabilities   26,960   21,352
+Short-term debt   1,000   999
+Total current liabilities   43,019   32,163
+Long-term debt   32,366   7,469
+Long-term operating lease liabilities   4,985   2,572
+Other long-term liabilities   10,918   7,306
+Total liabilities   91,288   49,510
+Commitments and contingencies
+Shareholders’ equity:
+Preferred stock   0   0
+Common stock   24   24
+Additional paid-in capital   9,828   10,118
+Accumulated other comprehensive income (loss)   (25)   178
+Retained earnings   219,157   146,973
+Total shareholders’ equity   228,984   157,293
+Total liabilities and shareholders’ equity   $ 320,272   $ 206,803

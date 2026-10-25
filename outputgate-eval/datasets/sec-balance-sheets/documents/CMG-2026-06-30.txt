@@ -1,0 +1,36 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 228,199   $ 350,545
+Accounts receivable, net   100,307   156,466
+Inventory   46,622   49,508
+Prepaid expenses and other current assets   115,953   120,450
+Income tax receivable   0   91,393
+Investments   449,658   698,591
+Total current assets   940,739   1,466,953
+Leasehold improvements, property and equipment, net   2,866,970   2,679,361
+Long-term investments   97,079   197,123
+Restricted cash   35,554   35,364
+Operating lease assets   4,768,273   4,463,010
+Other assets   134,031   130,781
+Goodwill   21,939   21,939
+Total assets   8,864,585   8,994,531
+Current liabilities:
+Accounts payable   255,125   212,813
+Accrued payroll and benefits   284,595   250,126
+Accrued liabilities   219,020   182,448
+Unearned revenue   218,795   240,375
+Current operating lease liabilities   317,002   302,380
+Income tax payable   20,543   0
+Total current liabilities   1,315,080   1,188,142
+Commitments and contingencies (Note 11)
+Long-term operating lease liabilities   5,102,194   4,773,434
+Deferred income tax liabilities   163,473   125,674
+Other liabilities   84,047   76,674
+Total liabilities   6,664,794   6,163,924
+Shareholders' equity:
+Common stock, $0.01 par value, 11,500,000 shares authorized, 1,267,838 and 1,304,360 shares issued as of June 30, 2026 and December 31, 2025, respectively   12,678   13,044
+Additional paid-in capital   2,263,510   2,204,944
+Accumulated other comprehensive loss   (9,233)   (7,289)
+Retained earnings/(accumulated deficit)   (67,164)   619,908
+Total shareholders' equity   2,199,791   2,830,607
+Total liabilities and shareholders' equity   $ 8,864,585   $ 8,994,531
