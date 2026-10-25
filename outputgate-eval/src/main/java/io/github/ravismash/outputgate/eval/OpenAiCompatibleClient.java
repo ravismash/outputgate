@@ -15,10 +15,10 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 
 /**
- * A model behind an OpenAI-compatible {@code /v1/chat/completions} endpoint, such as LM Studio's
- * local server, for the eval only (the library's adapters are Spring AI, LangChain4j and Ollama).
- * Sends one user message at temperature 0 and, when given, the answer's JSON Schema as
- * {@code response_format}. An API key is read from {@code OPENAI_API_KEY} if set.
+ * A model behind an OpenAI-compatible {@code chat/completions} endpoint, such as LM Studio's local
+ * server or Gemini's OpenAI-compatible API, for the eval only (the library's adapters are Spring AI,
+ * LangChain4j and Ollama). Sends one user message at temperature 0 and, when given, the answer's
+ * JSON Schema as {@code response_format}. A rate-limited call (HTTP 429 or 503) is retried with backoff.
  */
 final class OpenAiCompatibleClient implements LlmClient {
 
@@ -28,16 +28,19 @@ final class OpenAiCompatibleClient implements LlmClient {
     private final String model;
     private final JsonNode schema;
     private final Duration timeout;
+    private final String apiKey;
     private final HttpClient http = HttpClient.newHttpClient();
 
     /**
-     * @param baseUrl e.g. {@code http://localhost:1234}
+     * @param baseUrl the part before {@code /chat/completions}, e.g. {@code http://localhost:1234/v1}
      * @param model the server's model id
      * @param schema the answer's JSON Schema as text, or null for free text
      * @param timeout how long to wait for one answer
+     * @param apiKey sent as a bearer token, or null for none
      */
-    OpenAiCompatibleClient(String baseUrl, String model, String schema, Duration timeout) {
-        this.endpoint = URI.create(baseUrl.replaceAll("/+$", "") + "/v1/chat/completions");
+    OpenAiCompatibleClient(String baseUrl, String model, String schema, Duration timeout, String apiKey) {
+        this.endpoint = URI.create(baseUrl.replaceAll("/+$", "") + "/chat/completions");
+        this.apiKey = apiKey;
         this.model = model;
         try {
             this.schema = schema == null ? null : JSON.readTree(schema);
@@ -58,14 +61,20 @@ final class OpenAiCompatibleClient implements LlmClient {
         HttpRequest.Builder req = HttpRequest.newBuilder(endpoint).timeout(timeout)
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(body.toString()));
-        String key = System.getenv("OPENAI_API_KEY");
-        if (key != null && !key.isBlank()) {
-            req.header("Authorization", "Bearer " + key);
+        if (apiKey != null && !apiKey.isBlank()) {
+            req.header("Authorization", "Bearer " + apiKey);
         }
-        long start = System.nanoTime();
+        long start = 0;
         HttpResponse<String> res;
         try {
-            res = http.send(req.build(), HttpResponse.BodyHandlers.ofString());
+            for (int attempt = 0; ; attempt++) {
+                start = System.nanoTime();
+                res = http.send(req.build(), HttpResponse.BodyHandlers.ofString());
+                if ((res.statusCode() != 429 && res.statusCode() != 503) || attempt == 6) {
+                    break;
+                }
+                Thread.sleep(Duration.ofSeconds(10L << Math.min(attempt, 4)));
+            }
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         } catch (InterruptedException e) {

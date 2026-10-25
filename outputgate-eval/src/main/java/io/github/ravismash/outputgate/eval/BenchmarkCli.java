@@ -3,6 +3,8 @@ package io.github.ravismash.outputgate.eval;
 import io.github.ravismash.outputgate.LlmClient;
 import io.github.ravismash.outputgate.TokenPricing;
 import io.github.ravismash.outputgate.ollama.OllamaLlmClient;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.HashMap;
@@ -14,10 +16,11 @@ import java.util.Map;
  * recorded for them (see {@link BenchmarkFolder}). Only {@code record} calls a model:
  *
  * <pre>
- * record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai] [--base-url URL] [--ctx 16384] [--resume true]
+ * record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai|gemini] [--base-url URL] [--ctx 16384] [--resume true]
  *         runs the model over every document and writes RUN/results.jsonl and summary.md;
  *         --resume true keeps the documents a stopped run already recorded
- *         (ollama: a local Ollama; openai: an OpenAI-compatible server such as LM Studio)
+ *         (ollama: a local Ollama; openai: an OpenAI-compatible server such as LM Studio;
+ *         gemini: the Gemini API, key from GEMINI_API_KEY or ~/.gemini_api_key, or --api-key-file)
  * corrupt DOCUMENTS RUN [--task fcc] [--count 50] [--seed 42]
  *         writes RUN/corrupted/ from the answers the full contract accepts
  * report  DOCUMENTS RUN [--task fcc]
@@ -27,7 +30,7 @@ import java.util.Map;
 public final class BenchmarkCli {
 
     static final String USAGE = """
-            usage: benchmark record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai] [--base-url URL] [--ctx 16384] [--resume true]
+            usage: benchmark record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai|gemini] [--base-url URL] [--ctx 16384] [--resume true] [--api-key-file F]
                    benchmark corrupt DOCUMENTS RUN [--task fcc] [--count 50] [--seed 42]
                    benchmark report  DOCUMENTS RUN [--task fcc]
             RUN is an EvalRun output folder (results.jsonl), written by record.""";
@@ -99,18 +102,41 @@ public final class BenchmarkCli {
                 label = model + " (local Ollama, temperature 0, seed 42, num_ctx " + ctx
                         + (schema == null ? "" : ", format: " + task.name() + " output schema") + ")";
             }
-            case "openai" -> {
-                String url = opts.getOrDefault("base-url", "http://localhost:1234");
-                llm = new OpenAiCompatibleClient(url, model, schema, Duration.ofMinutes(15));
-                label = model + " (OpenAI-compatible server at " + url + ", temperature 0"
+            case "openai", "gemini" -> {
+                boolean gemini = client.equals("gemini");
+                String url = opts.getOrDefault("base-url",
+                        gemini ? "https://generativelanguage.googleapis.com/v1beta/openai" : "http://localhost:1234/v1");
+                llm = new OpenAiCompatibleClient(url, model, schema, Duration.ofMinutes(15), apiKey(opts, gemini));
+                label = model + " (" + (gemini ? "Gemini API" : "OpenAI-compatible server at " + url) + ", temperature 0"
                         + (schema == null ? "" : ", response_format: " + task.name() + " output schema") + ")";
             }
-            default -> throw new IllegalArgumentException("unknown client " + client + "; use ollama or openai");
+            default -> throw new IllegalArgumentException("unknown client " + client + "; use ollama, openai or gemini");
         }
         List<EvalRun.Result> results = EvalRun.run(documents, llm, task.contract().get(), task.prompt(), run, label,
                 Boolean.parseBoolean(opts.getOrDefault("resume", "false")));
         long passed = results.stream().filter(r -> r.outcome() == EvalRun.Outcome.PASSED).count();
         return "recorded " + results.size() + " documents, " + passed + " passed the full contract; wrote " + run.resolve("summary.md");
+    }
+
+    /** The key from --api-key-file, else GEMINI_API_KEY or ~/.gemini_api_key for gemini, else OPENAI_API_KEY; null if none. */
+    private static String apiKey(Map<String, String> opts, boolean gemini) {
+        Path file = opts.containsKey("api-key-file") ? Path.of(opts.get("api-key-file"))
+                : gemini ? Path.of(System.getProperty("user.home"), ".gemini_api_key") : null;
+        String env = System.getenv(gemini ? "GEMINI_API_KEY" : "OPENAI_API_KEY");
+        if (!opts.containsKey("api-key-file") && env != null && !env.isBlank()) {
+            return env.strip();
+        }
+        if (file != null && Files.isRegularFile(file)) {
+            try {
+                return Files.readString(file).strip();
+            } catch (IOException e) {
+                throw new IllegalArgumentException("can't read " + file + ": " + e.getMessage(), e);
+            }
+        }
+        if (gemini) {
+            throw new IllegalArgumentException("no Gemini API key: set GEMINI_API_KEY or save it to ~/.gemini_api_key");
+        }
+        return null;
     }
 
     private static String skipped(int n) {
