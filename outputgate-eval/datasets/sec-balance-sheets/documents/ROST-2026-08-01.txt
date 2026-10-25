@@ -1,0 +1,38 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Thousands   Aug. 01, 2026   Jan. 31, 2026   Aug. 02, 2025
+Current Assets
+Cash and cash equivalents   $ 4,288,124   $ 4,594,392   $ 3,847,016
+Accounts receivable   248,140   181,301   210,520
+Merchandise inventory   3,087,370   2,630,970   2,608,485
+Prepaid expenses and other   252,726   233,434   259,815
+Total current assets   7,876,360   7,640,097   6,925,836
+Property and Equipment
+Land and buildings   1,838,383   1,836,167   1,821,855
+Fixtures and equipment   5,310,383   5,056,827   4,883,392
+Leasehold improvements   1,900,782   1,861,160   1,727,314
+Construction-in-progress   558,837   477,290   394,493
+Property and equipment, gross   9,608,385   9,231,444   8,827,054
+Less accumulated depreciation and amortization   5,350,579   5,142,684   4,920,714
+Property and equipment, net   4,257,806   4,088,760   3,906,340
+Operating lease assets   3,545,351   3,519,610   3,374,582
+Other long-term assets   302,763   300,270   288,761
+Total assets   15,982,280   15,548,737   14,495,519
+Current Liabilities
+Accounts payable   2,621,740   2,386,418   2,205,613
+Accrued expenses and other   744,284   666,978   655,218
+Current operating lease liabilities   752,302   727,855   716,162
+Accrued payroll and benefits   440,837   484,407   315,893
+Income taxes payable   84,916   61,779   0
+Current portion of long-term debt   241,459   499,743   499,122
+Total current liabilities   4,885,538   4,827,180   4,392,008
+Long-term debt   777,053   1,017,863   1,017,218
+Non-current operating lease liabilities   2,968,337   2,966,877   2,835,481
+Other long-term liabilities   295,611   287,947   279,258
+Deferred income taxes   312,557   261,427   238,985
+Commitments and contingencies
+Stockholders’ Equity
+Common stock, par value $.01 per share Authorized 1,000,000,000 shares Issued and outstanding 319,668,000, 322,333,000 and 325,531,000 shares, respectively   3,197   3,223   3,255
+Additional paid-in capital   2,359,505   2,257,354   2,170,734
+Treasury stock   (935,883)   (799,288)   (783,830)
+Retained earnings   5,316,365   4,726,154   4,342,410
+Total stockholders’ equity   6,743,184   6,187,443   5,732,569
+Total liabilities and stockholders’ equity   $ 15,982,280   $ 15,548,737   $ 14,495,519

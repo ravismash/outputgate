@@ -1,0 +1,38 @@
+Consolidated Balance Sheets (Unaudited) - USD ($) $ in Millions   Jul. 31, 2026   Jan. 30, 2026   Aug. 01, 2025
+Current assets:
+Cash and cash equivalents   $ 3,172   $ 982   $ 4,860
+Short-term investments   235   370   396
+Receivables - net   1,238   1,090   320
+Merchandise inventory - net   17,737   17,300   16,342
+Other current assets   960   1,213   721
+Total current assets   23,342   20,955   22,639
+Property, less accumulated depreciation   18,276   18,362   17,708
+Operating lease right-of-use assets   4,071   4,303   3,887
+Long-term investments   179   319   273
+Deferred income taxes - net   0   0   140
+Intangible assets - net   5,709   5,908   976
+Goodwill   3,957   3,945   691
+Other assets   347   352   300
+Total assets   55,881   54,144   46,614
+Current liabilities:
+Current maturities of long-term debt   2,352   2,431   4,175
+Current operating lease liabilities   733   713   536
+Accounts payable   11,076   9,762   9,513
+Accrued compensation and employee benefits   1,168   1,285   1,098
+Deferred revenue   1,609   1,477   1,558
+Other current liabilities   4,194   3,795   4,742
+Total current liabilities   21,132   19,463   21,622
+Long-term debt, excluding current maturities   35,204   37,490   30,548
+Noncurrent operating lease liabilities   3,734   4,043   3,801
+Deferred income taxes - net   1,201   1,039   0
+Deferred revenue - Lowe's protection plans   1,253   1,262   1,283
+Other liabilities   794   764   760
+Total liabilities   63,318   64,061   58,014
+Shareholders' deficit:
+Preferred stock, $5 par value: Authorized – 5.0 million shares; Issued and outstanding – none   0   0   0
+Common stock, $0.50 par value: Authorized – 5.6 billion shares; Issued and outstanding – 561 million, 561 million, and 561 million, respectively   281   281   280
+Capital in excess of par value   207   370   147
+Accumulated deficit   (8,187)   (10,839)   (12,108)
+Accumulated other comprehensive income   262   271   281
+Total shareholders' deficit   (7,437)   (9,917)   (11,400)
+Total liabilities and shareholders' deficit   $ 55,881   $ 54,144   $ 46,614

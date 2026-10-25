@@ -1,0 +1,37 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Apr. 25, 2026   Jul. 26, 2025
+Current assets:
+Cash and cash equivalents   $ 7,083   $ 8,346
+Investments   9,557   7,764
+Accounts receivable, net of allowance of $73 at April 25, 2026 and $69 at July 26, 2025   6,480   6,701
+Inventories   4,708   3,164
+Financing receivables, net   2,936   3,061
+Other current assets   5,795   5,950
+Total current assets   36,559   34,986
+Property and equipment, net   2,577   2,113
+Financing receivables, net   3,642   3,466
+Goodwill   59,292   59,136
+Purchased intangible assets, net   7,850   9,175
+Deferred tax assets   7,558   7,356
+Other assets   8,068   6,059
+TOTAL ASSETS   125,546   122,291
+Current liabilities:
+Short-term debt   11,932   5,232
+Accounts payable   2,970   2,528
+Income taxes payable   173   1,857
+Accrued compensation   3,290   3,611
+Deferred revenue   16,446   16,416
+Other current liabilities   4,730   5,420
+Total current liabilities   39,541   35,064
+Long-term debt   19,371   22,861
+Income taxes payable   2,304   2,165
+Deferred revenue   12,153   12,363
+Other long-term liabilities   3,316   2,995
+Total liabilities   76,685   75,448
+Commitments and contingencies (Note 14)
+Cisco stockholders’ equity:
+Preferred stock, $0.001 par value: 5 shares authorized; none issued and outstanding   0   0
+Common stock and additional paid-in capital, $0.001 par value: 20,000 shares authorized; 3,940 and 3,960 shares issued and outstanding at April 25, 2026 and July 26, 2025, respectively   48,950   47,747
+Retained earnings   704   50
+Accumulated other comprehensive loss   (793)   (954)
+Total equity   48,861   46,843
+TOTAL LIABILITIES AND EQUITY   $ 125,546   $ 122,291

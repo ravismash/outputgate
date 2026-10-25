@@ -1,0 +1,41 @@
+Condensed Consolidated Balance Sheet - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current Assets:
+Cash and cash equivalents   $ 5,104   $ 8,522
+Short-term investments   499   417
+Trade receivables, less allowances of $486 in 2026 and $490 in 2025   8,599   7,929
+Inventories:
+Finished products   4,512   3,976
+Work in process   1,023   904
+Materials   1,780   1,608
+Total inventories   7,315   6,488
+Prepaid expenses and other receivables   3,000   2,640
+Total Current Assets   24,517   25,996
+Investments   1,111   918
+Property and equipment, at cost   26,469   25,222
+Less: accumulated depreciation and amortization   13,657   13,406
+Net property and equipment   12,812   11,816
+Intangible assets, net of amortization   17,211   5,526
+Goodwill   35,244   24,035
+Deferred income taxes and other assets   18,320   18,422
+Total Assets   109,215   86,713
+Current Liabilities:
+Trade accounts payable   4,794   4,240
+Salaries, wages, and commissions   1,619   1,745
+Other accrued liabilities   6,892   5,812
+Dividends payable   1,093   1,097
+Income taxes payable   411   569
+Current portion of long-term debt   3,005   3,033
+Total Current Liabilities   17,814   16,496
+Long-term debt   29,603   9,896
+Post-employment obligations, deferred income taxes, and other long-term liabilities   10,036   7,550
+Commitments and Contingencies
+Shareholders’ Investment:
+Preferred shares, one dollar par value Authorized — 1,000,000 shares, none issued   0   0
+Common shares, without par value Authorized — 2,400,000,000 shares Issued at stated capital amount — Shares: 2026: 1,998,291,279; 2025: 1,996,795,525   25,495   25,527
+Common shares held in treasury, at cost — Shares: 2026: 267,907,258; 2025: 260,196,074   (17,967)   (17,177)
+Earnings employed in the business   49,794   49,781
+Accumulated other comprehensive income (loss)   (6,212)   (6,001)
+Total Abbott Shareholders’ Investment   51,110   52,130
+Noncontrolling interests   652   641
+Total Shareholders’ Investment   51,762   52,771
+Total Liabilities and Shareholders' Investment   $ 109,215   $ 86,713

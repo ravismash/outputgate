@@ -1,0 +1,33 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Aug. 30, 2026   May 31, 2026
+Current assets:
+Cash and cash equivalents   $ 220.5   $ 219.5
+Receivables, net   118.0   129.9
+Inventories   321.0   326.3
+Prepaid income taxes   146.3   139.8
+Prepaid expenses and other current assets   147.3   127.4
+Total current assets   953.1   942.9
+Land, buildings, and equipment, net of accumulated depreciation and amortization of $4,550.7 and $4,466.8, respectively   5,122.2   5,048.6
+Operating lease right-of-use assets   3,713.8   3,433.1
+Goodwill   1,658.2   1,658.2
+Trademarks   1,346.4   1,346.4
+Other assets   432.9   433.2
+Total assets   13,226.6   12,862.4
+Current liabilities:
+Accounts payable   470.0   427.7
+Short-term debt and current portion of long-term debt   979.7   693.6
+Accrued payroll and employee benefits   596.6   648.1
+Accrued taxes   95.9   87.0
+Unearned revenues   571.5   606.0
+Other current liabilities   485.3   543.0
+Total current liabilities   3,199.0   3,005.4
+Long-term debt   1,636.1   1,637.7
+Deferred income taxes   367.6   343.6
+Operating lease liabilities - non-current   4,009.7   3,722.3
+Other liabilities   1,945.8   1,945.9
+Total liabilities   11,158.2   10,654.9
+Stockholders’ equity:
+Common stock and surplus   2,307.5   2,296.3
+Retained earnings (deficit)   (259.5)   (108.4)
+Accumulated other comprehensive income   20.4   19.6
+Total stockholders’ equity   2,068.4   2,207.5
+Total liabilities and stockholders’ equity   $ 13,226.6   $ 12,862.4

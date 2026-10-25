@@ -1,0 +1,39 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Aug. 28, 2026   Nov. 28, 2025
+Current assets:
+Cash and cash equivalents   $ 4,359   $ 5,431
+Short-term investments   1,280   1,164
+Trade receivables, net of allowances for doubtful accounts of $12 and $13, respectively   2,081   2,344
+Prepaid expenses and other current assets   1,438   1,224
+Total current assets   9,158   10,163
+Property and equipment, net   1,870   1,873
+Operating lease right-of-use assets, net   286   312
+Goodwill   14,037   12,857
+Other intangibles, net   956   495
+Deferred income taxes   1,928   2,186
+Other assets   1,746   1,610
+Total assets   29,981   29,496
+Current liabilities:
+Trade payables   529   417
+Accrued expenses and other current liabilities   2,516   2,648
+Debt   1,597   0
+Deferred revenue   7,094   6,905
+Income taxes payable   63   153
+Operating lease liabilities   89   77
+Total current liabilities   11,888   10,200
+Long-term liabilities:
+Debt   4,766   6,210
+Deferred revenue   110   125
+Income taxes payable   567   469
+Operating lease liabilities   310   361
+Other liabilities   576   508
+Total liabilities   18,217   17,873
+Stockholders’ equity:
+Preferred stock, $0.0001 par value; 2 shares authorized; none issued   0   0
+Common stock, $0.0001 par value; 900 shares authorized; 601 shares issued; 391 and 413 shares outstanding, respectively   0   0
+Additional paid-in capital   16,992   15,361
+Retained earnings   50,594   45,354
+Accumulated other comprehensive income (loss)   (203)   (245)
+Treasury stock, at cost (210 and 188 shares, respectively)   (55,619)   (48,847)
+Total stockholders’ equity   11,764   11,623
+Total liabilities and stockholders’ equity   $ 29,981   $ 29,496
+[1] The condensed consolidated balance sheet as of November 28, 2025 has been derived from the audited consolidated financial statements at that date but does not include all of the information and footnotes required by generally accepted accounting principles for complete financial statements.

@@ -1,0 +1,36 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS (unaudited) - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 3,179   $ 7,564
+Short-term marketable debt securities   0   68
+Accounts receivable, net   5,055   4,913
+Inventories   1,953   1,774
+Prepaid and other current assets   3,759   4,024
+Total current assets   13,945   18,342
+Property, plant and equipment, net   5,833   5,606
+Long-term marketable debt securities   0   2,974
+Intangible assets, net   14,032   16,978
+Goodwill   8,314   8,314
+Deferred tax assets   2,487   1,964
+Other long-term assets   4,751   4,845
+Total assets   49,362   59,023
+Current liabilities:
+Accounts payable   674   715
+Accrued rebates   4,233   4,337
+Current portion of long-term debt, net   2,414   2,807
+Other current liabilities   3,699   3,953
+Total current liabilities   11,020   11,813
+Long-term debt, net   23,832   22,129
+Long-term income taxes payable   943   896
+Deferred tax liabilities   333   402
+Other long-term liabilities   1,490   1,165
+Commitments and contingencies (Note 10)
+Stockholders’ equity:
+Preferred stock, par value $0.001 per share; 5 shares authorized; none outstanding   0   0
+Common stock, par value $0.001 per share; 5,600 shares authorized; 1,241 shares issued and outstanding   1   1
+Additional paid-in capital   9,532   8,932
+Accumulated other comprehensive income   95   39
+Retained earnings   2,200   13,730
+Total Gilead stockholders’ equity   11,829   22,703
+Noncontrolling interest   (84)   (84)
+Total stockholders’ equity   11,744   22,618
+Total liabilities and stockholders’ equity   $ 49,362   $ 59,023

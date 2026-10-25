@@ -1,0 +1,33 @@
+CONDENSED CONSOLIDATED STATEMENTS OF FINANCIAL POSITION - USD ($) $ in Millions   Jul. 31, 2026   Jan. 30, 2026
+Current assets:
+Cash and cash equivalents   $ 11,569   $ 11,528
+Accounts receivable, net of allowance of $56 and $77   22,918   17,585
+Short-term financing receivables, net of allowance of $186 and $121   12,805   8,458
+Inventories   21,290   10,437
+Other current assets   11,965   9,594
+Total current assets   80,547   57,602
+Property, plant, and equipment, net   7,417   6,676
+Long-term investments   2,679   1,730
+Long-term financing receivables, net of allowance of $128 and $92   7,625   5,822
+Goodwill   19,448   19,547
+Intangible assets, net   4,347   4,533
+Other non-current assets   5,330   5,376
+Total assets   127,393   101,286
+Current liabilities:
+Short-term debt   8,481   7,990
+Accounts payable   49,723   33,630
+Accrued and other   10,738   8,315
+Short-term deferred revenue   14,761   13,334
+Total current liabilities   83,703   63,269
+Long-term debt   25,985   23,513
+Long-term deferred revenue   14,957   13,596
+Other non-current liabilities   4,175   3,378
+Total liabilities   128,820   103,756
+Commitments and contingencies (Note 10)
+Shareholders’ equity (deficit):
+Common stock and capital in excess of $0.01 par value   9,277   9,457
+Treasury stock at cost   (20,010)   (14,533)
+Retained earnings   10,065   3,325
+Accumulated other comprehensive loss   (759)   (719)
+Total shareholders' equity (deficit)   (1,427)   (2,470)
+Total liabilities and shareholders' equity   $ 127,393   $ 101,286

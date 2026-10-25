@@ -1,0 +1,38 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jul. 03, 2026   Dec. 31, 2025
+CURRENT ASSETS
+Cash and cash equivalents   $ 12,907   $ 10,270
+Short-term investments   622   3,602
+Total Cash, Cash Equivalents and Short-Term Investments   13,529   13,872
+Marketable securities   2,842   1,934
+Trade accounts receivable, less allowances of $492 and $495, respectively   3,732   3,038
+Inventories   4,647   4,425
+Prepaid expenses and other current assets   2,688   2,433
+Assets held for sale   5,438   5,342
+Total Current Assets   32,876   31,044
+Equity method investments   20,782   20,235
+Deferred income tax assets   1,090   1,206
+Property, plant and equipment, less accumulated depreciation of $9,328 and $9,119, respectively   9,636   9,613
+Trademarks with indefinite lives   12,500   12,531
+Goodwill   15,456   15,491
+Other noncurrent assets   15,582   14,696
+Total Assets   107,922   104,816
+CURRENT LIABILITIES
+Accounts payable and accrued expenses   15,434   14,813
+Loans and notes payable   48   1,551
+Current maturities of long-term debt   6,494   1,822
+Accrued income taxes   782   525
+Liabilities held for sale   2,442   2,570
+Total Current Liabilities   25,200   21,281
+Long-term debt   37,001   42,119
+Other noncurrent liabilities   4,627   4,735
+Deferred income tax liabilities   2,779   2,406
+THE COCA-COLA COMPANY SHAREOWNERS' EQUITY
+Common stock, $0.25 par value; authorized — 11,200 shares; issued — 7,040 shares   1,760   1,760
+Capital surplus   20,741   20,581
+Reinvested earnings   84,169   80,382
+Accumulated other comprehensive income (loss)   (13,626)   (14,131)
+Treasury stock, at cost — 2,737 and 2,738 shares, respectively   (56,894)   (56,423)
+Equity Attributable to Shareowners of The Coca-Cola Company   36,150   32,169
+Equity attributable to noncontrolling interests   2,165   2,106
+Total Equity   38,315   34,275
+Total Liabilities and Equity   $ 107,922   $ 104,816

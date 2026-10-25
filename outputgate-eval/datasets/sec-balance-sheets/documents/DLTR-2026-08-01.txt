@@ -1,0 +1,33 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Aug. 01, 2026   Jan. 31, 2026   Aug. 02, 2025
+Current assets:
+Cash and cash equivalents   $ 1,058.1   $ 717.8   $ 666.3
+Merchandise inventories   2,452.2   2,495.4   2,683.4
+Other current assets   234.3   233.0   264.2
+Total current assets   3,744.6   3,446.2   3,613.9
+Restricted cash   43.7   42.9   77.5
+Property, plant and equipment, net of accumulated depreciation of $5,179.2, $4,848.5 and $4,682.9, respectively   5,100.9   4,959.6   4,652.4
+Operating lease right-of-use assets   4,559.1   4,435.1   4,393.2
+Goodwill   422.1   423.2   422.4
+Deferred income taxes, net   1.7   1.0   85.5
+Other assets   157.5   158.2   140.0
+Total assets   14,029.6   13,466.2   13,384.9
+Current liabilities:
+Short-term borrowings   0.0   0.0   299.5
+Current portion of operating lease liabilities   1,011.0   1,000.2   976.7
+Accounts payable   1,626.5   1,530.7   1,593.8
+Other current liabilities   665.6   697.7   616.9
+Total current liabilities   3,303.1   3,228.6   3,486.9
+Long-term debt, net   2,933.5   2,431.7   2,429.7
+Operating lease liabilities, long-term   3,726.3   3,623.7   3,636.8
+Deferred income taxes, net   347.9   153.3   0.0
+Income taxes payable, long-term   23.4   29.7   27.6
+Other liabilities   270.1   244.3   198.8
+Total liabilities   10,604.3   9,711.3   9,779.8
+Contingencies (Note 3)
+Shareholders’ equity:
+Common stock, par value $0.01; 600,000,000 shares authorized, 187,672,941, 198,505,205 and 204,634,244 shares issued and outstanding, respectively   1.9   2.0   2.1
+Additional paid-in capital   0.0   0.0   0.0
+Accumulated other comprehensive loss   (55.5)   (50.7)   (54.0)
+Retained earnings   3,478.9   3,803.6   3,657.0
+Total shareholders’ equity   3,425.3   3,754.9   3,605.1
+Total liabilities and shareholders’ equity   $ 14,029.6   $ 13,466.2   $ 13,384.9

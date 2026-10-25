@@ -25,28 +25,29 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
- * Runs a model over a folder of PDFs and judges every answer with a contract (FRD Days 12–13).
+ * Runs a model over a folder of documents (PDFs, or .txt files as {@link BenchmarkFolder#load} reads them)
+ * and judges every answer with a contract (FRD Days 12–13).
  * Every case is logged: rejections with gate, path and message, the raw answer, usage and errors.
  * Writes {@code results.jsonl} and {@code summary.md} to the output folder.
  */
 public final class EvalRun {
 
-    /** How one PDF went. */
+    /** How one document went. */
     public enum Outcome {
         /** The answer passed every gate. */
         PASSED,
         /** The answer was rejected; see the violations. */
         REJECTED,
-        /** The PDF has no text layer, so no prompt was sent. */
+        /** The document has no text (a PDF without a text layer), so no prompt was sent. */
         NO_TEXT,
         /** The model call failed; see the error. */
         ERROR
     }
 
     /**
-     * One PDF's result.
+     * One document's result.
      *
-     * @param file the PDF's file name
+     * @param file the document's file name
      * @param pages page count (0 when unreadable)
      * @param promptChars length of the prompt sent (0 when none)
      * @param outcome what happened
@@ -64,19 +65,19 @@ public final class EvalRun {
     private EvalRun() {}
 
     /**
-     * @param pdfDir folder of PDFs (sorted by name)
+     * @param pdfDir folder of documents, .pdf and .txt (sorted by name)
      * @param client the model
      * @param contract the contract that judges each answer
      * @param prompt builds the prompt from a document
      * @param outDir where results.jsonl and summary.md go (created)
      * @param label a name for the run in the summary, e.g. the model
-     * @return one result per PDF
+     * @return one result per document
      */
     public static List<Result> run(Path pdfDir, LlmClient client, Contract contract,
             Function<SourceDocument, String> prompt, Path outDir, String label) {
         List<Path> pdfs;
         try (Stream<Path> files = Files.list(pdfDir)) {
-            pdfs = files.filter(p -> p.getFileName().toString().toLowerCase().endsWith(".pdf")).sorted().toList();
+            pdfs = files.filter(p -> BenchmarkFolder.isPdf(p) || BenchmarkFolder.isText(p)).sorted().toList();
             Files.createDirectories(outDir);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -103,7 +104,7 @@ public final class EvalRun {
         String name = pdf.getFileName().toString();
         SourceDocument doc;
         try {
-            doc = PdfText.load(pdf);
+            doc = BenchmarkFolder.load(pdf);
         } catch (IllegalArgumentException e) {
             return new Result(name, 0, 0, Outcome.NO_TEXT, null, null, List.of(), e.getMessage(), null);
         }
@@ -165,14 +166,14 @@ public final class EvalRun {
         StringBuilder s = new StringBuilder();
         s.append("# Eval run: ").append(label).append("\n\n")
                 .append("- When: ").append(OffsetDateTime.now()).append('\n')
-                .append("- PDFs: ").append(results.size()).append(" from `").append(pdfDir).append("`\n")
+                .append("- Documents: ").append(results.size()).append(" from `").append(pdfDir).append("`\n")
                 .append("- Outcomes: ");
         outcomes.forEach((o, c) -> s.append(o).append(": ").append(c).append(" · "));
         s.setLength(s.length() - 3);
         s.append("\n- Output tokens: ").append(tokens).append(" · model time: ").append(millis / 1000).append(" s\n\n");
-        s.append("## Rejections by gate (PDFs where the gate failed)\n\n| gate | PDFs |\n|---|---|\n");
+        s.append("## Rejections by gate (documents where the gate failed)\n\n| gate | documents |\n|---|---|\n");
         byGate.forEach((g, c) -> s.append("| ").append(g).append(" | ").append(c).append(" |\n"));
-        s.append("\n## Every PDF\n\n| file | pages | outcome | output tokens | seconds | failing gates |\n|---|---|---|---|---|---|\n");
+        s.append("\n## Every document\n\n| file | pages | outcome | output tokens | seconds | failing gates |\n|---|---|---|---|---|---|\n");
         for (Result r : results) {
             s.append("| ").append(r.file()).append(" | ").append(r.pages()).append(" | ").append(r.outcome())
                     .append(" | ").append(r.outputTokens() == null ? "" : r.outputTokens())

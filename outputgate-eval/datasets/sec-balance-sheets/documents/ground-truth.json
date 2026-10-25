@@ -1,0 +1,362 @@
+{
+ "AAPL-2026-06-27.txt": {
+  "total_assets": 383266.0,
+  "total_current_assets": 149818.0,
+  "total_current_liabilities": 149326.0,
+  "total_liabilities_and_equity": 383266.0
+ },
+ "ABBV-2026-06-30.txt": {
+  "total_assets": 135115.0,
+  "total_current_assets": 33669.0,
+  "total_current_liabilities": 41642.0,
+  "total_liabilities_and_equity": 135115.0
+ },
+ "ABT-2026-06-30.txt": {
+  "total_assets": 109215.0,
+  "total_current_assets": 24517.0,
+  "total_current_liabilities": 17814.0,
+  "total_liabilities_and_equity": 109215.0
+ },
+ "ADBE-2026-08-28.txt": {
+  "total_assets": 29981.0,
+  "total_current_assets": 9158.0,
+  "total_current_liabilities": 11888.0,
+  "total_liabilities_and_equity": 29981.0
+ },
+ "AMD-2026-06-27.txt": {
+  "total_assets": 84464.0,
+  "total_current_assets": 31522.0,
+  "total_current_liabilities": 12081.0,
+  "total_liabilities_and_equity": 84464.0
+ },
+ "AMGN-2026-06-30.txt": {
+  "total_assets": 95639.0,
+  "total_current_assets": 34961.0,
+  "total_current_liabilities": 25502.0,
+  "total_liabilities_and_equity": 95639.0
+ },
+ "AMZN-2026-06-30.txt": {
+  "total_assets": 1095689.0,
+  "total_current_assets": 249264.0,
+  "total_current_liabilities": 241274.0,
+  "total_liabilities_and_equity": 1095689.0
+ },
+ "AVGO-2026-08-02.txt": {
+  "total_assets": 188148.0,
+  "total_current_assets": 52173.0,
+  "total_current_liabilities": 20838.0,
+  "total_liabilities_and_equity": 188148.0
+ },
+ "BBY-2026-08-01.txt": {
+  "total_assets": 16107.0,
+  "total_current_assets": 9981.0,
+  "total_current_liabilities": 8936.0,
+  "total_liabilities_and_equity": 16107.0
+ },
+ "BDX-2026-06-30.txt": {
+  "total_assets": 50731.0,
+  "total_current_assets": 8139.0,
+  "total_current_liabilities": 9404.0,
+  "total_liabilities_and_equity": 50731.0
+ },
+ "BMY-2026-06-30.txt": {
+  "total_assets": 87634.0,
+  "total_current_assets": 28579.0,
+  "total_current_liabilities": 18659.0,
+  "total_liabilities_and_equity": 87634.0
+ },
+ "CL-2026-06-30.txt": {
+  "total_assets": 16790.0,
+  "total_current_assets": 6308.0,
+  "total_current_liabilities": 6148.0,
+  "total_liabilities_and_equity": 16790.0
+ },
+ "CMG-2026-06-30.txt": {
+  "total_assets": 8864585.0,
+  "total_current_assets": 940739.0,
+  "total_current_liabilities": 1315080.0,
+  "total_liabilities_and_equity": 8864585.0
+ },
+ "COST-2026-05-10.txt": {
+  "total_assets": 86430.0,
+  "total_current_assets": 45177.0,
+  "total_current_liabilities": 42125.0,
+  "total_liabilities_and_equity": 86430.0
+ },
+ "CRM-2026-07-31.txt": {
+  "total_assets": 109620.0,
+  "total_current_assets": 22083.0,
+  "total_current_liabilities": 26336.0,
+  "total_liabilities_and_equity": 109620.0
+ },
+ "CSCO-2026-04-25.txt": {
+  "total_assets": 125546.0,
+  "total_current_assets": 36559.0,
+  "total_current_liabilities": 39541.0,
+  "total_liabilities_and_equity": 125546.0
+ },
+ "DELL-2026-07-31.txt": {
+  "total_assets": 127393.0,
+  "total_current_assets": 80547.0,
+  "total_current_liabilities": 83703.0,
+  "total_liabilities_and_equity": 127393.0
+ },
+ "DG-2026-07-31.txt": {
+  "total_assets": 32167333.0,
+  "total_current_assets": 8781911.0,
+  "total_current_liabilities": 7265065.0,
+  "total_liabilities_and_equity": 32167333.0
+ },
+ "DHR-2026-09-25.txt": {
+  "total_assets": 93281.0,
+  "total_current_assets": 14787.0,
+  "total_current_liabilities": 9050.0,
+  "total_liabilities_and_equity": 93281.0
+ },
+ "DLTR-2026-08-01.txt": {
+  "total_assets": 14029.6,
+  "total_current_assets": 3744.6,
+  "total_current_liabilities": 3303.1,
+  "total_liabilities_and_equity": 14029.6
+ },
+ "DRI-2026-08-30.txt": {
+  "total_assets": 13226.6,
+  "total_current_assets": 953.1,
+  "total_current_liabilities": 3199.0,
+  "total_liabilities_and_equity": 13226.6
+ },
+ "GILD-2026-06-30.txt": {
+  "total_assets": 49362.0,
+  "total_current_assets": 13945.0,
+  "total_current_liabilities": 11020.0,
+  "total_liabilities_and_equity": 49362.0
+ },
+ "GIS-2026-08-30.txt": {
+  "total_assets": 30273.4,
+  "total_current_assets": 4884.3,
+  "total_current_liabilities": 6940.0,
+  "total_liabilities_and_equity": 30273.4
+ },
+ "GOOGL-2026-06-30.txt": {
+  "total_assets": 921983.0,
+  "total_current_assets": 343524.0,
+  "total_current_liabilities": 126111.0,
+  "total_liabilities_and_equity": 921983.0
+ },
+ "HD-2026-08-02.txt": {
+  "total_assets": 109384.0,
+  "total_current_assets": 37720.0,
+  "total_current_liabilities": 34988.0,
+  "total_liabilities_and_equity": 109384.0
+ },
+ "HPQ-2026-07-31.txt": {
+  "total_assets": 45701.0,
+  "total_current_assets": 26746.0,
+  "total_current_liabilities": 33963.0,
+  "total_liabilities_and_equity": 45701.0
+ },
+ "HSY-2026-06-28.txt": {
+  "total_assets": 13973052.0,
+  "total_current_assets": 3956241.0,
+  "total_current_liabilities": 3352471.0,
+  "total_liabilities_and_equity": 13973052.0
+ },
+ "IBM-2026-09-30.txt": {
+  "total_assets": 155011.0,
+  "total_current_assets": 31192.0,
+  "total_current_liabilities": 36485.0,
+  "total_liabilities_and_equity": 155011.0
+ },
+ "INTC-2026-06-27.txt": {
+  "total_assets": 202439.0,
+  "total_current_assets": 57213.0,
+  "total_current_liabilities": 35670.0,
+  "total_liabilities_and_equity": 202439.0
+ },
+ "JNJ-2026-09-27.txt": {
+  "total_assets": 197425.0,
+  "total_current_assets": 56351.0,
+  "total_current_liabilities": 55457.0,
+  "total_liabilities_and_equity": 197425.0
+ },
+ "KMB-2026-06-30.txt": {
+  "total_assets": 18554.0,
+  "total_current_assets": 6354.0,
+  "total_current_liabilities": 6988.0,
+  "total_liabilities_and_equity": 18554.0
+ },
+ "KO-2026-07-03.txt": {
+  "total_assets": 107922.0,
+  "total_current_assets": 32876.0,
+  "total_current_liabilities": 25200.0,
+  "total_liabilities_and_equity": 107922.0
+ },
+ "LLY-2026-06-30.txt": {
+  "total_assets": 142283.0,
+  "total_current_assets": 64672.0,
+  "total_current_liabilities": 47741.0,
+  "total_liabilities_and_equity": 142283.0
+ },
+ "LOW-2026-07-31.txt": {
+  "total_assets": 55881.0,
+  "total_current_assets": 23342.0,
+  "total_current_liabilities": 21132.0,
+  "total_liabilities_and_equity": 55881.0
+ },
+ "MCD-2026-06-30.txt": {
+  "total_assets": 59920.0,
+  "total_current_assets": 4345.0,
+  "total_current_liabilities": 4018.0,
+  "total_liabilities_and_equity": 59920.0
+ },
+ "MDLZ-2026-06-30.txt": {
+  "total_assets": 71247.0,
+  "total_current_assets": 12938.0,
+  "total_current_liabilities": 21593.0,
+  "total_liabilities_and_equity": 71247.0
+ },
+ "MDT-2026-07-31.txt": {
+  "total_assets": 93306.0,
+  "total_current_assets": 24390.0,
+  "total_current_liabilities": 11799.0,
+  "total_liabilities_and_equity": 93306.0
+ },
+ "META-2026-09-30.txt": {
+  "total_assets": 478836.0,
+  "total_current_assets": 119900.0,
+  "total_current_liabilities": 63011.0,
+  "total_liabilities_and_equity": 478836.0
+ },
+ "MO-2026-06-30.txt": {
+  "total_assets": 33374.0,
+  "total_current_assets": 4022.0,
+  "total_current_liabilities": 7770.0,
+  "total_liabilities_and_equity": 33374.0
+ },
+ "MRK-2026-06-30.txt": {
+  "total_assets": 129802.0,
+  "total_current_assets": 36679.0,
+  "total_current_liabilities": 27731.0,
+  "total_liabilities_and_equity": 129802.0
+ },
+ "MSFT-2026-03-31.txt": {
+  "total_assets": 694228.0,
+  "total_current_assets": 175329.0,
+  "total_current_liabilities": 136661.0,
+  "total_liabilities_and_equity": 694228.0
+ },
+ "NKE-2026-08-31.txt": {
+  "total_assets": 37794.0,
+  "total_current_assets": 23673.0,
+  "total_current_liabilities": 11409.0,
+  "total_liabilities_and_equity": 37794.0
+ },
+ "NVDA-2026-07-26.txt": {
+  "total_assets": 320272.0,
+  "total_current_assets": 197412.0,
+  "total_current_liabilities": 43019.0,
+  "total_liabilities_and_equity": 320272.0
+ },
+ "ORCL-2026-08-31.txt": {
+  "total_assets": 303259.0,
+  "total_current_assets": 55630.0,
+  "total_current_liabilities": 47514.0,
+  "total_liabilities_and_equity": 303259.0
+ },
+ "PEP-2026-09-05.txt": {
+  "total_assets": 111976.0,
+  "total_current_assets": 32559.0,
+  "total_current_liabilities": 34529.0,
+  "total_liabilities_and_equity": 111976.0
+ },
+ "PFE-2026-06-28.txt": {
+  "total_assets": 201131.0,
+  "total_current_assets": 41358.0,
+  "total_current_liabilities": 32646.0,
+  "total_liabilities_and_equity": 201131.0
+ },
+ "PG-2026-09-30.txt": {
+  "total_assets": 133132.0,
+  "total_current_assets": 32508.0,
+  "total_current_liabilities": 44996.0,
+  "total_liabilities_and_equity": 133132.0
+ },
+ "PM-2026-09-30.txt": {
+  "total_assets": null,
+  "total_current_assets": null,
+  "total_current_liabilities": null,
+  "total_liabilities_and_equity": null
+ },
+ "QCOM-2026-06-28.txt": {
+  "total_assets": 57367.0,
+  "total_current_assets": 23004.0,
+  "total_current_liabilities": 11413.0,
+  "total_liabilities_and_equity": 57367.0
+ },
+ "ROST-2026-08-01.txt": {
+  "total_assets": 15982280.0,
+  "total_current_assets": 7876360.0,
+  "total_current_liabilities": 4885538.0,
+  "total_liabilities_and_equity": 15982280.0
+ },
+ "SBUX-2026-06-28.txt": {
+  "total_assets": 28294.7,
+  "total_current_assets": 7534.2,
+  "total_current_liabilities": 9916.9,
+  "total_liabilities_and_equity": 28294.7
+ },
+ "SYK-2026-06-30.txt": {
+  "total_assets": 47930.0,
+  "total_current_assets": 14418.0,
+  "total_current_liabilities": 6684.0,
+  "total_liabilities_and_equity": 47930.0
+ },
+ "TGT-2026-08-01.txt": {
+  "total_assets": 61235.0,
+  "total_current_assets": 20928.0,
+  "total_current_liabilities": 21180.0,
+  "total_liabilities_and_equity": 61235.0
+ },
+ "TJX-2026-08-01.txt": {
+  "total_assets": 37115.0,
+  "total_current_assets": 15329.0,
+  "total_current_liabilities": 13360.0,
+  "total_liabilities_and_equity": 37115.0
+ },
+ "TMO-2026-06-27.txt": {
+  "total_assets": 113174.0,
+  "total_current_assets": 23365.0,
+  "total_current_liabilities": 15069.0,
+  "total_liabilities_and_equity": 113174.0
+ },
+ "TSLA-2026-09-30.txt": {
+  "total_assets": 157517.0,
+  "total_current_assets": 70402.0,
+  "total_current_liabilities": 40492.0,
+  "total_liabilities_and_equity": 157517.0
+ },
+ "TXN-2026-09-30.txt": {
+  "total_assets": 36839.0,
+  "total_current_assets": 16880.0,
+  "total_current_liabilities": 3017.0,
+  "total_liabilities_and_equity": 36839.0
+ },
+ "WMT-2026-07-31.txt": {
+  "total_assets": 293914.0,
+  "total_current_assets": 88703.0,
+  "total_current_liabilities": 115630.0,
+  "total_liabilities_and_equity": 293914.0
+ },
+ "YUM-2026-06-30.txt": {
+  "total_assets": 8682.0,
+  "total_current_assets": 2541.0,
+  "total_current_liabilities": 4292.0,
+  "total_liabilities_and_equity": 8682.0
+ },
+ "ZTS-2026-06-30.txt": {
+  "total_assets": null,
+  "total_current_assets": null,
+  "total_current_liabilities": null,
+  "total_liabilities_and_equity": null
+ }
+}

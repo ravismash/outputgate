@@ -55,7 +55,7 @@ class EvalRunTest {
         pdf(dir, "a-good.pdf", "Total 3");
         pdf(dir, "b-bad.pdf", "Total 4");
         pdf(dir, "c-scan.pdf", "");
-        Files.writeString(dir.resolve("notes.txt"), "not a pdf, ignored");
+        Files.writeString(dir.resolve("notes.md"), "not a .pdf or .txt document, ignored");
         return dir;
     }
 

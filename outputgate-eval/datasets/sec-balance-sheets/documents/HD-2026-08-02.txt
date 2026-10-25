@@ -1,0 +1,37 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Aug. 02, 2026   Feb. 01, 2026
+Current assets:
+Cash and cash equivalents   $ 2,085   $ 1,389
+Receivables, net   6,963   5,597
+Merchandise inventories   26,847   25,817
+Other current assets   1,825   1,588
+Total current assets   37,720   34,391
+Net property and equipment   28,147   28,021
+Operating lease right-of-use assets   9,300   9,204
+Goodwill   22,899   22,344
+Intangible assets, net   10,482   10,329
+Other assets   836   806
+Total assets   109,384   105,095
+Current liabilities:
+Short-term debt   4,248   4,464
+Accounts payable   13,585   11,491
+Accrued salaries and related expenses   2,471   2,529
+Sales taxes payable   729   508
+Deferred revenue   2,728   2,575
+Income taxes payable   253   114
+Current installments of long-term debt   4,697   4,967
+Current operating lease liabilities   1,516   1,418
+Other accrued expenses   4,761   4,358
+Total current liabilities   34,988   32,424
+Long-term debt, excluding current installments   43,951   46,341
+Long-term operating lease liabilities   8,155   8,160
+Deferred income taxes   2,850   2,845
+Other long-term liabilities   2,823   2,512
+Total liabilities   92,767   92,282
+Contingencies (Note 9)
+Common stock, par value $0.05; authorized: 10,000 shares; issued: 1,804 shares at August 2, 2026 and 1,802 shares at February 1, 2026; outstanding: 998 shares at August 2, 2026 and 996 shares at February 1, 2026   90   90
+Paid-in capital   15,237   14,809
+Retained earnings   97,949   94,537
+Accumulated other comprehensive loss   (688)   (652)
+Treasury stock, at cost, 806 shares at August 2, 2026 and February 1, 2026   (95,971)   (95,971)
+Total stockholders’ equity   16,617   12,813
+Total liabilities and stockholders’ equity   $ 109,384   $ 105,095

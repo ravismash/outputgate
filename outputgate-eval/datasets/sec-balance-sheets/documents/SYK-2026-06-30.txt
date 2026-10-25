@@ -1,0 +1,42 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets
+Cash and cash equivalents   $ 3,391   $ 4,011
+Marketable securities   85   89
+Accounts receivable, less allowance of $215 ($216 in 2025)   3,743   4,039
+Inventories:
+Materials and supplies   1,436   1,349
+Work in process   470   415
+Finished goods   3,615   3,546
+Total inventories   5,521   5,310
+Prepaid expenses and other current assets   1,678   1,306
+Total current assets   14,418   14,755
+Property, plant and equipment:
+Land, buildings and improvements   1,814   1,793
+Machinery and equipment   5,995   5,744
+Total property, plant and equipment   7,809   7,537
+Less allowance for depreciation   3,851   3,661
+Property, plant and equipment, net   3,958   3,876
+Goodwill   19,584   19,291
+Other intangibles, net   5,742   5,681
+Noncurrent deferred income tax assets   994   1,098
+Other noncurrent assets   3,234   3,143
+Total assets   47,930   47,844
+Current liabilities
+Accounts payable   1,663   1,799
+Accrued compensation   1,105   1,595
+Income taxes   224   418
+Dividends payable   338   337
+Accrued expenses and other liabilities   2,604   2,645
+Current maturities of debt   750   1,000
+Total current liabilities   6,684   7,794
+Long-term debt, excluding current maturities   14,192   14,859
+Income taxes   406   402
+Other noncurrent liabilities   2,660   2,369
+Total liabilities   23,942   25,424
+Shareholders' equity
+Common stock, $0.10 par value   38   38
+Additional paid-in capital   2,711   2,597
+Retained earnings   21,815   20,472
+Accumulated other comprehensive loss   (576)   (687)
+Total shareholders' equity   23,988   22,420
+Total liabilities and shareholders' equity   $ 47,930   $ 47,844

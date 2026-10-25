@@ -1,0 +1,53 @@
+CONSOLIDATED BALANCE SHEET - USD ($) $ in Millions   Sep. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 9,233   $ 13,587
+Restricted cash   48   54
+Marketable securities   1,825   830
+Notes and accounts receivable — trade (net of allowances of $115 in 2026 and $99 in 2025)   5,794   8,112
+Short-term financing receivables:
+Held for investment (net of allowances of $92 in 2026 and $106 in 2025)   5,638   7,344
+Held for sale   774   1,131
+Other accounts receivable (net of allowances of $29 in 2026 and $37 in 2025)   1,673   1,052
+Inventory, at lower of average cost or net realizable value:
+Finished goods   320   230
+Work in process and raw materials   1,625   990
+Total inventory   1,945   1,220
+Deferred costs   1,177   1,084
+Prepaid expenses and other current assets   3,083   2,530
+Total current assets   31,192   36,944
+Property, plant and equipment   17,692   17,874
+Less: Accumulated depreciation   11,649   11,975
+Property, plant and equipment — net   6,043   5,899
+Operating right-of-use assets — net   3,114   3,129
+Long-term financing receivables (net of allowances of $28 in 2026 and $34 in 2025)   6,844   7,708
+Prepaid pension assets   7,715   7,544
+Deferred costs   808   825
+Deferred taxes   8,827   8,610
+Goodwill   74,916   67,717
+Intangible assets — net   13,603   11,391
+Investments and sundry assets   1,950   2,112
+Total assets   155,011   151,880
+Current liabilities:
+Taxes   1,867   2,347
+Short-term debt   7,013   6,424
+Accounts payable   4,491   4,756
+Compensation and benefits   3,668   4,114
+Deferred income   15,164   16,101
+Operating lease liabilities   749   800
+Other accrued expenses and liabilities   3,534   4,116
+Total current liabilities   36,485   38,658
+Long-term debt   56,804   54,836
+Retirement and nonpension postretirement benefit obligations   8,452   9,018
+Deferred income   4,318   4,271
+Operating lease liabilities   2,574   2,547
+Other liabilities   10,172   9,810
+Total liabilities   118,805   119,139
+IBM stockholders’ equity:
+Common stock   65,137   63,318
+Retained earnings   156,576   155,648
+Treasury stock - at cost   (171,191)   (170,605)
+Accumulated other comprehensive income/(loss)   (14,985)   (15,713)
+Total IBM stockholders’ equity   35,537   32,648
+Noncontrolling interests   669   93
+Total equity   36,206   32,740
+Total liabilities and equity   $ 155,011   $ 151,880

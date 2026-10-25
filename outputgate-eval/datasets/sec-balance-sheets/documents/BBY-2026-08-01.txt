@@ -1,0 +1,38 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Aug. 01, 2026   Jan. 31, 2026   Aug. 02, 2025
+Current assets
+Cash and cash equivalents   $ 2,255   $ 1,738   $ 1,456
+Receivables, net   922   1,043   917
+Merchandise inventories   6,296   5,230   5,816
+Other current assets   508   493   688
+Total current assets   9,981   8,504   8,877
+Property and equipment, net   1,990   1,986   2,046
+Operating lease assets   2,882   2,869   2,816
+Goodwill   790   790   908
+Other assets   464   521   606
+Total assets   16,107   14,670   15,253
+Current liabilities
+Accounts payable   6,026   4,745   5,682
+Accrued compensation and related expenses   394   423   448
+Accrued liabilities   763   742   684
+Current portion of operating lease liabilities   614   623   610
+Current portion of long-term debt   11   11   10
+Total current liabilities   8,936   7,679   8,553
+Long-term operating lease liabilities   2,350   2,334   2,292
+Long-term debt   1,158   1,165   1,164
+Long-term liabilities   480   528   528
+Contingencies (Note 10)
+Equity
+Preferred stock, $1.00 par value: Authorized - 400,000 shares; Issued and outstanding - none   0   0   0
+Common stock, $0.10 par value: Authorized - 1.0 billion shares; Issued and outstanding - 210.4 million, 209.1 million and 210.4 million shares, respectively   22   22   22
+Additional paid-in capital   67   14   0
+Retained earnings   2,784   2,610   2,381
+Accumulated other comprehensive income   310   318   313
+Total equity   3,183   2,964   2,716
+Total liabilities and equity   16,107   14,670   15,253
+Unredeemed gift card liabilities
+Current liabilities
+Contract with customer, liability   216   235   230
+Deferred revenue
+Current liabilities
+Contract with customer, liability   $ 912   $ 900   $ 889
+[1] The Consolidated Balance Sheet as of January 31, 2026, has been condensed from the audited consolidated financial statements.

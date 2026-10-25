@@ -1,0 +1,35 @@
+CONDENSED CONSOLIDATED BALANCE SHEET - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current Assets
+Cash and cash equivalents   $ 6,849   $ 14,565
+Short-term investments   292   0
+Accounts receivable (net of allowance for doubtful accounts of $108 in 2026 and $97 in 2025)   12,564   11,775
+Inventories (excludes inventories of $6,381 in 2026 and $5,681 in 2025 classified in Other assets - see Note 6)   6,207   6,658
+Other current assets   10,767   10,518
+Total current assets   36,679   43,516
+Investments   1,222   956
+Property, Plant and Equipment, at cost, net of accumulated depreciation of $22,729 in 2026 and $21,914 in 2025   25,737   25,316
+Goodwill   21,582   21,579
+Other Intangibles, Net   24,978   26,681
+Other Assets   19,604   18,818
+Total Assets   129,802   136,866
+Current Liabilities
+Loans payable and current portion of long-term debt   2,825   2,589
+Trade accounts payable   3,827   4,404
+Accrued and other current liabilities   14,725   14,468
+Income taxes payable   4,224   4,726
+Dividends payable   2,130   2,140
+Total current liabilities   27,731   28,327
+Long-Term Debt   51,081   46,750
+Deferred Income Taxes   1,433   1,439
+Other Noncurrent Liabilities   7,573   7,688
+Merck & Co., Inc. Stockholders’ Equity
+Common stock, $0.50 par value Authorized - 6,500,000,000 shares Issued - 3,577,103,522 shares in 2026 and 2025   1,788   1,788
+Other paid-in capital   44,950   45,029
+Retained earnings   63,269   73,075
+Accumulated other comprehensive loss   (3,942)   (4,287)
+Stockholders' equity before deduction for treasury stock   106,065   115,605
+Less treasury stock, at cost: 1,108,460,187 shares in 2026 and 1,102,476,756 shares in 2025   64,132   62,999
+Total Merck & Co., Inc. stockholders’ equity   41,933   52,606
+Noncontrolling Interests   51   56
+Total equity   41,984   52,662
+Liabilities and Equity   $ 129,802   $ 136,866

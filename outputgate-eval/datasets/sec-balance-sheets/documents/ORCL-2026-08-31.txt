@@ -1,0 +1,38 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Aug. 31, 2026   May 31, 2026
+Current assets:
+Cash and cash equivalents   $ 36,369   $ 31,289
+Marketable securities   708   605
+Trade receivables, net of allowances for credit losses of $536 and $542 as of August 31, 2026 and May 31, 2026, respectively   11,394   10,385
+Prepaid expenses and other current assets   7,159   4,288
+Total current assets   55,630   46,567
+Non-current assets:
+Property, plant and equipment, net   127,845   99,957
+Operating lease right-of-use assets   33,967   29,690
+Goodwill   62,267   62,261
+Deferred tax assets   11,625   11,541
+Other non-current assets   11,925   11,743
+Total non-current assets   247,629   215,192
+Total assets   303,259   261,759
+Current liabilities:
+Notes payable and other borrowings, current   7,625   7,199
+Accounts payable   11,063   10,977
+Accrued compensation and related benefits   1,760   2,225
+Deferred revenues   14,686   9,916
+Other current liabilities   12,380   11,447
+Total current liabilities   47,514   41,764
+Non-current liabilities:
+Notes payable and other borrowings, non-current   117,712   122,342
+Income taxes payable   12,060   11,771
+Operating lease liabilities   30,594   26,648
+Other non-current liabilities   28,183   16,178
+Total non-current liabilities   188,549   176,939
+Commitments and contingencies
+Oracle Corporation stockholders' equity:
+Preferred stock, $0.01 par value and additional paid in capital - authorized: 1.0 shares; outstanding: 0.05 shares as of each of August 31, 2026 and May 31, 2026, of 6.50% Series D Mandatory Convertible Preferred Stock   4,954   4,954
+Common stock, $0.01 par value and additional paid in capital - authorized: 11,000 shares; outstanding: 3,024 shares and 2,880 shares as of August 31, 2026 and May 31, 2026, respectively   64,319   43,243
+Accumulated deficit   (1,114)   (4,309)
+Accumulated other comprehensive loss   (1,387)   (1,380)
+Total Oracle Corporation stockholders' equity   66,772   42,508
+Noncontrolling interests   424   548
+Total stockholders' equity   67,196   43,056
+Total liabilities and stockholders' equity   $ 303,259   $ 261,759

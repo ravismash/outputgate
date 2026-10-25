@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -56,14 +57,25 @@ public final class Benchmark {
     public record Corrupt(Corruptor.Entry entry, Scored scored) {}
 
     /**
+     * A recorded answer next to the dataset's ground truth.
+     *
+     * @param document the document's file name
+     * @param fields the fields both have, compared
+     * @param wrong each compared field whose value differs, as "field: answer X, ground truth Y"
+     */
+    public record Truth(String document, List<String> fields, List<String> wrong) {}
+
+    /**
      * @param task the dataset's name
      * @param documents documents in the EvalRun
      * @param clean every document that could be read and has an answer
      * @param corrupted the corrupted set from the manifest
      * @param skipped documents left out, with the reason
      * @param model the EvalRun's label (usually the model), if any
+     * @param truth answers checked against the documents' ground-truth.json, by document; empty without one
      */
-    public record Results(String task, int documents, List<Clean> clean, List<Corrupt> corrupted, List<String> skipped, Optional<String> model) {}
+    public record Results(String task, int documents, List<Clean> clean, List<Corrupt> corrupted, List<String> skipped,
+            Optional<String> model, Map<String, Truth> truth) {}
 
     private static final ObjectMapper PLAIN = new ObjectMapper();
 
@@ -102,7 +114,56 @@ public final class Benchmark {
             }
             corrupted.add(new Corrupt(e, score(e.file(), BenchmarkFolder.read(file), doc, schema, full)));
         }
-        return new Results(task.name(), answers.byFile().size() + answers.skipped().size(), clean, corrupted, skipped, folder.label());
+        return new Results(task.name(), answers.byFile().size() + answers.skipped().size(), clean, corrupted, skipped,
+                folder.label(), truth(folder, answers.byFile()));
+    }
+
+    /**
+     * Compares each answer's top-level numbers with {@code ground-truth.json} in the documents
+     * folder, read as {@code {"file": {"field": number, ...}}}. Fields the answer names differently
+     * are not compared, so a ground truth in another shape compares nothing.
+     */
+    static Map<String, Truth> truth(BenchmarkFolder folder, Map<String, String> answers) {
+        Path file = folder.documents().resolve("ground-truth.json");
+        if (!Files.isRegularFile(file)) {
+            return Map.of();
+        }
+        JsonNode all;
+        try {
+            all = Corruption.MAPPER.readTree(BenchmarkFolder.read(file));
+        } catch (JsonProcessingException e) {
+            throw new IllegalArgumentException(file + ": " + e.getOriginalMessage(), e);
+        }
+        Map<String, Truth> out = new LinkedHashMap<>();
+        for (Map.Entry<String, String> a : answers.entrySet()) {
+            JsonNode expected = all.path(a.getKey());
+            JsonNode answer;
+            try {
+                answer = Corruption.MAPPER.readTree(a.getValue());
+            } catch (JsonProcessingException e) {
+                continue;
+            }
+            if (!expected.isObject() || answer == null || !answer.isObject()) {
+                continue;
+            }
+            List<String> compared = new ArrayList<>();
+            List<String> wrong = new ArrayList<>();
+            for (Map.Entry<String, JsonNode> f : expected.properties()) {
+                JsonNode got = answer.path(f.getKey());
+                got = got.isObject() && got.has("value") ? got.get("value") : got;
+                if (!f.getValue().isNumber() || got.isMissingNode()) {
+                    continue;
+                }
+                compared.add(f.getKey());
+                if (!got.isNumber() || got.decimalValue().compareTo(f.getValue().decimalValue()) != 0) {
+                    wrong.add(f.getKey() + ": answer " + got + ", ground truth " + f.getValue().decimalValue().stripTrailingZeros().toPlainString());
+                }
+            }
+            if (!compared.isEmpty()) {
+                out.put(a.getKey(), new Truth(a.getKey(), compared, wrong));
+            }
+        }
+        return out;
     }
 
     static Scored score(String name, String text, SourceDocument doc, Contract schema, Contract full) {

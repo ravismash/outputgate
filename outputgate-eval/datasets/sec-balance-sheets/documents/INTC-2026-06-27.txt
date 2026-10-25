@@ -1,0 +1,31 @@
+Consolidated Condensed Balance Sheets - USD ($) $ in Millions   Jun. 27, 2026   Dec. 27, 2025
+Current assets:
+Cash and cash equivalents   $ 12,874   $ 14,265
+Short-term investments   16,853   23,151
+Accounts receivable, net   4,033   3,839
+Inventories   12,492   11,618
+Other current assets   10,961   10,815
+Total current assets   57,213   63,688
+Property, plant, and equipment, net of accumulated depreciation of $109,918 ($106,464 as of December 27, 2025)   105,741   105,414
+Equity investments   8,410   8,512
+Goodwill   20,465   23,912
+Identified intangible assets, net   2,545   2,772
+Other long-term assets   8,065   7,131
+Total assets   202,439   211,429
+Current liabilities:
+Accounts payable   8,756   9,882
+Accrued compensation and benefits   3,748   3,990
+Short-term debt   1,988   2,499
+Other accrued liabilities   21,178   15,204
+Total current liabilities   35,670   31,575
+Debt   48,549   44,086
+Other long-term liabilities   15,077   9,408
+Contingencies (Note 14)
+Stockholders’ equity:
+Common stock and capital in excess of par value, 5,043 issued and outstanding (4,994 issued and outstanding as of December 27, 2025)   53,780   65,185
+Accumulated other comprehensive income (loss)   (80)   113
+Retained earnings   33,842   48,983
+Total Intel stockholders' equity   87,542   114,281
+Non-controlling interests   15,601   12,079
+Total stockholders' equity   103,143   126,360
+Total liabilities and stockholders’ equity   $ 202,439   $ 211,429

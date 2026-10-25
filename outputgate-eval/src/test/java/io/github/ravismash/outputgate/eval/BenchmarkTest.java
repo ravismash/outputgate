@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -141,7 +142,7 @@ class BenchmarkTest {
             doc -> "Extract this receipt.\n" + doc.pages().get(0));
 
     @Test
-    @DisplayName("another dataset is another task: OCR'd receipts as .txt files, a different contract")
+    @DisplayName("another dataset is another task: OCR'd receipts as .txt files, a different contract, a ground truth")
     void receiptsFromText() throws IOException {
         Map<String, String> replies = new HashMap<>();
         for (int i = 1; i <= 3; i++) {
@@ -157,15 +158,10 @@ class BenchmarkTest {
                     + " {\"name\": \"TEH TARIK\", \"price\": " + SyntheticFcc.ev(b, 1, "TEH TARIK RM " + b) + "}]"
                     + ", \"total\": " + SyntheticFcc.ev(total, 1, "TOTAL RM " + total) + "}");
         }
-        // EvalRun reads PDFs only, so the answers are written the way it writes them.
-        StringBuilder results = new StringBuilder();
-        for (int i = 1; i <= 3; i++) {
-            String prompt = RECEIPT.prompt().apply(BenchmarkFolder.load(docs().resolve("r" + i + ".txt")));
-            results.append(Corruption.MAPPER.createObjectNode().put("file", "r" + i + ".txt").put("outcome", "PASSED")
-                    .put("output", replies.get(prompt))).append('\n');
-        }
-        Files.createDirectories(run());
-        Files.writeString(run().resolve("results.jsonl"), results);
+        // r2's total is labelled differently in the ground truth: an accepted answer that is wrong.
+        Files.writeString(docs().resolve("ground-truth.json"),
+                "{\"r1.txt\": {\"total\": 16.60, \"company\": \"not a number, not compared\"}, \"r2.txt\": {\"total\": 16.80}}");
+        EvalRun.run(docs(), FakeLlmClient.byPrompt(replies), RECEIPT.contract().get(), RECEIPT.prompt(), run(), "m");
         BenchmarkFolder folder = new BenchmarkFolder(docs(), run());
         Corruptor.Summary s = Corruptor.run(folder, RECEIPT, 13, 3);
         assertEquals(3, s.bases());
@@ -177,6 +173,12 @@ class BenchmarkTest {
         Set<String> missed = r.corrupted().stream().filter(c -> c.scored().accepted(Arm.FULL))
                 .map(c -> c.entry().kind()).collect(Collectors.toSet());
         assertEquals(Set.of(), missed, BenchmarkReport.markdown(r));
+
+        assertEquals(Set.of("r1.txt", "r2.txt"), r.truth().keySet());
+        assertEquals(List.of("total"), r.truth().get("r1.txt").fields());
+        assertEquals(List.of(), r.truth().get("r1.txt").wrong());
+        assertEquals(List.of("total: answer 16.70, ground truth 16.8"), r.truth().get("r2.txt").wrong());
+        assertTrue(BenchmarkReport.markdown(r).contains("Accepted by the full contract but wrong (1)"), BenchmarkReport.markdown(r));
     }
 
     @Test

@@ -1,0 +1,38 @@
+BALANCE SHEETS - USD ($) $ in Millions   Mar. 31, 2026   Jun. 30, 2025
+Current assets:
+Cash and cash equivalents   $ 32,105   $ 30,242
+Short-term investments   46,167   64,323
+Total cash, cash equivalents, and short-term investments   78,272   94,565
+Accounts receivable, net of allowance for doubtful accounts of $794 and $944   60,041   69,905
+Inventories   1,219   938
+Other current assets   35,797   25,723
+Total current assets   175,329   191,131
+Property and equipment, net of accumulated depreciation of $111,723 and $93,653   283,228   204,966
+Operating lease right-of-use assets   24,403   24,823
+Equity and other investments   33,683   15,405
+Goodwill   119,661   119,509
+Intangible assets, net   19,325   22,604
+Other long-term assets   38,599   40,565
+Total assets   694,228   619,003
+Current liabilities:
+Accounts payable   37,513   27,724
+Current portion of long-term debt   8,839   2,999
+Accrued compensation   11,270   13,709
+Short-term income taxes   3,563   7,211
+Short-term unearned revenue   50,924   64,555
+Other current liabilities   24,552   25,020
+Total current liabilities   136,661   141,218
+Long-term debt   31,423   40,152
+Long-term income taxes   27,941   25,986
+Long-term unearned revenue   2,753   2,710
+Deferred income taxes   2,899   2,835
+Operating lease liabilities   16,703   17,437
+Other long-term liabilities   61,481   45,186
+Total liabilities   279,861   275,524
+Commitments and contingencies
+Stockholders’ equity:
+Common stock and paid-in capital - shares authorized 24,000; outstanding 7,429 and 7,434   115,069   109,095
+Retained earnings   302,526   237,731
+Accumulated other comprehensive loss   (3,228)   (3,347)
+Total stockholders’ equity   414,367   343,479
+Total liabilities and stockholders’ equity   $ 694,228   $ 619,003

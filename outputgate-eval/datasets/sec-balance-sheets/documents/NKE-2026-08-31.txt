@@ -1,0 +1,38 @@
+UNAUDITED CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Aug. 31, 2026   May 31, 2026
+Current assets:
+Cash and equivalents   $ 6,903   $ 7,563
+Short-term investments   1,465   1,464
+Accounts receivable, net   5,242   5,931
+Inventories   7,846   7,501
+Prepaid expenses and other current assets   2,217   2,144
+Total current assets   23,673   24,603
+Property, plant and equipment, net   4,887   4,796
+Operating lease right-of-use assets, net   2,947   2,838
+Identifiable intangible assets, net   259   259
+Goodwill   240   240
+Deferred income taxes and other assets   5,788   5,674
+TOTAL ASSETS   37,794   38,410
+Current liabilities:
+Current portion of long-term debt   2,000   2,000
+Accounts payable   3,420   3,600
+Current portion of operating lease liabilities   473   478
+Accrued liabilities   5,338   6,092
+Income taxes payable   178   377
+Total current liabilities   11,409   12,547
+Long-term debt   5,893   5,942
+Operating lease liabilities   2,706   2,613
+Deferred income taxes and other liabilities   2,566   2,443
+Commitments and contingencies (Note 11)
+Redeemable preferred stock   0   0
+Shareholders' equity:
+Capital in excess of stated value   15,312   15,158
+Accumulated other comprehensive income (loss)   (39)   (141)
+Retained earnings (deficit)   (56)   (155)
+Total shareholders' equity   15,220   14,865
+TOTAL LIABILITIES AND SHAREHOLDERS' EQUITY   37,794   38,410
+Class A Convertible Common Stock
+Shareholders' equity:
+Common stock at stated value   0   0
+Class B Common Stock
+Shareholders' equity:
+Common stock at stated value   $ 3   $ 3

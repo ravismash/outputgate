@@ -1,0 +1,36 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 8,722   $ 10,209
+Marketable debt securities   2,345   464
+Receivables   10,553   11,414
+Inventories   2,737   2,690
+Other current assets   4,222   4,613
+Total Current assets   28,579   29,390
+Property, plant and equipment   7,791   7,543
+Goodwill   21,740   21,754
+Other intangible assets   17,387   19,103
+Deferred income taxes   5,362   5,378
+Marketable debt securities   397   396
+Other non-current assets   6,378   6,474
+Total Assets   87,634   90,038
+Current liabilities:
+Short-term debt obligations   1,027   2,261
+Accounts payable   4,158   3,575
+Other current liabilities   13,474   17,581
+Total Current liabilities   18,659   23,417
+Deferred income taxes   222   222
+Long-term debt   42,093   42,850
+Other non-current liabilities   4,341   5,043
+Total Liabilities   65,315   71,533
+Commitments and Contingencies (see Note 18)
+BMS Shareholders’ equity:
+Preferred stock   0   0
+Common stock   292   292
+Capital in excess of par value of stock   46,504   46,387
+Accumulated other comprehensive loss   (1,290)   (1,524)
+Retained earnings   20,316   16,896
+Less cost of treasury stock   (43,504)   (43,579)
+Total BMS Shareholders’ equity   22,319   18,473
+Noncontrolling interest   0   33
+Total Equity   22,319   18,506
+Total Liabilities and Equity   $ 87,634   $ 90,038

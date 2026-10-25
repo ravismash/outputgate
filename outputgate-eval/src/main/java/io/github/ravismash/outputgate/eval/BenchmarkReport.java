@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.function.Predicate;
 
 /**
@@ -102,6 +104,31 @@ public final class BenchmarkReport {
             list(missed.isEmpty() ? List.of("None.") : missed);
         }
 
+        if (!res.truth().isEmpty()) {
+            heading(2, "Recorded answers against the ground truth");
+            para("The dataset's own values for " + res.truth().size() + " documents (" + truthFields(res)
+                    + "). An accepted answer that differs is one a policy let through wrong.");
+            List<String> th = new ArrayList<>(List.of(""));
+            for (Arm a : Arm.values()) {
+                th.add(a.label());
+            }
+            List<String> right = new ArrayList<>(List.of("Accepted, every compared field right"));
+            List<String> wrongRow = new ArrayList<>(List.of("Accepted, some field wrong"));
+            for (Arm a : Arm.values()) {
+                right.add(String.valueOf(count(clean, c -> c.scored().accepted(a) && truthIs(res, c, true))));
+                wrongRow.add(String.valueOf(count(clean, c -> c.scored().accepted(a) && truthIs(res, c, false))));
+            }
+            table(th, List.of(right, wrongRow));
+            List<String> wrongAccepted = new ArrayList<>();
+            for (Clean c : clean) {
+                if (c.scored().accepted(Arm.FULL) && truthIs(res, c, false)) {
+                    wrongAccepted.add(c.document() + ": " + String.join("; ", res.truth().get(c.document()).wrong()));
+                }
+            }
+            heading(3, "Accepted by the full contract but wrong (" + wrongAccepted.size() + ")");
+            list(wrongAccepted.isEmpty() ? List.of("None.") : wrongAccepted);
+        }
+
         List<String> rejected = new ArrayList<>();
         for (Clean c : clean) {
             if (!c.scored().accepted(Arm.FULL)) {
@@ -131,8 +158,11 @@ public final class BenchmarkReport {
                 "The three columns are three ways to decide whether to trust the same model answers. Naive accepts anything a "
                         + "default JSON parser reads as an object (it ignores text after the object). Schema only runs the task's "
                         + "JSON Schema. Full contract runs every gate.",
-                "There are no ground-truth labels here, so \"accepted\" is not \"correct\": the accepted share of recorded answers "
-                        + "is an upper bound on how many each policy would let through, right or wrong.",
+                res.truth().isEmpty()
+                        ? "There are no ground-truth labels here, so \"accepted\" is not \"correct\": the accepted share of recorded "
+                                + "answers is an upper bound on how many each policy would let through, right or wrong."
+                        : "\"Accepted\" is not \"correct\": the ground-truth table shows how many accepted answers were right on "
+                                + "the fields the dataset labels. Fields it does not label are not checked there.",
                 "Corrupted outputs are copies of recorded answers the full contract accepted, each with exactly one defect "
                         + "added. The kinds of defect were written knowing what the gates check, so the caught rate measures "
                         + "coverage of these kinds of mistake, not of every mistake a model makes."));
@@ -191,6 +221,18 @@ public final class BenchmarkReport {
                 + "th{font-size:12px;text-transform:uppercase;color:#5b6470}li{margin:2px 0;overflow-wrap:anywhere}"
                 + "@media(prefers-color-scheme:dark){body{background:#0e1116;color:#e6e8eb}th{color:#9aa1ab}th,td{border-color:#2a3038}}"
                 + "</style></head><body>\n" + html + "</body></html>\n";
+    }
+
+    /** Whether the answer was compared with the ground truth and every compared field was {@code right} (or not). */
+    private static boolean truthIs(Results res, Clean c, boolean right) {
+        Benchmark.Truth t = res.truth().get(c.document());
+        return t != null && t.wrong().isEmpty() == right;
+    }
+
+    private static String truthFields(Results res) {
+        Set<String> fields = new TreeSet<>();
+        res.truth().values().forEach(t -> fields.addAll(t.fields()));
+        return String.join(", ", fields);
     }
 
     private static <T> int count(List<T> items, Predicate<T> p) {

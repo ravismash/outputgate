@@ -1,0 +1,32 @@
+Condensed Consolidated Balance Sheets - Unaudited - USD ($) $ in Millions   Aug. 02, 2026   Nov. 02, 2025
+Current assets:
+Cash and cash equivalents   $ 23,975   $ 16,178
+Trade accounts receivable, net   13,707   7,145
+Inventory   4,523   2,270
+Other current assets   9,968   5,980
+Total current assets   52,173   31,573
+Long-term assets:
+Property, plant and equipment, net   3,144   2,530
+Goodwill   97,801   97,801
+Intangible assets, net   26,325   32,273
+Other long-term assets   8,705   6,915
+Total assets   188,148   171,092
+Current liabilities:
+Accounts payable   4,000   1,560
+Employee compensation and benefits   1,506   2,129
+Short-term debt   2,252   3,152
+Other current liabilities   13,080   11,673
+Total current liabilities   20,838   18,514
+Long-term liabilities:
+Long-term debt   57,167   61,984
+Other long-term liabilities   10,453   9,302
+Total liabilities   88,458   89,800
+Commitments and contingencies (Note 10)
+Stockholders' equity:
+Preferred stock, $0.001 par value; 100 shares authorized; none issued and outstanding   0   0
+Common stock, $0.001 par value; 29,000 shares authorized; 4,774 and 4,741 shares issued and outstanding as of August 2, 2026 and November 2, 2025, respectively   5   5
+Additional paid-in capital   77,330   71,308
+Retained earnings   22,151   9,761
+Accumulated other comprehensive income   204   218
+Total stockholders’ equity   99,690   81,292
+Total liabilities and equity   $ 188,148   $ 171,092

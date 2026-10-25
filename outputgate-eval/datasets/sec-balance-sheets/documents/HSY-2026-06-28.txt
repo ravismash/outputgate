@@ -1,0 +1,38 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   Jun. 28, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 791,213   $ 925,859
+Accounts receivable—trade, net   907,368   729,547
+Inventories   1,743,318   1,429,254
+Prepaid expenses and other   514,342   504,239
+Total current assets   3,956,241   3,588,899
+Property, plant and equipment, net   3,475,714   3,529,608
+Goodwill   2,985,609   2,996,005
+Other intangibles   2,425,103   2,475,698
+Other non-current assets   1,102,688   1,123,285
+Deferred income taxes   27,697   27,802
+Total assets   13,973,052   13,741,297
+Current liabilities:
+Accounts payable   1,400,822   1,255,701
+Accrued liabilities   966,336   970,597
+Accrued income taxes   59,601   63,725
+Short-term debt   421,545   218,546
+Current portion of long-term debt   504,167   503,327
+Total current liabilities   3,352,471   3,011,896
+Long-term debt   4,684,968   4,681,194
+Other long-term liabilities   652,135   731,917
+Deferred income taxes   720,788   679,540
+Total liabilities   9,410,362   9,104,547
+Stockholders’ equity:
+Preferred stock, shares issued: none in 2026 and 2025   0   0
+Additional paid-in capital   1,447,283   1,426,651
+Retained earnings   5,814,164   5,495,449
+Treasury—common stock shares, at cost: 20,637,517 at June 28, 2026 and 18,713,369 at December 31, 2025   (2,689,761)   (2,259,553)
+Accumulated other comprehensive loss   (230,549)   (247,350)
+Total stockholders’ equity   4,562,690   4,636,750
+Total liabilities and stockholders’ equity   13,973,052   13,741,297
+Common Stock
+Stockholders’ equity:
+Common stock   166,939   166,939
+Class B common stock
+Stockholders’ equity:
+Common stock   $ 54,614   $ 54,614

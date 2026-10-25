@@ -1,0 +1,38 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 55,911   $ 30,708
+Marketable securities   186,563   96,135
+Total cash, cash equivalents, and marketable securities   242,474   126,843
+Accounts receivable, net   69,175   62,886
+Inventory   9,991   2,439
+Other current assets   21,884   13,870
+Total current assets   343,524   206,038
+Non-marketable securities   131,461   68,687
+Deferred income taxes   1,448   9,113
+Property and equipment, net   321,212   246,597
+Operating lease assets   17,694   15,221
+Goodwill   57,828   33,380
+Intangible assets, net   9,105   1,283
+Other non-current assets   39,711   14,962
+Total assets   921,983   595,281
+Current liabilities:
+Accounts payable   20,258   12,200
+Accrued compensation and benefits   15,086   17,546
+Accrued expenses and other current liabilities   73,014   55,557
+Accrued revenue share   10,599   10,864
+Deferred revenue   7,154   6,578
+Total current liabilities   126,111   102,745
+Long-term debt   98,165   46,547
+Income taxes payable, non-current   11,306   9,531
+Deferred income taxes   22,819   919
+Operating lease liabilities   14,591   12,744
+Other long-term liabilities   8,511   7,530
+Total liabilities   281,503   180,016
+Commitments and Contingencies (Note 10)
+Stockholders’ equity:
+Series A and Series B preferred stock and additional paid-in capital, $0.001 par value per share, 100 shares authorized; 6.25% mandatory convertible preferred stock, 0 and 19 shares issued and outstanding allocated equally between each series with a liquidation preference of $1,000 per share   18,023   0
+Class A, Class B, and Class C stock and additional paid-in capital, $0.001 par value per share: 300,000 shares authorized (Class A 180,000, Class B 60,000, Class C 60,000); 12,088 (Class A 5,822, Class B 837, Class C 5,429) and 12,230 (Class A 5,868, Class B 835, Class C 5,527) shares issued and outstanding   131,371   93,126
+Accumulated other comprehensive income (loss)   (2,285)   (1,916)
+Retained earnings   493,371   324,055
+Total stockholders’ equity   640,480   415,265
+Total liabilities and stockholders’ equity   $ 921,983   $ 595,281

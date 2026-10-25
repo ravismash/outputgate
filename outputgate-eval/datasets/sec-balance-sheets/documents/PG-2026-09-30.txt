@@ -1,0 +1,36 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Sep. 30, 2026   Jun. 30, 2026
+CURRENT ASSETS
+Cash and cash equivalents   $ 15,365   $ 9,942
+Accounts receivable   6,620   6,056
+INVENTORIES
+Materials and supplies   2,304   2,143
+Work in process   1,107   1,105
+Finished goods   5,074   4,922
+Total inventories   8,485   8,170
+Prepaid expenses and other current assets   2,038   2,040
+TOTAL CURRENT ASSETS   32,508   26,208
+PROPERTY, PLANT AND EQUIPMENT, NET   25,519   25,360
+GOODWILL   41,197   41,276
+TRADEMARKS AND OTHER INTANGIBLE ASSETS, NET   21,359   21,444
+OTHER NONCURRENT ASSETS   12,549   12,231
+TOTAL ASSETS   133,132   126,521
+CURRENT LIABILITIES
+Accounts payable   17,056   16,306
+Accrued and other liabilities   10,911   11,091
+Debt due within one year   17,028   11,296
+TOTAL CURRENT LIABILITIES   44,996   38,694
+LONG-TERM DEBT   21,897   22,842
+DEFERRED INCOME TAXES   5,949   5,760
+OTHER NONCURRENT LIABILITIES   4,954   4,914
+TOTAL LIABILITIES   77,795   72,210
+SHAREHOLDERS’ EQUITY
+Preferred stock   747   756
+Common stock   4,009   4,009
+Additional paid-in capital   69,700   69,533
+Reserve for ESOP debt retirement   (555)   (596)
+Accumulated other comprehensive loss   (12,652)   (12,465)
+Treasury stock   (144,173)   (143,008)
+Retained earnings   138,021   135,852
+Noncontrolling interest   239   230
+TOTAL SHAREHOLDERS’ EQUITY   55,337   54,311
+TOTAL LIABILITIES AND SHAREHOLDERS’ EQUITY   $ 133,132   $ 126,521

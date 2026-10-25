@@ -129,43 +129,26 @@ public final class FccInvoice {
         ObjectMapper json = new ObjectMapper();
         ObjectNode root = json.createObjectNode().put("type", "object");
         ObjectNode props = root.putObject("properties");
-        props.set("invoice_number", evidence(json, "string"));
-        props.set("invoice_date", evidence(json, "string"));
-        props.set("advertiser", evidence(json, "string"));
+        props.set("invoice_number", Evidence.schema(json, "string"));
+        props.set("invoice_date", Evidence.schema(json, "string"));
+        props.set("advertiser", Evidence.schema(json, "string"));
         ObjectNode agency = props.putObject("agency");
-        agency.putArray("anyOf").add(evidence(json, "string")).addObject().put("type", "null");
-        props.set("gross_total", evidence(json, "number"));
+        agency.putArray("anyOf").add(Evidence.schema(json, "string")).addObject().put("type", "null");
+        props.set("gross_total", Evidence.schema(json, "number"));
         ObjectNode deduction = json.createObjectNode().put("type", "object");
         ObjectNode deductionProps = deduction.putObject("properties");
         deductionProps.putObject("label").put("type", "string");
-        deductionProps.set("amount", evidence(json, "number"));
+        deductionProps.set("amount", Evidence.schema(json, "number"));
         deduction.putArray("required").add("label").add("amount");
         props.putObject("deductions").put("type", "array").set("items", deduction);
-        props.set("net_amount_due", evidence(json, "number"));
+        props.set("net_amount_due", Evidence.schema(json, "number"));
         ArrayNode required = root.putArray("required");
         props.fieldNames().forEachRemaining(required::add);
         return root.toString();
     }
 
-    private static ObjectNode evidence(ObjectMapper json, String valueType) {
-        ObjectNode e = json.createObjectNode().put("type", "object");
-        ObjectNode p = e.putObject("properties");
-        p.putObject("value").put("type", valueType);
-        ObjectNode span = p.putObject("source_span").put("type", "object");
-        ObjectNode sp = span.putObject("properties");
-        sp.putObject("page").put("type", "integer");
-        sp.putObject("text").put("type", "string");
-        span.putArray("required").add("page").add("text");
-        e.putArray("required").add("value").add("source_span");
-        return e;
-    }
-
     /** @param document the invoice's pages @return the full extraction prompt */
     public static String prompt(SourceDocument document) {
-        StringBuilder p = new StringBuilder(INSTRUCTIONS).append('\n');
-        for (int i = 0; i < document.pages().size(); i++) {
-            p.append("--- page ").append(i + 1).append(" ---\n").append(document.pages().get(i)).append('\n');
-        }
-        return p.toString();
+        return Evidence.withPages(INSTRUCTIONS, document);
     }
 }

@@ -1,0 +1,39 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Sep. 27, 2026   Dec. 28, 2025
+Current assets:
+Cash and cash equivalents (Note 4)   $ 16,910   $ 19,709
+Marketable securities   318   393
+Accounts receivable, trade, less allowances $187 (2025, $183)   18,987   17,178
+Inventories (Note 2)   15,377   14,191
+Prepaid expenses and other   4,759   4,153
+Total current assets   56,351   55,624
+Property, plant and equipment at cost   55,472   54,364
+Less: accumulated depreciation   (31,368)   (31,195)
+Property, plant and equipment, net   24,104   23,169
+Intangible assets, net (Note 3)   46,652   50,403
+Goodwill (Note 3)   48,474   48,772
+Deferred taxes on income (Note 5)   6,748   6,874
+Other assets   15,096   14,368
+Total assets   197,425   199,210
+Current liabilities:
+Loans and notes payable   8,852   8,495
+Accounts payable   9,317   11,991
+Accrued liabilities   12,255   8,594
+Accrued rebates, returns and promotions   18,936   19,124
+Accrued compensation and employee related obligations   4,121   4,534
+Accrued taxes on income (Note 5)   1,976   1,388
+Total current liabilities   55,457   54,126
+Long-term debt (Note 4)   35,799   39,438
+Deferred taxes on income (Note 5)   4,835   6,791
+Employee related obligations (Note 6)   6,559   6,957
+Long-term taxes payable (Note 5)   497   486
+Other liabilities   12,749   9,868
+Total liabilities   115,896   117,666
+Commitments and Contingencies (Note 11)
+Shareholders’ equity:
+Common stock — par value $1.00 per share (authorized 4,320,000,000 shares; issued 3,119,843,000 shares)   3,120   3,120
+Accumulated other comprehensive income (loss) (Note 7)   (13,765)   (14,930)
+Retained earnings and Additional paid-in capital   168,358   168,978
+Less: common stock held in treasury, at cost (712,725,000 and 711,904,000 shares)   76,184   75,624
+Total shareholders’ equity   81,529   81,544
+Total shareholders’ equity   81,529   81,544
+Total liabilities and shareholders’ equity   $ 197,425   $ 199,210

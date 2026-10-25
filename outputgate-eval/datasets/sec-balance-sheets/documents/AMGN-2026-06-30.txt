@@ -1,0 +1,28 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 13,989   $ 9,129
+Trade receivables, net   10,227   9,570
+Inventories   6,220   6,225
+Other current assets   4,525   4,133
+Total current assets   34,961   29,057
+Property, plant and equipment, net   8,547   7,913
+Intangible assets, net   20,487   22,276
+Goodwill   18,668   18,680
+Other noncurrent assets   12,976   12,660
+Total assets   95,639   90,586
+Current liabilities:
+Accounts payable   2,865   2,367
+Accrued liabilities   17,192   18,523
+Current portion of long-term debt   5,445   4,599
+Total current liabilities   25,502   25,489
+Long-term debt   51,859   50,005
+Long-term deferred tax liabilities   1,301   1,366
+Long-term tax liabilities   2,844   2,690
+Other noncurrent liabilities   2,445   2,378
+Contingencies and commitments (see Note 13)
+Stockholders’ equity:
+Common stock and additional paid-in capital; $0.0001 par value; 2,750.0 shares authorized; outstanding—540.6 shares in 2026 and 538.8 shares in 2025   34,082   34,023
+Accumulated deficit   (22,275)   (25,107)
+Accumulated other comprehensive loss   (119)   (258)
+Total stockholders’ equity   11,688   8,658
+Total liabilities and stockholders’ equity   $ 95,639   $ 90,586
