@@ -14,8 +14,9 @@ import java.util.Map;
  * recorded for them (see {@link BenchmarkFolder}). Only {@code record} calls a model:
  *
  * <pre>
- * record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai] [--base-url URL] [--ctx 16384]
- *         runs the model over every document and writes RUN/results.jsonl and summary.md
+ * record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai] [--base-url URL] [--ctx 16384] [--resume true]
+ *         runs the model over every document and writes RUN/results.jsonl and summary.md;
+ *         --resume true keeps the documents a stopped run already recorded
  *         (ollama: a local Ollama; openai: an OpenAI-compatible server such as LM Studio)
  * corrupt DOCUMENTS RUN [--task fcc] [--count 50] [--seed 42]
  *         writes RUN/corrupted/ from the answers the full contract accepts
@@ -26,7 +27,7 @@ import java.util.Map;
 public final class BenchmarkCli {
 
     static final String USAGE = """
-            usage: benchmark record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai] [--base-url URL] [--ctx 16384]
+            usage: benchmark record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai] [--base-url URL] [--ctx 16384] [--resume true]
                    benchmark corrupt DOCUMENTS RUN [--task fcc] [--count 50] [--seed 42]
                    benchmark report  DOCUMENTS RUN [--task fcc]
             RUN is an EvalRun output folder (results.jsonl), written by record.""";
@@ -106,7 +107,8 @@ public final class BenchmarkCli {
             }
             default -> throw new IllegalArgumentException("unknown client " + client + "; use ollama or openai");
         }
-        List<EvalRun.Result> results = EvalRun.run(documents, llm, task.contract().get(), task.prompt(), run, label);
+        List<EvalRun.Result> results = EvalRun.run(documents, llm, task.contract().get(), task.prompt(), run, label,
+                Boolean.parseBoolean(opts.getOrDefault("resume", "false")));
         long passed = results.stream().filter(r -> r.outcome() == EvalRun.Outcome.PASSED).count();
         return "recorded " + results.size() + " documents, " + passed + " passed the full contract; wrote " + run.resolve("summary.md");
     }
