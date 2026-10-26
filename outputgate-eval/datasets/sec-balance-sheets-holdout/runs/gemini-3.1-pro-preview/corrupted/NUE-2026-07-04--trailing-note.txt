@@ -1,0 +1,131 @@
+{
+  "period_end" : {
+    "value" : "2026-07-04",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jul. 04, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2478,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,478"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 214,
+      "source_span" : {
+        "page" : 1,
+        "text" : "214"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 4045,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,045"
+      }
+    }
+  }, {
+    "label" : "Inventories, net",
+    "amount" : {
+      "value" : 6020,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,020"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 399,
+      "source_span" : {
+        "page" : 1,
+        "text" : "399"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 13156,
+    "source_span" : {
+      "page" : 1,
+      "text" : "13,156"
+    }
+  },
+  "total_assets" : {
+    "value" : 36954,
+    "source_span" : {
+      "page" : 1,
+      "text" : "36,954"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 129,
+      "source_span" : {
+        "page" : 1,
+        "text" : "129"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt and finance lease obligations",
+    "amount" : {
+      "value" : 581,
+      "source_span" : {
+        "page" : 1,
+        "text" : "581"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 2357,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,357"
+      }
+    }
+  }, {
+    "label" : "Salaries, wages and related accruals",
+    "amount" : {
+      "value" : 1002,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,002"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other current liabilities",
+    "amount" : {
+      "value" : 1177,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,177"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 5246,
+    "source_span" : {
+      "page" : 1,
+      "text" : "5,246"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 36954,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 36,954"
+    }
+  }
+}
+
+Note: one amount was hard to read, so please double-check it.

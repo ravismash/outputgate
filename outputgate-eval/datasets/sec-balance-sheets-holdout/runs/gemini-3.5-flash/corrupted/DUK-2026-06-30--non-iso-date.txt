@@ -1,0 +1,174 @@
+{
+  "period_end" : {
+    "value" : "06/30/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 673.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 673"
+      }
+    }
+  }, {
+    "label" : "Receivables (net of allowance for doubtful accounts)",
+    "amount" : {
+      "value" : 4482.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,482"
+      }
+    }
+  }, {
+    "label" : "Inventory",
+    "amount" : {
+      "value" : 4665.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,665"
+      }
+    }
+  }, {
+    "label" : "Regulatory assets",
+    "amount" : {
+      "value" : 2645.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,645"
+      }
+    }
+  }, {
+    "label" : "Assets held for sale",
+    "amount" : {
+      "value" : 0.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  }, {
+    "label" : "Other (includes amounts related to VIEs)",
+    "amount" : {
+      "value" : 684.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "684"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 13149.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "13,149"
+    }
+  },
+  "total_assets" : {
+    "value" : 201091.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "201,091"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 4940.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,940"
+      }
+    }
+  }, {
+    "label" : "Notes payable and commercial paper",
+    "amount" : {
+      "value" : 2330.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,330"
+      }
+    }
+  }, {
+    "label" : "Taxes accrued",
+    "amount" : {
+      "value" : 1035.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,035"
+      }
+    }
+  }, {
+    "label" : "Interest accrued",
+    "amount" : {
+      "value" : 899.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "899"
+      }
+    }
+  }, {
+    "label" : "Current maturities of long-term debt",
+    "amount" : {
+      "value" : 6666.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,666"
+      }
+    }
+  }, {
+    "label" : "Asset retirement obligations",
+    "amount" : {
+      "value" : 570.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "570"
+      }
+    }
+  }, {
+    "label" : "Regulatory liabilities",
+    "amount" : {
+      "value" : 1422.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,422"
+      }
+    }
+  }, {
+    "label" : "Liabilities associated with assets held for sale",
+    "amount" : {
+      "value" : 0.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  }, {
+    "label" : "Other",
+    "amount" : {
+      "value" : 2026.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,026"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 19888.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "19,888"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 201091.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 201,091"
+    }
+  }
+}

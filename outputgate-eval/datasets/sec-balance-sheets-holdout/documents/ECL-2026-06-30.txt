@@ -1,0 +1,38 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets
+Cash and cash equivalents   $ 5,135.3   $ 646.2
+Accounts receivable, net   3,452.7   3,249.4
+Inventories   1,643.9   1,490.4
+Other current assets   787.9   569.6
+Total current assets   11,019.8   5,955.6
+Property, plant and equipment, net   4,445.8   4,276.6
+Goodwill   9,419.3   9,227.0
+Other intangible assets, net   3,449.1   3,688.5
+Operating lease assets   747.2   765.9
+Other assets   845.8   782.7
+Total assets   29,927.0   24,696.3
+Current liabilities
+Short-term debt   1,271.1   870.4
+Accounts payable   2,157.8   2,071.0
+Compensation and benefits   593.9   721.5
+Income taxes   100.7   134.3
+Other current liabilities   1,863.1   1,737.5
+Total current liabilities   5,986.6   5,534.7
+Long-term debt   11,905.1   7,365.9
+Pension and postretirement benefits   533.8   546.1
+Deferred income taxes   377.5   329.9
+Operating lease liabilities   576.7   596.5
+Other liabilities   462.9   518.7
+Total liabilities   19,842.6   14,891.8
+Commitments and contingencies (Note 16)
+Equity
+Common stock   370.2   369.4
+Additional paid-in capital   7,689.7   7,521.3
+Retained earnings   13,390.8   12,834.0
+Accumulated other comprehensive loss   (1,646.3)   (1,874.3)
+Treasury stock   (9,748.9)   (9,079.6)
+Total Ecolab shareholders’ equity   10,055.5   9,770.8
+Noncontrolling interest   28.9   33.7
+Total equity   10,084.4   9,804.5
+Total liabilities and equity   $ 29,927.0   $ 24,696.3
+[1] Common stock, 800.0 shares authorized, $1.00 par value per share, 280.3 shares outstanding as of June 30, 2026 and 282.0 shares outstanding as of December 31, 2025. Shares outstanding are net of treasury stock.

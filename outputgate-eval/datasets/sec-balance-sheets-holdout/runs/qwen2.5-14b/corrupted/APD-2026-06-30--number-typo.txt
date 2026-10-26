@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash items",
+    "amount" : {
+      "value" : 980.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 980.5"
+      }
+    }
+  }, {
+    "label" : "Trade receivables, net",
+    "amount" : {
+      "value" : 1881.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,881.5"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 751.6,
+      "source_span" : {
+        "page" : 1,
+        "text" : "751.6"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses",
+    "amount" : {
+      "value" : 155.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "155.1"
+      }
+    }
+  }, {
+    "label" : "Assets held for sale",
+    "amount" : {
+      "value" : 475.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "475.5"
+      }
+    }
+  }, {
+    "label" : "Other receivables and current assets",
+    "amount" : {
+      "value" : 719.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "719.3"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 4963.5,
+    "source_span" : {
+      "page" : 1,
+      "text" : "4,963.5"
+    }
+  },
+  "total_assets" : {
+    "value" : 40445.6,
+    "source_span" : {
+      "page" : 1,
+      "text" : "40,445.6"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Payables and accrued liabilities",
+    "amount" : {
+      "value" : 3529.6,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,529.6"
+      }
+    }
+  }, {
+    "label" : "Accrued income taxes",
+    "amount" : {
+      "value" : 98,
+      "source_span" : {
+        "page" : 1,
+        "text" : "98.0"
+      }
+    }
+  }, {
+    "label" : "Short-term borrowings",
+    "amount" : {
+      "value" : 126.7,
+      "source_span" : {
+        "page" : 1,
+        "text" : "126.7"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 679.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "769.5"
+      }
+    }
+  }, {
+    "label" : "Liabilities held for sale",
+    "amount" : {
+      "value" : 51.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "51.5"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 4575.3,
+    "source_span" : {
+      "page" : 1,
+      "text" : "4,575.3"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 40445.6,
+    "source_span" : {
+      "page" : 1,
+      "text" : "40,445.6"
+    }
+  }
+}

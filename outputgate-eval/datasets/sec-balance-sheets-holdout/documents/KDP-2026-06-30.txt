@@ -1,0 +1,40 @@
+Condensed Consolidated Balance Sheets - USD ($)   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 1,517,000,000   $ 1,026,000,000
+Restricted cash and restricted cash equivalents   36,000,000   18,000,000
+Trade accounts receivable, net   2,423,000,000   1,671,000,000
+Inventories   3,857,000,000   1,733,000,000
+Prepaid expenses and other current assets   1,628,000,000   818,000,000
+Total current assets   9,461,000,000   5,266,000,000
+Property, plant, and equipment, net   6,323,000,000   3,230,000,000
+Equity method investments   1,733,000,000   1,660,000,000
+Goodwill   29,760,000,000   20,247,000,000
+Intangible assets, net   38,113,000,000   23,725,000,000
+Deferred tax assets   192,000,000   36,000,000
+Other non-current assets   2,037,000,000   1,295,000,000
+Total assets   87,619,000,000   55,459,000,000
+Current liabilities:
+Accounts payable   6,293,000,000   2,996,000,000
+Accrued expenses   2,430,000,000   1,379,000,000
+Structured payables   1,018,000,000   25,000,000
+Short-term borrowings and current portion of long-term obligations   8,394,000,000   3,105,000,000
+Other current liabilities   1,604,000,000   785,000,000
+Total current liabilities   19,739,000,000   8,290,000,000
+Long-term obligations   21,586,000,000   13,036,000,000
+Deferred tax liabilities   8,936,000,000   5,526,000,000
+Other non-current liabilities   3,712,000,000   3,091,000,000
+Total liabilities   53,973,000,000   29,943,000,000
+Temporary Equity [Abstract]
+Temporary Equity, Carrying Amount, Attributable to Parent   $ 4,418,000,000   $ 0
+Equity, Attributable to Parent [Abstract]
+Preferred stock, par value (in dollars per share)   $ 0.01   $ 0.01
+Preferred Stock, Value, Issued   $ 0   $ 0
+Common Stock, Value, Issued   14,000,000   14,000,000
+Additional paid-in capital   19,808,000,000   19,778,000,000
+Retained earnings   5,326,000,000   5,622,000,000
+Accumulated other comprehensive (loss) income   (116,000,000)   102,000,000
+Total stockholders' equity   25,032,000,000   25,516,000,000
+Non-controlling interests   4,196,000,000   0
+Total equity   29,228,000,000   25,516,000,000
+Total liabilities, convertible preferred stock, and equity   $ 87,619,000,000   $ 55,459,000,000
+Temporary Equity, Shares Authorized   4,500,000

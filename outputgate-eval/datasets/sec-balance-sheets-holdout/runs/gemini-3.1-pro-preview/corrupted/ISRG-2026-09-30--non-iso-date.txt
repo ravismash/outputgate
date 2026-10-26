@@ -1,0 +1,120 @@
+{
+  "period_end" : {
+    "value" : "09/30/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Sep. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2978.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,978.1"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 1064.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,064.4"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 1721.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,721.3"
+      }
+    }
+  }, {
+    "label" : "Inventory",
+    "amount" : {
+      "value" : 2128.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,128.2"
+      }
+    }
+  }, {
+    "label" : "Prepaids and other current assets",
+    "amount" : {
+      "value" : 536.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "536.3"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 8428.3,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,428.3"
+    }
+  },
+  "total_assets" : {
+    "value" : 19349.1,
+    "source_span" : {
+      "page" : 1,
+      "text" : "19,349.1"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 279.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "279.5"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and employee benefits",
+    "amount" : {
+      "value" : 505.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "505.9"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 541.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "541.2"
+      }
+    }
+  }, {
+    "label" : "Other accrued liabilities",
+    "amount" : {
+      "value" : 1206.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,206.4"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 2533.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "2,533.0"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 19349.1,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 19,349.1"
+    }
+  }
+}

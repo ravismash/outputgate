@@ -1,0 +1,41 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Assets
+Cash and cash equivalents   $ 6,298   $ 7,676
+Investments   959   1,056
+Accounts receivable, net   30,800   28,768
+Inventories   5,847   7,338
+Other current assets   3,087   2,976
+Total current assets   46,991   47,814
+Long-term investments   19,037   18,471
+Reinsurance recoverables   3,982   4,103
+Property and equipment   3,736   3,651
+Goodwill   45,534   44,924
+Other intangible assets   26,931   28,560
+Other assets   3,323   2,885
+Separate account assets   7,548   7,511
+TOTAL ASSETS   157,082   157,919
+Liabilities
+Current insurance and contractholder liabilities   6,689   5,710
+Pharmacy and other service costs payable   26,225   30,333
+Accounts payable   10,409   10,659
+Accrued expenses and other liabilities   9,447   9,048
+Short-term debt   2,792   592
+Total current liabilities   55,562   56,342
+Non-current insurance and contractholder liabilities   9,633   9,938
+Deferred tax liabilities, net   6,731   7,145
+Other non-current liabilities   5,612   4,238
+Long-term debt   29,086   30,871
+Separate account liabilities   7,548   7,511
+TOTAL LIABILITIES   114,172   116,045
+Contingencies — Note 14
+Shareholders' equity
+Common stock   4   4
+Additional paid-in capital   32,092   31,790
+Accumulated other comprehensive loss   (4,361)   (2,806)
+Retained earnings   50,355   47,865
+Less: Treasury stock, at cost   (35,470)   (35,140)
+TOTAL SHAREHOLDERS' EQUITY   42,620   41,713
+Noncontrolling interests   290   161
+Total equity   42,910   41,874
+Total liabilities and equity   $ 157,082   $ 157,919
+[1] Par value per share, $0.01; shares issued, 406 million as of June 30, 2026 and 405 million as of December 31, 2025; authorized shares, 600 million.

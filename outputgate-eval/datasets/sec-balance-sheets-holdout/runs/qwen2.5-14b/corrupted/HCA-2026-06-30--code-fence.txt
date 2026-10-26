@@ -1,0 +1,114 @@
+Here is the extracted data:
+```json
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1013,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,013"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable",
+    "amount" : {
+      "value" : 12281,
+      "source_span" : {
+        "page" : 1,
+        "text" : "12,281"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 1662,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,662"
+      }
+    }
+  }, {
+    "label" : "Other",
+    "amount" : {
+      "value" : 2234,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,234"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 17190,
+    "source_span" : {
+      "page" : 1,
+      "text" : "17,190"
+    }
+  },
+  "total_assets" : {
+    "value" : 63250,
+    "source_span" : {
+      "page" : 1,
+      "text" : "63,250"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 4752,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,752"
+      }
+    }
+  }, {
+    "label" : "Accrued salaries",
+    "amount" : {
+      "value" : 2199,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,199"
+      }
+    }
+  }, {
+    "label" : "Other accrued expenses",
+    "amount" : {
+      "value" : 4097,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,097"
+      }
+    }
+  }, {
+    "label" : "Short-term borrowings and long-term debt due within one year",
+    "amount" : {
+      "value" : 6264,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,264"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 17312,
+    "source_span" : {
+      "page" : 1,
+      "text" : "17,312"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 63250,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 63,250"
+    }
+  }
+}
+```

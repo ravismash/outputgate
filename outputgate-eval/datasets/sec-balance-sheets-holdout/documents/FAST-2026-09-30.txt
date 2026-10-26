@@ -1,0 +1,32 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Sep. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 211.9   $ 276.8
+Trade accounts receivable, net of allowance for credit losses of $6.2 and $5.3, respectively   1,615.2   1,245.3
+Inventories   1,776.6   1,748.0
+Prepaid income taxes   9.3   20.1
+Other current assets   215.8   181.9
+Total current assets   3,828.8   3,472.1
+Property and equipment, net   1,188.2   1,131.6
+Operating lease right-of-use assets   343.4   309.0
+Other assets   134.1   140.2
+Total assets   5,494.4   5,052.9
+Current liabilities:
+Current portion of debt   50.0   25.0
+Accounts payable   445.8   316.8
+Accrued expenses   335.5   264.7
+Current portion of operating lease liabilities   113.5   106.1
+Income taxes payable   29.4   3.0
+Total current liabilities   974.2   715.6
+Long-term debt   50.0   100.0
+Operating lease liabilities   238.2   210.8
+Deferred income taxes   65.9   67.4
+Other long-term liabilities   16.9   15.5
+Commitments and contingencies (Notes 3, 5, 6, and 8)
+Stockholders' equity:
+Preferred stock: $0.01 par value, 5,000,000 shares authorized, no shares issued or outstanding   0.0   0.0
+Common stock: $0.01 par value, 1,600,000,000 shares authorized, 1,147,264,610 and 1,148,057,473 shares issued and outstanding, respectively   11.5   11.5
+Additional paid-in capital   60.0   115.5
+Retained earnings   4,142.8   3,867.7
+Accumulated other comprehensive loss   (65.0)   (51.1)
+Total stockholders' equity   4,149.2   3,943.6
+Total liabilities and stockholders' equity   $ 5,494.4   $ 5,052.9

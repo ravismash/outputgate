@@ -1,0 +1,33 @@
+Condensed Consolidated Balance Sheets (Unaudited) - USD ($) $ in Millions   Sep. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 2,978.1   $ 3,368.0
+Short-term investments   1,064.4   2,566.9
+Accounts receivable, net   1,721.3   1,527.3
+Inventory   2,128.2   1,840.0
+Prepaids and other current assets   536.3   477.3
+Total current assets   8,428.3   9,779.5
+Property, plant, and equipment, net   5,676.2   5,342.4
+Long-term investments   2,757.9   3,099.2
+Deferred tax assets   719.7   1,018.6
+Intangible and other assets, net   1,209.2   848.7
+Goodwill   557.8   370.3
+Total assets   19,349.1   20,458.7
+Current liabilities:
+Accounts payable   279.5   255.1
+Accrued compensation and employee benefits   505.9   648.4
+Deferred revenue   541.2   506.7
+Other accrued liabilities   1,206.4   596.0
+Total current liabilities   2,533.0   2,006.2
+Other long-term liabilities   698.3   510.8
+Total liabilities   3,231.3   2,517.0
+Contingencies (Note 8)
+Stockholders’ equity:
+Preferred stock, 2.5 shares authorized, $0.001 par value, issuable in series; zero shares issued and outstanding as of September 30, 2026, and December 31, 2025   0.0   0.0
+Common stock, 600.0 shares authorized, $0.001 par value, 346.6 shares and 355.1 shares issued and outstanding as of September 30, 2026, and December 31, 2025, respectively   0.3   0.4
+Additional paid-in capital   11,521.1   10,768.5
+Retained earnings   4,525.1   7,011.8
+Accumulated other comprehensive income (loss)   (60.3)   43.3
+Total Intuitive Surgical, Inc. stockholders’ equity   15,986.2   17,824.0
+Noncontrolling interest in joint venture   131.6   117.7
+Total stockholders’ equity   16,117.8   17,941.7
+Total liabilities and stockholders’ equity   $ 19,349.1   $ 20,458.7

@@ -1,0 +1,44 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Aug. 31, 2026   May 31, 2026
+Assets
+Cash and cash equivalents   $ 600.9   $ 1,088.2
+Restricted cash   55.0   52.8
+Corporate investments   333.3   36.3
+Interest receivable   39.2   36.1
+Accounts receivable, net of allowance for credit losses   1,615.9   1,507.6
+PEO unbilled receivables, net of advance collections   680.2   664.2
+Prepaid income taxes   11.5   11.2
+Prepaid expenses and other current assets   409.2   384.7
+Current assets before funds held for clients   3,745.2   3,781.1
+Funds held for clients   4,348.4   4,832.2
+Total current assets   8,093.6   8,613.3
+Property and equipment, net of accumulated depreciation   614.6   588.9
+Operating lease right-of-use assets, net of accumulated amortization   75.8   63.9
+Intangible assets, net of accumulated amortization   1,626.2   1,684.0
+Goodwill   4,534.1   4,527.4
+Long-term deferred costs   571.0   555.8
+Other long-term assets   145.4   141.2
+Total assets   15,660.7   16,174.5
+Liabilities
+Accounts payable   141.4   154.8
+Accrued corporate compensation and related items   132.5   162.1
+Accrued worksite employee compensation and related items   824.7   844.8
+Accrued income taxes   81.1   87.8
+Deferred revenue   70.8   69.4
+Other current liabilities   648.8   637.1
+Current liabilities before client fund obligations   1,899.3   1,956.0
+Client fund obligations   4,440.7   4,884.6
+Total current liabilities   6,340.0   6,840.6
+Accrued income taxes   145.5   140.5
+Deferred income taxes   537.6   543.3
+Long-term borrowings, net of debt issuance costs   4,558.0   4,556.1
+Operating lease liabilities   62.9   52.2
+Other long-term liabilities   311.2   306.7
+Total liabilities   11,955.2   12,439.4
+Commitments and contingencies - Note H
+Stockholders' equity
+Common stock, $0.01 par value; Authorized: 600.0 shares; Issued and outstanding: 356.0 shares as of August 31, 2026 and 355.6 shares as of May 31, 2026   3.6   3.6
+Additional paid-in capital   1,994.8   1,975.6
+Retained earnings   1,788.4   1,805.8
+Accumulated other comprehensive loss   (81.3)   (49.9)
+Total stockholders' equity   3,705.5   3,735.1
+Total liabilities and stockholders' equity   $ 15,660.7   $ 16,174.5

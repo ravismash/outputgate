@@ -1,0 +1,112 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 17214,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 17,214"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net (Allowance for expected credit losses of $141 and $137, respectively)",
+    "amount" : {
+      "value" : 4341,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,341"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses, net",
+    "amount" : {
+      "value" : 601,
+      "source_span" : {
+        "page" : 1,
+        "text" : "601"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 901,
+      "source_span" : {
+        "page" : 1,
+        "text" : "901"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 23057,
+    "source_span" : {
+      "page" : 1,
+      "text" : "23,057"
+    }
+  },
+  "total_assets" : {
+    "value" : 29682,
+    "source_span" : {
+      "page" : 1,
+      "text" : "29,682"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 5145,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,145"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other current liabilities",
+    "amount" : {
+      "value" : 3805,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,805"
+      }
+    }
+  }, {
+    "label" : "Deferred merchant bookings",
+    "amount" : {
+      "value" : 10121,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,121"
+      }
+    }
+  }, {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 2000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,000"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 21071,
+    "source_span" : {
+      "page" : 1,
+      "text" : "21,071"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 29682,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 29,682"
+    }
+  },
+  "notes" : "One amount was not clearly shown; assumed zero."
+}

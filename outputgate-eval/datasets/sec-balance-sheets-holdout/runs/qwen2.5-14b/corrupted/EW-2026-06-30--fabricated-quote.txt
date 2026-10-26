@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2906.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,906.5"
+      }
+    }
+  }, {
+    "label" : "Short-term investments (Note 5)",
+    "amount" : {
+      "value" : 1346.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,346.2"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net of allowances of $16.0 and $15.0, respectively",
+    "amount" : {
+      "value" : 770.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "770.4"
+      }
+    }
+  }, {
+    "label" : "Other receivables",
+    "amount" : {
+      "value" : 185.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "185.3"
+      }
+    }
+  }, {
+    "label" : "Inventories (Note 2)",
+    "amount" : {
+      "value" : 1131.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,131.2"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses",
+    "amount" : {
+      "value" : 119,
+      "source_span" : {
+        "page" : 1,
+        "text" : "119.0"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 360.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "360.3"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 6818.9,
+    "source_span" : {
+      "page" : 1,
+      "text" : "6,818.9"
+    }
+  },
+  "total_assets" : {
+    "value" : 13867.1,
+    "source_span" : {
+      "page" : 1,
+      "text" : "13,867.1"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 210.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "210.5"
+      }
+    }
+  }, {
+    "label" : "Accrued and other liabilities (Note 2)",
+    "amount" : {
+      "value" : 1273.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,273.3"
+      }
+    }
+  }, {
+    "label" : "Operating lease liabilities",
+    "amount" : {
+      "value" : 24.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "24.1"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 1507.9,
+    "source_span" : {
+      "page" : 1,
+      "text" : "1,507.9"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 13867.1,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 13,867.1"
+    }
+  }
+}

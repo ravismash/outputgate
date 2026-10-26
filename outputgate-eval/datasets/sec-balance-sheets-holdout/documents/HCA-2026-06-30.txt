@@ -1,0 +1,34 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 1,013   $ 1,040
+Accounts receivable   12,281   10,867
+Inventories   1,662   1,652
+Other   2,234   2,224
+Total current assets   17,190   15,783
+Property and equipment, at cost   68,409   66,275
+Accumulated depreciation   (36,593)   (35,134)
+Property and equipment, net   31,816   31,141
+Investments of insurance subsidiaries   402   485
+Investments in and advances to affiliates   813   633
+Goodwill and other intangible assets   10,662   10,293
+Right-of-use operating lease assets   2,109   2,130
+Other   258   255
+Total assets   63,250   60,720
+Current liabilities:
+Accounts payable   4,752   4,659
+Accrued salaries   2,199   2,525
+Other accrued expenses   4,097   4,277
+Short-term borrowings and long-term debt due within one year   6,264   4,889
+Total current liabilities   17,312   16,350
+Long-term debt, less debt issuance costs and discounts of $451and $436   43,454   41,603
+Professional liability risks   1,464   1,466
+Right-of-use operating lease obligations   1,834   1,853
+Income taxes and other liabilities   2,395   2,219
+Stockholders' (deficit) equity:
+Common stock $0.01 par; authorized 1,800,000,000 shares; outstanding 217,963,300 shares - 2026 and 224,605,100 shares - 2025   2   2
+Accumulated other comprehensive loss   (334)   (305)
+Retained deficit   (6,310)   (5,724)
+Stockholders' deficit attributable to HCA Healthcare, Inc.   (6,642)   (6,027)
+Noncontrolling interests   3,433   3,256
+Total stockholders' (deficit) equity   (3,209)   (2,771)
+Total liabilities and stockholders' (deficit) equity   $ 63,250   $ 60,720

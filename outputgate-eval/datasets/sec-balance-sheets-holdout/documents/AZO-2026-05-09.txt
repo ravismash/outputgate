@@ -1,0 +1,36 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   May 09, 2026   Aug. 30, 2025
+Current assets:
+Cash and cash equivalents   $ 253,729   $ 271,803
+Accounts receivable   764,924   670,137
+Merchandise inventories   7,559,056   7,025,688
+Other current assets   356,860   373,751
+Total current assets   8,934,569   8,341,379
+Property and equipment:
+Property and equipment   13,742,967   12,552,328
+Less: Accumulated depreciation and amortization   (5,945,979)   (5,489,819)
+Property and equipment, net   7,796,988   7,062,509
+Operating lease right-of-use assets   3,413,970   3,194,666
+Goodwill   302,645   302,645
+Deferred income taxes   132,109   118,433
+Other long-term assets   336,182   335,692
+Total assets   20,916,463   19,355,324
+Current liabilities:
+Accounts payable   8,401,277   8,025,590
+Current portion of operating lease liabilities   336,340   283,564
+Accrued expenses and other   1,226,757   1,151,536
+Income taxes payable   70,939   58,707
+Total current liabilities   10,035,313   9,519,397
+Long-term debt   9,016,477   8,799,775
+Operating lease liabilities, less current portion   3,278,354   3,093,936
+Deferred income taxes   483,718   520,510
+Other long-term liabilities   887,153   836,019
+Commitments and contingencies
+Stockholders' deficit:
+Preferred stock, authorized 1,000 shares; no shares issued
+Common stock, par value $.01 per share, authorized 200,000 shares; 16,592 shares issued and 16,369 shares outstanding as of May 9, 2026; 16,927 shares issued and 16,665 shares outstanding as of August 30, 2025   166   169
+Additional paid-in capital   1,967,484   1,843,779
+Retained deficit   (3,750,078)   (3,975,852)
+Accumulated other comprehensive loss   (137,049)   (285,010)
+Treasury stock, at cost   (865,075)   (997,399)
+Total stockholders' deficit   (2,784,552)   (3,414,313)
+Total liabilities and stockholders' deficit   $ 20,916,463   $ 19,355,324

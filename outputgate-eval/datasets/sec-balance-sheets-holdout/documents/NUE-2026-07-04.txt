@@ -1,0 +1,34 @@
+Condensed Consolidated Balance Sheets - USD ($) $ in Millions   Jul. 04, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 2,478   $ 2,260
+Short-term investments   214   439
+Accounts receivable, net   4,045   3,105
+Inventories, net   6,020   5,462
+Other current assets   399   499
+Total current assets   13,156   11,765
+Property, plant and equipment, net   15,863   15,306
+Goodwill   4,289   4,297
+Other intangible assets, net   2,754   2,880
+Other assets   892   856
+Total assets   36,954   35,104
+Current liabilities:
+Short-term debt   129   122
+Current portion of long-term debt and finance lease obligations   581   90
+Accounts payable   2,357   1,890
+Salaries, wages and related accruals   1,002   882
+Accrued expenses and other current liabilities   1,177   1,020
+Total current liabilities   5,246   4,004
+Long-term debt and finance lease obligations due after one year   6,389   6,909
+Deferred credits and other liabilities   2,053   2,067
+Total liabilities   13,688   12,980
+Commitments and contingencies
+Nucor stockholders' equity:
+Common stock   152   152
+Additional paid-in capital   2,207   2,253
+Retained earnings   33,146   31,504
+Accumulated other comprehensive loss, net of income taxes   (214)   (194)
+Treasury stock   (13,182)   (12,779)
+Total Nucor stockholders' equity   22,109   20,936
+Noncontrolling interests   1,157   1,188
+Total equity   23,266   22,124
+Total liabilities and equity   $ 36,954   $ 35,104

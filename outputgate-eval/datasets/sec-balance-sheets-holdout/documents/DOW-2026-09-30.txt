@@ -1,0 +1,46 @@
+Dow Consolidated Balance Sheets Statement - USD ($) $ in Millions   Sep. 30, 2026   Dec. 31, 2025
+Statement of Financial Position [Abstract]
+Cash and cash equivalents (variable interest entities restricted - 2026: $266; 2025: $31)   $ 4,142   $ 3,816
+Trade (net of allowance for doubtful receivables - 2026: $66; 2025: $59)   5,890   4,762
+Other   1,717   1,876
+Inventories   7,024   6,595
+Other current assets   1,404   1,013
+Total current assets (variable interest entities restricted - 2026: $471; 2025: $228)   20,177   18,062
+Investment in nonconsolidated affiliates   1,119   1,264
+Other investments (investments carried at fair value - 2026: $2,320; 2025: $2,212)   3,201   3,017
+Noncurrent receivables   612   309
+Total investments   4,932   4,590
+Property   67,209   65,863
+Less: Accumulated depreciation   44,811   43,613
+Net property (variable interest entities restricted - 2026: $2,330; 2025: $2,385)   22,398   22,250
+Goodwill   7,945   7,978
+Other intangible assets (net of accumulated amortization - 2026: $5,882; 2025: $5,727)   1,318   1,486
+Operating lease right-of-use assets   1,304   1,356
+Deferred income tax assets   1,555   1,511
+Deferred charges and other assets   1,324   1,305
+Total other assets (variable interest entities restricted - 2026: $204; 2025: $226)   13,446   13,636
+Total Assets   60,953   58,538
+Notes payable   16   90
+Long-term debt due within one year   745   222
+Accounts payable - Trade   5,300   4,151
+Accounts payable - Other   1,363   1,394
+Operating lease liabilities - current   341   340
+Income taxes payable   367   337
+Accrued Liabilities, Current   3,361   2,649
+Total current liabilities (variable interest entities nonrecourse - 2026: $503; 2025: $438)   11,493   9,183
+Long-term debt   16,778   17,849
+Deferred income tax liabilities   368   364
+Pension and other postretirement benefits - noncurrent   4,318   4,694
+Asbestos-related liabilities - noncurrent   564   628
+Operating lease liabilities - noncurrent   1,028   1,097
+Other noncurrent obligations   8,772   7,201
+Total other noncurrent liabilities (variable interest entities nonrecourse - 2026: $331; 2025: $364)   15,050   13,984
+Common stock (authorized 5,000,000,000 shares of $0.01 par value each; issued 2026: 791,927,232 shares; 2025: 790,287,565 shares)   8   8
+Additional Paid in Capital, Common Stock   11,060   11,112
+Retained earnings   16,659   16,781
+Accumulated other comprehensive loss   (7,654)   (7,660)
+Treasury stock at cost (2026: 68,045,325 shares; 2025: 73,065,152 shares)   (3,920)   (4,233)
+Dow Inc.’s stockholders’ equity   16,153   16,008
+Noncontrolling interests   1,479   1,514
+Total equity   17,632   17,522
+Total Liabilities and Equity   $ 60,953   $ 58,538

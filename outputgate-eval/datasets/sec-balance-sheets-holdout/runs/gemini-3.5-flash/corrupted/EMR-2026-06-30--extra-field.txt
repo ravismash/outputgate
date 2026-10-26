@@ -1,0 +1,103 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and equivalents",
+    "amount" : {
+      "value" : 2180,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,180"
+      }
+    }
+  }, {
+    "label" : "Receivables, less allowances of $123 and $130, respectively",
+    "amount" : {
+      "value" : 3057,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,057"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 2513,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,513"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 1905,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,905"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 9655,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,655"
+    }
+  },
+  "total_assets" : {
+    "value" : 42208,
+    "source_span" : {
+      "page" : 1,
+      "text" : "42,208"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings and current maturities of long-term debt",
+    "amount" : {
+      "value" : 5587,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,587"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 1613,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,613"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses",
+    "amount" : {
+      "value" : 3572,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,572"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 10772,
+    "source_span" : {
+      "page" : 1,
+      "text" : "10,772"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 42208,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 42,208"
+    }
+  },
+  "notes" : "One amount was not clearly shown; assumed zero."
+}

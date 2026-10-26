@@ -1,0 +1,36 @@
+Consolidated Balance Sheets (Unaudited) - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 539   $ 1,965
+Trade accounts receivable, net   3,049   2,926
+Inventories   3,235   2,943
+Prepaid income taxes   390   299
+Other current assets   760   660
+Total current assets   7,972   8,794
+Other investments   2,245   681
+Property, plant and equipment, net   4,126   4,036
+Goodwill   18,640   18,282
+Other intangible assets, net   6,918   7,019
+Deferred tax assets   3,909   3,675
+Other long-term assets   1,405   1,185
+TOTAL ASSETS   45,216   43,673
+Current liabilities:
+Current debt obligations   1,709   299
+Accounts payable   1,231   1,144
+Accrued expenses   2,756   3,201
+Other current liabilities   732   795
+Total current liabilities   6,428   5,439
+Long-term debt   10,915   11,137
+Deferred tax liabilities   221   220
+Other long-term liabilities   2,480   2,405
+Commitments and contingencies
+Stockholders’ equity
+Preferred stock, $0.01 par value - authorized 50,000,000 shares - 0 shares issued as of June 30, 2026 and December 31, 2025   0   0
+Common stock, $0.01 par value - authorized 2,000,000,000 shares - 1,749,917,975 shares issued as of June 30, 2026 and 1,746,290,165 shares issued as of December 31, 2025   17   17
+Treasury stock, at cost - 303,212,284 shares as of June 30, 2026 and 263,289,848 shares as of December 31, 2025   (4,318)   (2,251)
+Additional paid-in capital   21,717   21,505
+Retained earnings   7,818   5,571
+Accumulated other comprehensive income (loss), net of tax   (304)   (610)
+Total stockholders’ equity   24,930   24,233
+Noncontrolling interests   242   239
+Total equity   25,172   24,472
+TOTAL LIABILITIES AND EQUITY   $ 45,216   $ 43,673

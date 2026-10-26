@@ -1,0 +1,86 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1440443,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,440,443"
+      }
+    }
+  }, {
+    "label" : "Receivables, net",
+    "amount" : {
+      "value" : 1065023,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,065,023"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 390378,
+      "source_span" : {
+        "page" : 1,
+        "text" : "390,378"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other",
+    "amount" : {
+      "value" : 326049,
+      "source_span" : {
+        "page" : 1,
+        "text" : "326,049"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 3221893,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,221,893"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable and accrued liabilities",
+    "amount" : {
+      "value" : 823724,
+      "source_span" : {
+        "page" : 1,
+        "text" : "823,724"
+      }
+    }
+  }, {
+    "label" : "Current portion of deferred revenue",
+    "amount" : {
+      "value" : 1025118,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,025,118"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 1848842,
+    "source_span" : {
+      "page" : 1,
+      "text" : "1,848,842"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 12080325,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 12,080,325"
+    }
+  }
+}

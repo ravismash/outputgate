@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1517000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,517,000,000"
+      }
+    }
+  }, {
+    "label" : "Restricted cash and restricted cash equivalents",
+    "amount" : {
+      "value" : 36000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "36,000,000"
+      }
+    }
+  }, {
+    "label" : "Trade accounts receivable, net",
+    "amount" : {
+      "value" : 2423000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,423,000,000"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 3857000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,857,000,000"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 1628000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,628,000,000"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 9461000000,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,461,000,000"
+    }
+  },
+  "total_assets" : {
+    "value" : 87619000000,
+    "source_span" : {
+      "page" : 1,
+      "text" : "87,619,000,000"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 6293000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,293,000,000"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses",
+    "amount" : {
+      "value" : 2430000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,430,000,000"
+      }
+    }
+  }, {
+    "label" : "Structured payables",
+    "amount" : {
+      "value" : 1018000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,018,000,000"
+      }
+    }
+  }, {
+    "label" : "Short-term borrowings and current portion of long-term obligations",
+    "amount" : {
+      "value" : 8394000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,394,000,000"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 1604000000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,604,000,000"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 19739000000,
+    "source_span" : {
+      "page" : 1,
+      "text" : "19,739,000,000"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 87619000000,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 87,619,000,000"
+    }
+  }
+}

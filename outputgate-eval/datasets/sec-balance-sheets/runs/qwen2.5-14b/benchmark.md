@@ -6,7 +6,7 @@ Model: qwen2.5:14b (local Ollama, temperature 0, seed 42, num_ctx 16384, format:
 
 |  | Naive (parse only) | Schema only | Full contract |
 |---|---|---|---|
-| Recorded answers accepted | 60/60 (100%) | 60/60 (100%) | 53/60 (88%) |
+| Recorded answers accepted | 60/60 (100%) | 60/60 (100%) | 54/60 (90%) |
 | Corrupted outputs caught | 4/50 (8%) | 20/50 (40%) | 50/50 (100%) |
 
 ## Caught, by kind of corruption
@@ -35,22 +35,21 @@ The dataset's own values for 58 documents (total_assets, total_current_assets, t
 
 |  | Naive (parse only) | Schema only | Full contract |
 |---|---|---|---|
-| Accepted, every compared field right | 57 | 57 | 51 |
+| Accepted, every compared field right | 57 | 57 | 52 |
 | Accepted, some field wrong | 1 | 1 | 0 |
 
 ### Accepted by the full contract but wrong (0)
 
 - None.
 
-## Recorded answers the full contract rejected (7)
+## Recorded answers the full contract rejected (6)
 
 Each is either a model mistake the contract caught or a contract that is too strict. Read them by hand before quoting the numbers above.
 
 - BBY-2026-08-01.txt: [math] total_current_liabilities: sum of current_liabilities[*].amount is 7808 but total_current_liabilities is 8936 (allowed for rounding 3.0)
 - DRI-2026-08-30.txt: [provenance] current_assets[0].amount: value 220500 is not a number its quote prints (it prints 220.5); [provenance] current_assets[1].amount: value 118000 is not a number its quote prints (it prints 118.0); [provenance] current_assets[2].amount: value 321000 is not a number its quote prints (it prints 321.0); and 12 more
 - GOOGL-2026-06-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 585998 but total_current_assets is 343524 (allowed for rounding 3.5)
-- MO-2026-06-30.txt: [provenance] current_liabilities[2].amount: source_span.text "3,625" not found in the source document (whitespace ignored)
-- NKE-2026-08-31.txt: [provenance] total_liabilities_and_equity: source_span.text "$ 37,794" not found in the source document (whitespace ignored)
+- MO-2026-06-30.txt: [provenance] current_liabilities[2].amount: source_span.text "3,625" not found in the source document (whitespace and currency signs ignored)
 - TSLA-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 78902 but total_current_assets is 70402 (allowed for rounding 4.0)
 - TXN-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 21552 but total_current_assets is 16880 (allowed for rounding 4.5)
 

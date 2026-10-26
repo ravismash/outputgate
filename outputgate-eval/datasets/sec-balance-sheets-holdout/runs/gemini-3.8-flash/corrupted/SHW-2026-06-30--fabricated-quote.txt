@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 293.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 293.5"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 3571.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,571.2"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 2529.7,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,529.7"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 604.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "604.8"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 6999.2,
+    "source_span" : {
+      "page" : 1,
+      "text" : "6,999.2"
+    }
+  },
+  "total_assets" : {
+    "value" : 26951.4,
+    "source_span" : {
+      "page" : 1,
+      "text" : "26,951.4"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings",
+    "amount" : {
+      "value" : 2246.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,246.4"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 2826.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,826.4"
+      }
+    }
+  }, {
+    "label" : "Compensation and taxes withheld",
+    "amount" : {
+      "value" : 768.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "768.4"
+      }
+    }
+  }, {
+    "label" : "Accrued taxes",
+    "amount" : {
+      "value" : 405.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "405.4"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 1498.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,498.4"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 486.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "486.5"
+      }
+    }
+  }, {
+    "label" : "Other accruals",
+    "amount" : {
+      "value" : 1395.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,395.5"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 9627.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,627.0"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 26951.4,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 26,951.4"
+    }
+  }
+}

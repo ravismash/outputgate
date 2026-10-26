@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and equivalents",
+    "amount" : {
+      "value" : 822,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 822.0"
+      }
+    }
+  }, {
+    "label" : "Accounts and notes receivable",
+    "amount" : {
+      "value" : 2485,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,485.0"
+      }
+    }
+  }, {
+    "label" : "Inventories, at cost, not in excess of market",
+    "amount" : {
+      "value" : 58,
+      "source_span" : {
+        "page" : 1,
+        "text" : "58.0"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 980,
+      "source_span" : {
+        "page" : 1,
+        "text" : "980.0"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 4345,
+    "source_span" : {
+      "page" : 1,
+      "text" : "4,345.0"
+    }
+  },
+  "total_assets" : {
+    "value" : 59920,
+    "source_span" : {
+      "page" : 1,
+      "text" : "59,920.0"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 1114,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,114.0"
+      }
+    }
+  }, {
+    "label" : "Lease liability",
+    "amount" : {
+      "value" : 690,
+      "source_span" : {
+        "page" : 1,
+        "text" : "690.0"
+      }
+    }
+  }, {
+    "label" : "Income taxes",
+    "amount" : {
+      "value" : 327,
+      "source_span" : {
+        "page" : 1,
+        "text" : "327.0"
+      }
+    }
+  }, {
+    "label" : "Other taxes",
+    "amount" : {
+      "value" : 261,
+      "source_span" : {
+        "page" : 1,
+        "text" : "261.0"
+      }
+    }
+  }, {
+    "label" : "Accrued interest",
+    "amount" : {
+      "value" : 428,
+      "source_span" : {
+        "page" : 1,
+        "text" : "428.0"
+      }
+    }
+  }, {
+    "label" : "Accrued payroll and other liabilities",
+    "amount" : {
+      "value" : 1198,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,198.0"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 4018,
+    "source_span" : {
+      "page" : 1,
+      "text" : "4,018.0"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 59920,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 59,920.0"
+    }
+  }
+}

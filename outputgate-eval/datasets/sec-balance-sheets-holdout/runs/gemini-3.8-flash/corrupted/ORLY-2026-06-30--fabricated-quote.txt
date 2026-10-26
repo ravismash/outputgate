@@ -1,0 +1,147 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 262181,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 262,181"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 457785,
+      "source_span" : {
+        "page" : 1,
+        "text" : "457,785"
+      }
+    }
+  }, {
+    "label" : "Amounts receivable from suppliers",
+    "amount" : {
+      "value" : 170728,
+      "source_span" : {
+        "page" : 1,
+        "text" : "170,728"
+      }
+    }
+  }, {
+    "label" : "Inventory",
+    "amount" : {
+      "value" : 5971856,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,971,856"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 337082,
+      "source_span" : {
+        "page" : 1,
+        "text" : "337,082"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 7199632,
+    "source_span" : {
+      "page" : 1,
+      "text" : "7,199,632"
+    }
+  },
+  "total_assets" : {
+    "value" : 17389116,
+    "source_span" : {
+      "page" : 1,
+      "text" : "17,389,116"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 7384958,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,384,958"
+      }
+    }
+  }, {
+    "label" : "Self-insurance reserves",
+    "amount" : {
+      "value" : 214311,
+      "source_span" : {
+        "page" : 1,
+        "text" : "214,311"
+      }
+    }
+  }, {
+    "label" : "Accrued payroll",
+    "amount" : {
+      "value" : 176174,
+      "source_span" : {
+        "page" : 1,
+        "text" : "176,174"
+      }
+    }
+  }, {
+    "label" : "Accrued benefits and withholdings",
+    "amount" : {
+      "value" : 275493,
+      "source_span" : {
+        "page" : 1,
+        "text" : "275,493"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 452275,
+      "source_span" : {
+        "page" : 1,
+        "text" : "452,275"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 1071463,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,071,463"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 9574674,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,574,674"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 17389116,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 17,389,116"
+    }
+  }
+}

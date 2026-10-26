@@ -1,0 +1,36 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets
+Cash and cash equivalents   $ 589   $ 585
+Accounts receivable (less allowance for credit losses of $33 and $32, respectively)   2,825   2,329
+Inventories – net   2,371   2,394
+Prepaid expenses and other current assets   213   176
+Total current assets   5,998   5,484
+Property, buildings and equipment – net   2,401   2,268
+Goodwill   354   360
+Intangibles – net   272   265
+Operating lease right-of-use   360   345
+Other assets   233   240
+Total assets   9,618   8,962
+Current liabilities
+Current maturities   2   126
+Trade accounts payable   1,280   963
+Accrued compensation and benefits   347   343
+Operating lease liability   72   73
+Accrued expenses   389   386
+Income taxes payable   48   49
+Total current liabilities   2,138   1,940
+Long-term debt   2,406   2,362
+Long-term operating lease liability   317   301
+Deferred income taxes and tax uncertainties   149   121
+Other non-current liabilities   95   97
+Shareholders' equity
+Cumulative preferred stock – $5 par value – 12,000,000 shares authorized; none issued or outstanding   0   0
+Common Stock – $0.50 par value – 300,000,000 shares authorized; 109,659,219 shares issued   55   55
+Additional contributed capital   1,448   1,446
+Retained earnings   15,858   14,958
+Accumulated other comprehensive losses   (198)   (165)
+Treasury stock, at cost – 62,558,699 and 62,240,438 shares, respectively   (13,032)   (12,558)
+Total W.W. Grainger, Inc. shareholders’ equity   4,131   3,736
+Noncontrolling interest   382   405
+Total shareholders' equity   4,513   4,141
+Total liabilities and shareholders' equity   $ 9,618   $ 8,962

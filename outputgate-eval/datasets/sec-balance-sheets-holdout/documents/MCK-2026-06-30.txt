@@ -1,0 +1,36 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Mar. 31, 2026
+Current assets
+Cash and cash equivalents   $ 5,164   $ 3,975
+Receivables, net   30,316   27,985
+Inventories, net   26,259   24,207
+Prepaid expenses and other   1,098   1,043
+Total current assets   62,837   57,210
+Property, plant, and equipment, net   2,684   2,668
+Operating lease right-of-use assets   1,941   2,058
+Goodwill   11,278   11,316
+Intangible assets, net   4,013   4,079
+Other non-current assets   5,577   4,992
+Total assets   88,330   82,323
+Current liabilities
+Drafts and accounts payable   63,731   59,973
+Current portion of long-term debt   1,297   1,267
+Current portion of operating lease liabilities   292   287
+Other accrued liabilities   5,036   5,490
+Total current liabilities   70,356   67,017
+Long-term debt   8,432   5,259
+Long-term deferred tax liabilities   1,363   1,330
+Long-term operating lease liabilities   1,680   1,801
+Long-term litigation liabilities   5,058   5,091
+Other non-current liabilities   2,742   2,659
+Redeemable noncontrolling interests   2,563   943
+McKesson Corporation stockholders’ deficit
+Preferred stock, $0.01 par value, 100 shares authorized, no shares issued or outstanding   0   0
+Common stock, $0.01 par value, 800 shares authorized, 280 shares issued at June 30, 2026 and March 31, 2026   3   3
+Additional paid-in capital   8,588   8,284
+Retained earnings   22,808   22,291
+Accumulated other comprehensive loss   (749)   (745)
+Treasury shares, at cost, 164 and 160 shares at June 30, 2026 and March 31, 2026, respectively   (34,890)   (32,005)
+Total McKesson Corporation stockholders’ deficit   (4,240)   (2,172)
+Noncontrolling interests   376   395
+Total deficit   (3,864)   (1,777)
+Total liabilities, redeemable noncontrolling interests, and deficit   $ 88,330   $ 82,323

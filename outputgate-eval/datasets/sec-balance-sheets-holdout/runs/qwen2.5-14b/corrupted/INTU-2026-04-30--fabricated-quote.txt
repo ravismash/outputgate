@@ -1,0 +1,165 @@
+{
+  "period_end" : {
+    "value" : "2026-04-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-04-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 4681,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 4,681"
+      }
+    }
+  }, {
+    "label" : "Investments",
+    "amount" : {
+      "value" : 2099,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,099"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 834,
+      "source_span" : {
+        "page" : 1,
+        "text" : "834"
+      }
+    }
+  }, {
+    "label" : "Notes receivable held for investment",
+    "amount" : {
+      "value" : 1662,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,662"
+      }
+    }
+  }, {
+    "label" : "Notes receivable held for sale",
+    "amount" : {
+      "value" : 69,
+      "source_span" : {
+        "page" : 1,
+        "text" : "69"
+      }
+    }
+  }, {
+    "label" : "Income taxes receivable",
+    "amount" : {
+      "value" : 52,
+      "source_span" : {
+        "page" : 1,
+        "text" : "52"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 680,
+      "source_span" : {
+        "page" : 1,
+        "text" : "680"
+      }
+    }
+  }, {
+    "label" : "Funds receivable and amounts held for customers",
+    "amount" : {
+      "value" : 7760,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,760"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 17837,
+    "source_span" : {
+      "page" : 1,
+      "text" : "17,837"
+    }
+  },
+  "total_assets" : {
+    "value" : 39330,
+    "source_span" : {
+      "page" : 1,
+      "text" : "39,330"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 750,
+      "source_span" : {
+        "page" : 1,
+        "text" : "750"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 1096,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,096"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and related liabilities",
+    "amount" : {
+      "value" : 766,
+      "source_span" : {
+        "page" : 1,
+        "text" : "766"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 1055,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,055"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 849,
+      "source_span" : {
+        "page" : 1,
+        "text" : "849"
+      }
+    }
+  }, {
+    "label" : "Funds payable and amounts due to customers",
+    "amount" : {
+      "value" : 7760,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,760"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 12276,
+    "source_span" : {
+      "page" : 1,
+      "text" : "12,276"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 39330,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 39,330"
+    }
+  }
+}

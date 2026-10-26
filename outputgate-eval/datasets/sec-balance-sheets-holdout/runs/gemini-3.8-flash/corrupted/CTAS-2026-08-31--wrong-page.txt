@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-08-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 243599,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 243,599"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 1587573,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,587,573"
+      }
+    }
+  }, {
+    "label" : "Inventories, net",
+    "amount" : {
+      "value" : 433286,
+      "source_span" : {
+        "page" : 2,
+        "text" : "433,286"
+      }
+    }
+  }, {
+    "label" : "Uniforms and other rental items in service",
+    "amount" : {
+      "value" : 1309995,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,309,995"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 357292,
+      "source_span" : {
+        "page" : 1,
+        "text" : "357,292"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 3931745,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,931,745"
+    }
+  },
+  "total_assets" : {
+    "value" : 10652735,
+    "source_span" : {
+      "page" : 1,
+      "text" : "10,652,735"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 506502,
+      "source_span" : {
+        "page" : 1,
+        "text" : "506,502"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and related liabilities",
+    "amount" : {
+      "value" : 159159,
+      "source_span" : {
+        "page" : 1,
+        "text" : "159,159"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities",
+    "amount" : {
+      "value" : 841215,
+      "source_span" : {
+        "page" : 1,
+        "text" : "841,215"
+      }
+    }
+  }, {
+    "label" : "Income taxes, current",
+    "amount" : {
+      "value" : 140129,
+      "source_span" : {
+        "page" : 1,
+        "text" : "140,129"
+      }
+    }
+  }, {
+    "label" : "Operating lease liabilities, current",
+    "amount" : {
+      "value" : 58370,
+      "source_span" : {
+        "page" : 1,
+        "text" : "58,370"
+      }
+    }
+  }, {
+    "label" : "Total debt due within one year",
+    "amount" : {
+      "value" : 999291,
+      "source_span" : {
+        "page" : 1,
+        "text" : "999,291"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 2704666,
+    "source_span" : {
+      "page" : 1,
+      "text" : "2,704,666"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 10652735,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 10,652,735"
+    }
+  }
+}

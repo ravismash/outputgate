@@ -1,0 +1,33 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 2,504   $ 1,526
+Trade accounts receivable, net of doubtful accounts - $29 and $27   2,932   2,779
+Inventories (Note 3)   3,426   3,077
+Other current assets (Note 5)   2,055   1,554
+Total current assets   10,917   8,936
+Property, plant and equipment, net of accumulated depreciation - $15,460 and $15,229   14,927   14,825
+Goodwill   2,476   2,489
+Other intangible assets, net   610   657
+Deferred income taxes (Note 11)   1,610   1,515
+Other assets (Note 5)   2,416   2,554
+Total Assets   32,956   30,976
+Current liabilities:
+Current portion of long-term debt and short-term borrowings (Note 6)   668   804
+Accounts payable   2,361   1,979
+Other accrued liabilities (Notes 5 and 8)   2,992   2,845
+Total current liabilities   6,021   5,628
+Long-term debt (Note 6)   7,756   7,630
+Postretirement benefits other than pensions (Note 7)   325   314
+Other liabilities (Notes 5 and 8)   5,727   5,097
+Total liabilities   19,829   18,669
+Commitments and contingencies (Note 8)
+Shareholders’ equity: (Note 12)
+Common stock – Par value $0.50 per share; Shares authorized 3.8 billion; Shares issued: 1.9 billion and 1.8 billion   927   924
+Additional paid-in capital – common stock   18,636   17,580
+Retained earnings   16,747   16,551
+Treasury stock, at cost; Shares held: 994 million and 992 million   (21,429)   (21,143)
+Accumulated other comprehensive loss   (2,321)   (2,105)
+Total Corning Incorporated shareholders’ equity   12,560   11,807
+Non-controlling interest   567   500
+Total equity   13,127   12,307
+Total Liabilities and Equity   $ 32,956   $ 30,976

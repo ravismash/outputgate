@@ -1,0 +1,74 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025   Jun. 30, 2025
+Cash and cash equivalents   $ 2,365   $ 4,521   $ 2,065
+Marketable Securities   0   9   76
+Accounts and notes receivable - net   8,696   6,371   8,674
+Inventories   4,443   5,667   4,316
+Other current assets   853   767   873
+Total current assets   16,357   17,335   16,004
+Investments in nonconsolidated affiliates   145   160   134
+Property, Plant and Equipment   9,744   9,551   9,455
+Less: Accumulated Depreciation   5,566   5,331   5,302
+Net Property, Plant and Equipment   4,178   4,220   4,153
+Goodwill   10,437   10,465   10,518
+Other intangible assets   8,006   8,301   8,583
+Deferred Income Taxes   335   320   449
+Other assets   2,184   2,044   1,918
+Total Assets   41,642   42,845   41,759
+Short-term borrowings   3,193   894   1,942
+Accounts payable   3,958   4,398   3,828
+Income Taxes Payable   303   155   485
+Deferred Revenue   383   3,579   358
+Accrued and other current liabilities   2,952   3,099   2,903
+Total current liabilities   10,789   12,125   9,516
+Long-term Debt   1,682   1,686   1,687
+Deferred income tax liabilities   512   251   258
+Pension and other post employment benefits - noncurrent   1,300   2,434   2,229
+Other noncurrent obligations   1,956   1,963   1,918
+Total noncurrent liabilities   5,450   6,334   6,092
+Common stock   7   7   7
+Additional Paid in Capital   26,894   27,001   27,014
+Retained earnings (accumulated deficit)   1,224   (67)   1,532
+Accumulated Other Comprehensive Income (Loss)   (2,966)   (2,797)   (2,644)
+Total stockholders' equity attributable to the company   25,159   24,144   25,909
+Noncontrolling Interests   244   242   242
+Total Equity   25,403   24,386   26,151
+Liabilities and Equity   41,642   42,845   41,759
+EIDP
+Cash and cash equivalents   2,365   4,521   2,065
+Marketable Securities   0   9   76
+Accounts and notes receivable - net   8,696   6,371   8,674
+Inventories   4,443   5,667   4,316
+Other current assets   853   767   873
+Total current assets   16,357   17,335   16,004
+Investments in nonconsolidated affiliates   145   160   134
+Property, Plant and Equipment   9,744   9,551   9,455
+Less: Accumulated Depreciation   5,566   5,331   5,302
+Net Property, Plant and Equipment   4,178   4,220   4,153
+Goodwill   10,437   10,465   10,518
+Other intangible assets   8,006   8,301   8,583
+Deferred Income Taxes   335   320   449
+Other assets   2,184   2,044   1,918
+Total Assets   41,642   42,845   41,759
+Short-term borrowings   3,193   894   1,942
+Accounts payable   3,958   4,398   3,828
+Income Taxes Payable   303   155   485
+Deferred Revenue   383   3,579   358
+Accrued and other current liabilities   2,958   3,223   2,899
+Total current liabilities   10,795   12,249   9,512
+Long-term Debt   1,682   1,686   1,687
+Deferred income tax liabilities   512   251   258
+Pension and other post employment benefits - noncurrent   1,300   2,434   2,229
+Other noncurrent obligations   1,956   1,963   1,918
+Total noncurrent liabilities   5,450   6,334   6,092
+Common stock   0   0   0
+Additional Paid in Capital   24,659   24,610   24,548
+Retained earnings (accumulated deficit)   3,460   2,207   4,009
+Accumulated Other Comprehensive Income (Loss)   (2,966)   (2,797)   (2,644)
+Total stockholders' equity attributable to the company   25,392   24,259   26,152
+Noncontrolling Interests   5   3   3
+Total Equity   25,397   24,262   26,155
+Liabilities and Equity   41,642   42,845   41,759
+EIDP | $4.50 Series Preferred Stock [Member]
+Preferred stock, without par value – cumulative; 23,000,000 shares authorized; issued at June 30, 2026, December 31, 2025, and June 30, 2025:   169   169   169
+EIDP | $3.50 Series Preferred Stock [Member]
+Preferred stock, without par value – cumulative; 23,000,000 shares authorized; issued at June 30, 2026, December 31, 2025, and June 30, 2025:   $ 70   $ 70   $ 70

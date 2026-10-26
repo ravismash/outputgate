@@ -1,0 +1,150 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 3179,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 3,179"
+      }
+    }
+  }, {
+    "label" : "Marketable securities (Note 6)",
+    "amount" : {
+      "value" : 745,
+      "source_span" : {
+        "page" : 1,
+        "text" : "745"
+      }
+    }
+  }, {
+    "label" : "Accounts and notes receivable, net",
+    "amount" : {
+      "value" : 6585,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,585"
+      }
+    }
+  }, {
+    "label" : "Inventories (Note 7)",
+    "amount" : {
+      "value" : 6397,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,397"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 1528,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,528"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 18434,
+    "source_span" : {
+      "page" : 1,
+      "text" : "18,434"
+    }
+  },
+  "total_assets" : {
+    "value" : 35630,
+    "source_span" : {
+      "page" : 1,
+      "text" : "35,630"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable (principally trade)",
+    "amount" : {
+      "value" : 4654,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,654"
+      }
+    }
+  }, {
+    "label" : "Loans payable (Note 9)",
+    "amount" : {
+      "value" : 459,
+      "source_span" : {
+        "page" : 1,
+        "text" : "459"
+      }
+    }
+  }, {
+    "label" : "Commercial paper (Note 9)",
+    "amount" : 348
+  }, {
+    "label" : "Current maturities of long-term debt (Note 9)",
+    "amount" : {
+      "value" : 151,
+      "source_span" : {
+        "page" : 1,
+        "text" : "151"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation, benefits and retirement costs",
+    "amount" : {
+      "value" : 812,
+      "source_span" : {
+        "page" : 1,
+        "text" : "812"
+      }
+    }
+  }, {
+    "label" : "Current portion of accrued product warranty (Note 10)",
+    "amount" : {
+      "value" : 658,
+      "source_span" : {
+        "page" : 1,
+        "text" : "658"
+      }
+    }
+  }, {
+    "label" : "Current portion of deferred revenue (Note 2)",
+    "amount" : {
+      "value" : 1592,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,592"
+      }
+    }
+  }, {
+    "label" : "Other accrued expenses (Note 8)",
+    "amount" : {
+      "value" : 1999,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,999"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 10673,
+    "source_span" : {
+      "page" : 1,
+      "text" : "10,673"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 35630,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 35,630"
+    }
+  }
+}

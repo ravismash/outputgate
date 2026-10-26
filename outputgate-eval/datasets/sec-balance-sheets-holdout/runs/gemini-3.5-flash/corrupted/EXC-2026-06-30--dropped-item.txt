@@ -1,0 +1,210 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1813,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,813"
+      }
+    }
+  }, {
+    "label" : "Restricted cash and cash equivalents",
+    "amount" : {
+      "value" : 608,
+      "source_span" : {
+        "page" : 1,
+        "text" : "608"
+      }
+    }
+  }, {
+    "label" : "Customer accounts receivable, net",
+    "amount" : {
+      "value" : 3059,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,059"
+      }
+    }
+  }, {
+    "label" : "Other accounts receivable, net",
+    "amount" : {
+      "value" : 1200,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,200"
+      }
+    }
+  }, {
+    "label" : "Fossil fuel",
+    "amount" : {
+      "value" : 62,
+      "source_span" : {
+        "page" : 1,
+        "text" : "62"
+      }
+    }
+  }, {
+    "label" : "Materials and supplies",
+    "amount" : {
+      "value" : 832,
+      "source_span" : {
+        "page" : 1,
+        "text" : "832"
+      }
+    }
+  }, {
+    "label" : "Regulatory assets",
+    "amount" : {
+      "value" : 1352,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,352"
+      }
+    }
+  }, {
+    "label" : "Prepaid renewable energy credits",
+    "amount" : {
+      "value" : 381,
+      "source_span" : {
+        "page" : 1,
+        "text" : "381"
+      }
+    }
+  }, {
+    "label" : "Other",
+    "amount" : {
+      "value" : 490,
+      "source_span" : {
+        "page" : 1,
+        "text" : "490"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 9797,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,797"
+    }
+  },
+  "total_assets" : {
+    "value" : 120505,
+    "source_span" : {
+      "page" : 1,
+      "text" : "120,505"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Long-term debt due within one year",
+    "amount" : {
+      "value" : 727,
+      "source_span" : {
+        "page" : 1,
+        "text" : "727"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses",
+    "amount" : {
+      "value" : 1447,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,447"
+      }
+    }
+  }, {
+    "label" : "Customer deposits",
+    "amount" : {
+      "value" : 589,
+      "source_span" : {
+        "page" : 1,
+        "text" : "589"
+      }
+    }
+  }, {
+    "label" : "Regulatory liabilities",
+    "amount" : {
+      "value" : 573,
+      "source_span" : {
+        "page" : 1,
+        "text" : "573"
+      }
+    }
+  }, {
+    "label" : "Mark-to-market derivative liabilities",
+    "amount" : {
+      "value" : 23,
+      "source_span" : {
+        "page" : 1,
+        "text" : "23"
+      }
+    }
+  }, {
+    "label" : "Unamortized energy contract liabilities",
+    "amount" : {
+      "value" : 4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4"
+      }
+    }
+  }, {
+    "label" : "Renewable energy credit obligations",
+    "amount" : {
+      "value" : 332,
+      "source_span" : {
+        "page" : 1,
+        "text" : "332"
+      }
+    }
+  }, {
+    "label" : "Other",
+    "amount" : {
+      "value" : 590,
+      "source_span" : {
+        "page" : 1,
+        "text" : "590"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 5"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 3475,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 3,475"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 9008,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,008"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 120505,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 120,505"
+    }
+  }
+}

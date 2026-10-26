@@ -1,0 +1,44 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets
+Cash and cash equivalents   $ 3,179   $ 2,845
+Marketable securities (Note 6)   745   764
+Total cash, cash equivalents and marketable securities   3,924   3,609
+Accounts and notes receivable, net   6,585   5,818
+Inventories (Note 7)   6,397   5,822
+Prepaid expenses and other current assets   1,528   1,676
+Total current assets   18,434   16,925
+Long-term assets
+Property, plant and equipment   13,236   12,919
+Accumulated depreciation   (6,223)   (5,961)
+Property, plant and equipment, net   7,013   6,958
+Investments and advances related to equity method investees   2,265   2,133
+Goodwill   2,222   2,224
+Other intangible assets, net   2,168   2,167
+Pension assets   1,008   1,033
+Other assets (Note 8)   2,520   2,552
+Total assets   35,630   33,992
+Current liabilities
+Accounts payable (principally trade)   4,654   3,800
+Loans payable (Note 9)   459   313
+Commercial paper (Note 9)   348   353
+Current maturities of long-term debt (Note 9)   151   94
+Accrued compensation, benefits and retirement costs   812   825
+Current portion of accrued product warranty (Note 10)   658   693
+Current portion of deferred revenue (Note 2)   1,592   1,606
+Other accrued expenses (Note 8)   1,999   1,926
+Total current liabilities   10,673   9,610
+Long-term liabilities
+Long-term debt (Note 9)   6,737   6,792
+Deferred revenue (Note 2)   1,066   1,054
+Other liabilities (Note 8)   3,248   3,128
+Total liabilities   21,724   20,584
+Commitments and contingencies (Note 11)
+Cummins Inc. shareholders’ equity
+Common stock, $2.50 par value, 500 shares authorized, 222.5 and 222.5 shares issued   2,626   2,673
+Retained earnings   23,650   22,616
+Treasury stock, at cost, 84.9 and 84.4 shares   (11,089)   (10,662)
+Accumulated other comprehensive loss (Note 12)   (2,340)   (2,278)
+Total Cummins Inc. shareholders’ equity   12,847   12,349
+Noncontrolling interests   1,059   1,059
+Total equity   13,906   13,408
+Total liabilities and equity   $ 35,630   $ 33,992

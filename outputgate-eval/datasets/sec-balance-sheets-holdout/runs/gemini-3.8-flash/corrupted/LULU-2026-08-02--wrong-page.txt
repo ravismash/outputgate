@@ -1,0 +1,147 @@
+{
+  "period_end" : {
+    "value" : "2026-08-02",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 02, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1389737,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,389,737"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 171164,
+      "source_span" : {
+        "page" : 1,
+        "text" : "171,164"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 1711450,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,711,450"
+      }
+    }
+  }, {
+    "label" : "Prepaid and receivable income taxes",
+    "amount" : {
+      "value" : 479948,
+      "source_span" : {
+        "page" : 1,
+        "text" : "479,948"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 193288,
+      "source_span" : {
+        "page" : 1,
+        "text" : "193,288"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 3945587,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,945,587"
+    }
+  },
+  "total_assets" : {
+    "value" : 8484578,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,484,578"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 346717,
+      "source_span" : {
+        "page" : 1,
+        "text" : "346,717"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities and other",
+    "amount" : {
+      "value" : 584912,
+      "source_span" : {
+        "page" : 1,
+        "text" : "584,912"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and related expenses",
+    "amount" : {
+      "value" : 122747,
+      "source_span" : {
+        "page" : 1,
+        "text" : "122,747"
+      }
+    }
+  }, {
+    "label" : "Current lease liabilities",
+    "amount" : {
+      "value" : 366649,
+      "source_span" : {
+        "page" : 1,
+        "text" : "366,649"
+      }
+    }
+  }, {
+    "label" : "Current income taxes payable",
+    "amount" : {
+      "value" : 67375,
+      "source_span" : {
+        "page" : 1,
+        "text" : "67,375"
+      }
+    }
+  }, {
+    "label" : "Unredeemed gift card liability",
+    "amount" : {
+      "value" : 277318,
+      "source_span" : {
+        "page" : 1,
+        "text" : "277,318"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 35933,
+      "source_span" : {
+        "page" : 1,
+        "text" : "35,933"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 1801651,
+    "source_span" : {
+      "page" : 2,
+      "text" : "1,801,651"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 8484578,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 8,484,578"
+    }
+  }
+}

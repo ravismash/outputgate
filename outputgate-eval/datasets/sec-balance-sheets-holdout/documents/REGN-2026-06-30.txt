@@ -1,0 +1,39 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 2,455.8   $ 3,118.1
+Marketable securities   5,538.8   5,487.1
+Accounts receivable, net   6,565.4   5,741.1
+Inventories   3,084.3   3,200.8
+Prepaid expenses and other current assets   801.7   474.8
+Total current assets   18,446.0   18,021.9
+Marketable securities   9,828.3   10,260.6
+Property, plant, and equipment, net   5,458.9   5,120.4
+Intangible assets, net   1,309.8   1,257.4
+Deferred tax assets   4,381.4   4,077.2
+Other noncurrent assets   2,306.2   1,821.2
+Total assets   41,730.6   40,558.7
+Current liabilities:
+Accounts payable   1,159.3   939.0
+Accrued expenses and other current liabilities   2,966.5   2,876.4
+Finance lease liabilities   720.0   0.0
+Deferred revenue   684.8   553.0
+Total current liabilities   5,530.6   4,368.4
+Long-term debt   1,986.6   1,985.9
+Finance lease liabilities   0.0   720.0
+Deferred revenue   220.4   208.7
+Other noncurrent liabilities   2,281.6   2,018.8
+Total liabilities   10,019.2   9,301.8
+Stockholders' equity:
+Preferred Stock, par value $.01 per share; 30.0 shares authorized; shares issued and outstanding - none   0.0   0.0
+Additional paid-in capital   14,700.6   13,995.0
+Retained earnings   37,621.4   35,797.1
+Accumulated other comprehensive (loss) income   (35.8)   77.5
+Treasury Stock, at cost; 36.4 shares in 2026 and 33.7 shares in 2025   (20,574.9)   (18,612.8)
+Total stockholders' equity   31,711.4   31,256.9
+Total liabilities and stockholders' equity   41,730.6   40,558.7
+Class A Stock
+Stockholders' equity:
+Common stock   0.0   0.0
+Common Stock
+Stockholders' equity:
+Common stock   $ 0.1   $ 0.1

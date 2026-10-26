@@ -1,0 +1,58 @@
+Consolidated Balance Sheets - USD ($) $ in Thousands   May 31, 2026   Aug. 31, 2025
+CURRENT ASSETS:
+Cash and cash equivalents   $ 10,165,245   $ 11,478,729
+Short-term investments   6,322   5,945
+Receivables and contract assets   16,035,963   14,985,073
+Other current assets   2,730,815   2,430,942
+Total current assets   28,938,345   28,900,689
+NON-CURRENT ASSETS:
+Contract assets   333,577   180,362
+Investments   925,324   721,260
+Property and equipment, net   1,619,981   1,566,374
+Lease assets   2,973,530   2,740,321
+Goodwill   25,322,800   22,536,416
+Deferred contract costs   1,136,760   1,025,391
+Deferred tax assets   3,567,536   3,791,215
+Intangibles   2,498,992   2,410,755
+Other non-current assets   1,489,716   1,522,114
+Total non-current assets   39,868,216   36,494,208
+TOTAL ASSETS   68,806,561   65,394,897
+CURRENT LIABILITIES:
+Current portion of long-term debt and bank borrowings   112,816   114,484
+Accounts payable   3,176,740   2,695,589
+Deferred revenues   6,529,286   6,073,170
+Accrued payroll and related benefits   8,701,843   8,084,214
+Income taxes payable   331,211   701,219
+Lease liabilities   750,922   729,003
+Other accrued liabilities   2,006,289   1,954,418
+Total current liabilities   21,609,107   20,352,097
+NON-CURRENT LIABILITIES:
+Long-term debt   5,029,449   5,034,169
+Deferred revenues   1,038,253   642,361
+Retirement obligation   1,910,231   1,858,499
+Deferred tax liabilities   551,538   471,931
+Income taxes payable   1,396,944   1,291,921
+Lease liabilities   2,495,583   2,305,210
+Other non-current liabilities   1,267,743   1,197,742
+Total non-current liabilities   13,689,741   12,801,833
+COMMITMENTS AND CONTINGENCIES
+Redeemable noncontrolling interests   493,874   0
+SHAREHOLDERS’ EQUITY:
+Restricted share units   2,468,623   2,790,652
+Additional paid-in capital   19,142,972   16,603,344
+Treasury shares, at cost: Ordinary, 40,000 shares as of May 31, 2026 and August 31, 2025; Class A ordinary, 55,604,429 and 36,108,842 shares as of May 31, 2026 and August 31, 2025, respectively   (11,946,797)   (7,751,973)
+Retained earnings   24,025,992   21,018,731
+Accumulated other comprehensive loss   (1,800,296)   (1,465,379)
+Total Accenture plc shareholders’ equity   31,890,566   31,195,446
+Noncontrolling interests   1,123,273   1,045,521
+Total shareholders’ equity   33,013,839   32,240,967
+TOTAL LIABILITIES AND SHAREHOLDERS’ EQUITY   68,806,561   65,394,897
+Ordinary Shares
+SHAREHOLDERS’ EQUITY:
+Ordinary shares, value   57   57
+Class A Ordinary Shares
+SHAREHOLDERS’ EQUITY:
+Ordinary shares, value   15   14
+Class X Ordinary Shares
+SHAREHOLDERS’ EQUITY:
+Ordinary shares, value   $ 0   $ 0

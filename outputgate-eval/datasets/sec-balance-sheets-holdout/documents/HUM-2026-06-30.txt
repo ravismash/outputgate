@@ -1,0 +1,35 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 6,893   $ 4,200
+Investment securities   16,978   15,703
+Receivables, net of allowances of $117 in 2026 and $108 in 2025   5,695   3,270
+Other current assets   10,520   9,560
+Total current assets   40,086   32,733
+Property and equipment, net   2,098   2,231
+Long-term investment securities   650   493
+Equity method investments   627   638
+Goodwill   10,485   9,686
+Other long-term assets   3,250   3,128
+Total assets   57,196   48,909
+Current liabilities:
+Benefits payable   12,876   9,967
+Trade accounts payable and accrued expenses   7,263   5,717
+Book overdraft   351   306
+Unearned revenues   249   356
+Short-term debt   2,268   0
+Total current liabilities   23,007   16,346
+Long-term debt   11,979   12,369
+Other long-term liabilities   2,933   2,457
+Total liabilities   37,919   31,172
+Commitments and Contingencies (Note 13)
+Stockholders’ equity:
+Preferred stock, $1 par; 10,000,000 shares authorized; none issued   0   0
+Common stock, $0.16 2/3 par; 300,000,000 shares authorized; 198,719,832 shares issued at June 30, 2026 and 198,719,321 shares issued at December 31, 2025   33   33
+Capital in excess of par value   3,701   3,600
+Retained earnings   30,741   29,075
+Accumulated other comprehensive loss   (751)   (633)
+Treasury stock, at cost, 78,639,524 shares at June 30, 2026 and 78,128,009 shares at December 31, 2025   (14,511)   (14,418)
+Total stockholders' equity   19,213   17,657
+Noncontrolling interests   64   80
+Total equity   19,277   17,737
+Total liabilities and equity   $ 57,196   $ 48,909

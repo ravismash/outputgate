@@ -1,0 +1,59 @@
+Condensed Consolidated Balance Sheets - USD ($) shares in Millions, $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current Assets
+Cash and cash equivalents   $ 673   $ 245
+Receivables (net of allowance for doubtful accounts)   4,482   4,230
+Inventory   4,665   4,569
+Regulatory assets   2,645   1,934
+Assets held for sale   0   109
+Other (includes amounts related to VIEs)   684   526
+Total current assets   13,149   11,613
+Property, Plant and Equipment
+Cost (includes $3,610 at 2026 and $2,913 at 2025 related to VIEs)   197,562   190,409
+Accumulated depreciation and amortization (includes ($138) at 2026 and ($89) at 2025 related to VIEs)   (62,326)   (60,450)
+Net property, plant and equipment   135,236   129,959
+Other Noncurrent Assets
+Goodwill   19,010   19,010
+Regulatory assets   14,411   14,379
+Nuclear decommissioning trust funds   13,590   12,889
+Operating lease right-of-use assets, net   1,166   1,241
+Investments in equity method unconsolidated affiliates   332   330
+Assets held for sale   0   2,148
+Other   4,197   4,167
+Total other noncurrent assets   52,706   54,164
+Total Assets   201,091   195,736
+Current Liabilities
+Accounts payable   4,940   5,223
+Notes payable and commercial paper   2,330   2,624
+Taxes accrued   1,035   975
+Interest accrued   899   922
+Current maturities of long-term debt   6,666   7,104
+Asset retirement obligations   570   579
+Regulatory liabilities   1,422   1,271
+Liabilities associated with assets held for sale   0   84
+Other   2,026   2,265
+Total current liabilities   19,888   21,047
+Long-Term Debt (includes amounts related to VIEs)   82,242   80,108
+Other Noncurrent Liabilities
+Deferred income taxes   13,344   12,377
+Asset retirement obligations   9,202   9,046
+Regulatory liabilities   15,359   15,682
+Operating lease liabilities   968   1,033
+Accrued pension and other post-retirement benefit costs   348   396
+Investment tax credits   976   969
+Liabilities associated with assets held for sale   0   170
+Other   1,901   1,889
+Total other noncurrent liabilities   42,098   41,562
+Commitments and Contingencies
+Equity
+Common stock   1   1
+Additional paid-in capital   47,563   45,614
+Retained earnings   6,005   5,056
+Accumulated other comprehensive income (loss)   209   198
+Total stockholders' equity   54,751   51,842
+Noncontrolling Interests   2,112   1,177
+Total equity   56,863   53,019
+Total Liabilities and Equity   $ 201,091   $ 195,736
+Common stock, shares outstanding (in shares)   780   778
+Preferred stock, Series A
+Equity
+Preferred stock   $ 973   $ 973

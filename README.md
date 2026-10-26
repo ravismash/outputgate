@@ -87,7 +87,7 @@ The code and that output are run as a test on every build
 | `SchemaGate` | JSON Schema 2020-12, from a string or the classpath. The schema itself is checked against the 2020-12 meta-schema when the gate is built | `SchemaGate.fromClasspath("schemas/invoice.schema.json")` |
 | `TypeGate<T>` | Strict binding to a Java type: unknown properties, null primitives, missing record/constructor properties, float-for-int and text-for-number all fail, with Jackson's message | `TypeGate.of(Invoice.class)` |
 | `MathGate` | Cross-field arithmetic with an absolute tolerance: `sumEquals`, `equalsSum`, `productEquals`, `range` and custom rules; `sumEqualsRounded` also allows half a unit of the last printed digit per figure, for figures rounded where they were printed | `.productEquals("line_items[*].amount", "line_items[*].quantity", "line_items[*].unit_price")` |
-| `ProvenanceGate` | Required fields carry evidence, `{value, source_span: {page, text}}`. With `grounded()`, each span's text must occur literally on the page it names; `optional(...)` fields may be null but are checked when present; `groundedIgnoringWhitespace()` ignores spaces and line breaks and reads any hyphen or dash as `-`, and still requires everything else to match exactly (for PDF or OCR text); `numbersMatchQuotes()` requires each numeric value to be a number its own quote prints, so a value scaled or retyped away from a real quote is caught | `.require("total", "line_items[*].amount").grounded()` |
+| `ProvenanceGate` | Required fields carry evidence, `{value, source_span: {page, text}}`. With `grounded()`, each span's text must occur literally on the page it names; `optional(...)` fields may be null but are checked when present; `groundedIgnoringWhitespace()` ignores spaces and line breaks and reads any hyphen or dash as `-`, and still requires everything else to match exactly (for PDF or OCR text); `ignoringCurrencySigns()` also lets a quote add or drop a currency sign; `numbersMatchQuotes()` requires each numeric value to be a number its own quote prints, so a value scaled or retyped away from a real quote is caught | `.require("total", "line_items[*].amount").grounded()` |
 | `RegexGate` | Text rules per field: `require` (whole value), `forbid` (any part), `isoDate`, `currencyCode` (ISO 4217) | `.isoDate("invoice_date").currencyCode("currency")` |
 | `BudgetGate` | Ceilings on the call: cost, latency, output tokens (inclusive) | `.maxCost(0.01).maxLatency(Duration.ofSeconds(5))` |
 
@@ -209,21 +209,35 @@ the GitHub release. It needs the four repository secrets listed at the top of th
 
 ## Benchmark
 
-Four models extracted 60 real company balance sheets from SEC 10-Q filings. Every answer the
-contract accepted was then compared with the filing's own XBRL values:
+**A retry loop will game a validator that only checks the output against itself.** A common
+pattern for structured LLM output is to validate, send the errors back and ask again. In this
+benchmark a model's line items added up to 78,902 while the document printed a total of 70,402.
+Told that the sum didn't match, the retry left the lines alone and changed the total to 78,902.
+Schema and arithmetic now pass. outputgate rejected it because every value carries a quote from
+the source, and 78,902 is not the number its quote prints. That happened in 3 of the 12 retries
+here, and the quote check caught all 3. A retry loop is only safe when the checks are tied to the
+source document.
 
-| Model | Accepted on the first answer | Accepted after one retry with the gate errors | Accepted but wrong |
-|---|---|---|---|
-| gemini-3.1-pro-preview | 60/60 | 60/60 | 0 |
-| gemini-3.5-flash | 60/60 | 60/60 | 0 |
-| gemini-3.8-flash | 59/60 | 60/60 | 0 |
-| qwen2.5:14b (local) | 53/60 | 55/60 | 0 |
+Four models extracted 60 real company balance sheets from SEC 10-Q filings. The contract was then
+frozen and run on 60 other companies. Every accepted answer was compared with the filing's own
+XBRL values:
 
-No wrong answer was accepted. Every rejection was a real mistake: a missed line, a subtotal
-counted twice, amounts scaled by 1,000, or a quote not on the page. One retry fixed 3 of the 8. Two
-gates were added after this run exposed gaps: `numbersMatchQuotes()` and `sumEqualsRounded()`.
-The dataset's [README](outputgate-eval/datasets/sec-balance-sheets) lists every rejection,
-the retry results, those two changes, and a synthetic-corruption sanity check. The report is
+| Model | In-sample: first answer / after one retry / accepted but wrong | Held out: first answer / after one retry / accepted but wrong |
+|---|---|---|
+| gemini-3.1-pro-preview | 60/60 · 60/60 · 0 | 60/60 · 60/60 · 0 |
+| gemini-3.5-flash | 60/60 · 60/60 · 0 | 60/60 · 60/60 · 0 |
+| gemini-3.8-flash | 59/60 · 60/60 · 0 | 59/60 · 60/60 · 0 |
+| qwen2.5:14b (local) | 54/60 · 55/60 · 0 | 56/60 · 57/60 · 1 |
+
+Every rejection was a real mistake, and a plain JSON Schema would have accepted all of them. The
+one wrong answer that got through (CTVA, held out) is a page that prints two balance sheets, the
+parent's and a subsidiary's: qwen took one block from each. Every quote was on the page and
+everything added up, so the contract can't tell. It is reported as a limit, not patched on the
+held-out data. Three gates were added after the in-sample run exposed gaps:
+`numbersMatchQuotes()`, `sumEqualsRounded()` and `ignoringCurrencySigns()`. The READMEs for the
+[in-sample](outputgate-eval/datasets/sec-balance-sheets) and
+[held-out](outputgate-eval/datasets/sec-balance-sheets-holdout) sets list every rejection and
+retry. The report is
 [outputgate-balance-sheet-benchmark.pdf](https://github.com/ravismash/outputgate/releases/download/v0.1.0/outputgate-balance-sheet-benchmark.pdf).
 
 The harness is in [`outputgate-eval`](outputgate-eval). It scores the same model answers three

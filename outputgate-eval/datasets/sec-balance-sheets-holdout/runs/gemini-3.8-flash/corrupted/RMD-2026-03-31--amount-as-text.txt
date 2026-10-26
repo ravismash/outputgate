@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-03-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Mar. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1660513,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,660,513"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net of allowances of $29,474 and $22,424 at March 31, 2026 and June 30, 2025, respectively",
+    "amount" : {
+      "value" : 998837,
+      "source_span" : {
+        "page" : 1,
+        "text" : "998,837"
+      }
+    }
+  }, {
+    "label" : "Inventories (note 3)",
+    "amount" : {
+      "value" : 911876,
+      "source_span" : {
+        "page" : 1,
+        "text" : "911,876"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets (note 3)",
+    "amount" : {
+      "value" : 492836,
+      "source_span" : {
+        "page" : 1,
+        "text" : "492,836"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 4064062,
+    "source_span" : {
+      "page" : 1,
+      "text" : "4,064,062"
+    }
+  },
+  "total_assets" : {
+    "value" : 8784285,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,784,285"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 273301,
+      "source_span" : {
+        "page" : 1,
+        "text" : "273,301"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses",
+    "amount" : {
+      "value" : 446149,
+      "source_span" : {
+        "page" : 1,
+        "text" : "446,149"
+      }
+    }
+  }, {
+    "label" : "Operating lease liabilities, current",
+    "amount" : {
+      "value" : 29233,
+      "source_span" : {
+        "page" : 1,
+        "text" : "29,233"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 179277,
+      "source_span" : {
+        "page" : 1,
+        "text" : "179,277"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 163322,
+      "source_span" : {
+        "page" : 1,
+        "text" : "163,322"
+      }
+    }
+  }, {
+    "label" : "Short-term debt, net (note 7)",
+    "amount" : {
+      "value" : 259928,
+      "source_span" : {
+        "page" : 1,
+        "text" : "259,928"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : "$1,351,210.00",
+    "source_span" : {
+      "page" : 1,
+      "text" : "1,351,210"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 8784285,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 8,784,285"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+CONDENSED CONSOLIDATED BALANCE SHEET - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Assets
+Cash and cash equivalents   $ 1,344   $ 1,555
+Accounts receivable, net   3,246   2,639
+Inventories, net   2,759   2,483
+Assets held for sale   815   592
+Other current assets   1,250   1,264
+Total current assets   9,414   8,533
+Future income tax benefits   1,126   1,074
+Fixed assets, net   3,162   3,165
+Operating lease right-of-use assets   568   546
+Intangible assets, net   5,756   6,326
+Goodwill   15,267   15,501
+Pension and post-retirement assets   61   56
+Equity method investments   1,341   1,321
+Other assets   677   668
+Total Assets   37,372   37,190
+Liabilities and Equity
+Accounts payable   3,216   2,702
+Accrued liabilities   3,963   3,774
+Liabilities held for sale   414   170
+Short-term borrowings and current portion of long-term debt   1,638   468
+Total current liabilities   9,231   7,114
+Long-term debt   10,314   11,365
+Future pension and post-retirement obligations   185   192
+Future income tax obligations   1,622   1,833
+Operating lease liabilities   442   418
+Other long-term liabilities   2,106   2,140
+Total Liabilities   23,900   23,062
+Commitments and contingent liabilities (Note 18)
+Equity
+Common stock   10   10
+Treasury stock   (7,550)   (6,795)
+Additional paid-in capital   8,688   8,665
+Retained earnings   12,536   12,193
+Accumulated other comprehensive income (loss)   (537)   (269)
+Non-controlling interest   325   324
+Total Equity   13,472   14,128
+Total Liabilities and Equity   $ 37,372   $ 37,190

@@ -34,17 +34,22 @@ public final class ProvenanceGate implements Gate {
     private final boolean grounded;
     private final boolean ignoreWhitespace;
     private final boolean numbersMatchQuotes;
+    private final boolean ignoreCurrency;
+
+    /** Currency signs ($, €, £, ¥, ₹ and the rest of Unicode's Sc category). */
+    private static final Pattern CURRENCY = Pattern.compile("\\p{Sc}");
 
     /** A number as printed: digits with optional "," grouping and a decimal part. */
     private static final Pattern NUMBER = Pattern.compile("\\d[\\d,]*(?:\\.\\d+)?|\\.\\d+");
 
     private ProvenanceGate(List<String> paths, List<String> optionalPaths, boolean grounded, boolean ignoreWhitespace,
-            boolean numbersMatchQuotes) {
+            boolean numbersMatchQuotes, boolean ignoreCurrency) {
         this.paths = List.copyOf(paths);
         this.optionalPaths = List.copyOf(optionalPaths);
         this.grounded = grounded;
         this.ignoreWhitespace = ignoreWhitespace;
         this.numbersMatchQuotes = numbersMatchQuotes;
+        this.ignoreCurrency = ignoreCurrency;
     }
 
     /** Starts a new provenance gate. */
@@ -66,9 +71,7 @@ public final class ProvenanceGate implements Gate {
             if (source.isEmpty()) {
                 out.add(new Violation(NAME, "", "grounding is on but the context has no source document"));
             } else {
-                pages = ignoreWhitespace
-                        ? source.get().pages().stream().map(ProvenanceGate::loosen).toList()
-                        : source.get().pages();
+                pages = source.get().pages().stream().map(this::normalize).toList();
             }
         }
         check(output, paths, false, pages, out);
@@ -103,14 +106,16 @@ public final class ProvenanceGate implements Gate {
             return "source_span.page " + page + " is past the end of the document (" + pages.size() + " pages)";
         }
         String quote = span.get("text").asText();
-        String wanted = ignoreWhitespace ? loosen(quote) : quote;
+        String wanted = normalize(quote);
         if (wanted.isEmpty()) {
-            return "source_span.text is only whitespace";
+            return "source_span.text is only whitespace" + (ignoreCurrency ? " or currency signs" : "");
         }
         if (pages.get((int) page - 1).contains(wanted)) {
             return null;
         }
-        String where = ignoreWhitespace ? " (whitespace ignored)" : "";
+        String where = ignoreWhitespace && ignoreCurrency ? " (whitespace and currency signs ignored)"
+                : ignoreWhitespace ? " (whitespace ignored)"
+                : ignoreCurrency ? " (currency signs ignored)" : "";
         for (int i = 0; i < pages.size(); i++) {
             if (pages.get(i).contains(wanted)) {
                 return "source_span.text \"" + quote + "\" is not on page " + page + " (it is on page " + (i + 1) + ")" + where;
@@ -147,6 +152,12 @@ public final class ProvenanceGate implements Gate {
         }
         return "value " + value.decimalValue().toPlainString() + " is not a number its quote prints ("
                 + (printed.isEmpty() ? "the quote has no number" : "it prints " + String.join(", ", printed)) + ")";
+    }
+
+    /** The text as grounding compares it, after the loosening the builder asked for. */
+    private String normalize(String s) {
+        String t = ignoreWhitespace ? loosen(s) : s;
+        return ignoreCurrency ? CURRENCY.matcher(t).replaceAll("") : t;
     }
 
     /** All whitespace is dropped and every kind of hyphen becomes "-". */
@@ -188,6 +199,7 @@ public final class ProvenanceGate implements Gate {
         private boolean grounded;
         private boolean ignoreWhitespace;
         private boolean numbersMatchQuotes;
+        private boolean ignoreCurrency;
 
         private Builder() {}
 
@@ -257,6 +269,19 @@ public final class ProvenanceGate implements Gate {
         }
 
         /**
+         * With grounding, also ignore currency signs ($, €, £ and the rest) in both the quote and the
+         * document, so a quote of "$ 37,794" grounds where the page prints "37,794". A model often
+         * adds or drops the sign when it copies an amount; the digits still have to match. Without
+         * it, that costs a rejection and a retry for an answer that is right.
+         *
+         * @return this builder
+         */
+        public Builder ignoringCurrencySigns() {
+            this.ignoreCurrency = true;
+            return this;
+        }
+
+        /**
          * Builds the gate; a provenance gate that requires nothing would pass everything, so that is an error.
          *
          * @return the gate
@@ -265,7 +290,7 @@ public final class ProvenanceGate implements Gate {
             if (paths.isEmpty()) {
                 throw new IllegalStateException("ProvenanceGate needs at least one required field");
             }
-            return new ProvenanceGate(paths, optionalPaths, grounded, ignoreWhitespace, numbersMatchQuotes);
+            return new ProvenanceGate(paths, optionalPaths, grounded, ignoreWhitespace, numbersMatchQuotes, ignoreCurrency);
         }
     }
 }

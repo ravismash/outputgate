@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-04-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-04-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash, cash equivalents, and restricted cash",
+    "amount" : {
+      "value" : 3354142,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 3,354,142"
+      }
+    }
+  }, {
+    "label" : "Investment in held to maturity securities",
+    "amount" : {
+      "value" : 845570,
+      "source_span" : {
+        "page" : 1,
+        "text" : "845,570"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net of allowance for credit losses of $14,636 and $12,945, respectively",
+    "amount" : {
+      "value" : 794472,
+      "source_span" : {
+        "page" : 1,
+        "text" : "794,472"
+      }
+    }
+  }, {
+    "label" : "Vehicle pooling costs",
+    "amount" : {
+      "value" : 117979,
+      "source_span" : {
+        "page" : 1,
+        "text" : "117,979"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 49632,
+      "source_span" : {
+        "page" : 1,
+        "text" : "49,632"
+      }
+    }
+  }, {
+    "label" : "Income taxes receivable",
+    "amount" : {
+      "value" : 721,
+      "source_span" : {
+        "page" : 1,
+        "text" : "721"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other assets",
+    "amount" : {
+      "value" : 54157,
+      "source_span" : {
+        "page" : 1,
+        "text" : "54,157"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 5216673,
+    "source_span" : {
+      "page" : 1,
+      "text" : "5,216,673"
+    }
+  },
+  "total_assets" : {
+    "value" : 9649036,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,649,036"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable and accrued liabilities",
+    "amount" : {
+      "value" : 598290,
+      "source_span" : {
+        "page" : 1,
+        "text" : "598,290"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 33494,
+      "source_span" : {
+        "page" : 1,
+        "text" : "33,494"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 37650,
+      "source_span" : {
+        "page" : 1,
+        "text" : "37,650"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating and finance lease liabilities",
+    "amount" : {
+      "value" : 15825,
+      "source_span" : {
+        "page" : 1,
+        "text" : "15,825"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 685259,
+    "source_span" : {
+      "page" : 1,
+      "text" : "685,259"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 9649036,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 9,649,036"
+    }
+  }
+}

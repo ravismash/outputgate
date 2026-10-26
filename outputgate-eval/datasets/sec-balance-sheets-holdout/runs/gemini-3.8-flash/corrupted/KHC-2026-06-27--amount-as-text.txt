@@ -1,0 +1,156 @@
+{
+  "period_end" : {
+    "value" : "2026-06-27",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 27, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2419,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,419"
+      }
+    }
+  }, {
+    "label" : "Trade receivables (net of allowances of $34 at June 27, 2026 and $34 at December 27, 2025)",
+    "amount" : {
+      "value" : 2286,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,286"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : "$3,308.00",
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,308"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses",
+    "amount" : {
+      "value" : 266,
+      "source_span" : {
+        "page" : 1,
+        "text" : "266"
+      }
+    }
+  }, {
+    "label" : "Marketable Securities, Current",
+    "amount" : {
+      "value" : 262,
+      "source_span" : {
+        "page" : 1,
+        "text" : "262"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 710,
+      "source_span" : {
+        "page" : 1,
+        "text" : "710"
+      }
+    }
+  }, {
+    "label" : "Assets held for sale",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 9251,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,251"
+    }
+  },
+  "total_assets" : {
+    "value" : 73065,
+    "source_span" : {
+      "page" : 1,
+      "text" : "73,065"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 1382,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,382"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 4478,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,478"
+      }
+    }
+  }, {
+    "label" : "Accrued marketing",
+    "amount" : {
+      "value" : 990,
+      "source_span" : {
+        "page" : 1,
+        "text" : "990"
+      }
+    }
+  }, {
+    "label" : "Interest payable",
+    "amount" : {
+      "value" : 271,
+      "source_span" : {
+        "page" : 1,
+        "text" : "271"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 1595,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,595"
+      }
+    }
+  }, {
+    "label" : "Liabilities held for sale",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 8716,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,716"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 73065,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 73,065"
+    }
+  }
+}

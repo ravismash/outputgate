@@ -1,0 +1,35 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   Jun. 30, 2026   Dec. 31, 2025
+CURRENT ASSETS:
+Cash and cash equivalents   $ 2,192,424   $ 2,088,117
+Short-term investments   1,226,832   677,084
+Accounts receivable, net   1,902,421   1,618,072
+Inventories   867,674   799,623
+Prepaid expenses and other current assets   148,691   103,551
+Prepaid income taxes   67,034   74,637
+Total current assets   6,405,076   5,361,084
+INVESTMENTS   781,314   487,329
+PROPERTY AND EQUIPMENT, net   1,095,810   1,081,544
+DEFERRED INCOME TAXES, net   189,427   188,646
+GOODWILL   1,331,643   1,331,643
+OTHER INTANGIBLE ASSETS, net   1,381,827   1,379,268
+OTHER ASSETS   197,194   159,431
+Total Assets   11,382,291   9,988,945
+CURRENT LIABILITIES:
+Accounts payable   753,751   565,974
+Accrued liabilities   335,527   306,085
+Accrued promotional allowances   434,012   384,070
+Deferred revenue   47,695   45,323
+Accrued compensation   88,194   114,023
+Income taxes payable   58,315   32,305
+Total current liabilities   1,717,494   1,447,780
+DEFERRED REVENUE   151,344   159,991
+OTHER LIABILITIES   149,305   127,066
+COMMITMENTS AND CONTINGENCIES (Note 10)
+STOCKHOLDERS' EQUITY:
+Common stock - $0.005 par value; 5,000,000 shares authorized; 1,136,078 shares issued and 979,490 shares outstanding as of June 30, 2026; 1,132,906 shares issued and 978,113 shares outstanding as of December 31, 2025   5,680   5,665
+Additional paid-in capital   5,572,830   5,430,847
+Retained earnings   10,508,241   9,354,216
+Accumulated other comprehensive loss   (112,846)   (60,841)
+Common stock in treasury, at cost; 156,588 shares and 154,793 shares as of June 30, 2026 and December 31, 2025, respectively   (6,609,757)   (6,475,779)
+Total stockholders' equity   9,364,148   8,254,108
+Total Liabilities and Stockholders' Equity   $ 11,382,291   $ 9,988,945

@@ -1,0 +1,46 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Current assets
+Cash   $ 483   $ 622
+Short-term investments   212   181
+Accounts receivable - net   6,673   5,387
+Inventory   5,417   4,721
+Prepaid expenses and other current assets   1,987   1,444
+Total current assets   14,772   12,355
+Property, plant and equipment
+Land and buildings   2,526   2,361
+Machinery and equipment   8,011   7,667
+Gross property, plant and equipment   10,537   10,028
+Accumulated depreciation   (5,834)   (5,712)
+Net property, plant and equipment   4,702   4,316
+Other noncurrent assets
+Goodwill   20,229   15,769
+Other intangible assets   12,611   5,054
+Operating lease assets   855   768
+Deferred income taxes   592   707
+Other assets   2,419   2,281
+Total assets   56,181   41,251
+Current liabilities
+Short-term debt   2,091   1
+Current portion of long-term debt   11   1,136
+Accounts payable   5,421   4,168
+Accrued compensation   630   644
+Other current liabilities   3,755   3,421
+Total current liabilities   11,909   9,370
+Noncurrent liabilities
+Long-term debt   18,509   8,758
+Pension liabilities   601   702
+Other postretirement benefits liabilities   158   161
+Operating lease liabilities   715   637
+Deferred income taxes   2,139   265
+Other noncurrent liabilities   1,850   1,889
+Total noncurrent liabilities   23,972   12,412
+Shareholders’ equity
+Ordinary shares (388.4 million outstanding in 2026 and 387.9 million in 2025)   4   4
+Capital in excess of par value   12,867   12,837
+Retained earnings   11,530   10,702
+Accumulated other comprehensive loss   (4,146)   (4,118)
+Shares held in trust   0   0
+Total Eaton shareholders’ equity   20,254   19,425
+Noncontrolling interests   45   44
+Total equity   20,299   19,469
+Total liabilities and equity   $ 56,181   $ 41,251
