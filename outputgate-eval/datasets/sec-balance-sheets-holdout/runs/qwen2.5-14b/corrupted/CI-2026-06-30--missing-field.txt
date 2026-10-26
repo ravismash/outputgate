@@ -1,0 +1,83 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "total_current_assets" : {
+    "value" : 46991,
+    "source_span" : {
+      "page" : 1,
+      "text" : "46,991"
+    }
+  },
+  "total_assets" : {
+    "value" : 157082,
+    "source_span" : {
+      "page" : 1,
+      "text" : "157,082"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current insurance and contractholder liabilities",
+    "amount" : {
+      "value" : 6689,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,689"
+      }
+    }
+  }, {
+    "label" : "Pharmacy and other service costs payable",
+    "amount" : {
+      "value" : 26225,
+      "source_span" : {
+        "page" : 1,
+        "text" : "26,225"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 10409,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,409"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other liabilities",
+    "amount" : {
+      "value" : 9447,
+      "source_span" : {
+        "page" : 1,
+        "text" : "9,447"
+      }
+    }
+  }, {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 2792,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,792"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 55562,
+    "source_span" : {
+      "page" : 1,
+      "text" : "55,562"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 157082,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 157,082"
+    }
+  }
+}

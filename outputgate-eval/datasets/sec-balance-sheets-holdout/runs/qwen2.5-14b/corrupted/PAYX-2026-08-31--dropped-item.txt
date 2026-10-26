@@ -1,0 +1,174 @@
+{
+  "period_end" : {
+    "value" : "2026-08-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 600.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 600.9"
+      }
+    }
+  }, {
+    "label" : "Restricted cash",
+    "amount" : {
+      "value" : 55,
+      "source_span" : {
+        "page" : 1,
+        "text" : "55.0"
+      }
+    }
+  }, {
+    "label" : "Corporate investments",
+    "amount" : {
+      "value" : 333.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "333.3"
+      }
+    }
+  }, {
+    "label" : "Interest receivable",
+    "amount" : {
+      "value" : 39.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "39.2"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net of allowance for credit losses",
+    "amount" : {
+      "value" : 1615.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,615.9"
+      }
+    }
+  }, {
+    "label" : "PEO unbilled receivables, net of advance collections",
+    "amount" : {
+      "value" : 680.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "680.2"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 409.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "409.2"
+      }
+    }
+  }, {
+    "label" : "Funds held for clients",
+    "amount" : {
+      "value" : 4348.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,348.4"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 8093.6,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,093.6"
+    }
+  },
+  "total_assets" : {
+    "value" : 15660.7,
+    "source_span" : {
+      "page" : 1,
+      "text" : "15,660.7"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 141.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "141.4"
+      }
+    }
+  }, {
+    "label" : "Accrued corporate compensation and related items",
+    "amount" : {
+      "value" : 132.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "132.5"
+      }
+    }
+  }, {
+    "label" : "Accrued worksite employee compensation and related items",
+    "amount" : {
+      "value" : 824.7,
+      "source_span" : {
+        "page" : 1,
+        "text" : "824.7"
+      }
+    }
+  }, {
+    "label" : "Accrued income taxes",
+    "amount" : {
+      "value" : 81.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "81.1"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 70.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "70.8"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 648.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "648.8"
+      }
+    }
+  }, {
+    "label" : "Client fund obligations",
+    "amount" : {
+      "value" : 4440.7,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,440.7"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 6340,
+    "source_span" : {
+      "page" : 1,
+      "text" : "6,340.0"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 15660.7,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 15,660.7"
+    }
+  }
+}

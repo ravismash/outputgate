@@ -1,0 +1,114 @@
+{
+  "period_end" : {
+    "value" : "2026-03-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Mar. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1787010,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,787,010"
+      }
+    }
+  }, {
+    "label" : "Marketable securities",
+    "amount" : {
+      "value" : 3170928,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,170,928"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : 2304454
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 3437046,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,437,046"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 651541,
+      "source_span" : {
+        "page" : 1,
+        "text" : "651,541"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 11350979,
+    "source_span" : {
+      "page" : 1,
+      "text" : "11,350,979"
+    }
+  },
+  "total_assets" : {
+    "value" : 16873515,
+    "source_span" : {
+      "page" : 1,
+      "text" : "16,873,515"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 515009,
+      "source_span" : {
+        "page" : 1,
+        "text" : "515,009"
+      }
+    }
+  }, {
+    "label" : "Deferred system revenue",
+    "amount" : {
+      "value" : 620839,
+      "source_span" : {
+        "page" : 1,
+        "text" : "620,839"
+      }
+    }
+  }, {
+    "label" : "Deferred service revenue",
+    "amount" : {
+      "value" : 576503,
+      "source_span" : {
+        "page" : 1,
+        "text" : "576,503"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 2039204,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,039,204"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 3751555,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,751,555"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 16873515,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 16,873,515"
+    }
+  }
+}

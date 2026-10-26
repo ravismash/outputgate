@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "06/30/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 479,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 479"
+      }
+    }
+  }, {
+    "label" : "Receivables",
+    "amount" : {
+      "value" : 1937,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,937"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 1243,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,243"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 289,
+      "source_span" : {
+        "page" : 1,
+        "text" : "289"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 3948,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,948"
+    }
+  },
+  "total_assets" : {
+    "value" : 11091,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 11,091"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 686,
+      "source_span" : {
+        "page" : 1,
+        "text" : "686"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 935,
+      "source_span" : {
+        "page" : 1,
+        "text" : "935"
+      }
+    }
+  }, {
+    "label" : "Compensation and benefits",
+    "amount" : {
+      "value" : 395,
+      "source_span" : {
+        "page" : 1,
+        "text" : "395"
+      }
+    }
+  }, {
+    "label" : "Contract liabilities",
+    "amount" : {
+      "value" : 651,
+      "source_span" : {
+        "page" : 1,
+        "text" : "651"
+      }
+    }
+  }, {
+    "label" : "Customer returns, rebates and incentives",
+    "amount" : {
+      "value" : 383,
+      "source_span" : {
+        "page" : 1,
+        "text" : "383"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 620,
+      "source_span" : {
+        "page" : 1,
+        "text" : "620"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 3672,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,672"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 11091,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 11,091"
+    }
+  }
+}

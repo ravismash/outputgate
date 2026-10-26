@@ -2,8 +2,9 @@
 
 60 real company balance sheets, each the balance-sheet statement of the company's latest 10-Q on
 SEC EDGAR as EDGAR's XBRL viewer prints it, with the filing's own XBRL values as ground truth.
-It is the second dataset for the eval harness, after invoices. The harness is the same; only the
-contract ([`BalanceSheet`](../../src/main/java/io/github/ravismash/outputgate/eval/BalanceSheet.java))
+The contract was tuned on this set; [`../sec-balance-sheets-holdout`](../sec-balance-sheets-holdout)
+is 60 other companies run with the contract frozen. The harness is the same as for any other
+dataset; only the contract ([`BalanceSheet`](../../src/main/java/io/github/ravismash/outputgate/eval/BalanceSheet.java))
 is new.
 
 ## Real answers against ground truth (2026-10-26)
@@ -18,11 +19,11 @@ liabilities and total liabilities and equity. Those values were available for 58
 | gemini-3.1-pro-preview | 60/60 | 60/60 | 0 |
 | gemini-3.5-flash | 60/60 | 60/60 | 0 |
 | gemini-3.8-flash | 59/60 | 60/60 | 0 |
-| qwen2.5:14b (local, 16 GB Mac) | 53/60 | 55/60 | 0 |
+| qwen2.5:14b (local, 16 GB Mac) | 54/60 | 55/60 | 0 |
 
 **Accepted but wrong is 0 for every model, retries included.** Every accepted answer that has
 ground truth matches it on all four totals. **The cost is the answers the contract turns away:**
-one for gemini-3.8-flash and seven for qwen on the first pass, five for qwen after a retry. Each
+one for gemini-3.8-flash and six for qwen on the first pass, five for qwen after a retry. Each
 of those is a document a pipeline would route to a person instead.
 
 ### Every rejection, read by hand
@@ -35,14 +36,13 @@ of those is a document a pipeline would route to a person instead.
 | TXN | qwen | Listed a subtotal and the lines inside it | arithmetic | Not fixed |
 | TSLA | qwen | Added two non-current items printed in blocks below the table | arithmetic | Not fixed: the retry changed the total to match its own sum, and the quote check rejected that |
 | MO | qwen | Quoted a number that is not on the page | grounding | Not fixed |
-| NKE | qwen | Quoted "$ 37,794" where the page prints "37,794" | grounding | Fixed |
 
 Every rejection is a real error: in each case the answer was wrong or not supported by the page.
 After the changes below, no correct answer is rejected.
 
-### Two changes made after seeing these results
+### Three changes made after seeing these results
 
-Both changes were made to fix failures found in this run, so this dataset is not an independent
+All three were made to fix failures found in this run, so this dataset is not an independent
 test of them:
 
 1. **`numbersMatchQuotes()` (new).** On DRI, qwen's scaled answer passed the first contract: every
@@ -54,6 +54,8 @@ test of them:
    rejected correct answers from every model. Sums now allow half a unit of the last printed digit
    for each figure. With the old rules, every model had those 2 extra rejections, and qwen's DRI
    answer was accepted wrong.
+3. **`ignoringCurrencySigns()` (new).** qwen quoted "$ 37,794" for NKE where the page prints
+   "37,794", and the first contract rejected it. Quotes now match with or without a currency sign.
 
 ## The retry loop
 
@@ -61,7 +63,7 @@ test of them:
 rejected answer and every violation word for word, for example `sum of current_liabilities[*].amount
 is 7808 but total_current_liabilities is 8936`. The retry is judged by the same contract.
 
-3 of the 8 rejected answers were fixed, and all 3 match ground truth. In one case (TSLA) the
+2 of the 7 rejected answers were fixed, and both match ground truth. In one case (TSLA) the
 model tried to pass by changing a printed total to match its own wrong sum. The quote check caught
 it, because the new total is not the number on the page. A retry loop is only safe if the checks
 can't be satisfied by changing values to fit.
