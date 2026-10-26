@@ -71,7 +71,7 @@
     "amount" : {
       "value" : 2825,
       "source_span" : {
-        "page" : 2,
+        "page" : 1,
         "text" : "2,825"
       }
     }
@@ -98,7 +98,7 @@
     "amount" : {
       "value" : 4224,
       "source_span" : {
-        "page" : 1,
+        "page" : 2,
         "text" : "4,224"
       }
     }

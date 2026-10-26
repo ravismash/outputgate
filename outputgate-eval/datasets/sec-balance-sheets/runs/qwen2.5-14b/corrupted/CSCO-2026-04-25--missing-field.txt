@@ -75,66 +75,18 @@
       "text" : "125,546"
     }
   },
-  "current_liabilities" : [ {
-    "label" : "Short-term debt",
-    "amount" : {
-      "value" : 11932,
-      "source_span" : {
-        "page" : 1,
-        "text" : "11,932"
-      }
-    }
-  }, {
-    "label" : "Accounts payable",
-    "amount" : {
-      "value" : 2970,
-      "source_span" : {
-        "page" : 1,
-        "text" : "2,970"
-      }
-    }
-  }, {
-    "label" : "Income taxes payable",
-    "amount" : {
-      "value" : 173,
-      "source_span" : {
-        "page" : 1,
-        "text" : "173"
-      }
-    }
-  }, {
-    "label" : "Accrued compensation",
-    "amount" : {
-      "value" : 3290,
-      "source_span" : {
-        "page" : 1,
-        "text" : "3,290"
-      }
-    }
-  }, {
-    "label" : "Deferred revenue",
-    "amount" : {
-      "value" : 16446,
-      "source_span" : {
-        "page" : 1,
-        "text" : "16,446"
-      }
-    }
-  }, {
-    "label" : "Other current liabilities",
-    "amount" : {
-      "value" : 4730,
-      "source_span" : {
-        "page" : 1,
-        "text" : "4,730"
-      }
-    }
-  } ],
   "total_current_liabilities" : {
     "value" : 39541,
     "source_span" : {
       "page" : 1,
       "text" : "39,541"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 125546,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 125,546"
     }
   }
 }

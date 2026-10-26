@@ -16,21 +16,21 @@
       }
     }
   }, {
-    "label" : "Marketable securities",
-    "amount" : {
-      "value" : 708,
-      "source_span" : {
-        "page" : 1,
-        "text" : "708"
-      }
-    }
-  }, {
     "label" : "Trade receivables, net of allowances for credit losses of $536 and $542 as of August 31, 2026 and May 31, 2026, respectively",
     "amount" : {
       "value" : 11394,
       "source_span" : {
         "page" : 1,
         "text" : "11,394"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 7159,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,159"
       }
     }
   } ],

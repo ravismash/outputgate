@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-08-01",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 01, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 6004,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 6,004"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 665,
+      "source_span" : {
+        "page" : 1,
+        "text" : "665"
+      }
+    }
+  }, {
+    "label" : "Merchandise inventories",
+    "amount" : {
+      "value" : 7862,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,862"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 730,
+      "source_span" : {
+        "page" : 1,
+        "text" : "730"
+      }
+    }
+  }, {
+    "label" : "Federal, state and foreign income taxes recoverable",
+    "amount" : {
+      "value" : 68,
+      "source_span" : {
+        "page" : 1,
+        "text" : "68"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 15329,
+    "source_span" : {
+      "page" : 1,
+      "text" : "15,329"
+    }
+  },
+  "total_assets" : {
+    "value" : 37115,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 37,115"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 5024,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,024"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other current liabilities",
+    "amount" : {
+      "value" : 5372,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,372"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 1714,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,714"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 1000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,000"
+      }
+    }
+  }, {
+    "label" : "Federal, state and foreign income taxes payable",
+    "amount" : {
+      "value" : "$250.00",
+      "source_span" : {
+        "page" : 1,
+        "text" : "250"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 13360,
+    "source_span" : {
+      "page" : 1,
+      "text" : "13,360"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 37115,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 37,115"
+    }
+  }
+}

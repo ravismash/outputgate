@@ -18,7 +18,7 @@
   }, {
     "label" : "Short-term investments",
     "amount" : {
-      "value" : 262,
+      "value" : 622,
       "source_span" : {
         "page" : 1,
         "text" : "622"
@@ -36,7 +36,7 @@
   }, {
     "label" : "Trade accounts receivable, less allowances of $492 and $495, respectively",
     "amount" : {
-      "value" : 3732,
+      "value" : 3372,
       "source_span" : {
         "page" : 1,
         "text" : "3,732"

@@ -66,57 +66,18 @@
       "text" : "18,554"
     }
   },
-  "current_liabilities" : [ {
-    "label" : "Debt payable within one year",
-    "amount" : {
-      "value" : 43,
-      "source_span" : {
-        "page" : 1,
-        "text" : "43"
-      }
-    }
-  }, {
-    "label" : "Trade accounts payable",
-    "amount" : {
-      "value" : 3372,
-      "source_span" : {
-        "page" : 1,
-        "text" : "3,372"
-      }
-    }
-  }, {
-    "label" : "Accrued expenses and other current liabilities",
-    "amount" : {
-      "value" : 2269,
-      "source_span" : {
-        "page" : 1,
-        "text" : "2,269"
-      }
-    }
-  }, {
-    "label" : "Dividends payable",
-    "amount" : {
-      "value" : 423,
-      "source_span" : {
-        "page" : 1,
-        "text" : "423"
-      }
-    }
-  }, {
-    "label" : "Current liabilities of discontinued operations",
-    "amount" : {
-      "value" : 881,
-      "source_span" : {
-        "page" : 1,
-        "text" : "881"
-      }
-    }
-  } ],
   "total_current_liabilities" : {
     "value" : 6988,
     "source_span" : {
       "page" : 1,
       "text" : "6,988"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 18554,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 18,554"
     }
   }
 }

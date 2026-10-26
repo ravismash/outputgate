@@ -1,0 +1,165 @@
+{
+  "period_end" : {
+    "value" : "2026-09-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-09-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 6683,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 6,683"
+      }
+    }
+  }, {
+    "label" : "Trade receivables (less allowances of $36 in 2026 and $23 in 2025)",
+    "amount" : {
+      "value" : 5156,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,156"
+      }
+    }
+  }, {
+    "label" : "Other receivables (less allowances of $24 in 2026 and $24 in 2025)",
+    "amount" : {
+      "value" : 1375,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,375"
+      }
+    }
+  }, {
+    "label" : "Total inventory, net",
+    "amount" : {
+      "value" : 10326,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,326"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 2248,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,248"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 25788,
+    "source_span" : {
+      "page" : 1,
+      "text" : "25,788"
+    }
+  },
+  "total_assets" : {
+    "value" : 66730,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 66,730"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings (Note 11)",
+    "amount" : {
+      "value" : 2525,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,525"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt (Note 11)",
+    "amount" : {
+      "value" : 3328,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,328"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 4036,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,036"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities: Marketing and selling",
+    "amount" : {
+      "value" : 1469,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,469"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities: Taxes, except income taxes",
+    "amount" : {
+      "value" : 5521,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,521"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities: Employment costs",
+    "amount" : {
+      "value" : 1420,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,420"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities: Dividends payable",
+    "amount" : {
+      "value" : 2516,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,516"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities: Other",
+    "amount" : {
+      "value" : 3019,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,019"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities: Income taxes",
+    "amount" : {
+      "value" : 1361,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,361"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 25195,
+    "source_span" : {
+      "page" : 1,
+      "text" : "25,195"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 66730,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 66,730"
+    }
+  }
+}

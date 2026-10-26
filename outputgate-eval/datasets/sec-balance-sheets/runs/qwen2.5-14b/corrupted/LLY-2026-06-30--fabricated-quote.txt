@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 8950,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 8,950"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable",
+    "amount" : {
+      "value" : 20083,
+      "source_span" : {
+        "page" : 1,
+        "text" : "20,083"
+      }
+    }
+  }, {
+    "label" : "Other receivables",
+    "amount" : {
+      "value" : 3392,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,392"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 16793,
+      "source_span" : {
+        "page" : 1,
+        "text" : "16,793"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses",
+    "amount" : {
+      "value" : 15368,
+      "source_span" : {
+        "page" : 1,
+        "text" : "15,368"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 86,
+      "source_span" : {
+        "page" : 1,
+        "text" : "86"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 64672,
+    "source_span" : {
+      "page" : 1,
+      "text" : "64,672"
+    }
+  },
+  "total_assets" : {
+    "value" : 142283,
+    "source_span" : {
+      "page" : 1,
+      "text" : "142,283"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings and current maturities of long-term debt",
+    "amount" : {
+      "value" : 7050,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,050"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 6112,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,112"
+      }
+    }
+  }, {
+    "label" : "Employee compensation",
+    "amount" : {
+      "value" : 1798,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,798"
+      }
+    }
+  }, {
+    "label" : "Sales rebates and discounts",
+    "amount" : {
+      "value" : 21122,
+      "source_span" : {
+        "page" : 1,
+        "text" : "21,122"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 11659,
+      "source_span" : {
+        "page" : 1,
+        "text" : "11,659"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 47741,
+    "source_span" : {
+      "page" : 1,
+      "text" : "47,741"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 142283,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 142,283"
+    }
+  }
+}

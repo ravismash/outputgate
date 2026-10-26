@@ -1,12 +1,12 @@
 # outputgate benchmark: balance-sheet
 
-Model: qwen2.5:14b (local Ollama, temperature 0, seed 42, num_ctx 16384, format: balance-sheet output schema) · 60 documents, 60 with an answer, 50 corrupted outputs · 2026-10-25
+Model: qwen2.5:14b (local Ollama, temperature 0, seed 42, num_ctx 16384, format: balance-sheet output schema) · 60 documents, 60 with an answer, 50 corrupted outputs · 2026-10-26
 
 ## Results
 
 |  | Naive (parse only) | Schema only | Full contract |
 |---|---|---|---|
-| Recorded answers accepted | 60/60 (100%) | 60/60 (100%) | 52/60 (87%) |
+| Recorded answers accepted | 60/60 (100%) | 60/60 (100%) | 53/60 (88%) |
 | Corrupted outputs caught | 4/50 (8%) | 20/50 (40%) | 50/50 (100%) |
 
 ## Caught, by kind of corruption
@@ -35,25 +35,24 @@ The dataset's own values for 58 documents (total_assets, total_current_assets, t
 
 |  | Naive (parse only) | Schema only | Full contract |
 |---|---|---|---|
-| Accepted, every compared field right | 57 | 57 | 49 |
-| Accepted, some field wrong | 1 | 1 | 1 |
+| Accepted, every compared field right | 57 | 57 | 51 |
+| Accepted, some field wrong | 1 | 1 | 0 |
 
-### Accepted by the full contract but wrong (1)
+### Accepted by the full contract but wrong (0)
 
-- DRI-2026-08-30.txt: total_assets: answer 13226600, ground truth 13226.6; total_current_assets: answer 953100, ground truth 953.1; total_current_liabilities: answer 3199000, ground truth 3199; total_liabilities_and_equity: answer 13226600, ground truth 13226.6
+- None.
 
-## Recorded answers the full contract rejected (8)
+## Recorded answers the full contract rejected (7)
 
 Each is either a model mistake the contract caught or a contract that is too strict. Read them by hand before quoting the numbers above.
 
-- BBY-2026-08-01.txt: [math] total_current_liabilities: sum of current_liabilities[*].amount is 7808 but total_current_liabilities is 8936 (tolerance 1)
-- GOOGL-2026-06-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 585998 but total_current_assets is 343524 (tolerance 1)
-- IBM-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 31190 but total_current_assets is 31192 (tolerance 1)
+- BBY-2026-08-01.txt: [math] total_current_liabilities: sum of current_liabilities[*].amount is 7808 but total_current_liabilities is 8936 (allowed for rounding 3.0)
+- DRI-2026-08-30.txt: [provenance] current_assets[0].amount: value 220500 is not a number its quote prints (it prints 220.5); [provenance] current_assets[1].amount: value 118000 is not a number its quote prints (it prints 118.0); [provenance] current_assets[2].amount: value 321000 is not a number its quote prints (it prints 321.0); and 12 more
+- GOOGL-2026-06-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 585998 but total_current_assets is 343524 (allowed for rounding 3.5)
 - MO-2026-06-30.txt: [provenance] current_liabilities[2].amount: source_span.text "3,625" not found in the source document (whitespace ignored)
 - NKE-2026-08-31.txt: [provenance] total_liabilities_and_equity: source_span.text "$ 37,794" not found in the source document (whitespace ignored)
-- TMO-2026-06-27.txt: [math] total_current_liabilities: sum of current_liabilities[*].amount is 15071 but total_current_liabilities is 15069 (tolerance 1)
-- TSLA-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 78902 but total_current_assets is 70402 (tolerance 1)
-- TXN-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 21552 but total_current_assets is 16880 (tolerance 1)
+- TSLA-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 78902 but total_current_assets is 70402 (allowed for rounding 4.0)
+- TXN-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 21552 but total_current_assets is 16880 (allowed for rounding 4.5)
 
 ## How to read this
 

@@ -67,12 +67,12 @@
     }
   },
   "current_liabilities" : [ {
-    "label" : "Accounts payable",
+    "label" : "Short-term debt",
     "amount" : {
-      "value" : 49723,
+      "value" : 8481,
       "source_span" : {
         "page" : 1,
-        "text" : "49,723"
+        "text" : "8,481"
       }
     }
   }, {

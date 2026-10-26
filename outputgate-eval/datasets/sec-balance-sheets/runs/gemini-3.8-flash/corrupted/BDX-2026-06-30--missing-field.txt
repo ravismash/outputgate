@@ -1,0 +1,122 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and equivalents",
+    "amount" : {
+      "value" : 708,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 708"
+      }
+    }
+  }, {
+    "label" : "Restricted cash",
+    "amount" : {
+      "value" : 155,
+      "source_span" : {
+        "page" : 1,
+        "text" : "155"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1"
+      }
+    }
+  }, {
+    "label" : "Trade receivables, net",
+    "amount" : {
+      "value" : 2364,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,364"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 3316,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,316"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other",
+    "amount" : {
+      "value" : 1595,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,595"
+      }
+    }
+  }, {
+    "label" : "Current assets of discontinued operations",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 8139,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,139"
+    }
+  },
+  "total_assets" : {
+    "value" : 50731,
+    "source_span" : {
+      "page" : 1,
+      "text" : "50,731"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current debt obligations",
+    "amount" : {
+      "value" : 3297,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,297"
+      }
+    }
+  }, {
+    "label" : "Payables, accrued expenses and other current liabilities",
+    "amount" : {
+      "value" : 6107,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,107"
+      }
+    }
+  }, {
+    "label" : "Current liabilities of discontinued operations",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  } ],
+  "total_liabilities_and_equity" : {
+    "value" : 50731,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 50,731"
+    }
+  }
+}

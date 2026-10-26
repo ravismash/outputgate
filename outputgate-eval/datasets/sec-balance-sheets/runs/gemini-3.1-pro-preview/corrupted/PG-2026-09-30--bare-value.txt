@@ -1,11 +1,5 @@
 {
-  "period_end" : {
-    "value" : "2026-09-30",
-    "source_span" : {
-      "page" : 1,
-      "text" : "Sep. 30, 2026"
-    }
-  },
+  "period_end" : "2026-09-30",
   "current_assets" : [ {
     "label" : "Cash and cash equivalents",
     "amount" : {
@@ -26,7 +20,13 @@
     }
   }, {
     "label" : "Total inventories",
-    "amount" : 8485
+    "amount" : {
+      "value" : 8485,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,485"
+      }
+    }
   }, {
     "label" : "Prepaid expenses and other current assets",
     "amount" : {

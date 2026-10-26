@@ -38,7 +38,7 @@
     "amount" : {
       "value" : 2074,
       "source_span" : {
-        "page" : 2,
+        "page" : 1,
         "text" : "2,074"
       }
     }
@@ -47,7 +47,7 @@
     "amount" : {
       "value" : 2286,
       "source_span" : {
-        "page" : 1,
+        "page" : 2,
         "text" : "2,286"
       }
     }

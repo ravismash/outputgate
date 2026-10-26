@@ -38,7 +38,7 @@
     "amount" : {
       "value" : 2074,
       "source_span" : {
-        "page" : 2,
+        "page" : 1,
         "text" : "2,074"
       }
     }
@@ -62,7 +62,7 @@
   "total_assets" : {
     "value" : 109620,
     "source_span" : {
-      "page" : 1,
+      "page" : 2,
       "text" : "109,620"
     }
   },
