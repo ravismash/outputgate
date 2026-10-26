@@ -86,4 +86,15 @@ class BalanceSheetTest {
             assertTrue(schema.contains("\"" + field + "\""), field);
         }
     }
+
+    @Test
+    @DisplayName("amounts scaled by 1,000 with the printed quotes kept are caught by provenance (a real qwen answer did this)")
+    void scaledAmountsCaught() {
+        String scaled = line("Cash and cash equivalents", "1200000", "$ 1,200") + ","
+                + line("Total inventories", "800000", "800") + "," + line("Other current assets", "-1000", "(1)");
+        String json = output(scaled, "5000000", "5,000")
+                .replace("\"value\": 1999,", "\"value\": 1999000,").replace("\"value\": 900,", "\"value\": 900000,")
+                .replace("\"value\": 5000,", "\"value\": 5000000,");
+        LlmAssert.assertThat(json).withContext(CTX).isRejectedBy(BalanceSheet.contract()).byGate("provenance");
+    }
 }

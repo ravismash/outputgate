@@ -18,7 +18,7 @@
   }, {
     "label" : "Short-term investments",
     "amount" : {
-      "value" : 262,
+      "value" : 622,
       "source_span" : {
         "page" : 1,
         "text" : "622"
@@ -96,7 +96,7 @@
   }, {
     "label" : "Loans and notes payable",
     "amount" : {
-      "value" : 48,
+      "value" : 84,
       "source_span" : {
         "page" : 1,
         "text" : "48"

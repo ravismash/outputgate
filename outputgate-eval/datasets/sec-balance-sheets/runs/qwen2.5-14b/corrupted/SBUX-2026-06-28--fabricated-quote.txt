@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-06-28",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-28"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 3449.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 3,449.8"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 160.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "160.5"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 1304.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,304.2"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 2208.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,208.9"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 410.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "410.8"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 7534.2,
+    "source_span" : {
+      "page" : 1,
+      "text" : "7,534.2"
+    }
+  },
+  "total_assets" : {
+    "value" : 28294.7,
+    "source_span" : {
+      "page" : 1,
+      "text" : "28,294.7"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 1777.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,777.2"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities",
+    "amount" : {
+      "value" : 2688.6,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,688.6"
+      }
+    }
+  }, {
+    "label" : "Accrued payroll and benefits",
+    "amount" : {
+      "value" : 863.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "863.3"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liability",
+    "amount" : {
+      "value" : 1271.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,271.3"
+      }
+    }
+  }, {
+    "label" : "Stored value card liability and current portion of deferred revenue",
+    "amount" : {
+      "value" : 1818.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,818.1"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 1498.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,498.4"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 9916.9,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,916.9"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 28294.7,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 28,294.7"
+    }
+  }
+}

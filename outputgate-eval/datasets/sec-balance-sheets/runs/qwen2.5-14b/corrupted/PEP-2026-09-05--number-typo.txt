@@ -45,7 +45,7 @@
   }, {
     "label" : "Prepaid expenses and other current assets",
     "amount" : {
-      "value" : 3139,
+      "value" : 1339,
       "source_span" : {
         "page" : 1,
         "text" : "1,339"
@@ -78,7 +78,7 @@
   }, {
     "label" : "Accounts payable and other current liabilities",
     "amount" : {
-      "value" : 25306,
+      "value" : 25360,
       "source_span" : {
         "page" : 1,
         "text" : "25,306"

@@ -1,0 +1,149 @@
+{
+  "period_end" : {
+    "value" : "2026-06-28",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 28, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 976,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 976"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 10723,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,723"
+      }
+    }
+  }, {
+    "label" : "Trade accounts receivable, net of allowance for doubtful accounts",
+    "amount" : {
+      "value" : 12490,
+      "source_span" : {
+        "page" : 1,
+        "text" : "12,490"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 9945,
+      "source_span" : {
+        "page" : 1,
+        "text" : "9,945"
+      }
+    }
+  }, {
+    "label" : "Current tax assets",
+    "amount" : {
+      "value" : 3702,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,702"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 3522,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,522"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 41358,
+    "source_span" : {
+      "page" : 1,
+      "text" : "41,358"
+    }
+  },
+  "total_assets" : {
+    "value" : 201131,
+    "source_span" : {
+      "page" : 1,
+      "text" : "201,131"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings, including current portion of long-term debt",
+    "amount" : {
+      "value" : 2699,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,699"
+      }
+    }
+  }, {
+    "label" : "Trade accounts payable",
+    "amount" : {
+      "value" : 4581,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,581"
+      }
+    }
+  }, {
+    "label" : "Dividends payable",
+    "amount" : {
+      "value" : 2451,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,451"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 653,
+      "source_span" : {
+        "page" : 1,
+        "text" : "653"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and related items",
+    "amount" : {
+      "value" : 2554,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,554"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 19709,
+      "source_span" : {
+        "page" : 1,
+        "text" : "19,709"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 32646,
+    "source_span" : {
+      "page" : 1,
+      "text" : "32,646"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 201131,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 201,131"
+    }
+  }
+}
+
+Note: one amount was hard to read, so please double-check it.

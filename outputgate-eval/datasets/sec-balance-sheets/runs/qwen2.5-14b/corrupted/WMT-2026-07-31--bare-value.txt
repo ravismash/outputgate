@@ -1,0 +1,141 @@
+{
+  "period_end" : {
+    "value" : "2026-07-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jul. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : 11529
+  }, {
+    "label" : "Receivables, net",
+    "amount" : {
+      "value" : 11075,
+      "source_span" : {
+        "page" : 1,
+        "text" : "11,075"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 61600,
+      "source_span" : {
+        "page" : 1,
+        "text" : "61,600"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other",
+    "amount" : {
+      "value" : 4499,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,499"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 88703,
+    "source_span" : {
+      "page" : 1,
+      "text" : "88,703"
+    }
+  },
+  "total_assets" : {
+    "value" : 293914,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 293,914"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings",
+    "amount" : {
+      "value" : 10479,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,479"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 64318,
+      "source_span" : {
+        "page" : 1,
+        "text" : "64,318"
+      }
+    }
+  }, {
+    "label" : "Dividends payable",
+    "amount" : {
+      "value" : 3949,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,949"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities",
+    "amount" : {
+      "value" : 30074,
+      "source_span" : {
+        "page" : 1,
+        "text" : "30,074"
+      }
+    }
+  }, {
+    "label" : "Accrued income taxes",
+    "amount" : {
+      "value" : 746,
+      "source_span" : {
+        "page" : 1,
+        "text" : "746"
+      }
+    }
+  }, {
+    "label" : "Long-term debt due within one year",
+    "amount" : {
+      "value" : 3470,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,470"
+      }
+    }
+  }, {
+    "label" : "Operating lease obligations due within one year",
+    "amount" : {
+      "value" : 1714,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,714"
+      }
+    }
+  }, {
+    "label" : "Finance lease obligations due within one year",
+    "amount" : {
+      "value" : 880,
+      "source_span" : {
+        "page" : 1,
+        "text" : "880"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 115630,
+    "source_span" : {
+      "page" : 1,
+      "text" : "115,630"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 293914,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 293,914"
+    }
+  }
+}

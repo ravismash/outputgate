@@ -86,7 +86,8 @@ public final class BalanceSheet {
 
     /**
      * @return the contract: schema, type, math (lines add up to their totals, assets equal
-     *     liabilities and equity, current within total), grounded provenance, ISO date, labels
+     *     liabilities and equity, current within total), grounded provenance with every amount
+     *     equal to the number its quote prints, ISO date, labels
      */
     public static Contract contract() {
         return Contract.builder()
@@ -107,6 +108,7 @@ public final class BalanceSheet {
                         .require("period_end", "current_assets[*].amount", "total_current_assets", "total_assets",
                                 "current_liabilities[*].amount", "total_current_liabilities", "total_liabilities_and_equity")
                         .groundedIgnoringWhitespace()
+                        .numbersMatchQuotes()
                         .build())
                 .gate(RegexGate.builder()
                         .isoDate("period_end")

@@ -247,4 +247,33 @@ class ProvenanceGateTest {
     void emptyDocumentRejected() {
         assertThrows(IllegalArgumentException.class, SourceDocument::ofPages);
     }
+
+    @Test
+    @DisplayName("numbersMatchQuotes: a value scaled away from its quote is rejected even though the quote is on the page")
+    void scaledValueRejected() {
+        ProvenanceGate gate = ProvenanceGate.builder().require("subtotal").groundedIgnoringWhitespace().numbersMatchQuotes().build();
+        assertTrue(run(gate, "{\"subtotal\": " + ev("74.5", 2, "Subtotal   74.50") + "}", WITH_SOURCE).passed());
+
+        Verdict scaled = run(gate, "{\"subtotal\": " + ev("74500", 2, "Subtotal   74.50") + "}", WITH_SOURCE);
+        assertEquals(1, scaled.violations().size(), () -> scaled.violations().toString());
+        assertEquals("value 74500 is not a number its quote prints (it prints 74.50)", scaled.violations().get(0).message());
+
+        Verdict none = run(gate, "{\"subtotal\": " + ev("74.50", 1, "ACME SUPPLIES LTD") + "}", WITH_SOURCE);
+        assertTrue(none.violations().get(0).message().contains("the quote has no number"), () -> none.violations().toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"$ 1,203", "(1,203)", "-1,203.00", "Total 1,203 CR", "USD1203"})
+    @DisplayName("numbersMatchQuotes: grouping, currency signs and the sign of the printed number don't count")
+    void printedFormsMatch(String quote) {
+        ProvenanceGate gate = ProvenanceGate.builder().require("amount").numbersMatchQuotes().build();
+        assertTrue(run(gate, "{\"amount\": " + ev("-1203", 1, quote) + "}", EvalContext.empty()).passed(), quote);
+    }
+
+    @Test
+    @DisplayName("numbersMatchQuotes: text values are left alone")
+    void textValuesNotParsed() {
+        ProvenanceGate gate = ProvenanceGate.builder().require("vendor").numbersMatchQuotes().build();
+        assertTrue(run(gate, "{\"vendor\": " + ev("\"Acme 2\"", 1, "ACME SUPPLIES LTD") + "}", EvalContext.empty()).passed());
+    }
 }

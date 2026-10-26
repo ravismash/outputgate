@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-09-27",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Sep. 27, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents (Note 4)",
+    "amount" : {
+      "value" : 16910,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 16,910"
+      }
+    }
+  }, {
+    "label" : "Marketable securities",
+    "amount" : {
+      "value" : 318,
+      "source_span" : {
+        "page" : 1,
+        "text" : "318"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, trade, less allowances $187 (2025, $183)",
+    "amount" : {
+      "value" : 18987,
+      "source_span" : {
+        "page" : 1,
+        "text" : "18,987"
+      }
+    }
+  }, {
+    "label" : "Inventories (Note 2)",
+    "amount" : {
+      "value" : 15377,
+      "source_span" : {
+        "page" : 1,
+        "text" : "15,377"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other",
+    "amount" : {
+      "value" : "$4,759.00",
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,759"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 56351,
+    "source_span" : {
+      "page" : 1,
+      "text" : "56,351"
+    }
+  },
+  "total_assets" : {
+    "value" : 197425,
+    "source_span" : {
+      "page" : 1,
+      "text" : "197,425"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Loans and notes payable",
+    "amount" : {
+      "value" : 8852,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,852"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 9317,
+      "source_span" : {
+        "page" : 1,
+        "text" : "9,317"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities",
+    "amount" : {
+      "value" : 12255,
+      "source_span" : {
+        "page" : 1,
+        "text" : "12,255"
+      }
+    }
+  }, {
+    "label" : "Accrued rebates, returns and promotions",
+    "amount" : {
+      "value" : 18936,
+      "source_span" : {
+        "page" : 1,
+        "text" : "18,936"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and employee related obligations",
+    "amount" : {
+      "value" : 4121,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,121"
+      }
+    }
+  }, {
+    "label" : "Accrued taxes on income (Note 5)",
+    "amount" : {
+      "value" : 1976,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,976"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 55457,
+    "source_span" : {
+      "page" : 1,
+      "text" : "55,457"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 197425,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 197,425"
+    }
+  }
+}
