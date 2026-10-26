@@ -1,0 +1,122 @@
+{
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1691,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,691"
+      }
+    }
+  }, {
+    "label" : "Investments",
+    "amount" : {
+      "value" : 7128,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,128"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, less allowances for credit losses of $203 and $190, respectively",
+    "amount" : {
+      "value" : 6357,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,357"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 6215,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,215"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 2999,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,999"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 24390,
+    "source_span" : {
+      "page" : 1,
+      "text" : "24,390"
+    }
+  },
+  "total_assets" : {
+    "value" : 93306,
+    "source_span" : {
+      "page" : 1,
+      "text" : "93,306"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current debt obligations",
+    "amount" : {
+      "value" : 2536,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,536"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 2695,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,695"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation",
+    "amount" : {
+      "value" : 1906,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,906"
+      }
+    }
+  }, {
+    "label" : "Accrued income taxes",
+    "amount" : {
+      "value" : 1056,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,056"
+      }
+    }
+  }, {
+    "label" : "Other accrued expenses",
+    "amount" : {
+      "value" : 3606,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,606"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 11799,
+    "source_span" : {
+      "page" : 1,
+      "text" : "11,799"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 93306,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 93,306"
+    }
+  }
+}

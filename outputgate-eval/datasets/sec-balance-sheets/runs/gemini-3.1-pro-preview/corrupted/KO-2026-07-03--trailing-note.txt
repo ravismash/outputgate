@@ -1,0 +1,140 @@
+{
+  "period_end" : {
+    "value" : "2026-07-03",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jul. 03, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Total Cash, Cash Equivalents and Short-Term Investments",
+    "amount" : {
+      "value" : 13529,
+      "source_span" : {
+        "page" : 1,
+        "text" : "13,529"
+      }
+    }
+  }, {
+    "label" : "Marketable securities",
+    "amount" : {
+      "value" : 2842,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,842"
+      }
+    }
+  }, {
+    "label" : "Trade accounts receivable, less allowances of $492 and $495, respectively",
+    "amount" : {
+      "value" : 3732,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,732"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 4647,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,647"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 2688,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,688"
+      }
+    }
+  }, {
+    "label" : "Assets held for sale",
+    "amount" : {
+      "value" : 5438,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,438"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 32876,
+    "source_span" : {
+      "page" : 1,
+      "text" : "32,876"
+    }
+  },
+  "total_assets" : {
+    "value" : 107922,
+    "source_span" : {
+      "page" : 1,
+      "text" : "107,922"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable and accrued expenses",
+    "amount" : {
+      "value" : 15434,
+      "source_span" : {
+        "page" : 1,
+        "text" : "15,434"
+      }
+    }
+  }, {
+    "label" : "Loans and notes payable",
+    "amount" : {
+      "value" : 48,
+      "source_span" : {
+        "page" : 1,
+        "text" : "48"
+      }
+    }
+  }, {
+    "label" : "Current maturities of long-term debt",
+    "amount" : {
+      "value" : 6494,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,494"
+      }
+    }
+  }, {
+    "label" : "Accrued income taxes",
+    "amount" : {
+      "value" : 782,
+      "source_span" : {
+        "page" : 1,
+        "text" : "782"
+      }
+    }
+  }, {
+    "label" : "Liabilities held for sale",
+    "amount" : {
+      "value" : 2442,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,442"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 25200,
+    "source_span" : {
+      "page" : 1,
+      "text" : "25,200"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 107922,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 107,922"
+    }
+  }
+}
+
+Note: one amount was hard to read, so please double-check it.
