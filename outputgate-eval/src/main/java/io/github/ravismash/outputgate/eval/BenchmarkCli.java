@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * The benchmark from the command line, over the documents and the answers an {@link EvalRun}
- * recorded for them (see {@link BenchmarkFolder}). Only {@code record} calls a model:
+ * recorded for them (see {@link BenchmarkFolder}). Only {@code record} and {@code repair} call a model:
  *
  * <pre>
  * record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai|gemini] [--base-url URL] [--ctx 16384] [--resume true]
@@ -21,6 +21,9 @@ import java.util.Map;
  *         --resume true keeps the documents a stopped run already recorded
  *         (ollama: a local Ollama; openai: an OpenAI-compatible server such as LM Studio;
  *         gemini: the Gemini API, key from GEMINI_API_KEY or ~/.gemini_api_key, or --api-key-file)
+ * repair  DOCUMENTS RUN --model M [--task fcc] [--client ...]  (the same model options as record)
+ *         gives every answer the full contract rejects one retry, with the violations in the prompt;
+ *         writes RUN/repair.jsonl and repair.md
  * corrupt DOCUMENTS RUN [--task fcc] [--count 50] [--seed 42]
  *         writes RUN/corrupted/ from the answers the full contract accepts
  * report  DOCUMENTS RUN [--task fcc]
@@ -31,6 +34,7 @@ public final class BenchmarkCli {
 
     static final String USAGE = """
             usage: benchmark record  DOCUMENTS RUN --model M [--task fcc] [--client ollama|openai|gemini] [--base-url URL] [--ctx 16384] [--resume true] [--api-key-file F]
+                   benchmark repair  DOCUMENTS RUN --model M [--task fcc] [same options as record]
                    benchmark corrupt DOCUMENTS RUN [--task fcc] [--count 50] [--seed 42]
                    benchmark report  DOCUMENTS RUN [--task fcc]
             RUN is an EvalRun output folder (results.jsonl), written by record.""";
@@ -64,6 +68,12 @@ public final class BenchmarkCli {
             return record(Path.of(args[1]).toAbsolutePath(), Path.of(args[2]).toAbsolutePath(), task, opts);
         }
         BenchmarkFolder folder = new BenchmarkFolder(Path.of(args[1]).toAbsolutePath(), Path.of(args[2]).toAbsolutePath());
+        if (args[0].equals("repair")) {
+            Model m = model(task, opts, "repair");
+            Repair.Summary s = Repair.run(folder, task, m.client(), m.label());
+            return s.rejected() + " answers rejected; " + s.recovered() + " passed after one retry; wrote "
+                    + folder.run().resolve("repair.md");
+        }
         return switch (args[0]) {
             case "corrupt" -> {
                 Corruptor.Summary s = Corruptor.run(folder, task, Integer.parseInt(opts.getOrDefault("count", "50")),
@@ -80,15 +90,25 @@ public final class BenchmarkCli {
         };
     }
 
+    /** A model client and how to describe it in a report. */
+    record Model(LlmClient client, String label) {}
+
     private static String record(Path documents, Path run, BenchmarkTask task, Map<String, String> opts) {
+        Model m = model(task, opts, "record");
+        List<EvalRun.Result> results = EvalRun.run(documents, m.client(), task.contract().get(), task.prompt(), run, m.label(),
+                Boolean.parseBoolean(opts.getOrDefault("resume", "false")));
+        long passed = results.stream().filter(r -> r.outcome() == EvalRun.Outcome.PASSED).count();
+        return "recorded " + results.size() + " documents, " + passed + " passed the full contract; wrote " + run.resolve("summary.md");
+    }
+
+    /** Builds the client --client, --model, --base-url and --ctx describe. */
+    static Model model(BenchmarkTask task, Map<String, String> opts, String command) {
         String model = opts.get("model");
         if (model == null) {
-            throw new IllegalArgumentException("record needs --model\n" + USAGE);
+            throw new IllegalArgumentException(command + " needs --model\n" + USAGE);
         }
         String schema = task.outputSchema() == null ? null : task.outputSchema().get();
         String client = opts.getOrDefault("client", "ollama");
-        LlmClient llm;
-        String label;
         switch (client) {
             case "ollama" -> {
                 int ctx = Integer.parseInt(opts.getOrDefault("ctx", "16384"));
@@ -98,26 +118,21 @@ public final class BenchmarkCli {
                 if (schema != null) {
                     b.format(schema);
                 }
-                llm = b.build();
-                label = model + " (local Ollama, temperature 0, seed 42, num_ctx " + ctx
-                        + (schema == null ? "" : ", format: " + task.name() + " output schema") + ")";
+                return new Model(b.build(), model + " (local Ollama, temperature 0, seed 42, num_ctx " + ctx
+                        + (schema == null ? "" : ", format: " + task.name() + " output schema") + ")");
             }
             case "openai", "gemini" -> {
                 boolean gemini = client.equals("gemini");
                 String url = opts.getOrDefault("base-url",
                         gemini ? "https://generativelanguage.googleapis.com/v1beta/openai" : "http://localhost:1234/v1");
-                llm = new OpenAiCompatibleClient(url, model, schema, Duration.ofMinutes(15), apiKey(opts, gemini),
-                        gemini ? null : 42);
-                label = model + " (" + (gemini ? "Gemini API" : "OpenAI-compatible server at " + url) + ", temperature 0"
+                return new Model(new OpenAiCompatibleClient(url, model, schema, Duration.ofMinutes(15), apiKey(opts, gemini),
+                        gemini ? null : 42),
+                        model + " (" + (gemini ? "Gemini API" : "OpenAI-compatible server at " + url) + ", temperature 0"
                         + (gemini ? "" : ", seed 42")
-                        + (schema == null ? "" : ", response_format: " + task.name() + " output schema") + ")";
+                        + (schema == null ? "" : ", response_format: " + task.name() + " output schema") + ")");
             }
             default -> throw new IllegalArgumentException("unknown client " + client + "; use ollama, openai or gemini");
         }
-        List<EvalRun.Result> results = EvalRun.run(documents, llm, task.contract().get(), task.prompt(), run, label,
-                Boolean.parseBoolean(opts.getOrDefault("resume", "false")));
-        long passed = results.stream().filter(r -> r.outcome() == EvalRun.Outcome.PASSED).count();
-        return "recorded " + results.size() + " documents, " + passed + " passed the full contract; wrote " + run.resolve("summary.md");
     }
 
     /** The key from --api-key-file, else GEMINI_API_KEY or ~/.gemini_api_key for gemini, else OPENAI_API_KEY; null if none. */

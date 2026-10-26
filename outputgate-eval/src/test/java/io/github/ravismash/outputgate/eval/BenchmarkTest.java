@@ -182,6 +182,24 @@ class BenchmarkTest {
     }
 
     @Test
+    @DisplayName("repair gives each rejected answer one retry with its violations, and judges the retry")
+    void repairRetriesRejected() throws IOException {
+        BenchmarkFolder folder = fccFolder();
+        FakeLlmClient fixed = FakeLlmClient.replying(SyntheticFcc.output(5, false));
+        Repair.Summary s = Repair.run(folder, BenchmarkTask.FCC, fixed, "fake");
+        assertEquals(1, s.rejected(), "only inv-5's answer is rejected");
+        assertEquals(1, s.recovered());
+        String prompt = fixed.prompts().get(0);
+        assertTrue(prompt.contains("--- it was rejected by these checks ---") && prompt.contains("[math]"), prompt);
+        assertTrue(prompt.startsWith(FccInvoice.INSTRUCTIONS), "the retry repeats the task and the document");
+        assertTrue(Files.readString(run().resolve("repair.md")).contains("| passed |"));
+        assertEquals(1, Files.readAllLines(run().resolve("repair.jsonl")).size());
+
+        Repair.Summary still = Repair.run(folder, BenchmarkTask.FCC, FakeLlmClient.replying(SyntheticFcc.output(5, true)), "fake");
+        assertEquals(0, still.recovered());
+    }
+
+    @Test
     @DisplayName("bad command lines say how to use the tool")
     void usage() throws IOException {
         fccFolder();
