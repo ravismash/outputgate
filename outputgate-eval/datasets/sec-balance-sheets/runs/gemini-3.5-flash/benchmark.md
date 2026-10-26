@@ -6,7 +6,7 @@ Model: gemini-3.5-flash (Gemini API, temperature 0, response_format: balance-she
 
 |  | Naive (parse only) | Schema only | Full contract |
 |---|---|---|---|
-| Recorded answers accepted | 60/60 (100%) | 60/60 (100%) | 58/60 (97%) |
+| Recorded answers accepted | 60/60 (100%) | 60/60 (100%) | 60/60 (100%) |
 | Corrupted outputs caught | 4/50 (8%) | 20/50 (40%) | 50/50 (100%) |
 
 ## Caught, by kind of corruption
@@ -35,19 +35,18 @@ The dataset's own values for 58 documents (total_assets, total_current_assets, t
 
 |  | Naive (parse only) | Schema only | Full contract |
 |---|---|---|---|
-| Accepted, every compared field right | 58 | 58 | 56 |
+| Accepted, every compared field right | 58 | 58 | 58 |
 | Accepted, some field wrong | 0 | 0 | 0 |
 
 ### Accepted by the full contract but wrong (0)
 
 - None.
 
-## Recorded answers the full contract rejected (2)
+## Recorded answers the full contract rejected (0)
 
 Each is either a model mistake the contract caught or a contract that is too strict. Read them by hand before quoting the numbers above.
 
-- IBM-2026-09-30.txt: [math] total_current_assets: sum of current_assets[*].amount is 31190 but total_current_assets is 31192 (tolerance 1)
-- TMO-2026-06-27.txt: [math] total_current_liabilities: sum of current_liabilities[*].amount is 15071 but total_current_liabilities is 15069 (tolerance 1)
+- None.
 
 ## How to read this
 

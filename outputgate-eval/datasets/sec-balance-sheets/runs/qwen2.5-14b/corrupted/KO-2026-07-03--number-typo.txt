@@ -36,7 +36,7 @@
   }, {
     "label" : "Trade accounts receivable, less allowances of $492 and $495, respectively",
     "amount" : {
-      "value" : 3732,
+      "value" : 3372,
       "source_span" : {
         "page" : 1,
         "text" : "3,732"
@@ -96,7 +96,7 @@
   }, {
     "label" : "Loans and notes payable",
     "amount" : {
-      "value" : 84,
+      "value" : 48,
       "source_span" : {
         "page" : 1,
         "text" : "48"

@@ -87,7 +87,7 @@
   }, {
     "label" : "Accrued and other current liabilities",
     "amount" : {
-      "value" : "$26,960.00",
+      "value" : 26960,
       "source_span" : {
         "page" : 1,
         "text" : "26,960"
@@ -104,7 +104,7 @@
     }
   } ],
   "total_current_liabilities" : {
-    "value" : 43019,
+    "value" : "$43,019.00",
     "source_span" : {
       "page" : 1,
       "text" : "43,019"

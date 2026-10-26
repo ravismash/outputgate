@@ -67,21 +67,21 @@
     }
   },
   "current_liabilities" : [ {
-    "label" : "Current portion of long-term debt",
-    "amount" : {
-      "value" : 650,
-      "source_span" : {
-        "page" : 1,
-        "text" : "650"
-      }
-    }
-  }, {
     "label" : "Accounts payable",
     "amount" : {
       "value" : 837,
       "source_span" : {
         "page" : 1,
         "text" : "837"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation",
+    "amount" : {
+      "value" : 675,
+      "source_span" : {
+        "page" : 1,
+        "text" : "675"
       }
     }
   }, {

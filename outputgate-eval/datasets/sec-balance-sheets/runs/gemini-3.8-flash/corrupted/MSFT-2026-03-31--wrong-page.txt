@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-03-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Mar. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Total cash, cash equivalents, and short-term investments",
+    "amount" : {
+      "value" : 78272,
+      "source_span" : {
+        "page" : 1,
+        "text" : "78,272"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net of allowance for doubtful accounts of $794 and $944",
+    "amount" : {
+      "value" : 60041,
+      "source_span" : {
+        "page" : 1,
+        "text" : "60,041"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 1219,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,219"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 35797,
+      "source_span" : {
+        "page" : 1,
+        "text" : "35,797"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 175329,
+    "source_span" : {
+      "page" : 1,
+      "text" : "175,329"
+    }
+  },
+  "total_assets" : {
+    "value" : 694228,
+    "source_span" : {
+      "page" : 2,
+      "text" : "694,228"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 37513,
+      "source_span" : {
+        "page" : 1,
+        "text" : "37,513"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 8839,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,839"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation",
+    "amount" : {
+      "value" : 11270,
+      "source_span" : {
+        "page" : 1,
+        "text" : "11,270"
+      }
+    }
+  }, {
+    "label" : "Short-term income taxes",
+    "amount" : {
+      "value" : 3563,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,563"
+      }
+    }
+  }, {
+    "label" : "Short-term unearned revenue",
+    "amount" : {
+      "value" : 50924,
+      "source_span" : {
+        "page" : 1,
+        "text" : "50,924"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 24552,
+      "source_span" : {
+        "page" : 1,
+        "text" : "24,552"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 136661,
+    "source_span" : {
+      "page" : 1,
+      "text" : "136,661"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 694228,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 694,228"
+    }
+  }
+}

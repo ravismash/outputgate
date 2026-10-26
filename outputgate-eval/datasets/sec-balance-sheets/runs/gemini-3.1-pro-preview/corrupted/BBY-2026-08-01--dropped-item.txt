@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-08-01",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 01, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2255,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,255"
+      }
+    }
+  }, {
+    "label" : "Receivables, net",
+    "amount" : {
+      "value" : 922,
+      "source_span" : {
+        "page" : 1,
+        "text" : "922"
+      }
+    }
+  }, {
+    "label" : "Merchandise inventories",
+    "amount" : {
+      "value" : 6296,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,296"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 508,
+      "source_span" : {
+        "page" : 1,
+        "text" : "508"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 9981,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,981"
+    }
+  },
+  "total_assets" : {
+    "value" : 16107,
+    "source_span" : {
+      "page" : 1,
+      "text" : "16,107"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 6026,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,026"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and related expenses",
+    "amount" : {
+      "value" : 394,
+      "source_span" : {
+        "page" : 1,
+        "text" : "394"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities",
+    "amount" : {
+      "value" : 763,
+      "source_span" : {
+        "page" : 1,
+        "text" : "763"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 614,
+      "source_span" : {
+        "page" : 1,
+        "text" : "614"
+      }
+    }
+  }, {
+    "label" : "Contract with customer, liability",
+    "amount" : {
+      "value" : 216,
+      "source_span" : {
+        "page" : 1,
+        "text" : "216"
+      }
+    }
+  }, {
+    "label" : "Contract with customer, liability",
+    "amount" : {
+      "value" : 912,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 912"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 8936,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,936"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 16107,
+    "source_span" : {
+      "page" : 1,
+      "text" : "16,107"
+    }
+  }
+}

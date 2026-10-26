@@ -1,0 +1,112 @@
+{
+  "period_end" : {
+    "value" : "2026-08-02",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 02, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 23975,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 23,975"
+      }
+    }
+  }, {
+    "label" : "Trade accounts receivable, net",
+    "amount" : {
+      "value" : 13707,
+      "source_span" : {
+        "page" : 1,
+        "text" : "13,707"
+      }
+    }
+  }, {
+    "label" : "Inventory",
+    "amount" : {
+      "value" : 4523,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,523"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 9968,
+      "source_span" : {
+        "page" : 1,
+        "text" : "9,968"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 52173,
+    "source_span" : {
+      "page" : 1,
+      "text" : "52,173"
+    }
+  },
+  "total_assets" : {
+    "value" : 188148,
+    "source_span" : {
+      "page" : 1,
+      "text" : "188,148"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 4000,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,000"
+      }
+    }
+  }, {
+    "label" : "Employee compensation and benefits",
+    "amount" : {
+      "value" : 1506,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,506"
+      }
+    }
+  }, {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 2252,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,252"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 13080,
+      "source_span" : {
+        "page" : 1,
+        "text" : "13,080"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 20838,
+    "source_span" : {
+      "page" : 1,
+      "text" : "20,838"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 188148,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 188,148"
+    }
+  },
+  "notes" : "One amount was not clearly shown; assumed zero."
+}

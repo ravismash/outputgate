@@ -117,4 +117,19 @@ class MathGateTest {
         assertThrows(IllegalArgumentException.class, () -> MathGate.builder().tolerance(-0.01));
         assertThrows(IllegalArgumentException.class, () -> MathGate.builder().sumEquals("$.items", "total"));
     }
+
+    @ParameterizedTest
+    @EnumSource(Shape.class)
+    @DisplayName("sumEqualsRounded allows half a unit of the last digit per figure, and no more")
+    void roundedSum(Shape shape) {
+        Contract rounded = Contract.builder().gate(MathGate.builder().sumEqualsRounded("line_items[*].amount", "subtotal").build()).build();
+        // A real filing: five lines in millions add up to 15,071 against a printed total of 15,069.
+        assertTrue(rounded.evaluate(shape.invoice("15069", "3368", "3268", "1694", "2918", "3823")).passed());
+        Verdict off = rounded.evaluate(shape.invoice("15065", "3368", "3268", "1694", "2918", "3823"));
+        assertEquals("sum of line_items[*].amount is 15071 but subtotal is 15065 (allowed for rounding 3.0)",
+                off.violations().get(0).message());
+        // With one decimal place the allowance is a tenth as large.
+        assertTrue(rounded.evaluate(shape.invoice("10.1", "3.3", "3.3", "3.3")).passed());
+        assertEquals(Status.REJECTED, rounded.evaluate(shape.invoice("10.3", "3.3", "3.3", "3.3")).status());
+    }
 }

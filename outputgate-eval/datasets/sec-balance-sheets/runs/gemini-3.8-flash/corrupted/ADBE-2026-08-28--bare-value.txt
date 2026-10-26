@@ -1,0 +1,123 @@
+{
+  "period_end" : {
+    "value" : "2026-08-28",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 28, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 4359,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 4,359"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 1280,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,280"
+      }
+    }
+  }, {
+    "label" : "Trade receivables, net of allowances for doubtful accounts of $12 and $13, respectively",
+    "amount" : {
+      "value" : 2081,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,081"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 1438,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,438"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 9158,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,158"
+    }
+  },
+  "total_assets" : {
+    "value" : 29981,
+    "source_span" : {
+      "page" : 1,
+      "text" : "29,981"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Trade payables",
+    "amount" : {
+      "value" : 529,
+      "source_span" : {
+        "page" : 1,
+        "text" : "529"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other current liabilities",
+    "amount" : {
+      "value" : 2516,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,516"
+      }
+    }
+  }, {
+    "label" : "Debt",
+    "amount" : {
+      "value" : 1597,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,597"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 7094,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,094"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : 63
+  }, {
+    "label" : "Operating lease liabilities",
+    "amount" : {
+      "value" : 89,
+      "source_span" : {
+        "page" : 1,
+        "text" : "89"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 11888,
+    "source_span" : {
+      "page" : 1,
+      "text" : "11,888"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 29981,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 29,981"
+    }
+  }
+}

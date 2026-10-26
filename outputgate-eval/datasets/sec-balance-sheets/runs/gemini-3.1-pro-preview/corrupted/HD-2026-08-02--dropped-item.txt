@@ -1,0 +1,147 @@
+{
+  "period_end" : {
+    "value" : "2026-08-02",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Aug. 02, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2085,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,085"
+      }
+    }
+  }, {
+    "label" : "Receivables, net",
+    "amount" : {
+      "value" : 6963,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,963"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 1825,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,825"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 37720,
+    "source_span" : {
+      "page" : 1,
+      "text" : "37,720"
+    }
+  },
+  "total_assets" : {
+    "value" : 109384,
+    "source_span" : {
+      "page" : 1,
+      "text" : "109,384"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 4248,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,248"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 13585,
+      "source_span" : {
+        "page" : 1,
+        "text" : "13,585"
+      }
+    }
+  }, {
+    "label" : "Accrued salaries and related expenses",
+    "amount" : {
+      "value" : 2471,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,471"
+      }
+    }
+  }, {
+    "label" : "Sales taxes payable",
+    "amount" : {
+      "value" : 729,
+      "source_span" : {
+        "page" : 1,
+        "text" : "729"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 2728,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,728"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 253,
+      "source_span" : {
+        "page" : 1,
+        "text" : "253"
+      }
+    }
+  }, {
+    "label" : "Current installments of long-term debt",
+    "amount" : {
+      "value" : 4697,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,697"
+      }
+    }
+  }, {
+    "label" : "Current operating lease liabilities",
+    "amount" : {
+      "value" : 1516,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,516"
+      }
+    }
+  }, {
+    "label" : "Other accrued expenses",
+    "amount" : {
+      "value" : 4761,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,761"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 34988,
+    "source_span" : {
+      "page" : 1,
+      "text" : "34,988"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 109384,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 109,384"
+    }
+  }
+}

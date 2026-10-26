@@ -1,0 +1,102 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and equivalents",
+    "amount" : {
+      "value" : 6569,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 6,569"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 13824,
+      "source_span" : {
+        "page" : 1,
+        "text" : "13,824"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 5127,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,127"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other",
+    "amount" : {
+      "value" : 8149,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,149"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 33669,
+    "source_span" : {
+      "page" : 1,
+      "text" : "33,669"
+    }
+  },
+  "total_assets" : {
+    "value" : 135115,
+    "source_span" : {
+      "page" : 1,
+      "text" : "135,115"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 8341,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,341"
+      }
+    }
+  }, {
+    "label" : "Accounts payable and accrued liabilities",
+    "amount" : {
+      "value" : 33301,
+      "source_span" : {
+        "page" : 1,
+        "text" : "33,301"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : "$41,642.00",
+    "source_span" : {
+      "page" : 1,
+      "text" : "41,642"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 135115,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 135,115"
+    }
+  }
+}

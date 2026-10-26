@@ -87,7 +87,7 @@
   }, {
     "label" : "Other accruals",
     "amount" : {
-      "value" : "$3,589.00",
+      "value" : 3589,
       "source_span" : {
         "page" : 1,
         "text" : "3,589"
@@ -95,7 +95,7 @@
     }
   } ],
   "total_current_liabilities" : {
-    "value" : 6148,
+    "value" : "$6,148.00",
     "source_span" : {
       "page" : 1,
       "text" : "6,148"

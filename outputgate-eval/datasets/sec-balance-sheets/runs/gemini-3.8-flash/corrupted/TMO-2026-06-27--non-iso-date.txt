@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "06/27/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 27, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 4064,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 4,064"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, less allowances of $148 and $147",
+    "amount" : {
+      "value" : 9451,
+      "source_span" : {
+        "page" : 1,
+        "text" : "9,451"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 5627,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,627"
+      }
+    }
+  }, {
+    "label" : "Contract assets, net",
+    "amount" : {
+      "value" : 1688,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,688"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 2536,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,536"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 23365,
+    "source_span" : {
+      "page" : 1,
+      "text" : "23,365"
+    }
+  },
+  "total_assets" : {
+    "value" : 113174,
+    "source_span" : {
+      "page" : 1,
+      "text" : "113,174"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term obligations and current maturities of long-term obligations",
+    "amount" : {
+      "value" : 3368,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,368"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 3268,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,268"
+      }
+    }
+  }, {
+    "label" : "Accrued payroll and employee benefits",
+    "amount" : {
+      "value" : 1694,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,694"
+      }
+    }
+  }, {
+    "label" : "Contract liabilities",
+    "amount" : {
+      "value" : 2918,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,918"
+      }
+    }
+  }, {
+    "label" : "Other accrued expenses",
+    "amount" : {
+      "value" : 3823,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,823"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 15069,
+    "source_span" : {
+      "page" : 1,
+      "text" : "15,069"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 113174,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 113,174"
+    }
+  }
+}

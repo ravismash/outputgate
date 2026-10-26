@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "07/31/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jul. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 3172,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 3,172"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 235,
+      "source_span" : {
+        "page" : 1,
+        "text" : "235"
+      }
+    }
+  }, {
+    "label" : "Receivables - net",
+    "amount" : {
+      "value" : 1238,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,238"
+      }
+    }
+  }, {
+    "label" : "Merchandise inventory - net",
+    "amount" : {
+      "value" : 17737,
+      "source_span" : {
+        "page" : 1,
+        "text" : "17,737"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 960,
+      "source_span" : {
+        "page" : 1,
+        "text" : "960"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 23342,
+    "source_span" : {
+      "page" : 1,
+      "text" : "23,342"
+    }
+  },
+  "total_assets" : {
+    "value" : 55881,
+    "source_span" : {
+      "page" : 1,
+      "text" : "55,881"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current maturities of long-term debt",
+    "amount" : {
+      "value" : 2352,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,352"
+      }
+    }
+  }, {
+    "label" : "Current operating lease liabilities",
+    "amount" : {
+      "value" : 733,
+      "source_span" : {
+        "page" : 1,
+        "text" : "733"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 11076,
+      "source_span" : {
+        "page" : 1,
+        "text" : "11,076"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and employee benefits",
+    "amount" : {
+      "value" : 1168,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,168"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 1609,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,609"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 4194,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,194"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 21132,
+    "source_span" : {
+      "page" : 1,
+      "text" : "21,132"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 55881,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 55,881"
+    }
+  }
+}

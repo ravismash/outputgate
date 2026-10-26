@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Cross-field arithmetic checks (R5): {@code sumEquals}, {@code equalsSum},
+ * Cross-field arithmetic checks (R5): {@code sumEquals}, {@code sumEqualsRounded}, {@code equalsSum},
  * {@code productEquals}, {@code range} and custom rules, with one absolute tolerance.
  * A missing or non-numeric value is a violation, never a pass.
  */
@@ -74,7 +74,8 @@ public final class MathGate implements Gate {
         return n.toPlainString();
     }
 
-    private record SumEquals(String itemsPath, String totalPath) implements Rule {
+    /** Items add up to a total; with {@code rounded}, also allowing half a unit of the last printed digit per figure. */
+    private record SumEquals(String itemsPath, String totalPath, boolean rounded) implements Rule {
 
         @Override
         public void check(JsonNode output, BigDecimal tolerance, List<Violation> out) {
@@ -90,10 +91,19 @@ public final class MathGate implements Gate {
             }
             BigDecimal sum = items.stream().map(Num::value).reduce(BigDecimal.ZERO, BigDecimal::add);
             BigDecimal total = totals.get(0).value();
-            if (differs(sum, total, tolerance)) {
+            BigDecimal allowed = tolerance;
+            if (rounded) {
+                int scale = total.scale();
+                for (Num item : items) {
+                    scale = Math.max(scale, item.value().scale());
+                }
+                BigDecimal halfUnit = BigDecimal.ONE.movePointLeft(Math.max(scale, 0)).divide(BigDecimal.TWO);
+                allowed = allowed.max(halfUnit.multiply(BigDecimal.valueOf(items.size() + 1L)));
+            }
+            if (differs(sum, total, allowed)) {
                 out.add(new Violation(NAME, totalPath, "sum of " + itemsPath + " is " + plain(sum)
                         + " but " + totalPath + " is " + plain(total)
-                        + " (tolerance " + plain(tolerance) + ")"));
+                        + " (" + (rounded ? "allowed for rounding " : "tolerance ") + plain(allowed) + ")"));
             }
         }
     }
@@ -219,7 +229,19 @@ public final class MathGate implements Gate {
 
         /** Requires the numbers at {@code itemsPath} to add up to the number at {@code totalPath}. */
         public Builder sumEquals(String itemsPath, String totalPath) {
-            rules.add(new SumEquals(Paths.validate(itemsPath), Paths.validate(totalPath)));
+            rules.add(new SumEquals(Paths.validate(itemsPath), Paths.validate(totalPath), false));
+            return this;
+        }
+
+        /**
+         * Like {@link #sumEquals}, for figures each rounded where they were printed (statements in
+         * thousands or millions, reports with rounded percentages): the printed total may differ from
+         * the sum of the printed items by up to half a unit of the last decimal place for each figure,
+         * items and total. Five whole-number lines and their total may be off by 3; with one decimal
+         * place, by 0.3. The gate's tolerance still applies when it is larger.
+         */
+        public Builder sumEqualsRounded(String itemsPath, String totalPath) {
+            rules.add(new SumEquals(Paths.validate(itemsPath), Paths.validate(totalPath), true));
             return this;
         }
 

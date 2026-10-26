@@ -23,10 +23,7 @@ import java.util.List;
  */
 public final class BalanceSheet {
 
-    /**
-     * Largest difference still counted as equal. Statements print each line rounded to the unit,
-     * so a printed total can differ from the sum of its printed lines by 1.
-     */
+    /** Largest difference still counted as equal elsewhere (statements print assets and liabilities plus equity equal). */
     static final BigDecimal TOLERANCE = BigDecimal.ONE;
 
     static final String INSTRUCTIONS = """
@@ -94,8 +91,10 @@ public final class BalanceSheet {
                 .gate(SchemaGate.fromClasspath("schemas/balance-sheet.schema.json"))
                 .gate(TypeGate.of(Extraction.class))
                 .gate(MathGate.builder()
-                        .sumEquals("current_assets[*].amount", "total_current_assets")
-                        .sumEquals("current_liabilities[*].amount", "total_current_liabilities")
+                        // Statements round every figure, so lines may miss their total by half a unit each
+                        // (IBM's and TMO's by 2); a fixed tolerance of 1 rejected those correct answers.
+                        .sumEqualsRounded("current_assets[*].amount", "total_current_assets")
+                        .sumEqualsRounded("current_liabilities[*].amount", "total_current_liabilities")
                         .custom("total_assets = total_liabilities_and_equity", n ->
                                 n.get("total_assets").compareTo(n.get("total_liabilities_and_equity")) == 0)
                         .custom("total_current_assets <= total_assets", n ->

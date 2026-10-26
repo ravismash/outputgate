@@ -1,0 +1,113 @@
+{
+  "period_end" : {
+    "value" : "2026-07-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jul. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 11569,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 11,569"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net of allowance of $56 and $77",
+    "amount" : {
+      "value" : 22918,
+      "source_span" : {
+        "page" : 1,
+        "text" : "22,918"
+      }
+    }
+  }, {
+    "label" : "Short-term financing receivables, net of allowance of $186 and $121",
+    "amount" : {
+      "value" : 12805,
+      "source_span" : {
+        "page" : 1,
+        "text" : "12,805"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 21290,
+      "source_span" : {
+        "page" : 1,
+        "text" : "21,290"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 11965,
+      "source_span" : {
+        "page" : 1,
+        "text" : "11,965"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 80547,
+    "source_span" : {
+      "page" : 1,
+      "text" : "80,547"
+    }
+  },
+  "total_assets" : {
+    "value" : 127393,
+    "source_span" : {
+      "page" : 1,
+      "text" : "127,393"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 8481,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,481"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 49723,
+      "source_span" : {
+        "page" : 1,
+        "text" : "49,723"
+      }
+    }
+  }, {
+    "label" : "Accrued and other",
+    "amount" : {
+      "value" : 10738,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,738"
+      }
+    }
+  }, {
+    "label" : "Short-term deferred revenue",
+    "amount" : {
+      "value" : 14761,
+      "source_span" : {
+        "page" : 1,
+        "text" : "14,761"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 83703,
+    "source_span" : {
+      "page" : 1,
+      "text" : "83,703"
+    }
+  }
+}
