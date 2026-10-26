@@ -1,0 +1,38 @@
+CONSOLIDATED BALANCE SHEET - USD ($) $ in Millions   Jun. 30, 2026   Sep. 30, 2025
+Current assets
+Cash and cash equivalents   $ 479   $ 468
+Receivables   1,937   1,931
+Inventories   1,243   1,247
+Other current assets   289   265
+Total current assets   3,948   3,911
+Property, net of accumulated depreciation of $2,050 and $1,997, respectively   839   797
+Operating lease right-of-use assets   346   403
+Goodwill   3,814   3,839
+Other intangible assets, net   710   864
+Deferred income taxes   620   596
+Other assets   814   809
+Total   11,091   11,219
+Current liabilities
+Short-term debt   686   608
+Current portion of long-term debt   2   2
+Accounts payable   935   930
+Compensation and benefits   395   432
+Contract liabilities   651   621
+Customer returns, rebates and incentives   383   347
+Other current liabilities   620   505
+Total current liabilities   3,672   3,445
+Long-term debt   2,570   2,614
+Retirement benefits   406   406
+Operating lease liabilities   268   329
+Other liabilities   679   714
+Commitments and contingent liabilities (Note 12)
+Shareowners’ equity
+Common stock ($1.00 par value, shares issued: 141.4)   141   141
+Additional paid-in capital   2,364   2,283
+Retained earnings   5,867   5,422
+Accumulated other comprehensive loss   (669)   (657)
+Common stock in treasury, at cost (shares held: 30.3 and 29.0, respectively)   (4,209)   (3,535)
+Shareowners’ equity attributable to Rockwell Automation, Inc.   3,494   3,654
+Noncontrolling interests   2   57
+Total shareowners’ equity   3,496   3,711
+Total   $ 11,091   $ 11,219

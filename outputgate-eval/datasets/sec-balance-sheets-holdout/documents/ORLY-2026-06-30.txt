@@ -1,0 +1,36 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   Jun. 30, 2026   Dec. 31, 2025
+Assets
+Cash and cash equivalents   $ 262,181   $ 193,793
+Accounts receivable, net   457,785   389,793
+Amounts receivable from suppliers   170,728   159,900
+Inventory   5,971,856   5,731,385
+Other current assets   337,082   269,406
+Total current assets   7,199,632   6,744,277
+Property and equipment, at cost   10,741,816   10,222,249
+Less: accumulated depreciation and amortization   4,191,571   3,964,824
+Net property and equipment   6,550,245   6,257,425
+Operating lease, right-of-use assets   2,484,413   2,391,150
+Goodwill   955,211   948,208
+Other assets, net   199,615   197,193
+Total assets   17,389,116   16,538,253
+Liabilities and shareholders' deficit
+Accounts payable   7,384,958   7,103,684
+Self-insurance reserves   214,311   297,304
+Accrued payroll   176,174   119,603
+Accrued benefits and withholdings   275,493   240,072
+Income taxes payable   0   13,957
+Current portion of operating lease liabilities   452,275   439,907
+Other current liabilities   1,071,463   561,294
+Total current liabilities   9,574,674   8,775,821
+Long-term debt   7,014,543   6,016,904
+Operating lease liabilities, less current portion   2,120,615   2,034,688
+Deferred income taxes   238,615   211,210
+Other liabilities   276,394   262,982
+Shareholders' equity (deficit):
+Common stock, $0.01 par value: Authorized shares - 1,250,000,000 Issued and outstanding shares - 816,165,813 as of June 30, 2026, and 841,909,238 as of December 31, 2025   8,162   8,419
+Additional paid-in capital   1,536,955   1,530,292
+Retained deficit   (3,416,414)   (2,328,817)
+Accumulated other comprehensive income (loss)   35,572   26,754
+Total shareholders' deficit   (1,835,725)   (763,352)
+Total liabilities and shareholders' deficit   $ 17,389,116   $ 16,538,253
+[1] The balance sheet at December 31, 2025, has been derived from the audited consolidated financial statements at that date but does not include all of the information and footnotes required by United States generally accepted accounting principles for complete financial statements.

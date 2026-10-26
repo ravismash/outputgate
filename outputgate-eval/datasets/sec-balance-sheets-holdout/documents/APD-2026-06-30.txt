@@ -1,0 +1,56 @@
+Consolidated Balance Sheets (Unaudited) - USD ($) $ in Millions   Jun. 30, 2026   Sep. 30, 2025
+Current Assets
+Cash and cash items   $ 980.5   $ 1,856.0
+Trade receivables, net   1,881.5   1,901.2
+Inventories   751.6   776.5
+Prepaid expenses   155.1   174.9
+Assets held for sale   475.5   427.7
+Other receivables and current assets   719.3   689.5
+Total Current Assets   4,963.5   5,825.8
+Investment in net assets of and advances to equity affiliates   5,577.4   5,366.1
+Plant and equipment, at cost   43,120.4   42,754.8
+Less: accumulated depreciation   18,125.3   17,417.0
+Plant and equipment, net   24,995.1   25,337.8
+Goodwill, net   957.4   963.9
+Intangible assets, net   278.4   293.5
+Operating lease right-of-use assets, net   790.6   944.0
+Noncurrent lease receivables   283.0   307.1
+Financing receivables   946.4   1,000.0
+Other noncurrent assets   1,653.8   1,021.3
+Total Noncurrent Assets   35,482.1   35,233.7
+Total Assets   40,445.6   41,059.5
+Current Liabilities
+Payables and accrued liabilities   3,529.6   3,237.7
+Accrued income taxes   98.0   179.4
+Short-term borrowings   126.7   34.7
+Current portion of long-term debt   769.5   716.3
+Liabilities held for sale   51.5   50.5
+Total Current Liabilities   4,575.3   4,218.6
+Noncurrent Liabilities
+Noncurrent operating lease liabilities   489.8   616.0
+Other noncurrent liabilities   1,374.4   1,348.1
+Deferred income taxes   638.4   579.6
+Total Noncurrent Liabilities   19,273.9   19,491.1
+Total Liabilities   23,849.2   23,709.7
+Commitments and Contingencies - See Note 12
+Air Products Shareholders’ Equity
+Common stock (par value $1 per share; issued 2026 and 2025 - 249,455,584 shares)   249.4   249.4
+Capital in excess of par value   1,328.3   1,306.5
+Retained earnings   16,299.5   17,558.6
+Accumulated other comprehensive loss   (1,990.1)   (2,087.8)
+Treasury stock, at cost (2026 - 26,770,054 shares; 2025 - 26,867,328 shares)   (2,003.3)   (2,001.8)
+Total Air Products Shareholders’ Equity   13,883.8   15,024.9
+Noncontrolling interests   2,712.6   2,324.9
+Total Equity   16,596.4   17,349.8
+Total Liabilities and Equity   40,445.6   41,059.5
+Nonrelated Party
+Noncurrent Liabilities
+Long-term debt   16,585.1   16,769.9
+Related Party
+Current Assets
+Trade receivables, net   200.0   105.0
+Current Liabilities
+Current portion of long-term debt   29.5   59.0
+Noncurrent Liabilities
+Long-term debt   $ 186.2   $ 177.5
+[1] Includes balances associated with a consolidated variable interest entity ("VIE"), including amounts reflected in "Total Assets" that can only be used to settle obligations of the VIE of $8,138.4 and $7,134.7 as of 30 June 2026 and 30 September 2025, respectively, as well as liabilities of the VIE reflected within "Total Liabilities" for which creditors do not have recourse to the general credit of Air Products of $5,474.3 and $4,937.7 as of 30 June 2026 and 30 September 2025, respectively. Refer to Note 3, Variable Interest Entities, for additional information regarding the NEOM Green Hydrogen Company joint venture.

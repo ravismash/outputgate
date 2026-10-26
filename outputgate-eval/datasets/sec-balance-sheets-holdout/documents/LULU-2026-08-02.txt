@@ -1,0 +1,39 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   Aug. 02, 2026   Feb. 01, 2026
+Current assets
+Cash and cash equivalents   $ 1,389,737   $ 1,807,202
+Accounts receivable, net   171,164   190,657
+Inventories   1,711,450   1,700,753
+Prepaid and receivable income taxes   479,948   352,469
+Prepaid expenses and other current assets   193,288   211,620
+Total current assets   3,945,587   4,262,701
+Property and equipment, net   2,046,363   2,033,720
+Right-of-use lease assets   1,947,077   1,630,181
+Goodwill   185,840   184,911
+Intangible assets, net   2,530   6,283
+Deferred income tax assets   24,537   24,037
+Other non-current assets   332,644   314,910
+Total assets   8,484,578   8,456,743
+Current liabilities
+Accounts payable   346,717   331,421
+Accrued liabilities and other   584,912   662,982
+Accrued compensation and related expenses   122,747   187,887
+Current lease liabilities   366,649   298,724
+Current income taxes payable   67,375   43,948
+Unredeemed gift card liability   277,318   316,632
+Other current liabilities   35,933   45,954
+Total current liabilities   1,801,651   1,887,548
+Non-current lease liabilities   1,774,478   1,499,717
+Deferred income tax liabilities   56,987   52,278
+Other non-current liabilities   60,288   55,360
+Total liabilities   3,693,404   3,494,903
+Commitments and contingencies
+Stockholders' equity
+Undesignated preferred stock, $0.01 par value: 5,000 shares authorized; none issued and outstanding   0   0
+Exchangeable stock, no par value: 60,000 shares authorized; 5,116 and 5,116 issued and outstanding   0   0
+Special voting stock, $0.000005 par value: 60,000 shares authorized; 5,116 and 5,116 issued and outstanding   0   0
+Common stock, $0.005 par value: 400,000 shares authorized; 106,566 and 111,380 issued and outstanding   533   557
+Additional paid-in capital   695,052   669,392
+Retained earnings   4,364,017   4,522,581
+Accumulated other comprehensive loss   (268,428)   (230,690)
+Total stockholders' equity   4,791,174   4,961,840
+Total liabilities and stockholders' equity   $ 8,484,578   $ 8,456,743

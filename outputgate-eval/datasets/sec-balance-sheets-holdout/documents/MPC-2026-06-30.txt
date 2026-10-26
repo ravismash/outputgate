@@ -1,0 +1,41 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Assets
+Cash and cash equivalents   $ 7,768   $ 3,672
+Receivables, less allowance for expected credit loss of $13 and $20, respectively   15,740   10,317
+Inventories   9,973   10,129
+Other current assets   805   662
+Total current assets   34,286   24,780
+Equity method investments   7,197   6,795
+Property, plant and equipment, net   37,942   37,397
+Goodwill   9,335   9,354
+Intangibles, net   2,593   2,714
+Right of use assets, net   1,486   1,493
+Other noncurrent assets   1,471   1,422
+Total assets   94,310   83,955
+Liabilities
+Accounts payable   19,227   12,974
+Payroll and benefits payable   823   1,107
+Accrued taxes   2,427   1,484
+Debt due within one year   2,120   2,371
+Operating lease liabilities   499   489
+Other current liabilities   2,325   1,253
+Total current liabilities   27,421   19,678
+Long-term debt   30,696   30,505
+Deferred income taxes   5,953   5,984
+Defined benefit postretirement plan obligations   1,288   1,173
+Long-term operating lease liabilities   977   993
+Deferred credits and other liabilities   2,255   1,536
+Total liabilities   68,590   59,869
+Commitments and contingencies (see Note 22)
+Equity [Abstract]
+Preferred stock, no shares issued and outstanding (par value $0.01 per share, 30 million shares authorized)   0   0
+Common stock:
+Issued – 995 million and 994 million shares (par value $0.01 per share, 2 billion shares authorized)   10   10
+Held in treasury, at cost – 712 million and 699 million shares   (59,308)   (56,027)
+Additional paid-in capital   33,673   33,685
+Retained earnings   44,812   39,751
+Accumulated other comprehensive loss   (110)   (105)
+Total MPC stockholders’ equity   19,077   17,314
+Noncontrolling interests   6,643   6,772
+Total equity   25,720   24,086
+Total liabilities and equity   $ 94,310   $ 83,955

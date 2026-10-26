@@ -1,0 +1,40 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   Jun. 30, 2026   Dec. 31, 2025
+Current Assets:
+Cash and cash equivalents   $ 196,933   $ 180,070
+Accounts receivable, net   627,083   552,378
+Inventories   391,579   377,756
+Other current assets   293,894   303,623
+Total current assets   1,509,489   1,413,827
+Long-Term Assets:
+Property and equipment, net   733,238   747,380
+Operating lease right-of-use assets   122,764   123,228
+Goodwill   410,946   414,004
+Intangible assets, net   98,169   109,843
+Other long-term assets   567,729   542,477
+Total long-term assets   1,932,846   1,936,932
+TOTAL ASSETS   3,442,335   3,350,759
+Current Liabilities:
+Accounts payable   129,097   110,408
+Accrued liabilities   453,169   530,147
+Credit Facility   519,000   398,000
+Current portion of long-term debt   149,999   74,995
+Current portion of deferred revenue   36,400   35,264
+Total current liabilities   1,287,665   1,148,814
+Long-Term Liabilities:
+Deferred income tax liabilities   52,638   31,865
+Long-term debt, net of current portion   299,865   374,842
+Long-term deferred revenue, net of current portion   32,586   32,177
+Long-term operating lease liabilities, net of current portion   100,502   101,151
+Other long-term liabilities   56,504   56,527
+Total long-term liabilities   542,095   596,562
+Total liabilities   1,829,760   1,745,376
+Commitments, Contingencies and Guarantees (Note 16)
+Stockholders’ Equity:
+Common stock, $0.10 par value: Authorized: 120,000 shares; Issued: 108,717 shares in 2026 and 108,369 shares in 2025; Outstanding: 78,874 shares in 2026 and 79,712 shares in 2025   10,872   10,837
+Additional paid-in capital   1,910,290   1,826,750
+Deferred stock units: Outstanding: 26 units in 2026 and 59 units in 2025   5,938   6,094
+Retained earnings   7,008,760   6,391,902
+Accumulated other comprehensive loss   (63,538)   (68,844)
+Treasury stock, at cost: 29,843 shares in 2026 and 28,657 shares in 2025   (7,259,747)   (6,561,356)
+Total stockholders’ equity   1,612,575   1,605,383
+TOTAL LIABILITIES AND STOCKHOLDERS’ EQUITY   $ 3,442,335   $ 3,350,759

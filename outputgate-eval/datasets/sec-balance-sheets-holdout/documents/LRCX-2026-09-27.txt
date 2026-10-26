@@ -1,0 +1,32 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Thousands   Sep. 27, 2026   Jun. 28, 2026
+ASSETS
+Cash and cash equivalents   $ 7,437,384   $ 5,579,171
+Accounts receivable, less allowance of $8,358 as of September 27, 2026, and $8,071 as of June 28, 2026   5,658,379   5,339,682
+Inventories   4,550,544   4,276,111
+Prepaid expenses and other current assets   477,805   415,741
+Total current assets   18,124,112   15,610,705
+Property and equipment, net   3,126,029   2,956,472
+Goodwill and intangible assets, net   1,911,547   1,895,859
+Other assets   3,191,368   3,066,707
+Total assets   26,353,056   23,529,743
+LIABILITIES AND STOCKHOLDERS’ EQUITY
+Trade accounts payable   1,592,208   1,302,467
+Accrued expenses and other current liabilities   3,287,463   2,351,541
+Deferred profit   2,429,342   2,279,168
+Current portion of long-term debt and finance lease obligations   3,486   4,073
+Total current liabilities   7,312,499   5,937,249
+Long-term debt and finance lease obligations   3,731,958   3,730,490
+Income taxes payable   684,273   681,197
+Other long-term liabilities   715,852   709,886
+Total liabilities   12,444,582   11,058,822
+Commitments and contingencies (refer to Note 12)
+Stockholders’ equity:
+Preferred stock, at par value of $0.001 per share; authorized, 5,000 shares, none outstanding   0   0
+Common stock, at par value of $0.001 per share; authorized, 4,000,000 shares as of September 27, 2026 and June 28, 2026; issued and outstanding, 1,249,145 shares as of September 27, 2026, and 1,251,278 shares as of June 28, 2026   1,249   1,251
+Additional paid-in capital   9,363,408   9,244,449
+Treasury stock, at cost; 1,712,490 shares as of September 27, 2026, and 1,710,109 shares as of June 28, 2026   (32,620,072)   (31,597,945)
+Accumulated other comprehensive loss   (127,285)   (127,088)
+Retained earnings   37,291,174   34,950,254
+Total stockholders’ equity   13,908,474   12,470,921
+Total liabilities and stockholders’ equity   $ 26,353,056   $ 23,529,743
+[1] Derived from audited financial statements

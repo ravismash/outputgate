@@ -12,7 +12,8 @@ Writes to OUT:
   sources.tsv             ticker, CIK, accession, statement URL: what was downloaded
   ground-truth.json       the filing's own XBRL facts for the first (latest) column, by file
 
-Usage: python3 -I fetch_sec_balance_sheets.py OUT [--limit 60] [--user-agent "name email"]
+Usage: python3 -I fetch_sec_balance_sheets.py OUT [--limit 60] [--user-agent "name email"] [--tickers "A B C"]
+--tickers replaces the built-in list, e.g. for a held-out set of other companies.
 SEC asks for a User-Agent naming who is calling and at most 10 requests a second.
 Standard library only.
 """
@@ -147,6 +148,7 @@ def main():
     p.add_argument("out")
     p.add_argument("--limit", type=int, default=60)
     p.add_argument("--user-agent", default="outputgate-eval (https://github.com/ravismash/outputgate)")
+    p.add_argument("--tickers", help="space-separated tickers to use instead of the built-in list")
     args = p.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -155,7 +157,7 @@ def main():
     ciks = {v["ticker"]: v["cik_str"] for v in json.loads(fetch.get("https://www.sec.gov/files/company_tickers.json")).values()}
     sources = ["ticker\tcik\taccession\tform\tstatement_url"]
     truth = {}
-    for ticker in TICKERS:
+    for ticker in args.tickers.split() if args.tickers else TICKERS:
         if len(truth) >= args.limit:
             break
         try:

@@ -1,0 +1,38 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Mar. 31, 2026   Jun. 30, 2025
+Current assets:
+Cash and cash equivalents   $ 476   $ 467
+Trade accounts receivable, net of allowances of $8 and $10   3,161   2,910
+Non-trade and notes receivable   307   318
+Inventories   3,179   2,839
+Prepaid expenses   292   263
+Other current assets   193   153
+Total current assets   7,608   6,950
+Property, plant and equipment, net of accumulated depreciation of $4,609 and $4,480   2,959   2,937
+Deferred income taxes   267   270
+Other long-term assets   1,324   1,269
+Intangible assets, net   7,425   7,374
+Goodwill   11,096   10,694
+Total assets   30,679   29,494
+Current liabilities:
+Notes payable and long-term debt payable within one year   2,813   1,791
+Accounts payable, trade   2,296   2,126
+Accrued payrolls and other compensation   560   587
+Accrued domestic and foreign taxes   233   382
+Other current liabilities   835   933
+Total current liabilities   6,737   5,819
+Long-term debt   6,769   7,494
+Pensions and other postretirement benefits   233   267
+Deferred income taxes   1,606   1,490
+Other long-term liabilities   717   733
+Total liabilities   16,062   15,803
+Shareholders’ equity:
+Serial preferred stock, $.50 par value; authorized 3.0 shares; none issued   0   0
+Common stock, $.50 par value; authorized 600.0 shares; issued 181.0 shares   91   91
+Additional paid-in capital   824   194
+Retained earnings   23,649   21,775
+Accumulated other comprehensive loss   (980)   (883)
+Treasury shares, at cost; 55.0 shares and 54.4 shares   (8,975)   (7,495)
+Total shareholders’ equity   14,609   13,682
+Noncontrolling interests   8   9
+Total equity   14,617   13,691
+Total liabilities and equity   $ 30,679   $ 29,494

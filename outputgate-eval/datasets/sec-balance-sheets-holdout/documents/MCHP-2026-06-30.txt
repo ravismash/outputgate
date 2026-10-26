@@ -1,0 +1,30 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jun. 30, 2026   Mar. 31, 2026
+ASSETS
+Cash and cash equivalents   $ 272.3   $ 240.3
+Accounts receivable, net   967.7   894.7
+Inventories   1,047.3   1,035.4
+Other current assets   198.9   207.2
+Total current assets   2,486.2   2,377.6
+Property, plant and equipment, net   1,084.4   1,106.7
+Goodwill   6,695.5   6,695.5
+Net Amount   2,001.4   2,033.4
+Long-term deferred tax assets   1,781.8   1,792.5
+Other assets   358.1   364.4
+Total assets   14,407.4   14,370.1
+LIABILITIES AND STOCKHOLDERS' EQUITY
+Accounts payable   228.9   205.6
+Accrued liabilities   1,065.5   930.7
+Total current liabilities   1,294.4   1,136.3
+Long-term debt   5,361.3   5,496.4
+Long-term income tax payable   580.2   570.9
+Long-term deferred tax liability   25.4   25.1
+Other long-term liabilities   695.1   709.0
+Stockholders' equity:
+Preferred stock, $0.001 par value per share; authorized 5,000,000 shares; 7.50% Series A mandatory convertible preferred stock, 1,485,000 shares issued and outstanding at June 30, 2026 and March 31, 2026, with a liquidation preference of $1,000 per share, or $1,485.0 million in the aggregate   0.0   0.0
+Common stock, $0.001 par value per share; authorized 900,000,000 shares; 578,424,252 shares issued and 543,008,365 shares outstanding at June 30, 2026; 578,423,967 shares issued and 542,079,011 shares outstanding at March 31, 2026   0.6   0.6
+Additional paid-in capital   4,115.7   4,071.5
+Common stock held in treasury: 35,415,887 shares at June 30, 2026; 36,344,956 shares at March 31, 2026   (2,532.6)   (2,551.4)
+Accumulated other comprehensive loss   (3.7)   (4.2)
+Retained earnings   4,871.0   4,915.9
+Total stockholders' equity   6,451.0   6,432.4
+Total liabilities and stockholders' equity   $ 14,407.4   $ 14,370.1

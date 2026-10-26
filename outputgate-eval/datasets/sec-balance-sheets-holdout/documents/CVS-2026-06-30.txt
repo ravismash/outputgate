@@ -1,0 +1,40 @@
+Condensed Consolidated Balance Sheets (Unaudited) - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Assets:
+Cash and cash equivalents   $ 11,329   $ 8,453
+Investments   2,629   2,145
+Accounts receivable, net   40,309   39,779
+Inventories   17,622   19,246
+Other current assets   3,457   5,091
+Total current assets   75,346   74,714
+Long-term investments   33,247   32,669
+Property and equipment, net   13,168   13,083
+Operating lease right-of-use assets   14,451   14,973
+Goodwill   85,478   85,478
+Intangible assets, net   24,644   25,508
+Other assets   7,434   7,113
+Total assets   253,768   253,538
+Liabilities:
+Accounts payable   17,167   17,641
+Pharmacy claims and discounts payable   26,203   26,344
+Health care costs payable   16,313   15,399
+Accrued expenses and other current liabilities   22,477   22,387
+Other insurance liabilities   1,009   1,116
+Current portion of operating lease liabilities   1,914   1,737
+Current portion of long-term debt   1,958   4,068
+Total current liabilities   87,041   88,692
+Long-term operating lease liabilities   12,982   13,643
+Long-term debt   59,452   60,502
+Deferred income taxes   3,766   3,832
+Other long-term insurance liabilities   4,516   4,716
+Other long-term liabilities   6,112   6,771
+Total liabilities   173,869   178,156
+Shareholders’ equity:
+Preferred stock, par value $0.01: 0.1 shares authorized; none issued or outstanding   0   0
+Common stock, par value $0.01: 3,200 shares authorized; 1,795 shares issued and 1,278 shares outstanding as of June 30, 2026 and 1,787 shares issued and 1,271 shares outstanding as of December 31, 2025 and capital surplus   50,968   50,402
+Treasury stock, at cost: 517 and 516 shares as of June 30, 2026 and December 31, 2025   (36,852)   (36,790)
+Retained earnings   65,398   61,196
+Accumulated other comprehensive income   188   406
+Total CVS Health shareholders’ equity   79,702   75,214
+Noncontrolling interests   197   168
+Total shareholders’ equity   79,899   75,382
+Total liabilities and shareholders’ equity   $ 253,768   $ 253,538

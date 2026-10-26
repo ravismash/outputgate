@@ -1,0 +1,45 @@
+Consolidated Balance Sheets - USD ($) $ in Millions   Mar. 31, 2026   Jun. 30, 2025
+Current assets:
+Cash and cash equivalents   $ 3,228.4   $ 3,347.8
+Short-term marketable securities   0.0   4,498.8
+Accounts receivable, net of allowance for doubtful accounts of $46.0 and $47.1, respectively   3,569.2   3,579.1
+Other current assets   1,023.4   840.8
+Total current assets before funds held for clients   7,821.0   12,266.5
+Funds held for clients   46,413.1   30,985.7
+Total current assets   54,234.1   43,252.2
+Property, plant and equipment, net   622.7   655.4
+Operating lease right-of-use asset   400.8   374.1
+Deferred contract costs   3,137.9   3,154.1
+Other assets   1,159.0   1,057.0
+Goodwill   3,289.1   3,273.5
+Intangible assets, net   1,640.6   1,603.0
+Total assets   64,484.2   53,369.3
+Current liabilities:
+Accounts payable   136.1   169.1
+Accrued expenses and other current liabilities   3,013.1   3,092.4
+Accrued payroll and payroll-related expenses   777.9   973.1
+Dividends payable   676.8   620.6
+Short-term deferred revenues   269.1   262.8
+Obligations under reverse repurchase agreements   0.0   38.4
+Obligations under commercial paper borrowings   0.0   4,769.5
+Income taxes payable   372.2   9.1
+Total current liabilities before client funds obligations   5,245.2   9,935.0
+Client funds obligations   46,774.5   31,343.3
+Total current liabilities   52,019.7   41,278.3
+Long-term debt   3,977.3   3,974.7
+Operating lease liabilities   318.2   321.2
+Other liabilities   1,089.1   1,058.3
+Deferred income taxes   344.9   163.6
+Long-term deferred revenues   384.9   385.2
+Total liabilities   58,134.1   47,181.3
+Commitments and contingencies (Note 14)
+Stockholders' equity:
+Preferred stock, $1.00 par value: authorized, 0.3 shares; issued, none   0.0   0.0
+Common stock, $0.10 par value: authorized, 1,000.0 shares; issued, 638.7 shares at March 31, 2026 and June 30, 2025; outstanding, 400.6 and 405.3 shares at March 31, 2026 and June 30, 2025, respectively   63.9   63.9
+Capital in excess of par value   3,012.7   2,788.3
+Retained earnings   26,668.1   25,240.6
+Treasury stock - at cost: 238.1 and 233.4 shares at March 31, 2026 and June 30, 2025, respectively   (22,541.5)   (21,021.4)
+Accumulated other comprehensive income/(loss)   (853.1)   (883.4)
+Total stockholders’ equity   6,350.1   6,188.0
+Total liabilities and stockholders’ equity   $ 64,484.2   $ 53,369.3
+[1] As of June 30, 2025, $38.4 million of short-term marketable securities have been pledged as collateral under the Company's reverse repurchase agreements (see Note 10).

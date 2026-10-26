@@ -1,0 +1,37 @@
+CONDENSED CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Jul. 31, 2026   Jan. 31, 2026
+Current assets:
+Cash and cash equivalents   $ 4,098   $ 2,249
+Marketable securities   57   348
+Accounts receivable, net   684   1,439
+Prepaid expenses and other current assets   831   906
+Total current assets   5,670   4,942
+Long-term marketable securities   202   376
+Computer equipment, software, furniture and leasehold improvements, net   124   121
+Operating lease right-of-use assets   145   157
+Intangible assets, net   423   467
+Goodwill   4,331   4,295
+Deferred income taxes, net   808   842
+Long-term other assets   1,280   1,267
+Total assets   12,983   12,467
+Current liabilities:
+Accounts payable   457   422
+Accrued compensation   354   659
+Accrued income taxes   63   54
+Deferred revenue   4,036   4,406
+Short-term debt, net   994   0
+Current portion of long-term notes payable, net   499   0
+Operating lease liabilities   52   52
+Other accrued liabilities   173   215
+Total current liabilities   6,628   5,808
+Long-term deferred revenue   222   287
+Long-term operating lease liabilities   175   199
+Long-term income taxes payable   203   181
+Long-term deferred income taxes   53   40
+Long-term notes payable, net   1,985   2,483
+Long-term other liabilities   334   424
+Stockholders’ equity:
+Common stock and additional paid-in capital   4,846   4,709
+Accumulated other comprehensive loss   (233)   (232)
+Accumulated deficit   (1,230)   (1,432)
+Total stockholders’ equity   3,383   3,045
+Total liabilities and stockholders’ equity   $ 12,983   $ 12,467

@@ -1,0 +1,42 @@
+Condensed Consolidated Balance Sheets (Unaudited) - USD ($) $ in Thousands   Mar. 31, 2026   Jun. 30, 2025
+Current assets:
+Cash and cash equivalents   $ 1,660,513   $ 1,209,450
+Accounts receivable, net of allowances of $29,474 and $22,424 at March 31, 2026 and June 30, 2025, respectively   998,837   939,492
+Inventories (note 3)   911,876   927,711
+Prepaid expenses and other current assets (note 3)   492,836   428,952
+Total current assets   4,064,062   3,505,605
+Non-current assets:
+Property, plant and equipment, net (note 3)   566,972   550,790
+Operating lease right-of-use assets   161,602   167,497
+Goodwill (note 4)   3,043,136   3,046,680
+Other intangible assets, net (note 3)   425,185   464,861
+Deferred income taxes   312,594   253,119
+Prepaid taxes and other non-current assets   210,734   185,839
+Total non-current assets   4,720,223   4,668,786
+Total assets   8,784,285   8,174,391
+Current liabilities:
+Accounts payable   273,301   278,157
+Accrued expenses   446,149   402,253
+Operating lease liabilities, current   29,233   30,506
+Deferred revenue   179,277   166,030
+Income taxes payable   163,322   132,274
+Short-term debt, net (note 7)   259,928   9,900
+Total current liabilities   1,351,210   1,019,120
+Non-current liabilities:
+Deferred revenue   163,148   156,803
+Deferred income taxes   77,929   77,682
+Operating lease liabilities, non-current   149,840   153,015
+Other long-term liabilities   146,079   141,520
+Long-term debt, net (note 7)   404,168   658,392
+Total non-current liabilities   941,164   1,187,412
+Total liabilities   2,292,374   2,206,532
+Commitments and contingencies (note 9)
+Stockholders’ equity:
+Preferred stock, $0.01 par value, 2,000,000 shares authorized; none issued   0   0
+Common stock, $0.004 par value, 350,000,000 shares authorized; 190,866,303 issued and 145,040,224 outstanding at March 31, 2026 and 190,311,097 issued and 146,385,350 outstanding at June 30, 2025   763   761
+Additional paid-in capital   2,134,231   2,033,599
+Retained earnings   6,958,779   6,081,490
+Treasury stock, at cost, 45,826,079 shares at March 31, 2026 and 43,925,747 shares at June 30, 2025   (2,576,957)   (2,073,292)
+Accumulated other comprehensive loss   (24,905)   (74,699)
+Total stockholders’ equity   6,491,911   5,967,859
+Total liabilities and stockholders’ equity   $ 8,784,285   $ 8,174,391

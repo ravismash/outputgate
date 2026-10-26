@@ -1,0 +1,36 @@
+CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   May 28, 2026   Aug. 28, 2025
+Assets
+Cash and cash equivalents   $ 24,995   $ 9,642
+Short-term investments   1,027   665
+Receivables   31,025   9,265
+Inventories   8,567   8,355
+Other current assets   1,123   914
+Total current assets   66,737   28,841
+Long-term marketable investments   4,106   1,629
+Property, plant, and equipment   56,426   46,590
+Operating lease right-of-use assets   683   736
+Intangible assets   473   453
+Deferred tax assets   700   616
+Goodwill   1,150   1,150
+Other noncurrent assets   3,837   2,783
+Total assets   134,112   82,798
+Liabilities and equity
+Accounts payable and accrued expenses   15,521   9,649
+Current debt   582   560
+Other current liabilities   3,385   1,245
+Total current liabilities   19,488   11,454
+Long-term debt   5,140   14,017
+Noncurrent operating lease liabilities   654   701
+Noncurrent unearned government incentives   1,020   1,018
+Other noncurrent liabilities   7,086   1,443
+Total liabilities   33,388   28,633
+Commitments and contingencies
+Shareholders’ equity
+Common stock, $0.10 par value, 3,000 shares authorized, 1,275 shares issued and 1,129 outstanding (1,266 shares issued and 1,122 outstanding as of August 28, 2025)   128   127
+Additional capital   14,442   13,339
+Retained earnings   94,682   48,583
+Treasury stock, 146 shares held (144 shares as of August 28, 2025)   (8,502)   (7,852)
+Accumulated other comprehensive income (loss)   (26)   (32)
+Total equity   100,724   54,165
+Total liabilities and equity   $ 134,112   $ 82,798
+[1] The maturities of long-term marketable investments primarily range from one to five years, except for asset-backed securities which are not due at a single maturity date.

@@ -1,0 +1,39 @@
+Condensed Balance Sheets - USD ($) $ in Thousands   Jun. 30, 2026   Dec. 31, 2025
+Current assets:
+Cash and cash equivalents   $ 283,939   $ 120,091
+Customer receivables, less allowances of $9,530 and $7,924, respectively   594,540   471,947
+Income taxes receivable   8,114   0
+Other receivables   23,483   22,392
+Prepaid expenses and other current assets   93,919   80,403
+Total current assets   1,003,995   694,833
+Property and equipment:
+Revenue equipment   2,716,367   2,678,446
+Land and structures   3,570,165   3,523,364
+Other fixed assets   665,961   664,015
+Leasehold improvements   10,300   15,654
+Total property and equipment   6,962,793   6,881,479
+Less: Accumulated depreciation   (2,522,323)   (2,377,275)
+Net property and equipment   4,440,470   4,504,204
+Other assets   291,056   271,123
+Total assets   5,735,521   5,470,160
+Current liabilities:
+Accounts payable   80,992   62,696
+Compensation and benefits   280,241   239,122
+Claims and insurance accruals   80,640   78,864
+Other accrued liabilities   69,511   70,078
+Income taxes payable   0   13,146
+Current maturities of long-term debt   19,997   20,000
+Total current liabilities   531,381   483,906
+Long-term liabilities:
+Long-term debt   0   19,995
+Other non-current liabilities   286,105   284,519
+Deferred income taxes   370,683   370,683
+Total long-term liabilities   656,788   675,197
+Total liabilities   1,188,169   1,159,103
+Commitments and contingent liabilities
+Shareholders' equity:
+Common stock - $0.10 par value, 560,000,000 shares authorized, 207,471,296 and 208,556,788 shares outstanding at June 30, 2026 and December 31, 2025, respectively   20,747   20,856
+Capital in excess of par value   237,510   234,597
+Retained earnings   4,289,095   4,055,604
+Total shareholders’ equity   4,547,352   4,311,057
+Total liabilities and shareholders’ equity   $ 5,735,521   $ 5,470,160

@@ -1,0 +1,35 @@
+Condensed Consolidated Balance Sheets (Unaudited) - USD ($) $ in Millions   Jul. 04, 2026   Dec. 31, 2025
+ASSETS
+Cash and cash equivalents   $ 710   $ 1,165
+Accounts receivable, net   2,160   2,200
+Contract assets   1,455   1,574
+Inventories, net   1,333   983
+Other current assets   474   378
+Total current assets   6,132   6,300
+Property, plant and equipment, net   1,167   1,165
+Operating lease assets   571   581
+Investments   300   187
+Deferred income taxes   733   761
+Goodwill   6,883   6,800
+Intangible assets, net   2,951   3,104
+Other assets   505   491
+Total assets   19,242   19,389
+LIABILITIES AND STOCKHOLDERS’ EQUITY
+Short-term borrowings   615   749
+Accounts payable   957   1,134
+Contract liabilities   2,341   2,265
+Accrued liabilities   1,666   1,930
+Total current liabilities   5,579   6,078
+Long-term debt   8,417   8,413
+Operating lease liabilities   442   471
+Other liabilities   2,116   2,000
+Stockholders’ Equity
+Preferred stock, $100 par value: 0.5 shares authorized; none issued and outstanding   0   0
+Common stock, $0.01 par value:   2   2
+Additional paid-in capital   2,468   2,279
+Retained earnings   2,627   2,549
+Accumulated other comprehensive loss   (2,425)   (2,420)
+Total Motorola Solutions, Inc. stockholders’ equity   2,672   2,410
+Non-controlling interests   16   17
+Total stockholders’ equity   2,688   2,427
+Total liabilities and stockholders’ equity   $ 19,242   $ 19,389

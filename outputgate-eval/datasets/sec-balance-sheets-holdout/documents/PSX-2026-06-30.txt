@@ -1,0 +1,44 @@
+Consolidated Balance Sheet - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025
+Assets
+Cash and cash equivalents   $ 4,099   $ 1,116
+Inventories   5,922   5,097
+Prepaid expenses and other current assets   2,483   1,287
+Total Current Assets   24,221   17,271
+Investments and long-term receivables   12,347   11,905
+Net properties, plants and equipment   39,649   39,097
+Goodwill   1,433   1,433
+Intangibles   955   978
+Other assets   3,205   2,996
+Total Assets   81,810   73,680
+Liabilities
+Short-term debt   1,797   1,038
+Accrued income and other taxes   2,012   1,362
+Employee benefit obligations   497   680
+Other accruals   1,999   1,379
+Total Current Liabilities   18,354   13,326
+Long-term debt   18,768   18,678
+Asset retirement obligations and accrued environmental costs   1,082   1,022
+Deferred income taxes   7,448   7,308
+Employee benefit obligations   592   573
+Other liabilities and deferred credits   2,863   2,532
+Total Liabilities   49,107   43,439
+Equity
+Common stock (2,500,000,000 shares authorized at $0.01 par value) Issued (2025—659,131,505 shares; 2024—656,987,861 shares) Par value   7   7
+Capital in excess of par   20,063   19,948
+Treasury stock (at cost: 2026—262,154,856 shares; 2025—258,252,603 shares)   (24,578)   (23,934)
+Retained earnings   36,270   33,239
+Accumulated other comprehensive loss   (256)   (167)
+Total Stockholders’ Equity   31,506   29,093
+Noncontrolling interests   1,197   1,148
+Total Equity   32,703   30,241
+Total Liabilities and Equity   81,810   73,680
+Nonrelated Party
+Assets
+Accounts and financing receivable, after allowance for credit loss, current   11,052   9,158
+Liabilities
+Accounts payable, current   11,643   8,581
+Related Party
+Assets
+Accounts and financing receivable, after allowance for credit loss, current   665   613
+Liabilities
+Accounts payable, current   $ 406   $ 286

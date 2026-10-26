@@ -1,0 +1,36 @@
+Consolidated Balance Sheets (Unaudited) - USD ($) $ in Thousands   Apr. 30, 2026   Jul. 31, 2025
+Current assets:
+Cash, cash equivalents, and restricted cash   $ 3,354,142   $ 2,780,531
+Investment in held to maturity securities   845,570   2,008,539
+Accounts receivable, net of allowance for credit losses of $14,636 and $12,945, respectively   794,472   762,811
+Vehicle pooling costs   117,979   116,145
+Inventories   49,632   39,661
+Income taxes receivable   721   580
+Prepaid expenses and other assets   54,157   46,361
+Total current assets   5,216,673   5,754,628
+Property and equipment, net   3,715,922   3,598,093
+Operating lease right-of-use assets   88,066   99,708
+Intangibles, net   53,943   62,832
+Goodwill   522,703   517,779
+Other assets   51,729   57,862
+Total assets   9,649,036   10,090,902
+Current liabilities:
+Accounts payable and accrued liabilities   598,290   591,831
+Deferred revenue   33,494   30,440
+Income taxes payable   37,650   41,141
+Current portion of operating and finance lease liabilities   15,825   19,869
+Total current liabilities   685,259   683,281
+Deferred income taxes   89,733   80,625
+Income taxes payable   5,308   35,635
+Operating and finance lease liabilities, net of current portion   77,291   83,870
+Total liabilities   857,591   883,411
+Commitments and contingencies
+Redeemable non-controlling interest   17,181   20,458
+Stockholders’ equity:
+Preferred stock: $0.0001 par value - 5,000,000 shares authorized; none issued   0   0
+Common stock: $0.0001 par value - 1,600,000,000 shares authorized; 925,811,482 and 967,478,690 shares issued and outstanding, respectively.   93   97
+Additional paid-in capital   1,207,201   1,214,150
+Accumulated other comprehensive loss   (87,207)   (120,283)
+Retained earnings   7,654,177   8,093,069
+Total stockholders’ equity   8,774,264   9,187,033
+Total liabilities, redeemable noncontrolling interests and stockholders’ equity   $ 9,649,036   $ 10,090,902
