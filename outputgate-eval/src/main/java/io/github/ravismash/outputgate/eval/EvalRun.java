@@ -1,5 +1,6 @@
 package io.github.ravismash.outputgate.eval;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -75,6 +76,19 @@ public final class EvalRun {
      */
     public static List<Result> run(Path pdfDir, LlmClient client, Contract contract,
             Function<SourceDocument, String> prompt, Path outDir, String label) {
+        return run(pdfDir, client, contract, prompt, outDir, label, false);
+    }
+
+    /**
+     * Like {@link #run(Path, LlmClient, Contract, Function, Path, String)}; with {@code resume},
+     * keeps the documents already in outDir's results.jsonl (from a run that stopped) and only
+     * calls the model for the rest.
+     *
+     * @param resume whether to keep earlier results instead of starting over
+     * @return one result per document
+     */
+    public static List<Result> run(Path pdfDir, LlmClient client, Contract contract,
+            Function<SourceDocument, String> prompt, Path outDir, String label, boolean resume) {
         List<Path> pdfs;
         try (Stream<Path> files = Files.list(pdfDir)) {
             pdfs = files.filter(p -> BenchmarkFolder.isPdf(p) || BenchmarkFolder.isText(p)).sorted().toList();
@@ -85,9 +99,20 @@ public final class EvalRun {
         List<Result> results = new ArrayList<>();
         Path jsonl = outDir.resolve("results.jsonl");
         try {
+            Map<String, Result> earlier = new TreeMap<>();
+            if (resume && Files.isRegularFile(jsonl)) {
+                for (String line : Files.readAllLines(jsonl, StandardCharsets.UTF_8)) {
+                    if (!line.isBlank()) {
+                        Result r = fromJson(line);
+                        earlier.put(r.file(), r);
+                    }
+                }
+            }
             Files.writeString(jsonl, "");
             for (Path pdf : pdfs) {
-                Result r = one(pdf, client, contract, prompt);
+                Result r = earlier.containsKey(pdf.getFileName().toString())
+                        ? earlier.get(pdf.getFileName().toString())
+                        : one(pdf, client, contract, prompt);
                 results.add(r);
                 Files.writeString(jsonl, json(r) + "\n", StandardCharsets.UTF_8, java.nio.file.StandardOpenOption.APPEND);
                 System.out.printf("%-48s %-8s %s%n", r.file(), r.outcome(),
@@ -124,6 +149,19 @@ public final class EvalRun {
 
     private static List<String> failingGates(Result r) {
         return r.violations().stream().map(Violation::gate).distinct().toList();
+    }
+
+    private static Result fromJson(String line) throws IOException {
+        JsonNode n = JSON.readTree(line);
+        List<Violation> violations = new ArrayList<>();
+        for (JsonNode v : n.path("violations")) {
+            violations.add(new Violation(v.path("gate").asText(), v.path("path").asText(), v.path("message").asText()));
+        }
+        return new Result(n.path("file").asText(), n.path("pages").asInt(), n.path("prompt_chars").asInt(),
+                Outcome.valueOf(n.path("outcome").asText()),
+                n.has("output_tokens") ? n.get("output_tokens").asLong() : null,
+                n.has("latency_ms") ? n.get("latency_ms").asLong() : null,
+                violations, n.path("error").asText(null), n.path("output").asText(null));
     }
 
     private static String json(Result r) {

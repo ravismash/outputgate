@@ -101,4 +101,22 @@ class EvalRunTest {
         assertTrue(results.get(0).error().contains("model down"));
         assertTrue(Files.readString(out.resolve("summary.md")).contains("ERROR: 2"));
     }
+
+    @Test
+    @DisplayName("a resumed run keeps what a stopped run recorded and only asks about the rest")
+    void resumeKeepsEarlierResults() throws IOException {
+        Path out = Files.createDirectories(tmp.resolve("run3"));
+        Path docs = folder();
+        EvalRun.run(docs, FakeLlmClient.inOrder("{\"a\": 1, \"b\": 2, \"total\": 3}", "{\"a\": 1, \"b\": 2, \"total\": 4}"),
+                CONTRACT, doc -> "p", out, "first");
+        List<String> all = Files.readAllLines(out.resolve("results.jsonl"));
+        Files.writeString(out.resolve("results.jsonl"), all.get(0) + "\n"); // stopped after a-good.pdf
+
+        FakeLlmClient model = FakeLlmClient.inOrder("{\"a\": 1, \"b\": 2, \"total\": 4}");
+        List<EvalRun.Result> results = EvalRun.run(docs, model, CONTRACT, doc -> "p", out, "resumed", true);
+        assertEquals(1, model.prompts().size(), "only b-bad.pdf is asked again");
+        assertEquals(List.of(EvalRun.Outcome.PASSED, EvalRun.Outcome.REJECTED, EvalRun.Outcome.NO_TEXT),
+                results.stream().map(EvalRun.Result::outcome).toList());
+        assertEquals(all, Files.readAllLines(out.resolve("results.jsonl")));
+    }
 }

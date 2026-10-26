@@ -209,9 +209,25 @@ the GitHub release. It needs the four repository secrets listed at the top of th
 
 ## Benchmark
 
-Not run yet. The harness is in [`outputgate-eval`](outputgate-eval): it scores the same model
-answers three ways (naive parse-only, schema only, the full contract), on a folder of real
-documents plus a corrupted set made from them. The documents stay outside the repo.
+On 60 real company balance sheets from SEC 10-Q filings, four models (local qwen2.5:14b and
+three Gemini models) were run, and every answer was scored three ways:
+
+| Policy | Corrupted outputs caught (of 50, every model) |
+|---|---|
+| Naive (parse only) | 4 |
+| JSON Schema only | 20 |
+| Full contract | **50** |
+
+The full contract accepted 57 to 58 of the 60 real Gemini answers and 52 of qwen's. One accepted
+answer, out of all 240, was wrong. The report is
+[outputgate-balance-sheet-benchmark.pdf](https://github.com/ravismash/outputgate/releases/download/v0.1.0/outputgate-balance-sheet-benchmark.pdf);
+the documents, every model's answers and the per-model reports are in
+[`outputgate-eval/datasets/sec-balance-sheets`](outputgate-eval/datasets/sec-balance-sheets).
+
+The harness is in [`outputgate-eval`](outputgate-eval). It scores the same model answers three
+ways (naive parse-only, schema only, the full contract) on a folder of documents, plus a
+corrupted set made from them. Another dataset needs only a new contract. For example, on a folder
+of invoice PDFs:
 
 ```bash
 D=/abs/path/to/invoices; R=/abs/path/to/run

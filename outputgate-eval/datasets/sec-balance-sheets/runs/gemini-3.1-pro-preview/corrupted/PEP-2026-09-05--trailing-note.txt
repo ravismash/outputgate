@@ -1,0 +1,104 @@
+{
+  "period_end" : {
+    "value" : "2026-09-05",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Sep. 05, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 10675,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 10,675"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 488,
+      "source_span" : {
+        "page" : 1,
+        "text" : "488"
+      }
+    }
+  }, {
+    "label" : "Accounts and Financing Receivable, after Allowance for Credit Loss, Current",
+    "amount" : {
+      "value" : 13623,
+      "source_span" : {
+        "page" : 1,
+        "text" : "13,623"
+      }
+    }
+  }, {
+    "label" : "Inventory, Net, Total",
+    "amount" : {
+      "value" : 6434,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,434"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 1339,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,339"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 32559,
+    "source_span" : {
+      "page" : 1,
+      "text" : "32,559"
+    }
+  },
+  "total_assets" : {
+    "value" : 111976,
+    "source_span" : {
+      "page" : 1,
+      "text" : "111,976"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt obligations",
+    "amount" : {
+      "value" : 9223,
+      "source_span" : {
+        "page" : 1,
+        "text" : "9,223"
+      }
+    }
+  }, {
+    "label" : "Accounts payable and other current liabilities",
+    "amount" : {
+      "value" : 25306,
+      "source_span" : {
+        "page" : 1,
+        "text" : "25,306"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 34529,
+    "source_span" : {
+      "page" : 1,
+      "text" : "34,529"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 111976,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 111,976"
+    }
+  }
+}
+
+Note: one amount was hard to read, so please double-check it.
