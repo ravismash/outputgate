@@ -1,0 +1,147 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Billed to: 2026-06-30"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 11329,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 11,329"
+      }
+    }
+  }, {
+    "label" : "Investments",
+    "amount" : {
+      "value" : 2629,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,629"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 40309,
+      "source_span" : {
+        "page" : 1,
+        "text" : "40,309"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 17622,
+      "source_span" : {
+        "page" : 1,
+        "text" : "17,622"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 3457,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,457"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 75346,
+    "source_span" : {
+      "page" : 1,
+      "text" : "75,346"
+    }
+  },
+  "total_assets" : {
+    "value" : 253768,
+    "source_span" : {
+      "page" : 1,
+      "text" : "253,768"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 17167,
+      "source_span" : {
+        "page" : 1,
+        "text" : "17,167"
+      }
+    }
+  }, {
+    "label" : "Pharmacy claims and discounts payable",
+    "amount" : {
+      "value" : 26203,
+      "source_span" : {
+        "page" : 1,
+        "text" : "26,203"
+      }
+    }
+  }, {
+    "label" : "Health care costs payable",
+    "amount" : {
+      "value" : 16313,
+      "source_span" : {
+        "page" : 1,
+        "text" : "16,313"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other current liabilities",
+    "amount" : {
+      "value" : 22477,
+      "source_span" : {
+        "page" : 1,
+        "text" : "22,477"
+      }
+    }
+  }, {
+    "label" : "Other insurance liabilities",
+    "amount" : {
+      "value" : 1009,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,009"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 1914,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,914"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 1958,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,958"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 87041,
+    "source_span" : {
+      "page" : 1,
+      "text" : "87,041"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 253768,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 253,768"
+    }
+  }
+}

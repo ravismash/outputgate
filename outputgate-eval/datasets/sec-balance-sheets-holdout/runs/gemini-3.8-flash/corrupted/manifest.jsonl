@@ -1,0 +1,50 @@
+{"file":"MCHP-2026-06-30--dropped-item.txt","base":"MCHP-2026-06-30.txt","kind":"dropped-item","detail":"removed current_assets[3]"}
+{"file":"LRCX-2026-09-27--number-typo.txt","base":"LRCX-2026-09-27.txt","kind":"number-typo","detail":"total_liabilities_and_equity 26353056 -> 62353056"}
+{"file":"INTU-2026-04-30--fabricated-quote.txt","base":"INTU-2026-04-30.txt","kind":"fabricated-quote","detail":"period_end quote \"Apr. 30, 2026\" -> \"Billed to: 2026-04-30\""}
+{"file":"LULU-2026-08-02--wrong-page.txt","base":"LULU-2026-08-02.txt","kind":"wrong-page","detail":"total_current_liabilities page 1 -> 2 (of 1)"}
+{"file":"EXC-2026-06-30--bare-value.txt","base":"EXC-2026-06-30.txt","kind":"bare-value","detail":"total_current_assets evidence dropped"}
+{"file":"DUK-2026-06-30--non-iso-date.txt","base":"DUK-2026-06-30.txt","kind":"non-iso-date","detail":"period_end 2026-06-30 -> 06/30/26"}
+{"file":"RMD-2026-03-31--amount-as-text.txt","base":"RMD-2026-03-31.txt","kind":"amount-as-text","detail":"total_current_liabilities -> \"$1,351,210.00\""}
+{"file":"CTVA-2026-06-30--missing-field.txt","base":"CTVA-2026-06-30.txt","kind":"missing-field","detail":"total_liabilities_and_equity removed"}
+{"file":"ETN-2026-06-30--extra-field.txt","base":"ETN-2026-06-30.txt","kind":"extra-field","detail":"added \"notes\""}
+{"file":"CVS-2026-06-30--code-fence.txt","base":"CVS-2026-06-30.txt","kind":"code-fence","detail":"the JSON wrapped in a sentence and a ```json fence"}
+{"file":"GLW-2026-06-30--trailing-note.txt","base":"GLW-2026-06-30.txt","kind":"trailing-note","detail":"a note after the JSON object"}
+{"file":"PAYX-2026-08-31--dropped-item.txt","base":"PAYX-2026-08-31.txt","kind":"dropped-item","detail":"removed current_assets[0]"}
+{"file":"KLAC-2026-03-31--number-typo.txt","base":"KLAC-2026-03-31.txt","kind":"number-typo","detail":"current_liabilities[0].amount 515009 -> 551009"}
+{"file":"ORLY-2026-06-30--fabricated-quote.txt","base":"ORLY-2026-06-30.txt","kind":"fabricated-quote","detail":"period_end quote \"Jun. 30, 2026\" -> \"Billed to: 2026-06-30\""}
+{"file":"APD-2026-06-30--wrong-page.txt","base":"APD-2026-06-30.txt","kind":"wrong-page","detail":"total_assets page 1 -> 2 (of 1)"}
+{"file":"ITW-2026-06-30--bare-value.txt","base":"ITW-2026-06-30.txt","kind":"bare-value","detail":"current_liabilities[2].amount evidence dropped"}
+{"file":"MCK-2026-06-30--non-iso-date.txt","base":"MCK-2026-06-30.txt","kind":"non-iso-date","detail":"period_end 2026-06-30 -> 06/30/26"}
+{"file":"LIN-2026-06-30--amount-as-text.txt","base":"LIN-2026-06-30.txt","kind":"amount-as-text","detail":"total_assets -> \"$88,349.00\""}
+{"file":"BSX-2026-06-30--missing-field.txt","base":"BSX-2026-06-30.txt","kind":"missing-field","detail":"total_current_liabilities removed"}
+{"file":"ANET-2026-06-30--extra-field.txt","base":"ANET-2026-06-30.txt","kind":"extra-field","detail":"added \"notes\""}
+{"file":"IDXX-2026-06-30--code-fence.txt","base":"IDXX-2026-06-30.txt","kind":"code-fence","detail":"the JSON wrapped in a sentence and a ```json fence"}
+{"file":"CI-2026-06-30--trailing-note.txt","base":"CI-2026-06-30.txt","kind":"trailing-note","detail":"a note after the JSON object"}
+{"file":"ECL-2026-06-30--dropped-item.txt","base":"ECL-2026-06-30.txt","kind":"dropped-item","detail":"removed current_liabilities[1]"}
+{"file":"EW-2026-06-30--number-typo.txt","base":"EW-2026-06-30.txt","kind":"number-typo","detail":"total_current_assets 6818.9 -> 6881.9"}
+{"file":"DOW-2026-09-30--fabricated-quote.txt","base":"DOW-2026-09-30.txt","kind":"fabricated-quote","detail":"period_end quote \"Sep. 30, 2026\" -> \"Billed to: 2026-09-30\""}
+{"file":"BKNG-2026-06-30--wrong-page.txt","base":"BKNG-2026-06-30.txt","kind":"wrong-page","detail":"total_current_assets page 1 -> 2 (of 1)"}
+{"file":"ADSK-2026-07-31--bare-value.txt","base":"ADSK-2026-07-31.txt","kind":"bare-value","detail":"current_assets[0].amount evidence dropped"}
+{"file":"HUM-2026-06-30--non-iso-date.txt","base":"HUM-2026-06-30.txt","kind":"non-iso-date","detail":"period_end 2026-06-30 -> 06/30/26"}
+{"file":"KHC-2026-06-27--amount-as-text.txt","base":"KHC-2026-06-27.txt","kind":"amount-as-text","detail":"current_assets[2].amount -> \"$3,308.00\""}
+{"file":"AZO-2026-05-09--missing-field.txt","base":"AZO-2026-05-09.txt","kind":"missing-field","detail":"total_assets removed"}
+{"file":"EL-2026-03-31--extra-field.txt","base":"EL-2026-03-31.txt","kind":"extra-field","detail":"added \"notes\""}
+{"file":"REGN-2026-06-30--code-fence.txt","base":"REGN-2026-06-30.txt","kind":"code-fence","detail":"the JSON wrapped in a sentence and a ```json fence"}
+{"file":"CDNS-2026-06-30--trailing-note.txt","base":"CDNS-2026-06-30.txt","kind":"trailing-note","detail":"a note after the JSON object"}
+{"file":"PANW-2026-04-30--dropped-item.txt","base":"PANW-2026-04-30.txt","kind":"dropped-item","detail":"removed current_assets[2]"}
+{"file":"GWW-2026-06-30--number-typo.txt","base":"GWW-2026-06-30.txt","kind":"number-typo","detail":"total_current_liabilities 2138 -> 1238"}
+{"file":"SHW-2026-06-30--fabricated-quote.txt","base":"SHW-2026-06-30.txt","kind":"fabricated-quote","detail":"period_end quote \"Jun. 30, 2026\" -> \"Billed to: 2026-06-30\""}
+{"file":"ODFL-2026-06-30--wrong-page.txt","base":"ODFL-2026-06-30.txt","kind":"wrong-page","detail":"current_liabilities[2].amount page 1 -> 2 (of 1)"}
+{"file":"CPRT-2026-04-30--bare-value.txt","base":"CPRT-2026-04-30.txt","kind":"bare-value","detail":"total_liabilities_and_equity evidence dropped"}
+{"file":"NUE-2026-07-04--non-iso-date.txt","base":"NUE-2026-07-04.txt","kind":"non-iso-date","detail":"period_end 2026-07-04 -> 07/04/26"}
+{"file":"ROP-2026-06-30--amount-as-text.txt","base":"ROP-2026-06-30.txt","kind":"amount-as-text","detail":"total_liabilities_and_equity -> \"$35,169.50\""}
+{"file":"HCA-2026-06-30--missing-field.txt","base":"HCA-2026-06-30.txt","kind":"missing-field","detail":"current_liabilities removed"}
+{"file":"NOW-2026-06-30--extra-field.txt","base":"NOW-2026-06-30.txt","kind":"extra-field","detail":"added \"notes\""}
+{"file":"EMR-2026-06-30--code-fence.txt","base":"EMR-2026-06-30.txt","kind":"code-fence","detail":"the JSON wrapped in a sentence and a ```json fence"}
+{"file":"ACN-2026-05-31--trailing-note.txt","base":"ACN-2026-05-31.txt","kind":"trailing-note","detail":"a note after the JSON object"}
+{"file":"FTNT-2026-06-30--dropped-item.txt","base":"FTNT-2026-06-30.txt","kind":"dropped-item","detail":"removed current_liabilities[0]"}
+{"file":"MSI-2026-07-04--number-typo.txt","base":"MSI-2026-07-04.txt","kind":"number-typo","detail":"total_current_liabilities 5579 -> 5597"}
+{"file":"ROK-2026-06-30--fabricated-quote.txt","base":"ROK-2026-06-30.txt","kind":"fabricated-quote","detail":"period_end quote \"Jun. 30, 2026\" -> \"Billed to: 2026-06-30\""}
+{"file":"CTAS-2026-08-31--wrong-page.txt","base":"CTAS-2026-08-31.txt","kind":"wrong-page","detail":"current_assets[2].amount page 1 -> 2 (of 1)"}
+{"file":"AMAT-2026-07-26--bare-value.txt","base":"AMAT-2026-07-26.txt","kind":"bare-value","detail":"current_assets[1].amount evidence dropped"}
+{"file":"PSX-2026-06-30--non-iso-date.txt","base":"PSX-2026-06-30.txt","kind":"non-iso-date","detail":"period_end 2026-06-30 -> 06/30/26"}

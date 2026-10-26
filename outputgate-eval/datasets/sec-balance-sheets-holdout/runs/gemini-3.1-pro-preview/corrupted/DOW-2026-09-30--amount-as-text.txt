@@ -1,0 +1,147 @@
+{
+  "period_end" : {
+    "value" : "2026-09-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Sep. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents (variable interest entities restricted - 2026: $266; 2025: $31)",
+    "amount" : {
+      "value" : 4142,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 4,142"
+      }
+    }
+  }, {
+    "label" : "Trade (net of allowance for doubtful receivables - 2026: $66; 2025: $59)",
+    "amount" : {
+      "value" : 5890,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,890"
+      }
+    }
+  }, {
+    "label" : "Other",
+    "amount" : {
+      "value" : 1717,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,717"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 7024,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,024"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 1404,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,404"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 20177,
+    "source_span" : {
+      "page" : 1,
+      "text" : "20,177"
+    }
+  },
+  "total_assets" : {
+    "value" : 60953,
+    "source_span" : {
+      "page" : 1,
+      "text" : "60,953"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Notes payable",
+    "amount" : {
+      "value" : 16,
+      "source_span" : {
+        "page" : 1,
+        "text" : "16"
+      }
+    }
+  }, {
+    "label" : "Long-term debt due within one year",
+    "amount" : {
+      "value" : "$745.00",
+      "source_span" : {
+        "page" : 1,
+        "text" : "745"
+      }
+    }
+  }, {
+    "label" : "Accounts payable - Trade",
+    "amount" : {
+      "value" : 5300,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,300"
+      }
+    }
+  }, {
+    "label" : "Accounts payable - Other",
+    "amount" : {
+      "value" : 1363,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,363"
+      }
+    }
+  }, {
+    "label" : "Operating lease liabilities - current",
+    "amount" : {
+      "value" : 341,
+      "source_span" : {
+        "page" : 1,
+        "text" : "341"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 367,
+      "source_span" : {
+        "page" : 1,
+        "text" : "367"
+      }
+    }
+  }, {
+    "label" : "Accrued Liabilities, Current",
+    "amount" : {
+      "value" : 3361,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,361"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 11493,
+    "source_span" : {
+      "page" : 1,
+      "text" : "11,493"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 60953,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 60,953"
+    }
+  }
+}

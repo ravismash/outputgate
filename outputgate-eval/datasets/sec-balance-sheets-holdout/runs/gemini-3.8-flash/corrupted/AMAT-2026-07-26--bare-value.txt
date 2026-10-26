@@ -1,0 +1,105 @@
+{
+  "period_end" : {
+    "value" : "2026-07-26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jul. 26, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 7037,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 7,037"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : 2196
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 7691,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,691"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 6564,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,564"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 1607,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,607"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 25095,
+    "source_span" : {
+      "page" : 1,
+      "text" : "25,095"
+    }
+  },
+  "total_assets" : {
+    "value" : 43522,
+    "source_span" : {
+      "page" : 1,
+      "text" : "43,522"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 1299,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,299"
+      }
+    }
+  }, {
+    "label" : "Accounts payable and accrued expenses",
+    "amount" : {
+      "value" : 5787,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,787"
+      }
+    }
+  }, {
+    "label" : "Contract liabilities",
+    "amount" : {
+      "value" : 3271,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,271"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 10357,
+    "source_span" : {
+      "page" : 1,
+      "text" : "10,357"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 43522,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 43,522"
+    }
+  }
+}

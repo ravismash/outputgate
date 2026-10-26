@@ -1,0 +1,120 @@
+{
+  "period_end" : {
+    "value" : "06/30/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 6893,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 6,893"
+      }
+    }
+  }, {
+    "label" : "Investment securities",
+    "amount" : {
+      "value" : 16978,
+      "source_span" : {
+        "page" : 1,
+        "text" : "16,978"
+      }
+    }
+  }, {
+    "label" : "Receivables, net of allowances of $117 in 2026 and $108 in 2025",
+    "amount" : {
+      "value" : 5695,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,695"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 10520,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,520"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 40086,
+    "source_span" : {
+      "page" : 1,
+      "text" : "40,086"
+    }
+  },
+  "total_assets" : {
+    "value" : 57196,
+    "source_span" : {
+      "page" : 1,
+      "text" : "57,196"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Benefits payable",
+    "amount" : {
+      "value" : 12876,
+      "source_span" : {
+        "page" : 1,
+        "text" : "12,876"
+      }
+    }
+  }, {
+    "label" : "Trade accounts payable and accrued expenses",
+    "amount" : {
+      "value" : 7263,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,263"
+      }
+    }
+  }, {
+    "label" : "Book overdraft",
+    "amount" : {
+      "value" : 351,
+      "source_span" : {
+        "page" : 1,
+        "text" : "351"
+      }
+    }
+  }, {
+    "label" : "Unearned revenues",
+    "amount" : {
+      "value" : 249,
+      "source_span" : {
+        "page" : 1,
+        "text" : "249"
+      }
+    }
+  }, {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 2268,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,268"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 23007,
+    "source_span" : {
+      "page" : 1,
+      "text" : "23,007"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 57196,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 57,196"
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "period_end" : {
+    "value" : "2026-05-09",
+    "source_span" : {
+      "page" : 1,
+      "text" : "May 09, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 253729,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 253,729"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable",
+    "amount" : {
+      "value" : 764924,
+      "source_span" : {
+        "page" : 1,
+        "text" : "764,924"
+      }
+    }
+  }, {
+    "label" : "Merchandise inventories",
+    "amount" : {
+      "value" : 7559056,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,559,056"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 356860,
+      "source_span" : {
+        "page" : 1,
+        "text" : "356,860"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 8934569,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,934,569"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 8401277,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,401,277"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 336340,
+      "source_span" : {
+        "page" : 1,
+        "text" : "336,340"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses and other",
+    "amount" : {
+      "value" : 1226757,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,226,757"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 70939,
+      "source_span" : {
+        "page" : 1,
+        "text" : "70,939"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 10035313,
+    "source_span" : {
+      "page" : 1,
+      "text" : "10,035,313"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 20916463,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 20,916,463"
+    }
+  }
+}

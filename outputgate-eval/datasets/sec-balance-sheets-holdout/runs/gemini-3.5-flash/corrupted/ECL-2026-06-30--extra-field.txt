@@ -1,0 +1,121 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 5135.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 5,135.3"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 3452.7,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,452.7"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 1643.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,643.9"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 787.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "787.9"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 11019.8,
+    "source_span" : {
+      "page" : 1,
+      "text" : "11,019.8"
+    }
+  },
+  "total_assets" : {
+    "value" : 29927.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "29,927.0"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 1271.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,271.1"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 2157.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,157.8"
+      }
+    }
+  }, {
+    "label" : "Compensation and benefits",
+    "amount" : {
+      "value" : 593.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "593.9"
+      }
+    }
+  }, {
+    "label" : "Income taxes",
+    "amount" : {
+      "value" : 100.7,
+      "source_span" : {
+        "page" : 1,
+        "text" : "100.7"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 1863.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,863.1"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 5986.6,
+    "source_span" : {
+      "page" : 1,
+      "text" : "5,986.6"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 29927.0,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 29,927.0"
+    }
+  },
+  "notes" : "One amount was not clearly shown; assumed zero."
+}

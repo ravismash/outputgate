@@ -1,0 +1,84 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 272.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 272.3"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 967.7,
+      "source_span" : {
+        "page" : 1,
+        "text" : "967.7"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 1047.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,047.3"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 2486.2,
+    "source_span" : {
+      "page" : 1,
+      "text" : "2,486.2"
+    }
+  },
+  "total_assets" : {
+    "value" : 14407.4,
+    "source_span" : {
+      "page" : 1,
+      "text" : "14,407.4"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 228.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "228.9"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities",
+    "amount" : {
+      "value" : 1065.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,065.5"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 1294.4,
+    "source_span" : {
+      "page" : 1,
+      "text" : "1,294.4"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 14407.4,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 14,407.4"
+    }
+  }
+}

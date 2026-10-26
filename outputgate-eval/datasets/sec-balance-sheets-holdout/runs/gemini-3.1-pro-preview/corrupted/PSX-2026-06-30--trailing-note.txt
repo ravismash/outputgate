@@ -1,0 +1,140 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 4099,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 4,099"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 5922,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,922"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 2483,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,483"
+      }
+    }
+  }, {
+    "label" : "Accounts and financing receivable, after allowance for credit loss, current",
+    "amount" : {
+      "value" : 11052,
+      "source_span" : {
+        "page" : 1,
+        "text" : "11,052"
+      }
+    }
+  }, {
+    "label" : "Accounts and financing receivable, after allowance for credit loss, current",
+    "amount" : {
+      "value" : 665,
+      "source_span" : {
+        "page" : 1,
+        "text" : "665"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 24221,
+    "source_span" : {
+      "page" : 1,
+      "text" : "24,221"
+    }
+  },
+  "total_assets" : {
+    "value" : 81810,
+    "source_span" : {
+      "page" : 1,
+      "text" : "81,810"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term debt",
+    "amount" : {
+      "value" : 1797,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,797"
+      }
+    }
+  }, {
+    "label" : "Accrued income and other taxes",
+    "amount" : {
+      "value" : 2012,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,012"
+      }
+    }
+  }, {
+    "label" : "Employee benefit obligations",
+    "amount" : {
+      "value" : 497,
+      "source_span" : {
+        "page" : 1,
+        "text" : "497"
+      }
+    }
+  }, {
+    "label" : "Other accruals",
+    "amount" : {
+      "value" : 1999,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,999"
+      }
+    }
+  }, {
+    "label" : "Accounts payable, current",
+    "amount" : {
+      "value" : 11643,
+      "source_span" : {
+        "page" : 1,
+        "text" : "11,643"
+      }
+    }
+  }, {
+    "label" : "Accounts payable, current",
+    "amount" : {
+      "value" : 406,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 406"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 18354,
+    "source_span" : {
+      "page" : 1,
+      "text" : "18,354"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 81810,
+    "source_span" : {
+      "page" : 1,
+      "text" : "81,810"
+    }
+  }
+}
+
+Note: one amount was hard to read, so please double-check it.

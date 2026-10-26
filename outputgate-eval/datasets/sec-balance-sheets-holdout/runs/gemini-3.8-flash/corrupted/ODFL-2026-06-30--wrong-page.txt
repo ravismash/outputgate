@@ -1,0 +1,138 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 283939,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 283,939"
+      }
+    }
+  }, {
+    "label" : "Customer receivables, less allowances of $9,530 and $7,924, respectively",
+    "amount" : {
+      "value" : 594540,
+      "source_span" : {
+        "page" : 1,
+        "text" : "594,540"
+      }
+    }
+  }, {
+    "label" : "Income taxes receivable",
+    "amount" : {
+      "value" : 8114,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,114"
+      }
+    }
+  }, {
+    "label" : "Other receivables",
+    "amount" : {
+      "value" : 23483,
+      "source_span" : {
+        "page" : 1,
+        "text" : "23,483"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 93919,
+      "source_span" : {
+        "page" : 1,
+        "text" : "93,919"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 1003995,
+    "source_span" : {
+      "page" : 1,
+      "text" : "1,003,995"
+    }
+  },
+  "total_assets" : {
+    "value" : 5735521,
+    "source_span" : {
+      "page" : 1,
+      "text" : "5,735,521"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 80992,
+      "source_span" : {
+        "page" : 1,
+        "text" : "80,992"
+      }
+    }
+  }, {
+    "label" : "Compensation and benefits",
+    "amount" : {
+      "value" : 280241,
+      "source_span" : {
+        "page" : 1,
+        "text" : "280,241"
+      }
+    }
+  }, {
+    "label" : "Claims and insurance accruals",
+    "amount" : {
+      "value" : 80640,
+      "source_span" : {
+        "page" : 2,
+        "text" : "80,640"
+      }
+    }
+  }, {
+    "label" : "Other accrued liabilities",
+    "amount" : {
+      "value" : 69511,
+      "source_span" : {
+        "page" : 1,
+        "text" : "69,511"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  }, {
+    "label" : "Current maturities of long-term debt",
+    "amount" : {
+      "value" : 19997,
+      "source_span" : {
+        "page" : 1,
+        "text" : "19,997"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 531381,
+    "source_span" : {
+      "page" : 1,
+      "text" : "531,381"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 5735521,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 5,735,521"
+    }
+  }
+}

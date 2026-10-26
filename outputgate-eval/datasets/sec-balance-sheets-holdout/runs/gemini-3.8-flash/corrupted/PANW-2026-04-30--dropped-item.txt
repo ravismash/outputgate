@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-04-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Apr. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2364,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,364"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 747,
+      "source_span" : {
+        "page" : 1,
+        "text" : "747"
+      }
+    }
+  }, {
+    "label" : "Short-term financing receivables, net",
+    "amount" : {
+      "value" : 591,
+      "source_span" : {
+        "page" : 1,
+        "text" : "591"
+      }
+    }
+  }, {
+    "label" : "Short-term deferred contract costs",
+    "amount" : {
+      "value" : 454,
+      "source_span" : {
+        "page" : 1,
+        "text" : "454"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 705,
+      "source_span" : {
+        "page" : 1,
+        "text" : "705"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 7713,
+    "source_span" : {
+      "page" : 1,
+      "text" : "7,713"
+    }
+  },
+  "total_assets" : {
+    "value" : 46266,
+    "source_span" : {
+      "page" : 1,
+      "text" : "46,266"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 293,
+      "source_span" : {
+        "page" : 1,
+        "text" : "293"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation",
+    "amount" : {
+      "value" : 680,
+      "source_span" : {
+        "page" : 1,
+        "text" : "680"
+      }
+    }
+  }, {
+    "label" : "Accrued and other liabilities",
+    "amount" : {
+      "value" : 760,
+      "source_span" : {
+        "page" : 1,
+        "text" : "760"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 7113,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,113"
+      }
+    }
+  }, {
+    "label" : "Short-term convertible senior notes",
+    "amount" : {
+      "value" : 160,
+      "source_span" : {
+        "page" : 1,
+        "text" : "160"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 9006,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,006"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 46266,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 46,266"
+    }
+  }
+}

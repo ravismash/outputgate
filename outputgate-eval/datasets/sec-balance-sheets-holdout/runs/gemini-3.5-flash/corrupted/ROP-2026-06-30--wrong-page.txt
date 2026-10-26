@@ -1,0 +1,147 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 364.9,
+      "source_span" : {
+        "page" : 2,
+        "text" : "$ 364.9"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 927.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "927.2"
+      }
+    }
+  }, {
+    "label" : "Inventories, net",
+    "amount" : {
+      "value" : 145.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "145.4"
+      }
+    }
+  }, {
+    "label" : "Income taxes receivable",
+    "amount" : {
+      "value" : 73.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "73.3"
+      }
+    }
+  }, {
+    "label" : "Unbilled receivables",
+    "amount" : {
+      "value" : 153.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "153.8"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 253.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "253.9"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 1918.5,
+    "source_span" : {
+      "page" : 1,
+      "text" : "1,918.5"
+    }
+  },
+  "total_assets" : {
+    "value" : 35169.5,
+    "source_span" : {
+      "page" : 1,
+      "text" : "35,169.5"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 174.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "174.1"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation",
+    "amount" : {
+      "value" : 232.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "232.0"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 1707.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,707.8"
+      }
+    }
+  }, {
+    "label" : "Other accrued liabilities",
+    "amount" : {
+      "value" : 588.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "588.9"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 49.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "49.4"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt, net",
+    "amount" : {
+      "value" : 718.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "718.3"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 3470.5,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,470.5"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 35169.5,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 35,169.5"
+    }
+  }
+}

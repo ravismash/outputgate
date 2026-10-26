@@ -1,0 +1,122 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2365,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,365"
+      }
+    }
+  }, {
+    "label" : "Marketable Securities",
+    "amount" : {
+      "value" : 0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "0"
+      }
+    }
+  }, {
+    "label" : "Accounts and notes receivable - net",
+    "amount" : {
+      "value" : 8696,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,696"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 4443,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,443"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 853,
+      "source_span" : {
+        "page" : 1,
+        "text" : "853"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 16357,
+    "source_span" : {
+      "page" : 1,
+      "text" : "16,357"
+    }
+  },
+  "total_assets" : {
+    "value" : 41642,
+    "source_span" : {
+      "page" : 1,
+      "text" : "41,642"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Short-term borrowings",
+    "amount" : {
+      "value" : 3193,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,193"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 3958,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,958"
+      }
+    }
+  }, {
+    "label" : "Income Taxes Payable",
+    "amount" : {
+      "value" : 303,
+      "source_span" : {
+        "page" : 1,
+        "text" : "303"
+      }
+    }
+  }, {
+    "label" : "Deferred Revenue",
+    "amount" : {
+      "value" : 383,
+      "source_span" : {
+        "page" : 1,
+        "text" : "383"
+      }
+    }
+  }, {
+    "label" : "Accrued and other current liabilities",
+    "amount" : {
+      "value" : 2952,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,952"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 10789,
+    "source_span" : {
+      "page" : 1,
+      "text" : "10,789"
+    }
+  }
+}

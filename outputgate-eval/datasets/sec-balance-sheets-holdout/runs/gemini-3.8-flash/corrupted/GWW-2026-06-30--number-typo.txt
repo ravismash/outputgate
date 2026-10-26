@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 589,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 589"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable (less allowance for credit losses of $33 and $32, respectively)",
+    "amount" : {
+      "value" : 2825,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,825"
+      }
+    }
+  }, {
+    "label" : "Inventories – net",
+    "amount" : {
+      "value" : 2371,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,371"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 213,
+      "source_span" : {
+        "page" : 1,
+        "text" : "213"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 5998,
+    "source_span" : {
+      "page" : 1,
+      "text" : "5,998"
+    }
+  },
+  "total_assets" : {
+    "value" : 9618,
+    "source_span" : {
+      "page" : 1,
+      "text" : "9,618"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current maturities",
+    "amount" : {
+      "value" : 2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2"
+      }
+    }
+  }, {
+    "label" : "Trade accounts payable",
+    "amount" : {
+      "value" : 1280,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,280"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation and benefits",
+    "amount" : {
+      "value" : 347,
+      "source_span" : {
+        "page" : 1,
+        "text" : "347"
+      }
+    }
+  }, {
+    "label" : "Operating lease liability",
+    "amount" : {
+      "value" : 72,
+      "source_span" : {
+        "page" : 1,
+        "text" : "72"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses",
+    "amount" : {
+      "value" : 389,
+      "source_span" : {
+        "page" : 1,
+        "text" : "389"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 48,
+      "source_span" : {
+        "page" : 1,
+        "text" : "48"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 1238,
+    "source_span" : {
+      "page" : 1,
+      "text" : "2,138"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 9618,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 9,618"
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "period_end" : {
+    "value" : "06/30/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2192424,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,192,424"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 1226832,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,226,832"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 1902421,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,902,421"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 867674,
+      "source_span" : {
+        "page" : 1,
+        "text" : "867,674"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 148691,
+      "source_span" : {
+        "page" : 1,
+        "text" : "148,691"
+      }
+    }
+  }, {
+    "label" : "Prepaid income taxes",
+    "amount" : {
+      "value" : 67034,
+      "source_span" : {
+        "page" : 1,
+        "text" : "67,034"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 6405076,
+    "source_span" : {
+      "page" : 1,
+      "text" : "6,405,076"
+    }
+  },
+  "total_assets" : {
+    "value" : 11382291,
+    "source_span" : {
+      "page" : 1,
+      "text" : "11,382,291"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 753751,
+      "source_span" : {
+        "page" : 1,
+        "text" : "753,751"
+      }
+    }
+  }, {
+    "label" : "Accrued liabilities",
+    "amount" : {
+      "value" : 335527,
+      "source_span" : {
+        "page" : 1,
+        "text" : "335,527"
+      }
+    }
+  }, {
+    "label" : "Accrued promotional allowances",
+    "amount" : {
+      "value" : 434012,
+      "source_span" : {
+        "page" : 1,
+        "text" : "434,012"
+      }
+    }
+  }, {
+    "label" : "Deferred revenue",
+    "amount" : {
+      "value" : 47695,
+      "source_span" : {
+        "page" : 1,
+        "text" : "47,695"
+      }
+    }
+  }, {
+    "label" : "Accrued compensation",
+    "amount" : {
+      "value" : 88194,
+      "source_span" : {
+        "page" : 1,
+        "text" : "88,194"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 58315,
+      "source_span" : {
+        "page" : 1,
+        "text" : "58,315"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 1717494,
+    "source_span" : {
+      "page" : 1,
+      "text" : "1,717,494"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 11382291,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 11,382,291"
+    }
+  }
+}

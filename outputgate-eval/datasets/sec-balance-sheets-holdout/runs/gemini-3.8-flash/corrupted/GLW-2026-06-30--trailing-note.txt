@@ -1,0 +1,104 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 2504,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 2,504"
+      }
+    }
+  }, {
+    "label" : "Trade accounts receivable, net of doubtful accounts - $29 and $27",
+    "amount" : {
+      "value" : 2932,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,932"
+      }
+    }
+  }, {
+    "label" : "Inventories (Note 3)",
+    "amount" : {
+      "value" : 3426,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,426"
+      }
+    }
+  }, {
+    "label" : "Other current assets (Note 5)",
+    "amount" : {
+      "value" : 2055,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,055"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 10917,
+    "source_span" : {
+      "page" : 1,
+      "text" : "10,917"
+    }
+  },
+  "total_assets" : {
+    "value" : 32956,
+    "source_span" : {
+      "page" : 1,
+      "text" : "32,956"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current portion of long-term debt and short-term borrowings (Note 6)",
+    "amount" : {
+      "value" : 668,
+      "source_span" : {
+        "page" : 1,
+        "text" : "668"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 2361,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,361"
+      }
+    }
+  }, {
+    "label" : "Other accrued liabilities (Notes 5 and 8)",
+    "amount" : {
+      "value" : 2992,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,992"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 6021,
+    "source_span" : {
+      "page" : 1,
+      "text" : "6,021"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 32956,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 32,956"
+    }
+  }
+}
+
+Note: one amount was hard to read, so please double-check it.

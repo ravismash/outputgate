@@ -1,0 +1,74 @@
+{
+  "period_end" : {
+    "value" : "2026-03-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Mar. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 3126,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 3,126"
+      }
+    }
+  }, {
+    "label" : "Accounts receivable, net",
+    "amount" : {
+      "value" : 1746,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,746"
+      }
+    }
+  }, {
+    "label" : "Inventory and promotional merchandise",
+    "amount" : {
+      "value" : 1917,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,917"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 707,
+      "source_span" : {
+        "page" : 1,
+        "text" : "707"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 7496,
+    "source_span" : {
+      "page" : 1,
+      "text" : "7,496"
+    }
+  },
+  "total_assets" : {
+    "value" : 19664,
+    "source_span" : {
+      "page" : 1,
+      "text" : "19,664"
+    }
+  },
+  "total_current_liabilities" : {
+    "value" : 5911,
+    "source_span" : {
+      "page" : 1,
+      "text" : "5,911"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 19664,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 19,664"
+    }
+  }
+}

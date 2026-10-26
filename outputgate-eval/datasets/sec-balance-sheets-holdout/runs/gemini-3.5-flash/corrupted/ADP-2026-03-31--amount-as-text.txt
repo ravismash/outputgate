@@ -1,0 +1,75 @@
+{
+  "period_end" : {
+    "value" : "2026-03-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Mar. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Total current assets before funds held for clients",
+    "amount" : {
+      "value" : 7821.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,821.0"
+      }
+    }
+  }, {
+    "label" : "Funds held for clients",
+    "amount" : {
+      "value" : 46413.1,
+      "source_span" : {
+        "page" : 1,
+        "text" : "46,413.1"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 54234.1,
+    "source_span" : {
+      "page" : 1,
+      "text" : "54,234.1"
+    }
+  },
+  "total_assets" : {
+    "value" : "$64,484.20",
+    "source_span" : {
+      "page" : 1,
+      "text" : "64,484.2"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Total current liabilities before client funds obligations",
+    "amount" : {
+      "value" : 5245.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,245.2"
+      }
+    }
+  }, {
+    "label" : "Client funds obligations",
+    "amount" : {
+      "value" : 46774.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "46,774.5"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 52019.7,
+    "source_span" : {
+      "page" : 1,
+      "text" : "52,019.7"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 64484.2,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 64,484.2"
+    }
+  }
+}

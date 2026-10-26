@@ -1,0 +1,111 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 539,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 539"
+      }
+    }
+  }, {
+    "label" : "Trade accounts receivable, net",
+    "amount" : {
+      "value" : 3049,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,049"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 3235,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,235"
+      }
+    }
+  }, {
+    "label" : "Prepaid income taxes",
+    "amount" : {
+      "value" : 390,
+      "source_span" : {
+        "page" : 1,
+        "text" : "390"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 760,
+      "source_span" : {
+        "page" : 1,
+        "text" : "760"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 7972,
+    "source_span" : {
+      "page" : 1,
+      "text" : "7,972"
+    }
+  },
+  "total_assets" : {
+    "value" : 45216,
+    "source_span" : {
+      "page" : 1,
+      "text" : "45,216"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current debt obligations",
+    "amount" : {
+      "value" : 1709,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,709"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 1231,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,231"
+      }
+    }
+  }, {
+    "label" : "Other current liabilities",
+    "amount" : {
+      "value" : 732,
+      "source_span" : {
+        "page" : 1,
+        "text" : "732"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 6428,
+    "source_span" : {
+      "page" : 1,
+      "text" : "6,428"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 45216,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 45,216"
+    }
+  }
+}

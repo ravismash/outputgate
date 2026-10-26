@@ -1,0 +1,75 @@
+{
+  "period_end" : {
+    "value" : "04/30/26",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Apr. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Current assets before funds receivable and amounts held for customers",
+    "amount" : {
+      "value" : 10077,
+      "source_span" : {
+        "page" : 1,
+        "text" : "10,077"
+      }
+    }
+  }, {
+    "label" : "Funds receivable and amounts held for customers",
+    "amount" : {
+      "value" : 7760,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,760"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 17837,
+    "source_span" : {
+      "page" : 1,
+      "text" : "17,837"
+    }
+  },
+  "total_assets" : {
+    "value" : 39330,
+    "source_span" : {
+      "page" : 1,
+      "text" : "39,330"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current liabilities before funds payable and amounts due to customers",
+    "amount" : {
+      "value" : 4516,
+      "source_span" : {
+        "page" : 1,
+        "text" : "4,516"
+      }
+    }
+  }, {
+    "label" : "Funds payable and amounts due to customers",
+    "amount" : {
+      "value" : 7760,
+      "source_span" : {
+        "page" : 1,
+        "text" : "7,760"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 12276,
+    "source_span" : {
+      "page" : 1,
+      "text" : "12,276"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 39330,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 39,330"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "period_end" : {
+    "value" : "2026-06-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jun. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 5164,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 5,164"
+      }
+    }
+  }, {
+    "label" : "Receivables, net",
+    "amount" : {
+      "value" : 30316,
+      "source_span" : {
+        "page" : 1,
+        "text" : "30,316"
+      }
+    }
+  }, {
+    "label" : "Inventories, net",
+    "amount" : {
+      "value" : 26259,
+      "source_span" : {
+        "page" : 1,
+        "text" : "26,259"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other",
+    "amount" : {
+      "value" : 1098,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,098"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 62837,
+    "source_span" : {
+      "page" : 1,
+      "text" : "62,837"
+    }
+  },
+  "total_assets" : {
+    "value" : 88330,
+    "source_span" : {
+      "page" : 1,
+      "text" : "88,330"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Drafts and accounts payable",
+    "amount" : {
+      "value" : 63731,
+      "source_span" : {
+        "page" : 1,
+        "text" : "63,731"
+      }
+    }
+  }, {
+    "label" : "Current portion of long-term debt",
+    "amount" : {
+      "value" : 1297,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,297"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 292,
+      "source_span" : {
+        "page" : 1,
+        "text" : "292"
+      }
+    }
+  }, {
+    "label" : "Other accrued liabilities",
+    "amount" : {
+      "value" : 5036,
+      "source_span" : {
+        "page" : 1,
+        "text" : "5,036"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 70356,
+    "source_span" : {
+      "page" : 1,
+      "text" : "70,356"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : "$88,330.00",
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 88,330"
+    }
+  }
+}

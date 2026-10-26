@@ -1,0 +1,140 @@
+{
+  "period_end" : {
+    "value" : "2026-05-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "May 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 10165245,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 10,165,245"
+      }
+    }
+  }, {
+    "label" : "Short-term investments",
+    "amount" : {
+      "value" : 6322,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,322"
+      }
+    }
+  }, {
+    "label" : "Receivables and contract assets",
+    "amount" : {
+      "value" : 16035963,
+      "source_span" : {
+        "page" : 1,
+        "text" : "16,035,963"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 2730815,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,730,815"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 28938345,
+    "source_span" : {
+      "page" : 1,
+      "text" : "28,938,345"
+    }
+  },
+  "total_assets" : {
+    "value" : 68806561,
+    "source_span" : {
+      "page" : 1,
+      "text" : "68,806,561"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current portion of long-term debt and bank borrowings",
+    "amount" : {
+      "value" : 112816,
+      "source_span" : {
+        "page" : 1,
+        "text" : "112,816"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 3176740,
+      "source_span" : {
+        "page" : 1,
+        "text" : "3,176,740"
+      }
+    }
+  }, {
+    "label" : "Deferred revenues",
+    "amount" : {
+      "value" : 6529286,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,529,286"
+      }
+    }
+  }, {
+    "label" : "Accrued payroll and related benefits",
+    "amount" : {
+      "value" : 8701843,
+      "source_span" : {
+        "page" : 1,
+        "text" : "8,701,843"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 331211,
+      "source_span" : {
+        "page" : 1,
+        "text" : "331,211"
+      }
+    }
+  }, {
+    "label" : "Lease liabilities",
+    "amount" : {
+      "value" : 750922,
+      "source_span" : {
+        "page" : 1,
+        "text" : "750,922"
+      }
+    }
+  }, {
+    "label" : "Other accrued liabilities",
+    "amount" : {
+      "value" : 2006289,
+      "source_span" : {
+        "page" : 1,
+        "text" : "2,006,289"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 21609107,
+    "source_span" : {
+      "page" : 1,
+      "text" : "21,609,107"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 68806561,
+    "source_span" : {
+      "page" : 1,
+      "text" : "68,806,561"
+    }
+  }
+}
+
+Note: one amount was hard to read, so please double-check it.

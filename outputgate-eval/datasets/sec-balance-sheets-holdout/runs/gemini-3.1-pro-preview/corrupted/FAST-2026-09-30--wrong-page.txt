@@ -1,0 +1,129 @@
+{
+  "period_end" : {
+    "value" : "2026-09-30",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Sep. 30, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 211.9,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 211.9"
+      }
+    }
+  }, {
+    "label" : "Trade accounts receivable, net of allowance for credit losses of $6.2 and $5.3, respectively",
+    "amount" : {
+      "value" : 1615.2,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,615.2"
+      }
+    }
+  }, {
+    "label" : "Inventories",
+    "amount" : {
+      "value" : 1776.6,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,776.6"
+      }
+    }
+  }, {
+    "label" : "Prepaid income taxes",
+    "amount" : {
+      "value" : 9.3,
+      "source_span" : {
+        "page" : 1,
+        "text" : "9.3"
+      }
+    }
+  }, {
+    "label" : "Other current assets",
+    "amount" : {
+      "value" : 215.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "215.8"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 3828.8,
+    "source_span" : {
+      "page" : 1,
+      "text" : "3,828.8"
+    }
+  },
+  "total_assets" : {
+    "value" : 5494.4,
+    "source_span" : {
+      "page" : 1,
+      "text" : "5,494.4"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current portion of debt",
+    "amount" : {
+      "value" : 50.0,
+      "source_span" : {
+        "page" : 1,
+        "text" : "50.0"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : {
+      "value" : 445.8,
+      "source_span" : {
+        "page" : 1,
+        "text" : "445.8"
+      }
+    }
+  }, {
+    "label" : "Accrued expenses",
+    "amount" : {
+      "value" : 335.5,
+      "source_span" : {
+        "page" : 2,
+        "text" : "335.5"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 113.5,
+      "source_span" : {
+        "page" : 1,
+        "text" : "113.5"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 29.4,
+      "source_span" : {
+        "page" : 1,
+        "text" : "29.4"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 974.2,
+    "source_span" : {
+      "page" : 1,
+      "text" : "974.2"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 5494.4,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 5,494.4"
+    }
+  }
+}
