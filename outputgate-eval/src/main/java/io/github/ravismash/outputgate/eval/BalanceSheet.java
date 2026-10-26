@@ -107,6 +107,7 @@ public final class BalanceSheet {
                         .require("period_end", "current_assets[*].amount", "total_current_assets", "total_assets",
                                 "current_liabilities[*].amount", "total_current_liabilities", "total_liabilities_and_equity")
                         .groundedIgnoringWhitespace()
+                        .ignoringCurrencySigns()
                         .numbersMatchQuotes()
                         .build())
                 .gate(RegexGate.builder()

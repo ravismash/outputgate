@@ -1,0 +1,114 @@
+{
+  "period_end" : {
+    "value" : "2026-07-31",
+    "source_span" : {
+      "page" : 1,
+      "text" : "Jul. 31, 2026"
+    }
+  },
+  "current_assets" : [ {
+    "label" : "Cash and cash equivalents",
+    "amount" : {
+      "value" : 1589590,
+      "source_span" : {
+        "page" : 1,
+        "text" : "$ 1,589,590"
+      }
+    }
+  }, {
+    "label" : "Merchandise inventories",
+    "amount" : {
+      "value" : 6552841,
+      "source_span" : {
+        "page" : 1,
+        "text" : "6,552,841"
+      }
+    }
+  }, {
+    "label" : "Income taxes receivable",
+    "amount" : {
+      "value" : 75422,
+      "source_span" : {
+        "page" : 1,
+        "text" : "75,422"
+      }
+    }
+  }, {
+    "label" : "Prepaid expenses and other current assets",
+    "amount" : {
+      "value" : 564058,
+      "source_span" : {
+        "page" : 1,
+        "text" : "564,058"
+      }
+    }
+  } ],
+  "total_current_assets" : {
+    "value" : 8781911,
+    "source_span" : {
+      "page" : 1,
+      "text" : "8,781,911"
+    }
+  },
+  "total_assets" : {
+    "value" : 32167333,
+    "source_span" : {
+      "page" : 1,
+      "text" : "32,167,333"
+    }
+  },
+  "current_liabilities" : [ {
+    "label" : "Current portion of long-term obligations",
+    "amount" : {
+      "value" : 12670,
+      "source_span" : {
+        "page" : 1,
+        "text" : "12,670"
+      }
+    }
+  }, {
+    "label" : "Current portion of operating lease liabilities",
+    "amount" : {
+      "value" : 1572005,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,572,005"
+      }
+    }
+  }, {
+    "label" : "Accounts payable",
+    "amount" : 4349548
+  }, {
+    "label" : "Accrued expenses and other",
+    "amount" : {
+      "value" : 1314165,
+      "source_span" : {
+        "page" : 1,
+        "text" : "1,314,165"
+      }
+    }
+  }, {
+    "label" : "Income taxes payable",
+    "amount" : {
+      "value" : 16677,
+      "source_span" : {
+        "page" : 1,
+        "text" : "16,677"
+      }
+    }
+  } ],
+  "total_current_liabilities" : {
+    "value" : 7265065,
+    "source_span" : {
+      "page" : 1,
+      "text" : "7,265,065"
+    }
+  },
+  "total_liabilities_and_equity" : {
+    "value" : 32167333,
+    "source_span" : {
+      "page" : 1,
+      "text" : "$ 32,167,333"
+    }
+  }
+}

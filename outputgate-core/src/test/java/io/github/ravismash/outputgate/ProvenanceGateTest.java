@@ -276,4 +276,21 @@ class ProvenanceGateTest {
         ProvenanceGate gate = ProvenanceGate.builder().require("vendor").numbersMatchQuotes().build();
         assertTrue(run(gate, "{\"vendor\": " + ev("\"Acme 2\"", 1, "ACME SUPPLIES LTD") + "}", EvalContext.empty()).passed());
     }
+
+    @Test
+    @DisplayName("ignoringCurrencySigns: a quote with or without the currency sign grounds; the digits still must match")
+    void currencySignsIgnored() {
+        SourceDocument doc = SourceDocument.ofPages("TOTAL LIABILITIES AND EQUITY   37,794   38,410\nCash   $ 6,683");
+        EvalContext ctx = EvalContext.empty().withSource(doc);
+        ProvenanceGate strict = ProvenanceGate.builder().require("total").groundedIgnoringWhitespace().build();
+        ProvenanceGate loose = ProvenanceGate.builder().require("total").groundedIgnoringWhitespace().ignoringCurrencySigns().build();
+        String withSign = "{\"total\": " + ev("37794", 1, "$ 37,794") + "}";
+        assertEquals(Status.REJECTED, run(strict, withSign, ctx).status());
+        assertTrue(run(loose, withSign, ctx).passed());
+        assertTrue(run(loose, "{\"total\": " + ev("6683", 1, "6,683") + "}", ctx).passed());
+        assertTrue(run(loose, "{\"total\": " + ev("6683", 1, "€6,683") + "}", ctx).passed());
+        Verdict wrongDigits = run(loose, "{\"total\": " + ev("37795", 1, "$ 37,795") + "}", ctx);
+        assertTrue(wrongDigits.violations().get(0).message().endsWith("(whitespace and currency signs ignored)"),
+                () -> wrongDigits.violations().toString());
+    }
 }
