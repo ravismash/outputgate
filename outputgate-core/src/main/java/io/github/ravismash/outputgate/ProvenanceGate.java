@@ -21,7 +21,10 @@ import java.util.regex.Pattern;
  * but when it has a value it is checked like a required one. With
  * {@link Builder#numbersMatchQuotes()}, a numeric value must also be a number its own quote prints.
  * With {@link Builder#within}, a field's quote must also lie inside a {@link Region} of the page, such
- * as one table of several that print the same labels.
+ * as one table of several that print the same labels. For text from a PDF or OCR,
+ * {@link Builder#ignoringTypography()}, {@link Builder#joiningHyphenatedLines()} and
+ * {@link Builder#ignoringDigitGrouping()} each fold one named kind of difference that carries no
+ * content, in the quote and the document alike; no option makes matching fuzzy.
  */
 public final class ProvenanceGate implements Gate {
 
@@ -39,6 +42,9 @@ public final class ProvenanceGate implements Gate {
     private final boolean ignoreWhitespace;
     private final boolean numbersMatchQuotes;
     private final boolean ignoreCurrency;
+    private final boolean ignoreTypography;
+    private final boolean joinHyphenatedLines;
+    private final boolean ignoreGrouping;
     private final List<Scope> scopes;
 
     /** Fields whose quotes must lie inside a region. */
@@ -50,15 +56,30 @@ public final class ProvenanceGate implements Gate {
     /** A number as printed: digits with optional "," grouping and a decimal part. */
     private static final Pattern NUMBER = Pattern.compile("\\d[\\d,]*(?:\\.\\d+)?|\\.\\d+");
 
-    private ProvenanceGate(List<String> paths, List<String> optionalPaths, boolean grounded, boolean ignoreWhitespace,
-            boolean numbersMatchQuotes, boolean ignoreCurrency, List<Scope> scopes) {
-        this.paths = List.copyOf(paths);
-        this.optionalPaths = List.copyOf(optionalPaths);
-        this.grounded = grounded;
-        this.ignoreWhitespace = ignoreWhitespace;
-        this.numbersMatchQuotes = numbersMatchQuotes;
-        this.ignoreCurrency = ignoreCurrency;
-        this.scopes = List.copyOf(scopes);
+    /**
+     * A digit-grouping mark: ",", an apostrophe or a thin or narrow no-break space (and their
+     * full-width forms), between a digit and exactly three more digits. "." is never one: it is a
+     * decimal point too often to fold without changing a number.
+     */
+    private static final Pattern GROUPING = Pattern.compile("(?U)(?<=\\d)[,'\\u2019\\u2009\\u202F\\uFF07\\uFF0C](?=\\d{3}(?!\\d))");
+
+    /** A word broken across lines: a letter, a hyphen, a line break, then a lower-case letter. */
+    private static final Pattern LINE_END_HYPHEN = Pattern.compile("(?<=\\p{L})[-\\u00AD\\u2010\\u2011]\\h*\\R\\h*(?=\\p{Ll})");
+
+    /** Characters PDF text carries that print as nothing: soft hyphen, zero-width spaces and joiners, BOM. */
+    private static final Pattern INVISIBLE = Pattern.compile("[\\u00AD\\u200B-\\u200D\\u2060\\uFEFF]");
+
+    private ProvenanceGate(Builder b) {
+        this.paths = List.copyOf(b.paths);
+        this.optionalPaths = List.copyOf(b.optionalPaths);
+        this.grounded = b.grounded;
+        this.ignoreWhitespace = b.ignoreWhitespace;
+        this.numbersMatchQuotes = b.numbersMatchQuotes;
+        this.ignoreCurrency = b.ignoreCurrency;
+        this.ignoreTypography = b.ignoreTypography;
+        this.joinHyphenatedLines = b.joinHyphenatedLines;
+        this.ignoreGrouping = b.ignoreGrouping;
+        this.scopes = List.copyOf(b.scopes);
     }
 
     /** Starts a new provenance gate. */
@@ -74,14 +95,14 @@ public final class ProvenanceGate implements Gate {
     @Override
     public List<Violation> check(JsonNode output, EvalContext context) {
         List<Violation> out = new ArrayList<>();
-        List<String> pages = null;
+        List<List<String>> pages = null;
         Map<Region, Optional<Located>> regions = null;
         if (grounded) {
             Optional<SourceDocument> source = context.source();
             if (source.isEmpty()) {
                 out.add(new Violation(NAME, "", "grounding is on but the context has no source document"));
             } else {
-                pages = source.get().pages().stream().map(this::normalize).toList();
+                pages = source.get().pages().stream().map(this::page).toList();
                 regions = new HashMap<>();
                 for (Scope scope : scopes) {
                     regions.computeIfAbsent(scope.region(), r -> locate(r, source.get()));
@@ -94,19 +115,19 @@ public final class ProvenanceGate implements Gate {
     }
 
     /** A region found in the document, with its text on each page as grounding compares it. */
-    private record Located(Region.Span span, List<String> pages) {}
+    private record Located(Region.Span span, List<List<String>> pages) {}
 
     private Optional<Located> locate(Region region, SourceDocument document) {
         return region.locate(document).map(span -> {
-            List<String> text = new ArrayList<>();
+            List<List<String>> text = new ArrayList<>();
             for (int p = 0; p < document.pages().size(); p++) {
-                text.add(normalize(Region.textOn(document, span, p)));
+                text.add(page(Region.textOn(document, span, p)));
             }
             return new Located(span, text);
         });
     }
 
-    private void check(JsonNode output, List<String> fieldPaths, boolean optional, List<String> pages,
+    private void check(JsonNode output, List<String> fieldPaths, boolean optional, List<List<String>> pages,
             Map<Region, Optional<Located>> regions, List<Violation> out) {
         for (String path : fieldPaths) {
             for (Paths.Hit hit : Paths.resolve(output, path, false)) {
@@ -133,7 +154,7 @@ public final class ProvenanceGate implements Gate {
     }
 
     /** Why a well-formed span is not on the page it names, or null when it is. */
-    private String ungrounded(JsonNode span, List<String> pages) {
+    private String ungrounded(JsonNode span, List<List<String>> pages) {
         long page = span.get("page").asLong();
         if (page > pages.size()) {
             return "source_span.page " + page + " is past the end of the document (" + pages.size() + " pages)";
@@ -143,14 +164,12 @@ public final class ProvenanceGate implements Gate {
         if (wanted.isEmpty()) {
             return "source_span.text is only whitespace" + (ignoreCurrency ? " or currency signs" : "");
         }
-        if (pages.get((int) page - 1).contains(wanted)) {
+        if (contains(pages.get((int) page - 1), wanted)) {
             return null;
         }
-        String where = ignoreWhitespace && ignoreCurrency ? " (whitespace and currency signs ignored)"
-                : ignoreWhitespace ? " (whitespace ignored)"
-                : ignoreCurrency ? " (currency signs ignored)" : "";
+        String where = ignored();
         for (int i = 0; i < pages.size(); i++) {
-            if (pages.get(i).contains(wanted)) {
+            if (contains(pages.get(i), wanted)) {
                 return "source_span.text \"" + quote + "\" is not on page " + page + " (it is on page " + (i + 1) + ")" + where;
             }
         }
@@ -165,7 +184,7 @@ public final class ProvenanceGate implements Gate {
         }
         int page = (int) span.get("page").asLong() - 1;
         String quote = span.get("text").asText();
-        if (located.get().pages().get(page).contains(normalize(quote))) {
+        if (contains(located.get().pages().get(page), normalize(quote))) {
             return null;
         }
         return "source_span.text \"" + quote + "\" is on page " + (page + 1) + " but not inside the part of the document"
@@ -179,13 +198,13 @@ public final class ProvenanceGate implements Gate {
      * point, and compared by size: the sign is left to other checks, since documents print
      * negatives as "(1,203)", "-1,203" or "1,203 CR".
      */
-    private static String unquotedNumber(JsonNode evidence) {
+    private String unquotedNumber(JsonNode evidence) {
         JsonNode value = evidence.get("value");
         if (!value.isNumber()) {
             return null;
         }
         BigDecimal wanted = value.decimalValue().abs();
-        String quote = evidence.get("source_span").get("text").asText();
+        String quote = fold(evidence.get("source_span").get("text").asText());
         List<String> printed = new ArrayList<>();
         Matcher m = NUMBER.matcher(quote);
         while (m.find()) {
@@ -205,8 +224,57 @@ public final class ProvenanceGate implements Gate {
 
     /** The text as grounding compares it, after the loosening the builder asked for. */
     private String normalize(String s) {
-        String t = ignoreWhitespace ? loosen(s) : s;
+        String t = fold(s);
+        t = ignoreWhitespace ? loosen(t) : t;
         return ignoreCurrency ? CURRENCY.matcher(t).replaceAll("") : t;
+    }
+
+    /** Typography and digit grouping folded, as the builder asked; nothing else changes. */
+    private String fold(String s) {
+        String t = ignoreGrouping ? GROUPING.matcher(s).replaceAll("") : s;
+        return ignoreTypography ? Typography.fold(t) : t;
+    }
+
+    /**
+     * A page's text as grounding compares it: one form, or with {@link Builder#joiningHyphenatedLines()}
+     * two, as printed and with words broken across lines joined again. A quote may match either.
+     */
+    private List<String> page(String text) {
+        String asIs = normalize(text);
+        if (!joinHyphenatedLines) {
+            return List.of(asIs);
+        }
+        String joined = normalize(INVISIBLE.matcher(LINE_END_HYPHEN.matcher(text).replaceAll("")).replaceAll(""));
+        return joined.equals(asIs) ? List.of(asIs) : List.of(asIs, joined);
+    }
+
+    private static boolean contains(List<String> forms, String wanted) {
+        return forms.stream().anyMatch(f -> f.contains(wanted));
+    }
+
+    /** What grounding ignored, for a message: empty when it compared literally. */
+    private String ignored() {
+        List<String> what = new ArrayList<>();
+        if (ignoreWhitespace) {
+            what.add("whitespace");
+        }
+        if (ignoreCurrency) {
+            what.add("currency signs");
+        }
+        if (ignoreTypography) {
+            what.add("typography");
+        }
+        if (ignoreGrouping) {
+            what.add("digit grouping");
+        }
+        if (joinHyphenatedLines) {
+            what.add("line-end hyphens");
+        }
+        if (what.isEmpty()) {
+            return "";
+        }
+        String last = what.remove(what.size() - 1);
+        return " (" + (what.isEmpty() ? last : String.join(", ", what) + " and " + last) + " ignored)";
     }
 
     /** All whitespace is dropped and every kind of hyphen becomes "-". */
@@ -249,6 +317,9 @@ public final class ProvenanceGate implements Gate {
         private boolean ignoreWhitespace;
         private boolean numbersMatchQuotes;
         private boolean ignoreCurrency;
+        private boolean ignoreTypography;
+        private boolean joinHyphenatedLines;
+        private boolean ignoreGrouping;
         private final List<Scope> scopes = new ArrayList<>();
 
         private Builder() {}
@@ -332,6 +403,53 @@ public final class ProvenanceGate implements Gate {
         }
 
         /**
+         * With grounding, also fold typographic variants of the same character, in the quote and the
+         * document alike: the ligatures ﬀ ﬁ ﬂ ﬃ ﬄ ﬅ ﬆ become their letters, full-width forms
+         * ("１２３", "，") their ASCII characters, a decimal digit of any script ("٣", "३") its ASCII
+         * digit, curly quotes and primes straight ones, "…" three dots, any no-break or fixed-width
+         * space a plain space, and soft hyphens, zero-width spaces and joiners are dropped. PDF and OCR
+         * text is full of these, and a model usually types the plain form. Nothing else is folded:
+         * letters and digits that OCR confuses ("0" and "O", "1" and "l") must still match, and so
+         * must case, superscripts and every other character.
+         *
+         * @return this builder
+         */
+        public Builder ignoringTypography() {
+            this.ignoreTypography = true;
+            return this;
+        }
+
+        /**
+         * With grounding, also let a quote join a word the document breaks across lines with a
+         * hyphen: "international" grounds where the page prints "inter-" at the end of one line and
+         * "national" at the start of the next. Only a hyphen between a letter and a line break that is
+         * followed by a lower-case letter is joined, so numbers, codes and capitalised names are never
+         * joined. The page as printed still matches too, so "inter-national" (or the line break as
+         * printed) grounds as before.
+         *
+         * @return this builder
+         */
+        public Builder joiningHyphenatedLines() {
+            this.joinHyphenatedLines = true;
+            return this;
+        }
+
+        /**
+         * With grounding, also ignore digit-grouping marks, in the quote and the document alike: a
+         * ",", apostrophe, or thin or narrow no-break space between a digit and exactly three more,
+         * so "1234567", "1,234,567", "1'234'567" and "1 234 567" (with U+202F) all match each
+         * other. "." is never folded, because it is a decimal point as often as a separator, and a
+         * plain space is not, because it also separates table columns ("12 345" can be two cells). It
+         * applies to {@link #numbersMatchQuotes()} too.
+         *
+         * @return this builder
+         */
+        public Builder ignoringDigitGrouping() {
+            this.ignoreGrouping = true;
+            return this;
+        }
+
+        /**
          * With grounding, also require that these fields' quotes lie inside {@code region} on the
          * page they name, not just somewhere on it. Use it when a document prints the same labels
          * or numbers in more than one place (a summary and a detail table, a parent company's
@@ -371,8 +489,7 @@ public final class ProvenanceGate implements Gate {
                     }
                 }
             }
-            return new ProvenanceGate(paths, optionalPaths, grounded, ignoreWhitespace, numbersMatchQuotes, ignoreCurrency,
-                    scopes);
+            return new ProvenanceGate(this);
         }
     }
 }

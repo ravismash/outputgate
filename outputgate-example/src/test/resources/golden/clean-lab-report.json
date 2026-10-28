@@ -1,0 +1,79 @@
+{
+  "laboratory": {
+    "value": "Northfield Clinical Laboratory",
+    "source_span": {
+      "page": 1,
+      "text": "Northfield Clinical Laboratory"
+    }
+  },
+  "specimen_id": {
+    "value": "NCL-2026-118204",
+    "source_span": {
+      "page": 1,
+      "text": "Specimen ID: NCL-2026-118204"
+    }
+  },
+  "collected_date": {
+    "value": "2026-10-14",
+    "source_span": {
+      "page": 1,
+      "text": "Collected: 14 Oct 2026"
+    }
+  },
+  "results": [
+    {
+      "test": {
+        "value": "Glucose (fasting)",
+        "source_span": {
+          "page": 1,
+          "text": "Glucose (fasting)"
+        }
+      },
+      "result": {
+        "value": 5.8,
+        "source_span": {
+          "page": 1,
+          "text": "5.8"
+        }
+      },
+      "unit": "mmol/L",
+      "flag": "H"
+    },
+    {
+      "test": {
+        "value": "Haemoglobin",
+        "source_span": {
+          "page": 1,
+          "text": "Haemoglobin"
+        }
+      },
+      "result": {
+        "value": 138,
+        "source_span": {
+          "page": 1,
+          "text": "138"
+        }
+      },
+      "unit": "g/L",
+      "flag": "N"
+    },
+    {
+      "test": {
+        "value": "Vitamin B12",
+        "source_span": {
+          "page": 1,
+          "text": "Vitamin B12"
+        }
+      },
+      "result": {
+        "value": 1045,
+        "source_span": {
+          "page": 1,
+          "text": "1,045"
+        }
+      },
+      "unit": "ng/L",
+      "flag": "H"
+    }
+  ]
+}

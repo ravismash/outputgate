@@ -1,4 +1,4 @@
-// R10: the invoice example runs fully offline with no API key (FakeLlmClient).
+// R10: the examples (invoice, balance sheet, lab report) run fully offline with no API key.
 dependencies {
     implementation(project(":outputgate-core"))
     testImplementation(project(":outputgate-junit"))

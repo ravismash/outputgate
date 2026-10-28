@@ -8,17 +8,10 @@ import io.github.ravismash.outputgate.RegexGate;
 import io.github.ravismash.outputgate.SchemaGate;
 import io.github.ravismash.outputgate.SourceDocument;
 import io.github.ravismash.outputgate.TypeGate;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * The invoice example: one contract that uses every content gate, and the synthetic
- * two-page source document it is grounded against. Pages in the document file are
- * separated by a form feed.
+ * two-page source document it is grounded against.
  */
 public final class InvoiceExample {
 
@@ -53,17 +46,7 @@ public final class InvoiceExample {
 
     /** @return the synthetic sample invoice, page by page */
     public static SourceDocument document() {
-        ClassLoader loader = InvoiceExample.class.getClassLoader();
-        try (InputStream in = loader.getResourceAsStream(DOCUMENT)) {
-            if (in == null) {
-                throw new IllegalStateException("missing resource " + DOCUMENT);
-            }
-            String text = new String(in.readAllBytes(), StandardCharsets.UTF_8);
-            List<String> pages = Arrays.stream(text.split("\f")).map(String::strip).toList();
-            return new SourceDocument(pages);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
+        return Resources.document(DOCUMENT);
     }
 
     /** @return a context carrying {@link #document()}, for grounding */

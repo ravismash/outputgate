@@ -1,7 +1,8 @@
 // R11 / NFR-3: the Spring AI adapter is its own module so core stays light.
-// Spring AI 1.1.x (Spring 6, Jackson 2). Spring AI 2.x pulls networknt 3.x, which removed the
-// classes SchemaGate uses; see the open question in the tracker before moving to 2.x.
-val springAi = "1.1.8"
+// Published against Spring AI 1.1.x (Spring 6, Jackson 2). Core shades its networknt validator, so
+// Spring AI 2.x (which brings networknt 3.x) works too. CI's adapter job re-runs this module's tests
+// against every version in the README's matrix: ./gradlew :outputgate-spring-ai:test -PspringAiVersion=2.0.2
+val springAi = providers.gradleProperty("springAiVersion").getOrElse("1.1.8")
 
 dependencies {
     api(project(":outputgate-core"))
