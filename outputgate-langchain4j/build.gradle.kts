@@ -1,6 +1,8 @@
 // R11 / NFR-3: the LangChain4j adapter is its own module so core stays light.
-// LangChain4j 1.x renamed the FRD's ChatLanguageModel to ChatModel.
-val langchain4j = "1.22.0"
+// LangChain4j 1.x renamed the FRD's ChatLanguageModel to ChatModel. Published against 1.22.0; CI's
+// adapter job re-runs this module's tests against every version in the README's matrix:
+// ./gradlew :outputgate-langchain4j:test -Plangchain4jVersion=<version>
+val langchain4j = providers.gradleProperty("langchain4jVersion").getOrElse("1.22.0")
 
 dependencies {
     api(project(":outputgate-core"))

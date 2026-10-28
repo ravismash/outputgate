@@ -10,8 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.ollama.OllamaChatModel;
-import org.springframework.ai.ollama.api.OllamaApi;
-import org.springframework.ai.ollama.api.OllamaChatOptions;
 
 /**
  * R11 acceptance: one integration test against a recorded response. A real qwen2.5:14b
@@ -24,10 +22,7 @@ class SpringAiRecordedResponseTest {
     @DisplayName("R11: Spring AI ChatClient → recorded Ollama response → text, tokens, cost and latency")
     void recordedResponse() throws Exception {
         try (ReplayServer server = new ReplayServer(Recording.RESOURCE)) {
-            OllamaChatModel model = OllamaChatModel.builder()
-                    .ollamaApi(OllamaApi.builder().baseUrl(server.baseUrl()).build())
-                    .defaultOptions(OllamaChatOptions.builder().model("qwen2.5:14b").temperature(0.0).build())
-                    .build();
+            OllamaChatModel model = OllamaModels.at(server.baseUrl(), "qwen2.5:14b", 0.0);
             TokenPricing pricing = TokenPricing.perMillionTokens(new BigDecimal("0.15"), new BigDecimal("0.60"));
 
             LlmOutput out = new SpringAiLlmClient(ChatClient.create(model), pricing).complete(Recording.prompt());

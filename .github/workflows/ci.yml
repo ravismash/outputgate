@@ -54,6 +54,34 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
+  # Re-runs each adapter's tests (a recorded real model answer replayed through the framework's own
+  # client) against every framework version the README's matrix lists. The build job above covers the
+  # version each adapter is published against; add a release here when it comes out.
+  adapters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { module: outputgate-spring-ai, property: springAiVersion, version: '1.0.9' }
+          - { module: outputgate-spring-ai, property: springAiVersion, version: '2.0.2' }
+          - { module: outputgate-langchain4j, property: langchain4jVersion, version: '1.11.11' }
+          - { module: outputgate-langchain4j, property: langchain4jVersion, version: '1.23.0' }
+    name: ${{ matrix.module }} on ${{ matrix.version }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-java@v6.0.1
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v6.4.0
+
+      - name: Test against ${{ matrix.version }}
+        run: ./gradlew :${{ matrix.module }}:test -P${{ matrix.property }}=${{ matrix.version }} --no-daemon --console=plain
+
   python:
     runs-on: ubuntu-latest
     timeout-minutes: 10

@@ -1,0 +1,15 @@
+Northﬁeld Clinical Laboratory
+(Synthetic sample report for outputgate's example, laid out as OCR text. Not a real laboratory or patient.)
+LABORATORY REPORT
+Specimen ID: NCL-2026-118204
+Collected: 14 Oct 2026 08:12
+Speciﬁcation: fasting serum
+
+Test                    Result   Units    Reference range   Flag
+Glucose (fasting)       5.8      mmol/L   3.9 – 5.5         H
+Haemo-
+globin                  138      g/L      130 – 170
+Vitamin B12             1 045    ng/L     200 – 900         H
+Comments
+Results outside the reference range are ﬂagged H (high) or L (low).
+Reported: 14 Oct 2026 15:40
