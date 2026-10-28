@@ -269,15 +269,24 @@ the GitHub release. It needs the four repository secrets listed at the top of th
 ### What the contract adds over a schema
 
 The same recorded answers, scored three ways. Each run also gets 50 corrupted copies of answers
-the contract accepted, one seeded defect each (a dropped line, swapped digits, a quote not in the
-document, a wrong page, a bare value, a non-ISO date, an amount as text, a missing or extra field,
-a code fence, a trailing note):
+the contract accepted, one seeded defect each, spread over the 11 defect kinds that apply to a
+balance sheet: a dropped line, swapped digits, a quote not in the document, a wrong page, a bare
+value, a non-ISO date, an amount as text, a missing field, an extra field, a code fence and a
+trailing note. (The harness has 13 kinds; the other two, a re-typed money format in a quote and an
+apology inside a text field, need fields a balance sheet doesn't have.)
 
 | Dataset | Naive parse | JSON Schema only | Full contract |
 |---|---|---|---|
 | SEC balance sheets, 4 models × 2 sets: corruptions caught per run | 4/50 | 20/50 | **50/50** in all 8 runs |
 | SEC balance sheets, 4 models × 2 sets: real answers accepted but wrong against the filing's XBRL values (of 452 with ground truth) | 3 | 3 (DRI, KDP, CTVA) | 0 in sample (tuned there); 1 held out (CTVA), 0 after the fix below |
 | Scanned FCC political-ad invoices, qwen2.5:14b: corruptions caught | 3/50 | 18/50 | **50/50** |
+
+The real-answer row scores each model's first answer, before any retry, on the filings where
+ground truth exists. Ground truth is the four totals (current assets, total assets, current
+liabilities, liabilities and equity) from the filing's own XBRL data. The download script could
+read them for 58 of the 60 in-sample filings (not PM or ZTS) and 55 of the 60 held-out ones (not
+ADP, APD, CI, ECL or MU), so 4 models × (58 + 55) = 452 answers have ground truth. The 4 answers
+fixed by a retry also match it.
 
 The defect kinds were written knowing what the gates check, so the corruption rows show that each
 gate fires on the error it targets, not how often models make it. The real-answer rows do. The FCC
@@ -292,9 +301,14 @@ pattern for structured LLM output is to validate, send the errors back and ask a
 benchmark a model's line items added up to 78,902 while the document printed a total of 70,402.
 Told that the sum didn't match, the retry left the lines alone and changed the total to 78,902.
 Schema and arithmetic now pass. outputgate rejected it because every value carries a quote from
-the source, and 78,902 is not the number its quote prints. That happened in 3 of the 12 retries
-here, and the quote check caught all 3. A retry loop is only safe when the checks are tied to the
-source document.
+the source, and 78,902 is not the number its quote prints.
+
+Every rejected answer got one retry, 12 in all across the 8 runs: 4 were fixed and match ground
+truth, 3 rewrote their totals to match their own sums and 5 stayed wrong in other ways. All 3
+rewrites (TSLA, ADP, EXC) came from qwen2.5:14b running locally, and the quote check caught each
+one. Three of twelve retries on one local model is a small sample, not a rate; the Gemini models
+had 2 retries between them and fixed both. A retry loop is only safe when the checks are tied to
+the source document.
 
 ### Balance sheets against ground truth
 
@@ -320,7 +334,11 @@ fix, not a held-out result. Three gates were added after the in-sample run expos
 `numbersMatchQuotes()`, `sumEqualsRounded()` and `ignoringCurrencySigns()`. The READMEs for the
 [in-sample](outputgate-eval/datasets/sec-balance-sheets) and
 [held-out](outputgate-eval/datasets/sec-balance-sheets-holdout) sets list every rejection and
-retry. The report is
+retry.
+
+Run settings: temperature 0 and the output shape sent as a JSON Schema, for every model. The
+Gemini models ran through Gemini's OpenAI-compatible API, which rejects a seed, so none was sent.
+qwen2.5:14b ran in Ollama on a 16 GB Mac with seed 42 and `num_ctx` 16384. The report is
 [outputgate-balance-sheet-benchmark.pdf](https://github.com/ravismash/outputgate/releases/download/v0.1.0/outputgate-balance-sheet-benchmark.pdf).
 
 ### Run it on your own data
@@ -337,10 +355,11 @@ D=/abs/path/to/invoices; R=/abs/path/to/run
 ./gradlew :outputgate-eval:run --args="report  $D $R"                        # offline: $R/benchmark.md and .html
 ```
 
-`corrupt` copies answers the full contract accepts and adds exactly one defect to each, spread
-over 13 kinds: a dropped line item, swapped digits, a re-formatted or invented quote, a wrong
-page, a bare value, a non-ISO date, an apology, an amount as text, a missing or extra field, a
-code fence and a trailing note. The same answers, count and seed give the same files. The report
+`corrupt` copies answers the full contract accepts and adds exactly one defect to each, spread over
+13 kinds (a kind is skipped where the data has nothing for it to break): a dropped line item,
+swapped digits, a re-typed money format in a quote, an invented quote, a wrong page, a bare value,
+a non-ISO date, an apology inside a text field, an amount as text, a missing field, an extra field,
+a code fence and a trailing note. The same answers, count and seed give the same files. The report
 lists every answer the contract rejected and every corruption it let through.
 
 ## License
