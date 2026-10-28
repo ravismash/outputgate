@@ -33,14 +33,15 @@ source and has parts that add up to totals is checked the same way.
 - Cross-field rules with rounding tolerance (`sum_equals_rounded`) and plain ones (`equals`, `at_most`,
   `matches`, `forbids`), on a `GroundedModel` that reports every violation at once.
 - Error messages written to be quoted in a retry prompt.
+- Region scoping (`Region`, `within(region)`): a field's quote must lie inside a declared part of the
+  source, from a line matching one pattern through or up to a line matching another. Grounding
+  proves a value is in the source, not that it comes from the right part of it. This is the one
+  wrong answer the Java contract accepted on the held-out set (CTVA, where two near-identical
+  statements are printed one after the other); `ProvenanceGate.within` is the Java side.
 
 **Out of scope (v1)**
 
 - Layout-aware PDF extraction (bounding boxes); the source is text, split into pages.
-- Section scoping: checking that all quotes come from the same table or section. Grounding proves a
-  value is in the source, not that it comes from the right part of it. This is the one wrong answer
-  the Java contract accepted on the held-out set (CTVA, where two near-identical statements are
-  printed one after the other).
 - Packaging and publishing to PyPI; v1 is a single module.
 
 ## 3. Functional requirements
@@ -131,11 +132,13 @@ statements they were extracted from.
    `at_most` rules, since current assets and current liabilities then exceed their totals.
 3. **IBM and TMO (rounding).** Every model's answer, whose lines miss the printed total by 2, is
    accepted.
-4. **Parity with the Java contract.** On all 480 recorded answers (60 documents × 4 models × 2
-   datasets) the Python checks reject exactly the 12 the Java contract rejects (BBY twice, DRI,
-   GOOGL, MO, TSLA, TXN, KDP, ADP, EXC, MCHP, PSX) and accept the rest. On the 12 retries they accept
+4. **CTVA (wrong statement).** qwen's total current liabilities, 10,795, is printed on the page but only
+   in the subsidiary's statement below the parent's (which prints 10,789): rejected by the region check.
+5. **Parity with the Java contract.** On all 480 recorded answers (60 documents × 4 models × 2
+   datasets) the Python checks reject exactly the 13 the Java contract rejects (BBY twice, DRI,
+   GOOGL, MO, TSLA, TXN, KDP, ADP, CTVA, EXC, MCHP, PSX) and accept the rest. On the 12 retries they accept
    exactly the 4 the Java contract accepts.
 
 Unit tests cover each rule on small made-up answers: grounding per page, whitespace, hyphen and
-currency options, value-against-quote, evidence shape, fail-closed without a source, the rounding
-allowance and the combined report.
+currency options, value-against-quote, evidence shape, fail-closed without a source, regions (start
+and end lines, across pages, a start not found), the rounding allowance and the combined report.

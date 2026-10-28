@@ -1,12 +1,13 @@
 """The library's own rules, on small made-up answers of no particular domain."""
 
 from decimal import Decimal
+from typing import Annotated
 
 import pytest
 from pydantic import BaseModel, ValidationError, model_validator
 
-from outputgate import (GroundedModel, GroundedNumber, GroundedText, Source, assert_sum_equals_rounded, describe,
-                        sum_equals_rounded)
+from outputgate import (GroundedModel, GroundedNumber, GroundedText, Region, Source, assert_sum_equals_rounded,
+                        describe, sum_equals_rounded, within)
 
 SOURCE = "Report for week 42\nParts   1,200.5\nLabour   (300)\nShipping   $ 99\nTotal   999.5\fpage two: 7–8"
 
@@ -161,3 +162,67 @@ def test_assert_sum_equals_rounded_in_a_plain_pydantic_validator():
     ok["parts"].pop()
     with pytest.raises(ValidationError, match="sum of parts is 900.5"):
         Plain.model_validate(ok, context={"source_text": SOURCE})
+
+
+# A parent's figures, then a subsidiary's, with the same labels and nearly the same numbers.
+TWO_TABLES = ("Quarterly results - Northwind Group\nRevenue   1,200\nCosts   900\nProfit   300\n"
+              "Northwind Retail (subsidiary)\nRevenue   1,200\nCosts   905\nProfit   295\n")
+GROUP = Region(before=r"\(subsidiary\)")
+
+
+class Results(GroundedModel):
+    revenue: Annotated[GroundedNumber, within(GROUP)]
+    costs: Annotated[GroundedNumber, within(GROUP)]
+    profit: GroundedNumber
+
+
+def results(costs, profit):
+    return {"revenue": ev(1200, "1,200"), "costs": ev(costs, f"Costs   {costs}"), "profit": ev(profit, str(profit))}
+
+
+def test_quotes_from_the_right_table_are_accepted():
+    Results.model_validate(results(900, 300), context={"source_text": TWO_TABLES})
+
+
+def test_a_quote_from_the_other_table_is_rejected_though_it_is_on_the_page():
+    # profit is not scoped, so its quote from the subsidiary's table passes.
+    assert errors(Results, results(905, 295), {"source_text": TWO_TABLES}) == [("region", ("costs",))]
+    with pytest.raises(ValidationError) as e:
+        Results.model_validate(results(905, 300), context={"source_text": TWO_TABLES})
+    assert '"Costs   905" is on page 1 but not inside' in describe(e.value)
+    assert "page 1, lines 1 to 4" in describe(e.value)
+
+
+def test_region_start_and_end_lines():
+    sub = Region(start=r"\(subsidiary\)")
+    pages = (TWO_TABLES,)
+    assert sub.locate(pages) == (0, 4, 0, 8)
+    assert Region(through="^Profit").locate(pages) == (0, 0, 0, 3)
+    assert Region(before="^Profit").locate(pages) == (0, 0, 0, 2)
+    assert Region(through="Grand total").locate(pages) == (0, 0, 0, 8)  # no end line: to the end
+    assert Region(start="Balance sheet").locate(pages) is None
+    assert Region(start="^Table A", through="^End of table A").locate(
+        ("Cover\nTable A\nRow   10", "Row   20\nEnd of table A\nTable B")) == (0, 1, 1, 1)
+    with pytest.raises(ValueError):
+        Region(through="a", before="b")
+
+
+def test_a_region_not_in_the_document_fails_closed():
+    class Scoped(GroundedModel):
+        costs: Annotated[GroundedNumber, within(Region(start="Balance sheet"))]
+
+    with pytest.raises(ValidationError) as e:
+        Scoped.model_validate({"costs": ev(900, "Costs   900")}, context={"source_text": TWO_TABLES})
+    assert "not in the source document" in describe(e.value)
+
+
+def test_a_region_uses_the_sources_loosening_and_runs_across_pages():
+    class Row(GroundedModel):
+        row: Annotated[GroundedNumber, within(Region(start="^Table A", through="^End of table A"))]
+
+    doc = Source(("Cover\nTable A\nRow   10", "Row   $20\nEnd of table A\nTable B\nRow   30"),
+                 ignore_currency_signs=True)
+    Row.model_validate({"row": ev(20, "Row 20", page=2)}, context={"source": doc})
+    with pytest.raises(ValidationError) as e:
+        Row.model_validate({"row": ev(30, "Row 30", page=2)}, context={"source": doc})
+    assert "page 1 line 2 to page 2 line 2" in describe(e.value)

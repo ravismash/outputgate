@@ -31,7 +31,10 @@ except ValidationError as e:
 ```
 
 `context={"source": Source(pages, ignore_currency_signs=True)}` sets grounding options; see the
-`Source` docstring. [`examples/balance_sheet.py`](examples/balance_sheet.py) is the SEC balance-sheet
+`Source` docstring. When a document prints the same labels in more than one place (a summary and a
+detail table, a parent's statement and a subsidiary's), scope a field to the part it must come from
+with `Annotated[GroundedNumber, within(Region(start=r"^Detail", before=r"^Notes"))]`: its quote
+must then be inside that region on its page, not just somewhere on the page. [`examples/balance_sheet.py`](examples/balance_sheet.py) is the SEC balance-sheet
 contract from `outputgate-eval`, written with these types.
 
 ## Tests

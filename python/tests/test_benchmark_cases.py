@@ -62,6 +62,20 @@ def test_kdp_dropped_digit_is_rejected_by_quote_and_arithmetic():
     ]
 
 
+def test_ctva_liabilities_from_the_subsidiarys_statement_are_rejected():
+    # CTVA prints Corteva's statement, then its subsidiary EIDP's with almost the same lines. qwen took
+    # EIDP's accrued liabilities (2,958) and total current liabilities (10,795; Corteva's is 10,789).
+    # Both quotes are on the page and every sum holds, so grounding alone accepted it. The total is
+    # printed only in EIDP's statement, below Corteva's.
+    record = answer(HOLDOUT, "qwen2.5-14b", "CTVA")
+    assert judge(HOLDOUT, record) == [("region", "total_current_liabilities")]
+    corteva = record["output"].replace('"value": 2958, "source_span": {"page": 1, "text": "2,958"}',
+                                       '"value": 2952, "source_span": {"page": 1, "text": "2,952"}') \
+        .replace('"value": 10795, "source_span": {"page": 1, "text": "10,795"}',
+                 '"value": 10789, "source_span": {"page": 1, "text": "10,789"}')
+    assert judge(HOLDOUT, {**record, "output": corteva}) == []
+
+
 @pytest.mark.parametrize("model", MODELS)
 @pytest.mark.parametrize("ticker, items, total", [
     ("IBM", "current_assets", "total_current_assets"),
@@ -86,6 +100,7 @@ REJECTED = {
     (FIRST, "qwen2.5-14b", "TXN"),
     (HOLDOUT, "gemini-3.8-flash", "KDP"),
     (HOLDOUT, "qwen2.5-14b", "ADP"),
+    (HOLDOUT, "qwen2.5-14b", "CTVA"),
     (HOLDOUT, "qwen2.5-14b", "EXC"),
     (HOLDOUT, "qwen2.5-14b", "MCHP"),
     (HOLDOUT, "qwen2.5-14b", "PSX"),

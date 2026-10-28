@@ -2,19 +2,31 @@
 
 The same checks as the Java contract in outputgate-eval (``BalanceSheet.contract()``): lines add
 up to their totals allowing for rounding, assets equal liabilities and equity, current within
-total, every amount quoted from the statement and equal to the number its quote prints, an ISO
-date, and no prose in labels. Nothing here is specific to balance sheets except the field names;
+total, every amount quoted from the statement and equal to the number its quote prints, the date and
+totals quoted from the first statement on the page, an ISO date, and no prose in labels. Nothing here is specific to balance sheets except the field names;
 any structured answer with parts and totals is written the same way.
 """
 
 from __future__ import annotations
 
-from outputgate import GroundedModel, GroundedNumber, GroundedText, Source, at_most, equals, forbids, matches, \
-    sum_equals_rounded
+from typing import Annotated
+
+from outputgate import GroundedModel, GroundedNumber, GroundedText, Region, Source, at_most, equals, forbids, \
+    matches, sum_equals_rounded, within
 from pydantic import BaseModel, ConfigDict, StrictStr
 
 # Prose, apologies and placeholders that are never a line's label.
 NOT_A_LABEL = r"(?i)\b(sorry|unknown|n/a|not (found|printed|available)|as an ai)\b"
+
+# The first statement on the page: from its heading through its first total of liabilities and
+# equity. Some filings print a second, near-identical statement after it (CTVA prints its subsidiary
+# EIDP's), and a total quoted from that one is on the page but from the wrong statement. The date and
+# the totals must come from this region. Lines may not: filings print a breakdown of some lines after
+# the statement (BBY's deferred revenue), and models quote it. A filing whose last line names no
+# liabilities (ROK's is "Total") runs to the end of the page.
+STATEMENT = Region(through=r"(?i)liabilit.*\band\b.*(equity|deficit|investment|capital).*\d")
+
+Total = Annotated[GroundedNumber, within(STATEMENT)]
 
 
 class Line(BaseModel):
@@ -27,13 +39,13 @@ class Line(BaseModel):
 class BalanceSheet(GroundedModel):
     model_config = ConfigDict(extra="forbid")
 
-    period_end: GroundedText
+    period_end: Annotated[GroundedText, within(STATEMENT)]
     current_assets: list[Line]
-    total_current_assets: GroundedNumber
-    total_assets: GroundedNumber
+    total_current_assets: Total
+    total_assets: Total
     current_liabilities: list[Line]
-    total_current_liabilities: GroundedNumber
-    total_liabilities_and_equity: GroundedNumber
+    total_current_liabilities: Total
+    total_liabilities_and_equity: Total
 
     def checks(self):
         # Statements round every figure, so lines may miss their total by half a unit each

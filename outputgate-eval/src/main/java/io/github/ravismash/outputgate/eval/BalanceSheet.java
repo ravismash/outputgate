@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.ravismash.outputgate.Contract;
 import io.github.ravismash.outputgate.MathGate;
 import io.github.ravismash.outputgate.ProvenanceGate;
+import io.github.ravismash.outputgate.Region;
 import io.github.ravismash.outputgate.RegexGate;
 import io.github.ravismash.outputgate.SchemaGate;
 import io.github.ravismash.outputgate.SourceDocument;
@@ -63,6 +64,21 @@ public final class BalanceSheet {
              "total_liabilities_and_equity": {"value": 5000, "source_span": {"page": 1, "text": "$ 5,000"}}}
             """;
 
+    /** The date and the statement's totals. */
+    static final String[] HEADLINE = {"period_end", "total_current_assets", "total_assets", "total_current_liabilities",
+            "total_liabilities_and_equity"};
+
+    /**
+     * The first statement on the page: from its heading through its first total of liabilities and
+     * equity. Some filings print a second, near-identical statement after it (CTVA prints its
+     * subsidiary EIDP's), and a total quoted from that one is on the page but from the wrong
+     * statement. The date and the totals must come from this region. Lines may not: filings print a
+     * breakdown of some lines after the statement (BBY's deferred revenue), and models quote it. A
+     * filing whose last line names no liabilities (ROK's is "Total") runs to the end of the page.
+     */
+    static final Region STATEMENT = Region.fromDocumentStart()
+            .through("(?i)liabilit.*\\band\\b.*(equity|deficit|investment|capital).*\\d");
+
     /** Prose, apologies and placeholders that are never a line's label. */
     static final String NOT_A_LABEL = "(?i)\\b(sorry|unknown|n/a|not (found|printed|available)|as an ai)\\b";
 
@@ -84,7 +100,8 @@ public final class BalanceSheet {
     /**
      * @return the contract: schema, type, math (lines add up to their totals, assets equal
      *     liabilities and equity, current within total), grounded provenance with every amount
-     *     equal to the number its quote prints, ISO date, labels
+     *     equal to the number its quote prints, the date and totals from the first statement on
+     *     the page, ISO date, labels
      */
     public static Contract contract() {
         return Contract.builder()
@@ -109,6 +126,7 @@ public final class BalanceSheet {
                         .groundedIgnoringWhitespace()
                         .ignoringCurrencySigns()
                         .numbersMatchQuotes()
+                        .within(STATEMENT, HEADLINE)
                         .build())
                 .gate(RegexGate.builder()
                         .isoDate("period_end")

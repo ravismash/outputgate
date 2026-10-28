@@ -10,6 +10,9 @@ its own arithmetic, before the answer reaches application state. No check calls 
   the source is rejected even when every sum holds.
 - ``GroundedModel`` adds cross-field checks (``checks()``) and reports every violation at once,
   grounding and arithmetic together, so a retry prompt can quote all of them.
+- ``within(region)`` scopes a field's quote to one part of the document (a table, a section, one of
+  two statements that print the same labels): grounding proves a quote is on the page, a region
+  proves it comes from the right part of it.
 - ``sum_equals_rounded`` lets items miss their total by half a unit of the last printed digit per
   figure, for figures each rounded where they were printed.
 
@@ -31,6 +34,7 @@ from decimal import Decimal
 from typing import Annotated, Any, Iterable, NamedTuple, Optional, Sequence, Union
 
 from pydantic import (
+    AfterValidator,
     BaseModel,
     BeforeValidator,
     ConfigDict,
@@ -47,6 +51,8 @@ from pydantic_core import PydanticCustomError
 __all__ = [
     "Source",
     "SourceSpan",
+    "Region",
+    "within",
     "Grounded",
     "GroundedNumber",
     "GroundedText",
@@ -67,6 +73,9 @@ _SHAPE_ONLY = "outputgate.shape_only"
 _WHITESPACE = re.compile(r"\s+")
 _HYPHEN = re.compile("[­‐-―−]")
 _NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?|\.\d+")
+
+
+_LINE_BREAK = re.compile(r"\r\n|[\n\x0b\x0c\r\x85\u2028\u2029]")
 
 
 def _strip_currency(s: str) -> str:
@@ -92,6 +101,7 @@ class Source:
     ignore_currency_signs: bool = False
     numbers_match_quotes: bool = True
     _normalized: tuple[str, ...] = field(init=False, repr=False, compare=False)
+    _regions: dict = field(init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
         if isinstance(self.pages, str):
@@ -99,6 +109,22 @@ class Source:
         else:
             object.__setattr__(self, "pages", tuple(self.pages))
         object.__setattr__(self, "_normalized", tuple(self.normalize(p) for p in self.pages))
+        object.__setattr__(self, "_regions", {})
+
+    def outside(self, span: "SourceSpan", region: "Region") -> Optional[str]:
+        """Why a quote on its page is not inside ``region``, or None when it is."""
+        if region not in self._regions:
+            located = region.locate(self.pages)
+            self._regions[region] = None if located is None else (
+                located, tuple(self.normalize(region.text_on(self.pages, located, p)) for p in range(len(self.pages))))
+        found = self._regions[region]
+        if found is None:
+            return f"the region this field must be quoted from is not in the source document (no line matches its start): {region}"
+        located, texts = found
+        if self.normalize(span.text) in texts[span.page - 1]:
+            return None
+        return (f'source_span.text "{span.text}" is on page {span.page} but not inside the part of the document '
+                f"this field must be quoted from ({_describe(located)}: {region}); quote the value printed there")
 
     def normalize(self, s: str) -> str:
         """The text as grounding compares it, after the loosening the options ask for."""
@@ -122,6 +148,98 @@ class Source:
             if wanted in page:
                 return f'source_span.text "{span.text}" is not on page {span.page} (it is on page {i + 1}){where}'
         return f'source_span.text "{span.text}" not found in the source document{where}'
+
+
+class _Located(NamedTuple):
+    # Where a region lies: page and line numbers, counted from 0, of its first and last lines.
+    start_page: int
+    start_line: int
+    end_page: int
+    end_line: int
+
+
+def _describe(r: _Located) -> str:
+    if r.start_page == r.end_page:
+        return f"page {r.start_page + 1}, lines {r.start_line + 1} to {r.end_line + 1}"
+    return f"page {r.start_page + 1} line {r.start_line + 1} to page {r.end_page + 1} line {r.end_line + 1}"
+
+
+@dataclass(frozen=True)
+class Region:
+    """A part of the source document, marked by the lines it starts and ends at: a table, a section,
+    one of several statements printed one after the other.
+
+    It starts at the first line matching ``start`` (that line included), or at the document's first
+    line when ``start`` is None. It ends at the first later line matching ``through`` (that line
+    included) or ``before`` (that line left out), or at the document's last line when neither is
+    given or no line matches. Patterns are regular expressions searched for in each line of the
+    text; a region may run across pages. A ``start`` that no line matches fails every quote scoped
+    to the region, never passes it. Scope a field with ``Annotated[GroundedNumber, within(region)]``.
+    """
+
+    start: Optional[str] = None
+    through: Optional[str] = None
+    before: Optional[str] = None
+
+    def __post_init__(self) -> None:
+        if self.through is not None and self.before is not None:
+            raise ValueError("a region ends either through a line or before one, not both")
+
+    def __str__(self) -> str:
+        begin = "from the start of the document" if self.start is None else f"from the first line matching /{self.start}/"
+        if self.through is not None:
+            return f"{begin} through the next line matching /{self.through}/"
+        if self.before is not None:
+            return f"{begin} up to the next line matching /{self.before}/"
+        return f"{begin} to the end of the document"
+
+    def locate(self, pages: Sequence[str]) -> Optional[_Located]:
+        """Where the region lies in these pages, or None when no line matches its start."""
+        lines = [(p, i, line) for p, page in enumerate(pages) for i, line in enumerate(_LINE_BREAK.split(page))]
+        first = 0
+        if self.start is not None:
+            first = next((n for n, (_, _, line) in enumerate(lines) if re.search(self.start, line)), -1)
+            if first < 0:
+                return None
+        last = len(lines) - 1
+        end = self.through if self.through is not None else self.before
+        if end is not None:
+            for n in range(first + 1, len(lines)):
+                if re.search(end, lines[n][2]):
+                    last = n if self.through is not None else n - 1
+                    break
+        return _Located(lines[first][0], lines[first][1], lines[last][0], lines[last][1])
+
+    @staticmethod
+    def text_on(pages: Sequence[str], r: _Located, page: int) -> str:
+        """The region's lines on one page (from 0), joined by line breaks; empty when it has none there."""
+        if not r.start_page <= page <= r.end_page:
+            return ""
+        lines = _LINE_BREAK.split(pages[page])
+        start = r.start_line if page == r.start_page else 0
+        end = r.end_line if page == r.end_page else len(lines) - 1
+        return "\n".join(lines[start:end + 1])
+
+
+def within(region: Region) -> AfterValidator:
+    """Scopes a grounded field to ``region``: ``Annotated[GroundedNumber, within(TABLE)]``.
+
+    The quote must be on the page it names (the field's own grounding) and inside the region on
+    that page, compared with the same loosening as grounding. Use it when the document prints the
+    same labels or numbers in more than one place (a summary and a detail table, a parent company's
+    statement and a subsidiary's, this year's table and last year's), so a quote found on the page
+    can still come from the wrong one. A quote that runs across the region's edge is outside it.
+    """
+
+    def check(value: Any, info: ValidationInfo) -> Any:
+        if (info.context or {}).get(_SHAPE_ONLY) or not isinstance(value, Grounded):
+            return value
+        problem = _source(info).outside(value.source_span, region)
+        if problem is not None:
+            raise PydanticCustomError("region", problem)
+        return value
+
+    return AfterValidator(check)
 
 
 @functools.lru_cache(maxsize=32)
