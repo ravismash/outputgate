@@ -120,6 +120,11 @@ matches a different letter or digit:
 | `joiningHyphenatedLines()` | a word the page breaks across lines (`inter-` / `national`); the page as printed still matches too | numbers, codes and capitalised words are never joined |
 | `ignoringDigitGrouping()` | `,`, `'` and thin or narrow no-break spaces between a digit and exactly three more (`1,234,567` = `1'234'567` = `1234567`); also for `numbersMatchQuotes()` | `.` is never folded (it is a decimal point too often), nor is a plain space (it separates table columns) |
 
+outputgate does not run OCR itself: a `SourceDocument` is text, page by page, from whatever
+extraction you already use (PDFBox for text PDFs, Tesseract, a cloud OCR service). Give the model
+and the contract the same extracted text, so the quotes the model copies are quotes of the text
+the gate checks against; `outputgate-eval` does this with PDFBox (`PdfText`).
+
 A quote that is still wrong after folding (a misread digit, a letter for a zero) is rejected, and
 the message says which folds were applied. When OCR is poor enough that faithful quotes still
 fail, fix the text extraction rather than loosen the contract: a rejection costs a retry or a
