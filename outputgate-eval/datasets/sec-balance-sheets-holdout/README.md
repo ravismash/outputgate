@@ -43,8 +43,22 @@ EIDP's, with almost the same lines. qwen took Corteva's current assets and EIDP'
 liabilities (total 10,795; Corteva's is 10,789). Every quote is on the page, every number matches
 its quote, and every sum holds, so the contract accepted it. Grounding checks that a value is in
 the source, not that it comes from the right part of it. A check that all quotes lie inside one
-section would catch this. It was not added, because changing the contract after seeing this set
-would stop it being a held-out test.
+section would catch this. It was not added before this run, because changing the contract after
+seeing this set would stop it being a held-out test; the tables above are the frozen contract's.
+
+### Fixed afterwards (2026-10-28): quotes scoped to the first statement
+
+`ProvenanceGate.within(Region, fields...)` now requires a field's quote to lie inside a region of the
+page, not just on it. The contract scopes the date and the four totals to the first statement, from
+the top of the page through its first "liabilities and equity" total. qwen's 10,795 is printed only
+in EIDP's statement, below that line, so CTVA is rejected. Line items are not scoped: some filings
+print a breakdown of a line after the statement (BBY's deferred revenue, in the first set), and
+models quote it correctly.
+
+Re-scoring the recorded answers of all four models in both sets with `report` changes exactly one
+verdict: qwen on CTVA, now rejected (qwen held out: 55/60 accepted, 0 accepted but wrong). Every
+other verdict is the same, and every run still catches 50/50 corrupted outputs. This was written
+after seeing CTVA, so it is a fix, not a held-out result.
 
 ## Files
 

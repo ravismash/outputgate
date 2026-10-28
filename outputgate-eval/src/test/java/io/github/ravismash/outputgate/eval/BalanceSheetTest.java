@@ -1,15 +1,23 @@
 package io.github.ravismash.outputgate.eval;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.ravismash.outputgate.EvalContext;
 import io.github.ravismash.outputgate.SourceDocument;
+import io.github.ravismash.outputgate.Status;
 import io.github.ravismash.outputgate.Verdict;
+import io.github.ravismash.outputgate.Violation;
 import io.github.ravismash.outputgate.junit.LlmAssert;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-/** A made-up statement in the layout fetch_sec_balance_sheets.py writes. */
+/** A made-up statement in the layout fetch_sec_balance_sheets.py writes, and real answers from the held-out set. */
 class BalanceSheetTest {
 
     static final SourceDocument DOC = SourceDocument.ofPages("""
@@ -96,5 +104,40 @@ class BalanceSheetTest {
                 .replace("\"value\": 1999,", "\"value\": 1999000,").replace("\"value\": 900,", "\"value\": 900000,")
                 .replace("\"value\": 5000,", "\"value\": 5000000,");
         LlmAssert.assertThat(json).withContext(CTX).isRejectedBy(BalanceSheet.contract()).byGate("provenance");
+    }
+
+    @Test
+    @DisplayName("CTVA: qwen's real answer took current liabilities from the subsidiary's statement printed below; it is rejected")
+    void quoteFromTheSecondStatementRejected() throws IOException {
+        Path holdout = Path.of("datasets/sec-balance-sheets-holdout");
+        SourceDocument statement = BenchmarkFolder.load(holdout.resolve("documents/CTVA-2026-06-30.txt"));
+        String record = Files.readAllLines(holdout.resolve("runs/qwen2.5-14b/results.jsonl")).stream()
+                .filter(l -> l.startsWith("{\"file\":\"CTVA-")).findFirst().orElseThrow();
+        String answer = new ObjectMapper().readTree(record).get("output").asText();
+        // Corteva prints 10,789 for total current liabilities; its subsidiary EIDP, printed after it, 10,795.
+        assertTrue(answer.contains("\"value\": 10795"), answer);
+
+        Verdict v = BalanceSheet.contract().evaluate(answer, EvalContext.empty().withSource(statement));
+        assertEquals(Status.REJECTED, v.status());
+        // The total is printed only in EIDP's statement; the 2,958 line it adds up from is caught on the retry by math.
+        assertEquals(List.of("total_current_liabilities"), v.violations().stream().map(Violation::path).toList(), v::toString);
+        assertEquals("provenance", v.violations().get(0).gate());
+        assertTrue(v.violations().get(0).message().contains("\"10,795\" is on page 1 but not inside"), v::toString);
+    }
+
+    @Test
+    @DisplayName("the same answer with Corteva's own current liabilities passes")
+    void sameAnswerFromTheFirstStatementPasses() throws IOException {
+        Path holdout = Path.of("datasets/sec-balance-sheets-holdout");
+        SourceDocument statement = BenchmarkFolder.load(holdout.resolve("documents/CTVA-2026-06-30.txt"));
+        String record = Files.readAllLines(holdout.resolve("runs/qwen2.5-14b/results.jsonl")).stream()
+                .filter(l -> l.startsWith("{\"file\":\"CTVA-")).findFirst().orElseThrow();
+        String fixed = new ObjectMapper().readTree(record).get("output").asText()
+                .replace("{\"value\": 2958, \"source_span\": {\"page\": 1, \"text\": \"2,958\"}}",
+                        "{\"value\": 2952, \"source_span\": {\"page\": 1, \"text\": \"2,952\"}}")
+                .replace("{\"value\": 10795, \"source_span\": {\"page\": 1, \"text\": \"10,795\"}}",
+                        "{\"value\": 10789, \"source_span\": {\"page\": 1, \"text\": \"10,789\"}}");
+        Verdict v = BalanceSheet.contract().evaluate(fixed, EvalContext.empty().withSource(statement));
+        assertTrue(v.passed(), v::toString);
     }
 }

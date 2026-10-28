@@ -89,7 +89,7 @@ The code and that output are run as a test on every build
 | `SchemaGate` | JSON Schema 2020-12, from a string or the classpath. The schema itself is checked against the 2020-12 meta-schema when the gate is built | `SchemaGate.fromClasspath("schemas/invoice.schema.json")` |
 | `TypeGate<T>` | Strict binding to a Java type: unknown properties, null primitives, missing record/constructor properties, float-for-int and text-for-number all fail, with Jackson's message | `TypeGate.of(Invoice.class)` |
 | `MathGate` | Cross-field arithmetic with an absolute tolerance: `sumEquals`, `equalsSum`, `productEquals`, `range` and custom rules; `sumEqualsRounded` also allows half a unit of the last printed digit per figure, for figures rounded where they were printed | `.productEquals("line_items[*].amount", "line_items[*].quantity", "line_items[*].unit_price")` |
-| `ProvenanceGate` | Required fields carry evidence, `{value, source_span: {page, text}}`. With `grounded()`, each span's text must occur literally on the page it names; `optional(...)` fields may be null but are checked when present; `groundedIgnoringWhitespace()` ignores spaces and line breaks and reads any hyphen or dash as `-`, and still requires everything else to match exactly (for PDF or OCR text); `ignoringCurrencySigns()` also lets a quote add or drop a currency sign; `numbersMatchQuotes()` requires each numeric value to be a number its own quote prints, so a value scaled or retyped away from a real quote is caught | `.require("total", "line_items[*].amount").grounded()` |
+| `ProvenanceGate` | Required fields carry evidence, `{value, source_span: {page, text}}`. With `grounded()`, each span's text must occur literally on the page it names; `optional(...)` fields may be null but are checked when present; `groundedIgnoringWhitespace()` ignores spaces and line breaks and reads any hyphen or dash as `-`, and still requires everything else to match exactly (for PDF or OCR text); `ignoringCurrencySigns()` also lets a quote add or drop a currency sign; `numbersMatchQuotes()` requires each numeric value to be a number its own quote prints, so a value scaled or retyped away from a real quote is caught; `within(region, fields...)` requires those fields' quotes to lie inside a `Region` of the document (from a line matching one pattern through or up to a line matching another), so a value copied from a neighbouring table or section that prints the same labels is caught | `.require("total", "line_items[*].amount").grounded()`, `.within(Region.from("^Line items").before("^Notes"), "total")` |
 | `RegexGate` | Text rules per field: `require` (whole value), `forbid` (any part), `isoDate`, `currencyCode` (ISO 4217) | `.isoDate("invoice_date").currencyCode("currency")` |
 | `BudgetGate` | Ceilings on the call: cost, latency, output tokens (inclusive) | `.maxCost(0.01).maxLatency(Duration.ofSeconds(5))` |
 
@@ -234,8 +234,11 @@ XBRL values:
 Every rejection was a real mistake, and a plain JSON Schema would have accepted all of them. The
 one wrong answer that got through (CTVA, held out) is a page that prints two balance sheets, the
 parent's and a subsidiary's: qwen took one block from each. Every quote was on the page and
-everything added up, so the contract can't tell. It is reported as a limit, not patched on the
-held-out data. Three gates were added after the in-sample run exposed gaps:
+everything added up, so the frozen contract couldn't tell. The table above is that frozen
+contract's result. Afterwards `ProvenanceGate.within(Region, ...)` was added, which requires the
+date and totals to be quoted from the first statement on the page. On the recorded answers it
+rejects CTVA and changes no other verdict, but since it was written after seeing CTVA, that is a
+fix, not a held-out result. Three gates were added after the in-sample run exposed gaps:
 `numbersMatchQuotes()`, `sumEqualsRounded()` and `ignoringCurrencySigns()`. The READMEs for the
 [in-sample](outputgate-eval/datasets/sec-balance-sheets) and
 [held-out](outputgate-eval/datasets/sec-balance-sheets-holdout) sets list every rejection and

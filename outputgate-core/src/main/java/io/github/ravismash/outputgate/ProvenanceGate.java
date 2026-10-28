@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,6 +20,8 @@ import java.util.regex.Pattern;
  * is a violation, never a pass; an {@link Builder#optional optional} field may be missing or null,
  * but when it has a value it is checked like a required one. With
  * {@link Builder#numbersMatchQuotes()}, a numeric value must also be a number its own quote prints.
+ * With {@link Builder#within}, a field's quote must also lie inside a {@link Region} of the page, such
+ * as one table of several that print the same labels.
  */
 public final class ProvenanceGate implements Gate {
 
@@ -35,6 +39,10 @@ public final class ProvenanceGate implements Gate {
     private final boolean ignoreWhitespace;
     private final boolean numbersMatchQuotes;
     private final boolean ignoreCurrency;
+    private final List<Scope> scopes;
+
+    /** Fields whose quotes must lie inside a region. */
+    private record Scope(Region region, List<String> paths) {}
 
     /** Currency signs ($, €, £, ¥, ₹ and the rest of Unicode's Sc category). */
     private static final Pattern CURRENCY = Pattern.compile("\\p{Sc}");
@@ -43,13 +51,14 @@ public final class ProvenanceGate implements Gate {
     private static final Pattern NUMBER = Pattern.compile("\\d[\\d,]*(?:\\.\\d+)?|\\.\\d+");
 
     private ProvenanceGate(List<String> paths, List<String> optionalPaths, boolean grounded, boolean ignoreWhitespace,
-            boolean numbersMatchQuotes, boolean ignoreCurrency) {
+            boolean numbersMatchQuotes, boolean ignoreCurrency, List<Scope> scopes) {
         this.paths = List.copyOf(paths);
         this.optionalPaths = List.copyOf(optionalPaths);
         this.grounded = grounded;
         this.ignoreWhitespace = ignoreWhitespace;
         this.numbersMatchQuotes = numbersMatchQuotes;
         this.ignoreCurrency = ignoreCurrency;
+        this.scopes = List.copyOf(scopes);
     }
 
     /** Starts a new provenance gate. */
@@ -66,20 +75,39 @@ public final class ProvenanceGate implements Gate {
     public List<Violation> check(JsonNode output, EvalContext context) {
         List<Violation> out = new ArrayList<>();
         List<String> pages = null;
+        Map<Region, Optional<Located>> regions = null;
         if (grounded) {
             Optional<SourceDocument> source = context.source();
             if (source.isEmpty()) {
                 out.add(new Violation(NAME, "", "grounding is on but the context has no source document"));
             } else {
                 pages = source.get().pages().stream().map(this::normalize).toList();
+                regions = new HashMap<>();
+                for (Scope scope : scopes) {
+                    regions.computeIfAbsent(scope.region(), r -> locate(r, source.get()));
+                }
             }
         }
-        check(output, paths, false, pages, out);
-        check(output, optionalPaths, true, pages, out);
+        check(output, paths, false, pages, regions, out);
+        check(output, optionalPaths, true, pages, regions, out);
         return out;
     }
 
-    private void check(JsonNode output, List<String> fieldPaths, boolean optional, List<String> pages, List<Violation> out) {
+    /** A region found in the document, with its text on each page as grounding compares it. */
+    private record Located(Region.Span span, List<String> pages) {}
+
+    private Optional<Located> locate(Region region, SourceDocument document) {
+        return region.locate(document).map(span -> {
+            List<String> text = new ArrayList<>();
+            for (int p = 0; p < document.pages().size(); p++) {
+                text.add(normalize(Region.textOn(document, span, p)));
+            }
+            return new Located(span, text);
+        });
+    }
+
+    private void check(JsonNode output, List<String> fieldPaths, boolean optional, List<String> pages,
+            Map<Region, Optional<Located>> regions, List<Violation> out) {
         for (String path : fieldPaths) {
             for (Paths.Hit hit : Paths.resolve(output, path, false)) {
                 if (optional && (hit.node().isMissingNode() || hit.node().isNull())) {
@@ -91,6 +119,11 @@ public final class ProvenanceGate implements Gate {
                 }
                 if (problem == null && pages != null) {
                     problem = ungrounded(hit.node().get("source_span"), pages);
+                }
+                for (Scope scope : scopes) {
+                    if (problem == null && regions != null && scope.paths().contains(path)) {
+                        problem = outside(hit.node().get("source_span"), scope.region(), regions.get(scope.region()));
+                    }
                 }
                 if (problem != null) {
                     out.add(new Violation(NAME, hit.path(), problem));
@@ -122,6 +155,22 @@ public final class ProvenanceGate implements Gate {
             }
         }
         return "source_span.text \"" + quote + "\" not found in the source document" + where;
+    }
+
+    /** Why a grounded span is not inside the region its field must be quoted from, or null when it is. */
+    private String outside(JsonNode span, Region region, Optional<Located> located) {
+        if (located.isEmpty()) {
+            return "the region this field must be quoted from is not in the source document (no line matches its start): "
+                    + region;
+        }
+        int page = (int) span.get("page").asLong() - 1;
+        String quote = span.get("text").asText();
+        if (located.get().pages().get(page).contains(normalize(quote))) {
+            return null;
+        }
+        return "source_span.text \"" + quote + "\" is on page " + (page + 1) + " but not inside the part of the document"
+                + " this field must be quoted from (" + located.get().span().describe() + ": " + region
+                + "); quote the value printed there";
     }
 
     /**
@@ -200,6 +249,7 @@ public final class ProvenanceGate implements Gate {
         private boolean ignoreWhitespace;
         private boolean numbersMatchQuotes;
         private boolean ignoreCurrency;
+        private final List<Scope> scopes = new ArrayList<>();
 
         private Builder() {}
 
@@ -282,7 +332,28 @@ public final class ProvenanceGate implements Gate {
         }
 
         /**
-         * Builds the gate; a provenance gate that requires nothing would pass everything, so that is an error.
+         * With grounding, also require that these fields' quotes lie inside {@code region} on the
+         * page they name, not just somewhere on it. Use it when a document prints the same labels
+         * or numbers in more than one place (a summary and a detail table, a parent company's
+         * statement and a subsidiary's, this year's table and last year's), so a quote found on the
+         * page can still come from the wrong one. With whitespace or currency signs ignored, they
+         * are ignored here too. A quote that runs across the region's edge is outside it.
+         *
+         * @param region the part of the document the quotes must come from
+         * @param paths fields declared with {@link #require} or {@link #optional}, written the same way
+         * @return this builder
+         */
+        public Builder within(Region region, String... paths) {
+            if (region == null || paths.length == 0) {
+                throw new IllegalArgumentException("within needs a region and at least one field");
+            }
+            scopes.add(new Scope(region, Arrays.stream(paths).map(Paths::validate).toList()));
+            return this;
+        }
+
+        /**
+         * Builds the gate; a provenance gate that requires nothing would pass everything, so that is
+         * an error, and so is a region with grounding off or on a field the gate doesn't check.
          *
          * @return the gate
          */
@@ -290,7 +361,18 @@ public final class ProvenanceGate implements Gate {
             if (paths.isEmpty()) {
                 throw new IllegalStateException("ProvenanceGate needs at least one required field");
             }
-            return new ProvenanceGate(paths, optionalPaths, grounded, ignoreWhitespace, numbersMatchQuotes, ignoreCurrency);
+            if (!scopes.isEmpty() && !grounded) {
+                throw new IllegalStateException("within needs grounding: call grounded() or groundedIgnoringWhitespace()");
+            }
+            for (Scope scope : scopes) {
+                for (String path : scope.paths()) {
+                    if (!paths.contains(path) && !optionalPaths.contains(path)) {
+                        throw new IllegalStateException("within names " + path + ", which is not a required or optional field");
+                    }
+                }
+            }
+            return new ProvenanceGate(paths, optionalPaths, grounded, ignoreWhitespace, numbersMatchQuotes, ignoreCurrency,
+                    scopes);
         }
     }
 }
