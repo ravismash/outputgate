@@ -11,6 +11,8 @@ source-span provenance, regex, cost and latency ceilings). An output either pass
 or is rejected with every violation listed. **No gate calls a model.**
 
 > **Status:** `0.1.0` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Java 21. MIT.
+>
+> **Python:** grounding and arithmetic checks for Pydantic v2 are in [`python/`](python) (not yet on PyPI); see [`FRD.md`](FRD.md).
 
 ## Install
 
