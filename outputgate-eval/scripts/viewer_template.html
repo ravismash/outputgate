@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outputgate Case Viewer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Three real LLM extractions that looked right, and the deterministic checks that decided them. Built from the recorded outputgate benchmark runs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a filing-room ledger. Case tabs on top; the model's answer beside the page it was read from, linked by highlighted quotes. */
+:root {
+  --paper: #f5f6f3;
+  --sheet: #ffffff;
+  --ink: #1b2430;
+  --muted: #5d6875;
+  --rule: #d9ddd6;
+  --accent: #1f4f8f;
+  --accent-soft: #e3ebf6;
+  --pass: #1d7347;
+  --pass-soft: #e1f1e7;
+  --fail: #b3261e;
+  --fail-soft: #fbe6e3;
+  --warn: #8a5a00;
+  --warn-soft: #fbefd3;
+  --mark: #ffe58a;
+  --mark-dim: #fff3c4;
+  --region: #eef3fb;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161c; --sheet: #1a2028; --ink: #e5e9ee; --muted: #9aa5b1; --rule: #2c3440;
+    --accent: #8ab4f0; --accent-soft: #1f2d42; --pass: #6fd39b; --pass-soft: #163325;
+    --fail: #ff8f86; --fail-soft: #3a1c1a; --warn: #f0c36b; --warn-soft: #362a12;
+    --mark: #6b5a14; --mark-dim: #3a3317; --region: #1c2635; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161c; --sheet: #1a2028; --ink: #e5e9ee; --muted: #9aa5b1; --rule: #2c3440;
+  --accent: #8ab4f0; --accent-soft: #1f2d42; --pass: #6fd39b; --pass-soft: #163325;
+  --fail: #ff8f86; --fail-soft: #3a1c1a; --warn: #f0c36b; --warn-soft: #362a12;
+  --mark: #6b5a14; --mark-dim: #3a3317; --region: #1c2635; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 15px/1.55 var(--body);
+}
+.wrap {
+  max-width: 1240px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 48px;
+  display: grid; gap: 28px;
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, tr:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--mono); font-size: 0.9em; }
+
+header { display: grid; gap: 12px; max-width: 72ch; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 clamp(30px, 5vw, 44px)/1.08 var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font: 600 22px/1.2 var(--display); margin: 0; text-wrap: balance; }
+h3 { font: 600 13px/1.2 var(--mono); margin: 0; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lead { margin: 0; font-size: 17px; color: var(--ink); }
+.lead + p { margin: 0; color: var(--muted); }
+
+.gates { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.gates li { font: 500 12px/1 var(--mono); padding: 6px 8px; border: 1px solid var(--rule); border-radius: 4px; background: var(--sheet); color: var(--muted); }
+
+nav.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+nav.cases button {
+  font: inherit; color: inherit; text-align: left; cursor: pointer;
+  background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 14px 16px; display: grid; gap: 4px; min-width: 0;
+}
+nav.cases button:hover { border-color: var(--accent); }
+nav.cases button[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 -3px 0 var(--accent); }
+.tk { font: 700 24px/1 var(--display); letter-spacing: 0.01em; }
+.tk small { font: 500 13px/1 var(--body); color: var(--muted); margin-left: 6px; letter-spacing: 0; }
+.kind { font-size: 14px; color: var(--muted); }
+
+section.case { display: grid; gap: 20px; }
+.case-head { display: grid; gap: 10px; max-width: 80ch; }
+.meta { font: 12px/1.4 var(--mono); color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.case-head p { margin: 0; }
+
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 12px 14px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; flex-wrap: wrap; }
+.seg button { font: 500 14px/1 var(--body); color: var(--ink); background: transparent; border: 0; padding: 10px 14px; cursor: pointer; border-right: 1px solid var(--rule); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font: 600 12px/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; padding: 7px 9px; border-radius: 4px; }
+.pill.pass { background: var(--pass-soft); color: var(--pass); }
+.pill.fail { background: var(--fail-soft); color: var(--fail); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.note { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 14px; }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; min-width: 0; display: grid; }
+.panel > .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+.panel > .ph span { font-size: 13px; color: var(--muted); }
+.scroll { overflow-x: auto; }
+
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.answer td, .answer th { padding: 7px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+.answer th { font: 600 11px/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--paper); }
+.answer tr.group td { font: 600 12px/1.2 var(--mono); color: var(--muted); background: var(--paper); padding-block: 6px; }
+.answer tr.field { cursor: pointer; }
+.answer tr.field:hover td { background: var(--accent-soft); }
+.answer tr.field.sel td { background: var(--mark-dim); }
+.answer tr.field.total td:first-child { font-weight: 600; }
+.answer td.num { text-align: right; font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+.answer td.q { font-family: var(--mono); font-size: 13px; white-space: nowrap; color: var(--muted); }
+.answer td.st { width: 1%; white-space: nowrap; }
+.dot { display: inline-block; font: 600 11px/1 var(--mono); padding: 4px 6px; border-radius: 3px; }
+.dot.ok { color: var(--pass); background: var(--pass-soft); }
+.dot.bad { color: var(--fail); background: var(--fail-soft); }
+.changed { color: var(--fail); font-weight: 600; }
+.was { display: block; font-size: 11px; color: var(--muted); text-decoration: line-through; }
+
+.doc { font: 12.5px/1.65 var(--mono); max-height: 640px; overflow: auto; }
+.doc table { width: max-content; min-width: 100%; }
+.doc td { padding: 0 12px 0 0; white-space: pre; }
+.doc td.ln { color: var(--muted); text-align: right; padding: 0 10px; user-select: none; border-right: 1px solid var(--rule); opacity: 0.8; }
+.doc tr.in-region td { background: var(--region); }
+.doc tr.region-edge td { box-shadow: inset 0 -2px 0 var(--accent); }
+.doc tr.outside td.tx { opacity: 0.55; }
+mark { background: var(--mark-dim); color: inherit; border-radius: 2px; padding: 0 1px; }
+mark.hot { background: var(--mark); outline: 1px solid var(--warn); }
+.region-tag { font: 600 11px/1 var(--mono); color: var(--accent); padding-left: 8px; }
+
+.below { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.viol { list-style: none; margin: 0; padding: 0; display: grid; }
+.viol li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+.viol li:last-child { border-bottom: 0; }
+.viol .gate { font: 600 11px/1 var(--mono); text-transform: uppercase; padding: 5px 6px; border-radius: 3px; background: var(--fail-soft); color: var(--fail); align-self: start; }
+.viol .path { font: 500 13px/1.3 var(--mono); }
+.viol .msg { grid-column: 2; font: 12.5px/1.5 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.empty { padding: 14px; color: var(--pass); font-weight: 500; margin: 0; }
+.truth td, .truth th { padding: 8px 12px; border-bottom: 1px solid var(--rule); text-align: right; font-family: var(--mono); font-size: 13px; }
+.truth th { font: 600 11px/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.truth td:first-child, .truth th:first-child { text-align: left; font-family: var(--body); font-size: 14px; }
+.truth tr:last-child td { border-bottom: 0; }
+
+footer { display: grid; gap: 8px; max-width: 80ch; color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); padding-top: 20px; }
+footer p { margin: 0; }
+
+@media (max-width: 860px) {
+  .grid, .below { grid-template-columns: minmax(0, 1fr); }
+  .doc { max-height: 420px; }
+}
+@media (max-width: 560px) {
+  nav.cases { grid-template-columns: minmax(0, 1fr); }
+  .answer td.q { display: none; }
+  .answer th.q { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  nav.cases button, .seg button, .answer tr.field td { transition: background-color 120ms ease, border-color 120ms ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">outputgate · benchmark cases</div>
+    <h1>Three answers that looked right</h1>
+    <p class="lead">outputgate checks the structured output an LLM returns with deterministic rules: schema, types, arithmetic across fields, and provenance, which means every value carries a quote of the source and must equal the number that quote prints. No check calls a model.</p>
+    <p>The example dataset is 120 balance sheets from SEC 10-Q filings, with each filing's own XBRL figures as ground truth. The three cases below are real answers from qwen2.5:14b running locally. Pick a case, switch between contract versions, and click any field to find its quote on the page.</p>
+    <ul class="gates" aria-label="Gates in the contract">
+      <li>schema</li><li>type</li><li>math</li><li>provenance</li><li>region</li><li>regex</li>
+    </ul>
+  </header>
+
+  <nav class="cases" role="tablist" aria-label="Cases" id="cases"></nav>
+
+  <section class="case" id="case" role="tabpanel" aria-live="polite"></section>
+
+  <footer>
+    <p>Every answer, verdict and violation on this page is read from the recorded runs: <code>results.jsonl</code> and <code>repair.jsonl</code> under <a href="https://github.com/ravismash/outputgate/tree/main/outputgate-eval/datasets">outputgate-eval/datasets</a>. The CTVA verdict under the region rule comes from re-scoring the recorded answer with the current contract, and is marked post-hoc because the rule was written after seeing that case.</p>
+    <p>Regenerate with <code>python3 -I outputgate-eval/scripts/build_viewer.py</code>. Source and full benchmark: <a href="https://github.com/ravismash/outputgate">github.com/ravismash/outputgate</a>.</p>
+  </footer>
+</div>
+
+<script>
+const CASES = /*DATA*/[];
+
+const TOTALS = [
+  ["total_current_assets", "Total current assets"],
+  ["total_assets", "Total assets"],
+  ["total_current_liabilities", "Total current liabilities"],
+  ["total_liabilities_and_equity", "Total liabilities and equity"],
+];
+
+const view = { caseId: CASES[0].id, stateKey: CASES[0].states[0].key, field: null };
+
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null) n.append(kid);
+  return n;
+};
+
+const fmt = v => typeof v === "number"
+  ? v.toLocaleString("en-US", { maximumFractionDigits: 2 })
+  : String(v);
+
+function rows(output) {
+  const out = [{ path: "period_end", label: "Period end", node: output.period_end, group: null }];
+  const add = (list, prefix, groupLabel, totals) => {
+    out.push({ group: groupLabel });
+    output[prefix].forEach((line, i) =>
+      out.push({ path: `${prefix}[${i}].amount`, label: line.label, node: line.amount }));
+    for (const [key, label] of totals) out.push({ path: key, label, node: output[key], total: true });
+  };
+  add(output.current_assets, "current_assets", "Current assets",
+      [["total_current_assets", "Total current assets"], ["total_assets", "Total assets"]]);
+  add(output.current_liabilities, "current_liabilities", "Current liabilities",
+      [["total_current_liabilities", "Total current liabilities"], ["total_liabilities_and_equity", "Total liabilities and equity"]]);
+  return out;
+}
+
+function quotePattern(quote) {
+  const core = quote.replace(/[$\s]/g, "");
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  if (/^[\d,.()\-]+$/.test(core)) {
+    return new RegExp(`(?<![\\d,.])\\$?\\s*${esc(core)}(?![\\d,]|\\.\\d)`, "g");
+  }
+  return new RegExp(esc(quote).replace(/\s+/g, "\\s+"), "g");
+}
+
+function locate(lines, quote) {
+  const hits = [];
+  const re = quotePattern(quote);
+  lines.forEach((line, i) => {
+    re.lastIndex = 0;
+    let m;
+    while ((m = re.exec(line))) hits.push({ line: i, start: m.index, end: m.index + m[0].length });
+  });
+  return hits;
+}
+
+function renderTabs() {
+  const nav = document.getElementById("cases");
+  nav.replaceChildren(...CASES.map(c => el("button", {
+    role: "tab", id: `tab-${c.id}`, "aria-selected": String(c.id === view.caseId), "aria-controls": "case",
+    onclick: () => select(c.id),
+  }, el("span", { class: "tk" }, c.ticker, el("small", { text: c.company })), el("span", { class: "kind", text: c.kind }))));
+}
+
+function select(caseId, stateKey) {
+  const c = CASES.find(x => x.id === caseId) || CASES[0];
+  view.caseId = c.id;
+  view.stateKey = (c.states.find(s => s.key === stateKey) || c.states[0]).key;
+  view.field = null;
+  if (location.hash !== `#${c.id}`) history.replaceState(null, "", `#${c.id}`);
+  renderTabs();
+  renderCase();
+}
+
+function renderCase() {
+  const c = CASES.find(x => x.id === view.caseId);
+  const s = c.states.find(x => x.key === view.stateKey);
+  const prev = c.states[c.states.indexOf(s) - 1];
+  const bad = new Map();
+  for (const v of s.violations) bad.set(v.path, [...(bad.get(v.path) || []), v]);
+  const wrong = TOTALS.filter(([k]) => Number(s.output[k].value) !== Number(c.truth[k]));
+  const showRegion = s.violations.some(v => v.gate === "region") || s.key === "region";
+
+  const head = el("div", { class: "case-head" },
+    el("div", { class: "meta" },
+      el("span", { text: c.datasetLabel }), el("span", { text: c.file }), el("span", { text: c.model })),
+    el("h2", { text: `${c.company}: ${c.kind.toLowerCase()}` }),
+    el("p", { text: c.summary }));
+
+  const accepted = s.outcome === "PASSED";
+  const bar = el("div", { class: "bar" },
+    el("div", { class: "seg", role: "group", "aria-label": "Contract version" },
+      c.states.map(x => el("button", { "aria-pressed": String(x.key === s.key), onclick: () => { view.stateKey = x.key; view.field = null; renderCase(); } }, x.label))),
+    el("div", { class: "pills" },
+      el("span", { class: `pill ${accepted ? "pass" : "fail"}`, text: accepted ? "Accepted" : `Rejected · ${s.violations.length} violation${s.violations.length === 1 ? "" : "s"}` }),
+      el("span", { class: `pill ${wrong.length ? "fail" : "pass"}`, text: wrong.length ? `${wrong.length} of 4 totals wrong vs filing` : "Totals match filing" }),
+      s.postHoc ? el("span", { class: "pill warn", text: "Post-hoc fix" }) : null),
+    el("p", { class: "note", text: s.note }));
+
+  // The answer
+  const tbody = el("tbody");
+  for (const r of rows(s.output)) {
+    if (r.group) { tbody.append(el("tr", { class: "group" }, el("td", { colspan: 4, text: r.group }))); continue; }
+    const vs = bad.get(r.path) || [];
+    const before = prev && prev.output ? valueAt(prev.output, r.path) : undefined;
+    const changed = before !== undefined && before !== r.node.value;
+    const tr = el("tr", {
+      class: `field${r.total ? " total" : ""}${view.field === r.path ? " sel" : ""}`, tabindex: 0,
+      title: vs.map(v => v.message).join("\n") || "Passes every check on this field",
+      onclick: () => { view.field = view.field === r.path ? null : r.path; renderCase(); },
+      onkeydown: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.currentTarget.click(); } },
+    },
+      el("td", { text: r.label }),
+      el("td", { class: `num${changed ? " changed" : ""}` }, fmt(r.node.value), changed ? el("span", { class: "was", text: fmt(before) }) : null),
+      el("td", { class: "q", text: `"${r.node.source_span.text}"` }),
+      el("td", { class: "st" }, vs.length
+        ? el("span", { class: "dot bad", text: [...new Set(vs.map(v => v.gate))].join(", ") })
+        : el("span", { class: "dot ok", text: "ok" })));
+    tbody.append(tr);
+  }
+  const answer = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "The model's answer" }), el("span", { text: "Click a field to find its quote" })),
+    el("div", { class: "scroll" }, el("table", { class: "answer" },
+      el("thead", {}, el("tr", {}, el("th", { text: "Field" }), el("th", { text: "Value", style: "text-align:right" }), el("th", { class: "q", text: "Quote" }), el("th", { text: "Check" }))),
+      tbody)));
+
+  // The page
+  const marks = new Map();
+  let selectedHit = null, missing = false;
+  for (const r of rows(s.output)) {
+    if (r.group) continue;
+    const hits = locate(c.lines, r.node.source_span.text);
+    if (r.path === view.field) { selectedHit = hits[0] || null; missing = hits.length === 0; }
+    for (const h of hits) {
+      const key = h.line;
+      const list = marks.get(key) || [];
+      if (!list.some(x => x.start === h.start)) list.push({ ...h, hot: r.path === view.field });
+      else if (r.path === view.field) list.find(x => x.start === h.start).hot = true;
+      marks.set(key, list);
+    }
+  }
+  const [rs, re] = c.statement;
+  const docBody = el("tbody");
+  c.lines.forEach((line, i) => {
+    const n = i + 1;
+    const inRegion = showRegion && n >= rs && n <= re;
+    const tr = el("tr", { id: `L${n}`, class: [inRegion ? "in-region" : "", showRegion && n === re ? "region-edge" : "", showRegion && n > re ? "outside" : ""].join(" ").trim() || null });
+    const tx = el("td", { class: "tx" });
+    const list = (marks.get(i) || []).sort((a, b) => a.start - b.start);
+    let at = 0;
+    for (const m of list) {
+      if (m.start < at) continue;
+      tx.append(line.slice(at, m.start), el("mark", { class: m.hot ? "hot" : null, text: line.slice(m.start, m.end) }));
+      at = m.end;
+    }
+    tx.append(line.slice(at));
+    if (showRegion && n === re) tx.append(el("span", { class: "region-tag", text: "↑ first statement ends" }));
+    tr.append(el("td", { class: "ln", text: n }), tx);
+    docBody.append(tr);
+  });
+  const sel = view.field && rows(s.output).find(r => r.path === view.field);
+  const doc = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "The page" }),
+      el("span", { text: sel ? (missing ? `"${sel.node.source_span.text}" is not on the page` : `Line ${selectedHit.line + 1}: "${sel.node.source_span.text}"`) : (showRegion ? `Shaded: lines ${rs} to ${re}, where totals must be quoted from` : c.file) })),
+    el("div", { class: "doc", id: "doc" }, el("table", {}, docBody)));
+
+  // Violations
+  const viol = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "Violations" }), el("span", { text: s.violations.length ? "Word for word, as the contract reports them" : "" })),
+    s.violations.length
+      ? el("ul", { class: "viol" }, s.violations.map(v => el("li", {},
+          el("span", { class: "gate", text: v.gate }), el("span", { class: "path", text: v.path }), el("span", { class: "msg", text: v.message }))))
+      : el("p", { class: "empty", text: "None. Every gate passed, so the contract accepted this answer." }));
+
+  const truth = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "Against the filing" }), el("span", { text: "XBRL figures, $ in millions" })),
+    el("div", { class: "scroll" }, el("table", { class: "truth" },
+      el("thead", {}, el("tr", {}, el("th", { text: "Total" }), el("th", { text: "Answer" }), el("th", { text: "Filing" }), el("th", { text: "" }))),
+      el("tbody", {}, TOTALS.map(([k, label]) => {
+        const ok = Number(s.output[k].value) === Number(c.truth[k]);
+        return el("tr", {}, el("td", { text: label }), el("td", { class: ok ? null : "changed", text: fmt(s.output[k].value) }),
+          el("td", { text: fmt(c.truth[k]) }), el("td", {}, el("span", { class: `dot ${ok ? "ok" : "bad"}`, text: ok ? "right" : "wrong" })));
+      })))));
+
+  document.getElementById("case").replaceChildren(head, bar,
+    el("div", { class: "grid" }, answer, doc),
+    el("div", { class: "below" }, viol, truth));
+  document.getElementById("case").setAttribute("aria-labelledby", `tab-${c.id}`);
+
+  if (selectedHit) {
+    const row = document.getElementById(`L${selectedHit.line + 1}`);
+    const box = document.getElementById("doc");
+    box.scrollTop = Math.max(0, row.offsetTop - box.clientHeight / 2);
+  }
+}
+
+function valueAt(output, path) {
+  const m = path.match(/^(\w+)\[(\d+)\]\.amount$/);
+  if (m) return output[m[1]][Number(m[2])]?.amount.value;
+  return output[path]?.value;
+}
+
+window.addEventListener("hashchange", () => select(location.hash.slice(1)));
+select(location.hash.slice(1) || CASES[0].id);
+</script>
+</body>
+</html>
