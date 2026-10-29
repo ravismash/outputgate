@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outputgate Case Viewer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Three real LLM extractions that looked right, and the deterministic checks that decided them. Built from the recorded outputgate benchmark runs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a filing-room ledger. Case tabs on top; the model's answer beside the page it was read from, linked by highlighted quotes. */
+:root {
+  --paper: #f5f6f3;
+  --sheet: #ffffff;
+  --ink: #1b2430;
+  --muted: #5d6875;
+  --rule: #d9ddd6;
+  --accent: #1f4f8f;
+  --accent-soft: #e3ebf6;
+  --pass: #1d7347;
+  --pass-soft: #e1f1e7;
+  --fail: #b3261e;
+  --fail-soft: #fbe6e3;
+  --warn: #8a5a00;
+  --warn-soft: #fbefd3;
+  --mark: #ffe58a;
+  --mark-dim: #fff3c4;
+  --region: #eef3fb;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161c; --sheet: #1a2028; --ink: #e5e9ee; --muted: #9aa5b1; --rule: #2c3440;
+    --accent: #8ab4f0; --accent-soft: #1f2d42; --pass: #6fd39b; --pass-soft: #163325;
+    --fail: #ff8f86; --fail-soft: #3a1c1a; --warn: #f0c36b; --warn-soft: #362a12;
+    --mark: #6b5a14; --mark-dim: #3a3317; --region: #1c2635; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161c; --sheet: #1a2028; --ink: #e5e9ee; --muted: #9aa5b1; --rule: #2c3440;
+  --accent: #8ab4f0; --accent-soft: #1f2d42; --pass: #6fd39b; --pass-soft: #163325;
+  --fail: #ff8f86; --fail-soft: #3a1c1a; --warn: #f0c36b; --warn-soft: #362a12;
+  --mark: #6b5a14; --mark-dim: #3a3317; --region: #1c2635; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 15px/1.55 var(--body);
+}
+.wrap {
+  max-width: 1240px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 48px;
+  display: grid; gap: 28px;
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, tr:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--mono); font-size: 0.9em; }
+
+header { display: grid; gap: 12px; max-width: 72ch; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 clamp(30px, 5vw, 44px)/1.08 var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font: 600 22px/1.2 var(--display); margin: 0; text-wrap: balance; }
+h3 { font: 600 13px/1.2 var(--mono); margin: 0; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lead { margin: 0; font-size: 17px; color: var(--ink); }
+.lead + p { margin: 0; color: var(--muted); }
+
+.gates { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.gates li { font: 500 12px/1 var(--mono); padding: 6px 8px; border: 1px solid var(--rule); border-radius: 4px; background: var(--sheet); color: var(--muted); }
+
+nav.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+nav.cases button {
+  font: inherit; color: inherit; text-align: left; cursor: pointer;
+  background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 14px 16px; display: grid; gap: 4px; min-width: 0;
+}
+nav.cases button:hover { border-color: var(--accent); }
+nav.cases button[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 -3px 0 var(--accent); }
+.tk { font: 700 24px/1 var(--display); letter-spacing: 0.01em; }
+.tk small { font: 500 13px/1 var(--body); color: var(--muted); margin-left: 6px; letter-spacing: 0; }
+.kind { font-size: 14px; color: var(--muted); }
+
+section.case { display: grid; gap: 20px; }
+.case-head { display: grid; gap: 10px; max-width: 80ch; }
+.meta { font: 12px/1.4 var(--mono); color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.case-head p { margin: 0; }
+
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 12px 14px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; flex-wrap: wrap; }
+.seg button { font: 500 14px/1 var(--body); color: var(--ink); background: transparent; border: 0; padding: 10px 14px; cursor: pointer; border-right: 1px solid var(--rule); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font: 600 12px/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; padding: 7px 9px; border-radius: 4px; }
+.pill.pass { background: var(--pass-soft); color: var(--pass); }
+.pill.fail { background: var(--fail-soft); color: var(--fail); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.note { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 14px; }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; min-width: 0; display: grid; }
+.panel > .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+.panel > .ph span { font-size: 13px; color: var(--muted); }
+.scroll { overflow-x: auto; }
+
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.answer td, .answer th { padding: 7px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+.answer th { font: 600 11px/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--paper); }
+.answer tr.group td { font: 600 12px/1.2 var(--mono); color: var(--muted); background: var(--paper); padding-block: 6px; }
+.answer tr.field { cursor: pointer; }
+.answer tr.field:hover td { background: var(--accent-soft); }
+.answer tr.field.sel td { background: var(--mark-dim); }
+.answer tr.field.total td:first-child { font-weight: 600; }
+.answer td.num { text-align: right; font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+.answer td.q { font-family: var(--mono); font-size: 13px; white-space: nowrap; color: var(--muted); }
+.answer td.st { width: 1%; white-space: nowrap; }
+.dot { display: inline-block; font: 600 11px/1 var(--mono); padding: 4px 6px; border-radius: 3px; }
+.dot.ok { color: var(--pass); background: var(--pass-soft); }
+.dot.bad { color: var(--fail); background: var(--fail-soft); }
+.changed { color: var(--fail); font-weight: 600; }
+.answer td.pg { white-space: nowrap; font-family: var(--mono); font-size: 13px; }
+.answer td.pg .pv { display: inline-block; min-width: 7ch; text-align: right; margin-right: 8px; }
+.answer tr.left-out td { color: var(--fail); font-style: italic; }
+.answer tr.left-out td.pg .pv { font-style: normal; }
+.doc tr.skipped td.tx { text-decoration: line-through; text-decoration-color: var(--fail); text-decoration-thickness: 2px; }
+.doc tr.target td { background: var(--mark); }
+.errs { display: grid; gap: 14px; padding: 14px; }
+.errs h4 { margin: 0 0 6px; font: 600 14px/1.3 var(--body); color: var(--fail); }
+.errs ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font: 13px/1.45 var(--mono); }
+.empty.warn { color: var(--warn); }
+.was { display: block; font-size: 11px; color: var(--muted); text-decoration: line-through; }
+
+.doc { font: 12.5px/1.65 var(--mono); max-height: 640px; overflow: auto; }
+.doc table { width: max-content; min-width: 100%; }
+.doc td { padding: 0 12px 0 0; white-space: pre; }
+.doc td.ln { color: var(--muted); text-align: right; padding: 0 10px; user-select: none; border-right: 1px solid var(--rule); opacity: 0.8; }
+.doc tr.in-region td { background: var(--region); }
+.doc tr.region-edge td { box-shadow: inset 0 -2px 0 var(--accent); }
+.doc tr.outside td.tx { opacity: 0.55; }
+mark { background: var(--mark-dim); color: inherit; border-radius: 2px; padding: 0 1px; }
+mark.hot { background: var(--mark); outline: 1px solid var(--warn); }
+.region-tag { font: 600 11px/1 var(--mono); color: var(--accent); padding-left: 8px; }
+
+.below { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.viol { list-style: none; margin: 0; padding: 0; display: grid; }
+.viol li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+.viol li:last-child { border-bottom: 0; }
+.viol .gate { font: 600 11px/1 var(--mono); text-transform: uppercase; padding: 5px 6px; border-radius: 3px; background: var(--fail-soft); color: var(--fail); align-self: start; }
+.viol .path { font: 500 13px/1.3 var(--mono); }
+.viol .msg { grid-column: 2; font: 12.5px/1.5 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.empty { padding: 14px; color: var(--pass); font-weight: 500; margin: 0; }
+
+footer { display: grid; gap: 8px; max-width: 80ch; color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); padding-top: 20px; }
+footer p { margin: 0; }
+
+@media (max-width: 860px) {
+  .grid, .below { grid-template-columns: minmax(0, 1fr); }
+  .doc { max-height: 420px; }
+}
+@media (max-width: 560px) {
+  nav.cases { grid-template-columns: minmax(0, 1fr); }
+  .answer td.q { display: none; }
+  .answer th.q { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  nav.cases button, .seg button, .answer tr.field td { transition: background-color 120ms ease, border-color 120ms ease; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">outputgate · benchmark cases</div>
+    <h1>Three answers that looked right</h1>
+    <p class="lead">outputgate checks the structured output an LLM returns with deterministic rules: schema, types, arithmetic across fields, and provenance, which means every value carries a quote of the source and must equal the number that quote prints. No check calls a model.</p>
+    <p>The example dataset is 120 balance sheets from SEC 10-Q filings, with each filing's own XBRL figures as ground truth. The three cases below are real answers from qwen2.5:14b running locally. Each case shows what the contract decided and, separately, everything that is actually wrong with the answer: lines left out, lines the page does not print, values that differ from the page, and totals that differ from the filing. Pick a case, switch between contract versions, and click any row to find it on the page.</p>
+    <ul class="gates" aria-label="Gates in the contract">
+      <li>schema</li><li>type</li><li>math</li><li>provenance</li><li>region</li><li>regex</li>
+    </ul>
+  </header>
+
+  <nav class="cases" role="tablist" aria-label="Cases" id="cases"></nav>
+
+  <section class="case" id="case" role="tabpanel" aria-live="polite"></section>
+
+  <footer>
+    <p>Every answer, verdict and violation on this page is read from the recorded runs: <code>results.jsonl</code> and <code>repair.jsonl</code> under <a href="https://github.com/ravismash/outputgate/tree/main/outputgate-eval/datasets">outputgate-eval/datasets</a>. The CTVA verdict under the region rule comes from re-scoring the recorded answer with the current contract, and is marked post-hoc because the rule was written after seeing that case.</p>
+    <p>The "page prints" column matches each line of the answer by label to the statement's own lines. For every case, those lines add up to the filing's XBRL total, which the build script checks.</p>
+    <p>Regenerate with <code>python3 -I outputgate-eval/scripts/build_viewer.py</code>. Source and full benchmark: <a href="https://github.com/ravismash/outputgate">github.com/ravismash/outputgate</a>.</p>
+  </footer>
+</div>
+
+<script>
+const CASES = [{"id":"exc","ticker":"EXC","company":"Exelon","dataset":"sec-balance-sheets-holdout","datasetLabel":"Held-out set","model":"qwen2.5-14b","file":"EXC-2026-06-30.txt","kind":"Retry rewrote its totals","summary":"The answer left out five current-asset lines and added a \"Total inventories, net\" of 1,827 that the page does not print, so its lines summed to 8,507 against a printed 9,797. On the liability side it left out one line and the two accounts payable printed in blocks below the table, so they summed to 5,524 against 9,008. Given the violations, the retry kept its lines and changed both totals to match its own sums. Arithmetic passes after that edit. The quote check does not, because each total still quotes the number the page prints.","lines":["Consolidated Balance Sheets (Unaudited) - Exelon - USD ($) shares in Millions, $ / shares in Millions, $ in Millions   Jun. 30, 2026   Dec. 31, 2025","Current assets","Cash and cash equivalents   $ 1,813   $ 626","Restricted cash and cash equivalents   608   525","Accounts receivable","Customer accounts receivable   3,567   3,732","Customer allowance for credit losses   (508)   (435)","Customer accounts receivable, net   3,059   3,297","Other accounts receivable   1,294   1,879","Other allowance for credit losses   (94)   (94)","Other accounts receivable, net   1,200   1,785","Inventories, net","Fossil fuel   62   88","Materials and supplies   832   780","Regulatory assets   1,352   1,359","Prepaid renewable energy credits   381   563","Other   490   523","Total current assets   9,797   9,546","Property, plant and equipment, net   87,123   84,318","Deferred debits and other assets","Regulatory assets   9,412   9,214","Goodwill   6,630   6,630","Receivable related to Regulatory Agreement Units   5,280   4,755","Investments   327   312","Other   1,936   1,795","Total deferred debits and other assets   23,585   22,706","Total assets   120,505   116,570","Current liabilities","Short-term borrowings   1,243   612","Long-term debt due within one year   727   1,665","Accrued expenses   1,447   1,582","Customer deposits   589   533","Regulatory liabilities   573   1,128","Mark-to-market derivative liabilities   23   30","Unamortized energy contract liabilities   4   5","Renewable energy credit obligations   332   473","Other   590   577","Total current liabilities   9,008   10,331","Long-term debt   50,313   47,413","Long-term debt to financing trusts   390   390","Deferred credits and other liabilities","Deferred income taxes and unamortized investment tax credits   14,348   13,715","Regulatory liabilities   11,727   11,016","Pension obligations   1,429   1,749","Non-pension postretirement benefit obligations   564   546","Asset retirement obligations   322   321","Mark-to-market derivative liabilities   105   106","Unamortized energy contract liabilities   14   16","Other   2,587   2,169","Total deferred credits and other liabilities   31,096   29,638","Total liabilities   90,807   87,772","Commitments and contingencies","Common stock, shares authorized (in shares)   2,000   2,000","Common stock (in dollars)   $ 0   $ 0","Shareholders’ equity","Common stock   $ 22,540   $ 22,106","Treasury stock, at cost   (123)   (123)","Retained earnings   8,031   7,577","Accumulated other comprehensive loss, net   (750)   (762)","Total shareholders’ equity   29,698   28,798","Total liabilities and shareholders’ equity   $ 120,505   $ 116,570","Common stock, shares outstanding (in shares)   1,032   1,023","Related Party","Current liabilities","Accounts payable   $ 5   $ 5","Long-term debt to financing trusts   390   390","Nonrelated Party","Current liabilities","Accounts payable   $ 3,475   $ 3,721"],"truth":{"total_assets":120505.0,"total_current_assets":9797.0,"total_current_liabilities":9008.0,"total_liabilities_and_equity":120505.0},"statement":[1,61],"expected":{"current_assets":[{"line":3,"label":"Cash and cash equivalents","value":1813.0},{"line":4,"label":"Restricted cash and cash equivalents","value":608.0},{"line":8,"label":"Customer accounts receivable, net","value":3059.0},{"line":11,"label":"Other accounts receivable, net","value":1200.0},{"line":13,"label":"Fossil fuel","value":62.0},{"line":14,"label":"Materials and supplies","value":832.0},{"line":15,"label":"Regulatory assets","value":1352.0},{"line":16,"label":"Prepaid renewable energy credits","value":381.0},{"line":17,"label":"Other","value":490.0}],"current_liabilities":[{"line":29,"label":"Short-term borrowings","value":1243.0},{"line":30,"label":"Long-term debt due within one year","value":727.0},{"line":31,"label":"Accrued expenses","value":1447.0},{"line":32,"label":"Customer deposits","value":589.0},{"line":33,"label":"Regulatory liabilities","value":573.0},{"line":34,"label":"Mark-to-market derivative liabilities","value":23.0},{"line":35,"label":"Unamortized energy contract liabilities","value":4.0},{"line":36,"label":"Renewable energy credit obligations","value":332.0},{"line":37,"label":"Other","value":590.0},{"line":65,"label":"Accounts payable","value":5.0},{"line":69,"label":"Accounts payable","value":3475.0}]},"states":[{"key":"first","label":"First answer","output":{"period_end":{"value":"2026-06-30","source_span":{"page":1,"text":"Jun. 30, 2026"}},"current_assets":[{"label":"Cash and cash equivalents","amount":{"value":1813,"source_span":{"page":1,"text":"$ 1,813"}}},{"label":"Restricted cash and cash equivalents","amount":{"value":608,"source_span":{"page":1,"text":"608"}}},{"label":"Customer accounts receivable, net","amount":{"value":3059,"source_span":{"page":1,"text":"3,059"}}},{"label":"Other accounts receivable, net","amount":{"value":1200,"source_span":{"page":1,"text":"1,200"}}},{"label":"Total inventories, net","amount":{"value":1827,"source_span":{"page":1,"text":"1,827"}}}],"total_current_assets":{"value":9797,"source_span":{"page":1,"text":"9,797"}},"total_assets":{"value":120505,"source_span":{"page":1,"text":"120,505"}},"current_liabilities":[{"label":"Short-term borrowings","amount":{"value":1243,"source_span":{"page":1,"text":"1,243"}}},{"label":"Long-term debt due within one year","amount":{"value":727,"source_span":{"page":1,"text":"727"}}},{"label":"Accrued expenses","amount":{"value":1447,"source_span":{"page":1,"text":"1,447"}}},{"label":"Customer deposits","amount":{"value":589,"source_span":{"page":1,"text":"589"}}},{"label":"Regulatory liabilities","amount":{"value":573,"source_span":{"page":1,"text":"573"}}},{"label":"Mark-to-market derivative liabilities","amount":{"value":23,"source_span":{"page":1,"text":"23"}}},{"label":"Renewable energy credit obligations","amount":{"value":332,"source_span":{"page":1,"text":"332"}}},{"label":"Other","amount":{"value":590,"source_span":{"page":1,"text":"590"}}}],"total_current_liabilities":{"value":9008,"source_span":{"page":1,"text":"9,008"}},"total_liabilities_and_equity":{"value":120505,"source_span":{"page":1,"text":"$ 120,505"}}},"outcome":"REJECTED","schemaOnly":true,"violations":[{"gate":"math","path":"total_current_assets","message":"sum of current_assets[*].amount is 8507 but total_current_assets is 9797 (allowed for rounding 3.0)"},{"gate":"math","path":"total_current_liabilities","message":"sum of current_liabilities[*].amount is 5524 but total_current_liabilities is 9008 (allowed for rounding 4.5)"},{"gate":"provenance","path":"current_assets[4].amount","message":"source_span.text \"1,827\" not found in the source document (whitespace and currency signs ignored)"}],"note":"Rejected by arithmetic and grounding. The retry gets every violation word for word.","postHoc":false},{"key":"retry","label":"After one retry","output":{"period_end":{"value":"2026-06-30","source_span":{"page":1,"text":"Jun. 30, 2026"}},"current_assets":[{"label":"Cash and cash equivalents","amount":{"value":1813,"source_span":{"page":1,"text":"$ 1,813"}}},{"label":"Restricted cash and cash equivalents","amount":{"value":608,"source_span":{"page":1,"text":"608"}}},{"label":"Customer accounts receivable, net","amount":{"value":3059,"source_span":{"page":1,"text":"3,059"}}},{"label":"Other accounts receivable, net","amount":{"value":1200,"source_span":{"page":1,"text":"1,200"}}},{"label":"Total inventories, net","amount":{"value":1827,"source_span":{"page":1,"text":"1,827"}}}],"total_current_assets":{"value":8507,"source_span":{"page":1,"text":"9,797"}},"total_assets":{"value":120505,"source_span":{"page":1,"text":"120,505"}},"current_liabilities":[{"label":"Short-term borrowings","amount":{"value":1243,"source_span":{"page":1,"text":"1,243"}}},{"label":"Long-term debt due within one year","amount":{"value":727,"source_span":{"page":1,"text":"727"}}},{"label":"Accrued expenses","amount":{"value":1447,"source_span":{"page":1,"text":"1,447"}}},{"label":"Customer deposits","amount":{"value":589,"source_span":{"page":1,"text":"589"}}},{"label":"Regulatory liabilities","amount":{"value":573,"source_span":{"page":1,"text":"573"}}},{"label":"Mark-to-market derivative liabilities","amount":{"value":23,"source_span":{"page":1,"text":"23"}}},{"label":"Renewable energy credit obligations","amount":{"value":332,"source_span":{"page":1,"text":"332"}}},{"label":"Other","amount":{"value":590,"source_span":{"page":1,"text":"590"}}}],"total_current_liabilities":{"value":5524,"source_span":{"page":1,"text":"9,008"}},"total_liabilities_and_equity":{"value":120505,"source_span":{"page":1,"text":"$ 120,505"}}},"outcome":"REJECTED","schemaOnly":false,"violations":[{"gate":"provenance","path":"current_assets[4].amount","message":"source_span.text \"1,827\" not found in the source document (whitespace and currency signs ignored)"},{"gate":"provenance","path":"total_current_assets","message":"value 8507 is not a number its quote prints (it prints 9,797)"},{"gate":"provenance","path":"total_current_liabilities","message":"value 5524 is not a number its quote prints (it prints 9,008)"}],"note":"Totals now equal the sums (9,797 to 8,507 and 9,008 to 5,524), and both are wrong against the filing. The same lines are still missing. Rejected by the quote check.","postHoc":false}]},{"id":"ctva","ticker":"CTVA","company":"Corteva","dataset":"sec-balance-sheets-holdout","datasetLabel":"Held-out set","model":"qwen2.5-14b","file":"CTVA-2026-06-30.txt","kind":"Quoted from the wrong statement","summary":"The page prints two near-identical statements: Corteva's, then its subsidiary EIDP's. The answer's current assets match Corteva's, but its accrued liabilities (2,958) and total current liabilities (10,795) are EIDP's; Corteva prints 2,952 and 10,789. Every quote is on the page and the lines add up to the total, so the frozen contract accepted it.","lines":["Consolidated Balance Sheets - USD ($) $ in Millions   Jun. 30, 2026   Dec. 31, 2025   Jun. 30, 2025","Cash and cash equivalents   $ 2,365   $ 4,521   $ 2,065","Marketable Securities   0   9   76","Accounts and notes receivable - net   8,696   6,371   8,674","Inventories   4,443   5,667   4,316","Other current assets   853   767   873","Total current assets   16,357   17,335   16,004","Investments in nonconsolidated affiliates   145   160   134","Property, Plant and Equipment   9,744   9,551   9,455","Less: Accumulated Depreciation   5,566   5,331   5,302","Net Property, Plant and Equipment   4,178   4,220   4,153","Goodwill   10,437   10,465   10,518","Other intangible assets   8,006   8,301   8,583","Deferred Income Taxes   335   320   449","Other assets   2,184   2,044   1,918","Total Assets   41,642   42,845   41,759","Short-term borrowings   3,193   894   1,942","Accounts payable   3,958   4,398   3,828","Income Taxes Payable   303   155   485","Deferred Revenue   383   3,579   358","Accrued and other current liabilities   2,952   3,099   2,903","Total current liabilities   10,789   12,125   9,516","Long-term Debt   1,682   1,686   1,687","Deferred income tax liabilities   512   251   258","Pension and other post employment benefits - noncurrent   1,300   2,434   2,229","Other noncurrent obligations   1,956   1,963   1,918","Total noncurrent liabilities   5,450   6,334   6,092","Common stock   7   7   7","Additional Paid in Capital   26,894   27,001   27,014","Retained earnings (accumulated deficit)   1,224   (67)   1,532","Accumulated Other Comprehensive Income (Loss)   (2,966)   (2,797)   (2,644)","Total stockholders' equity attributable to the company   25,159   24,144   25,909","Noncontrolling Interests   244   242   242","Total Equity   25,403   24,386   26,151","Liabilities and Equity   41,642   42,845   41,759","EIDP","Cash and cash equivalents   2,365   4,521   2,065","Marketable Securities   0   9   76","Accounts and notes receivable - net   8,696   6,371   8,674","Inventories   4,443   5,667   4,316","Other current assets   853   767   873","Total current assets   16,357   17,335   16,004","Investments in nonconsolidated affiliates   145   160   134","Property, Plant and Equipment   9,744   9,551   9,455","Less: Accumulated Depreciation   5,566   5,331   5,302","Net Property, Plant and Equipment   4,178   4,220   4,153","Goodwill   10,437   10,465   10,518","Other intangible assets   8,006   8,301   8,583","Deferred Income Taxes   335   320   449","Other assets   2,184   2,044   1,918","Total Assets   41,642   42,845   41,759","Short-term borrowings   3,193   894   1,942","Accounts payable   3,958   4,398   3,828","Income Taxes Payable   303   155   485","Deferred Revenue   383   3,579   358","Accrued and other current liabilities   2,958   3,223   2,899","Total current liabilities   10,795   12,249   9,512","Long-term Debt   1,682   1,686   1,687","Deferred income tax liabilities   512   251   258","Pension and other post employment benefits - noncurrent   1,300   2,434   2,229","Other noncurrent obligations   1,956   1,963   1,918","Total noncurrent liabilities   5,450   6,334   6,092","Common stock   0   0   0","Additional Paid in Capital   24,659   24,610   24,548","Retained earnings (accumulated deficit)   3,460   2,207   4,009","Accumulated Other Comprehensive Income (Loss)   (2,966)   (2,797)   (2,644)","Total stockholders' equity attributable to the company   25,392   24,259   26,152","Noncontrolling Interests   5   3   3","Total Equity   25,397   24,262   26,155","Liabilities and Equity   41,642   42,845   41,759","EIDP | $4.50 Series Preferred Stock [Member]","Preferred stock, without par value – cumulative; 23,000,000 shares authorized; issued at June 30, 2026, December 31, 2025, and June 30, 2025:   169   169   169","EIDP | $3.50 Series Preferred Stock [Member]","Preferred stock, without par value – cumulative; 23,000,000 shares authorized; issued at June 30, 2026, December 31, 2025, and June 30, 2025:   $ 70   $ 70   $ 70"],"truth":{"total_assets":41642.0,"total_current_assets":16357.0,"total_current_liabilities":10789.0,"total_liabilities_and_equity":41642.0},"statement":[1,35],"expected":{"current_assets":[{"line":2,"label":"Cash and cash equivalents","value":2365.0},{"line":3,"label":"Marketable Securities","value":0.0},{"line":4,"label":"Accounts and notes receivable - net","value":8696.0},{"line":5,"label":"Inventories","value":4443.0},{"line":6,"label":"Other current assets","value":853.0}],"current_liabilities":[{"line":17,"label":"Short-term borrowings","value":3193.0},{"line":18,"label":"Accounts payable","value":3958.0},{"line":19,"label":"Income Taxes Payable","value":303.0},{"line":20,"label":"Deferred Revenue","value":383.0},{"line":21,"label":"Accrued and other current liabilities","value":2952.0}]},"states":[{"key":"frozen","label":"Frozen contract","output":{"period_end":{"value":"2026-06-30","source_span":{"page":1,"text":"Jun. 30, 2026"}},"current_assets":[{"label":"Cash and cash equivalents","amount":{"value":2365,"source_span":{"page":1,"text":"$ 2,365"}}},{"label":"Marketable Securities","amount":{"value":0,"source_span":{"page":1,"text":"0"}}},{"label":"Accounts and notes receivable - net","amount":{"value":8696,"source_span":{"page":1,"text":"8,696"}}},{"label":"Inventories","amount":{"value":4443,"source_span":{"page":1,"text":"4,443"}}},{"label":"Other current assets","amount":{"value":853,"source_span":{"page":1,"text":"853"}}}],"total_current_assets":{"value":16357,"source_span":{"page":1,"text":"16,357"}},"total_assets":{"value":41642,"source_span":{"page":1,"text":"41,642"}},"current_liabilities":[{"label":"Short-term borrowings","amount":{"value":3193,"source_span":{"page":1,"text":"3,193"}}},{"label":"Accounts payable","amount":{"value":3958,"source_span":{"page":1,"text":"3,958"}}},{"label":"Income Taxes Payable","amount":{"value":303,"source_span":{"page":1,"text":"303"}}},{"label":"Deferred Revenue","amount":{"value":383,"source_span":{"page":1,"text":"383"}}},{"label":"Accrued and other current liabilities","amount":{"value":2958,"source_span":{"page":1,"text":"2,958"}}}],"total_current_liabilities":{"value":10795,"source_span":{"page":1,"text":"10,795"}},"total_liabilities_and_equity":{"value":41642,"source_span":{"page":1,"text":"41,642"}}},"outcome":"PASSED","schemaOnly":true,"violations":[],"note":"Accepted, and wrong against ground truth. This is the held-out result.","postHoc":false},{"key":"region","label":"With the region rule","output":{"period_end":{"value":"2026-06-30","source_span":{"page":1,"text":"Jun. 30, 2026"}},"current_assets":[{"label":"Cash and cash equivalents","amount":{"value":2365,"source_span":{"page":1,"text":"$ 2,365"}}},{"label":"Marketable Securities","amount":{"value":0,"source_span":{"page":1,"text":"0"}}},{"label":"Accounts and notes receivable - net","amount":{"value":8696,"source_span":{"page":1,"text":"8,696"}}},{"label":"Inventories","amount":{"value":4443,"source_span":{"page":1,"text":"4,443"}}},{"label":"Other current assets","amount":{"value":853,"source_span":{"page":1,"text":"853"}}}],"total_current_assets":{"value":16357,"source_span":{"page":1,"text":"16,357"}},"total_assets":{"value":41642,"source_span":{"page":1,"text":"41,642"}},"current_liabilities":[{"label":"Short-term borrowings","amount":{"value":3193,"source_span":{"page":1,"text":"3,193"}}},{"label":"Accounts payable","amount":{"value":3958,"source_span":{"page":1,"text":"3,958"}}},{"label":"Income Taxes Payable","amount":{"value":303,"source_span":{"page":1,"text":"303"}}},{"label":"Deferred Revenue","amount":{"value":383,"source_span":{"page":1,"text":"383"}}},{"label":"Accrued and other current liabilities","amount":{"value":2958,"source_span":{"page":1,"text":"2,958"}}}],"total_current_liabilities":{"value":10795,"source_span":{"page":1,"text":"10,795"}},"total_liabilities_and_equity":{"value":41642,"source_span":{"page":1,"text":"41,642"}}},"outcome":"REJECTED","schemaOnly":true,"violations":[{"gate":"region","path":"total_current_liabilities","message":"source_span.text \"10,795\" is on page 1 but not inside the part of the document this field must be quoted from (page 1, lines 1 to 35: from the start of the document through the next line matching /(?i)liabilit.*\\band\\b.*(equity|deficit|investment|capital).*\\d/); quote the value printed there"}],"note":"Added on 2026-10-28, after seeing this case: the date and the four totals must be quoted from the first statement. Re-scoring every recorded answer changed only this verdict.","postHoc":true}]},{"id":"dri","ticker":"DRI","company":"Darden Restaurants","dataset":"sec-balance-sheets","datasetLabel":"Tuning set","model":"qwen2.5-14b","file":"DRI-2026-08-30.txt","kind":"Scale multiplied by 1,000","summary":"The statement is in millions with one decimal. The answer multiplied all 11 lines and 4 totals by 1,000 (13,226,600 for \"13,226.6\") but kept the printed text as its quotes. Every quote is on the page and the sums still hold, because every figure was scaled the same way.","lines":["CONSOLIDATED BALANCE SHEETS - USD ($) $ in Millions   Aug. 30, 2026   May 31, 2026","Current assets:","Cash and cash equivalents   $ 220.5   $ 219.5","Receivables, net   118.0   129.9","Inventories   321.0   326.3","Prepaid income taxes   146.3   139.8","Prepaid expenses and other current assets   147.3   127.4","Total current assets   953.1   942.9","Land, buildings, and equipment, net of accumulated depreciation and amortization of $4,550.7 and $4,466.8, respectively   5,122.2   5,048.6","Operating lease right-of-use assets   3,713.8   3,433.1","Goodwill   1,658.2   1,658.2","Trademarks   1,346.4   1,346.4","Other assets   432.9   433.2","Total assets   13,226.6   12,862.4","Current liabilities:","Accounts payable   470.0   427.7","Short-term debt and current portion of long-term debt   979.7   693.6","Accrued payroll and employee benefits   596.6   648.1","Accrued taxes   95.9   87.0","Unearned revenues   571.5   606.0","Other current liabilities   485.3   543.0","Total current liabilities   3,199.0   3,005.4","Long-term debt   1,636.1   1,637.7","Deferred income taxes   367.6   343.6","Operating lease liabilities - non-current   4,009.7   3,722.3","Other liabilities   1,945.8   1,945.9","Total liabilities   11,158.2   10,654.9","Stockholders’ equity:","Common stock and surplus   2,307.5   2,296.3","Retained earnings (deficit)   (259.5)   (108.4)","Accumulated other comprehensive income   20.4   19.6","Total stockholders’ equity   2,068.4   2,207.5","Total liabilities and stockholders’ equity   $ 13,226.6   $ 12,862.4"],"truth":{"total_assets":13226.6,"total_current_assets":953.1,"total_current_liabilities":3199.0,"total_liabilities_and_equity":13226.6},"statement":[1,33],"expected":{"current_assets":[{"line":3,"label":"Cash and cash equivalents","value":220.5},{"line":4,"label":"Receivables, net","value":118.0},{"line":5,"label":"Inventories","value":321.0},{"line":6,"label":"Prepaid income taxes","value":146.3},{"line":7,"label":"Prepaid expenses and other current assets","value":147.3}],"current_liabilities":[{"line":16,"label":"Accounts payable","value":470.0},{"line":17,"label":"Short-term debt and current portion of long-term debt","value":979.7},{"line":18,"label":"Accrued payroll and employee benefits","value":596.6},{"line":19,"label":"Accrued taxes","value":95.9},{"line":20,"label":"Unearned revenues","value":571.5},{"line":21,"label":"Other current liabilities","value":485.3}]},"states":[{"key":"first","label":"First contract","output":{"period_end":{"value":"2026-08-30","source_span":{"page":1,"text":"Aug. 30, 2026"}},"current_assets":[{"label":"Cash and cash equivalents","amount":{"value":220500,"source_span":{"page":1,"text":"$ 220.5"}}},{"label":"Receivables, net","amount":{"value":118000,"source_span":{"page":1,"text":"118.0"}}},{"label":"Inventories","amount":{"value":321000,"source_span":{"page":1,"text":"321.0"}}},{"label":"Prepaid income taxes","amount":{"value":146300,"source_span":{"page":1,"text":"146.3"}}},{"label":"Prepaid expenses and other current assets","amount":{"value":147300,"source_span":{"page":1,"text":"147.3"}}}],"total_current_assets":{"value":953100,"source_span":{"page":1,"text":"953.1"}},"total_assets":{"value":13226600,"source_span":{"page":1,"text":"13,226.6"}},"current_liabilities":[{"label":"Accounts payable","amount":{"value":470000,"source_span":{"page":1,"text":"470.0"}}},{"label":"Short-term debt and current portion of long-term debt","amount":{"value":979700,"source_span":{"page":1,"text":"979.7"}}},{"label":"Accrued payroll and employee benefits","amount":{"value":596600,"source_span":{"page":1,"text":"596.6"}}},{"label":"Accrued taxes","amount":{"value":95900,"source_span":{"page":1,"text":"95.9"}}},{"label":"Unearned revenues","amount":{"value":571500,"source_span":{"page":1,"text":"571.5"}}},{"label":"Other current liabilities","amount":{"value":485300,"source_span":{"page":1,"text":"485.3"}}}],"total_current_liabilities":{"value":3199000,"source_span":{"page":1,"text":"3,199.0"}},"total_liabilities_and_equity":{"value":13226600,"source_span":{"page":1,"text":"$ 13,226.6"}}},"outcome":"PASSED","schemaOnly":true,"violations":[],"note":"Accepted, and wrong by a factor of 1,000.","postHoc":false},{"key":"current","label":"Current contract","output":{"period_end":{"value":"2026-08-30","source_span":{"page":1,"text":"Aug. 30, 2026"}},"current_assets":[{"label":"Cash and cash equivalents","amount":{"value":220500,"source_span":{"page":1,"text":"$ 220.5"}}},{"label":"Receivables, net","amount":{"value":118000,"source_span":{"page":1,"text":"118.0"}}},{"label":"Inventories","amount":{"value":321000,"source_span":{"page":1,"text":"321.0"}}},{"label":"Prepaid income taxes","amount":{"value":146300,"source_span":{"page":1,"text":"146.3"}}},{"label":"Prepaid expenses and other current assets","amount":{"value":147300,"source_span":{"page":1,"text":"147.3"}}}],"total_current_assets":{"value":953100,"source_span":{"page":1,"text":"953.1"}},"total_assets":{"value":13226600,"source_span":{"page":1,"text":"13,226.6"}},"current_liabilities":[{"label":"Accounts payable","amount":{"value":470000,"source_span":{"page":1,"text":"470.0"}}},{"label":"Short-term debt and current portion of long-term debt","amount":{"value":979700,"source_span":{"page":1,"text":"979.7"}}},{"label":"Accrued payroll and employee benefits","amount":{"value":596600,"source_span":{"page":1,"text":"596.6"}}},{"label":"Accrued taxes","amount":{"value":95900,"source_span":{"page":1,"text":"95.9"}}},{"label":"Unearned revenues","amount":{"value":571500,"source_span":{"page":1,"text":"571.5"}}},{"label":"Other current liabilities","amount":{"value":485300,"source_span":{"page":1,"text":"485.3"}}}],"total_current_liabilities":{"value":3199000,"source_span":{"page":1,"text":"3,199.0"}},"total_liabilities_and_equity":{"value":13226600,"source_span":{"page":1,"text":"$ 13,226.6"}}},"outcome":"REJECTED","schemaOnly":true,"violations":[{"gate":"provenance","path":"current_assets[0].amount","message":"value 220500 is not a number its quote prints (it prints 220.5)"},{"gate":"provenance","path":"current_assets[1].amount","message":"value 118000 is not a number its quote prints (it prints 118.0)"},{"gate":"provenance","path":"current_assets[2].amount","message":"value 321000 is not a number its quote prints (it prints 321.0)"},{"gate":"provenance","path":"current_assets[3].amount","message":"value 146300 is not a number its quote prints (it prints 146.3)"},{"gate":"provenance","path":"current_assets[4].amount","message":"value 147300 is not a number its quote prints (it prints 147.3)"},{"gate":"provenance","path":"total_current_assets","message":"value 953100 is not a number its quote prints (it prints 953.1)"},{"gate":"provenance","path":"total_assets","message":"value 13226600 is not a number its quote prints (it prints 13,226.6)"},{"gate":"provenance","path":"current_liabilities[0].amount","message":"value 470000 is not a number its quote prints (it prints 470.0)"},{"gate":"provenance","path":"current_liabilities[1].amount","message":"value 979700 is not a number its quote prints (it prints 979.7)"},{"gate":"provenance","path":"current_liabilities[2].amount","message":"value 596600 is not a number its quote prints (it prints 596.6)"},{"gate":"provenance","path":"current_liabilities[3].amount","message":"value 95900 is not a number its quote prints (it prints 95.9)"},{"gate":"provenance","path":"current_liabilities[4].amount","message":"value 571500 is not a number its quote prints (it prints 571.5)"},{"gate":"provenance","path":"current_liabilities[5].amount","message":"value 485300 is not a number its quote prints (it prints 485.3)"},{"gate":"provenance","path":"total_current_liabilities","message":"value 3199000 is not a number its quote prints (it prints 3,199.0)"},{"gate":"provenance","path":"total_liabilities_and_equity","message":"value 13226600 is not a number its quote prints (it prints 13,226.6)"}],"note":"numbersMatchQuotes() checks that each value is a number its own quote prints. It was added after this case, on the tuning set.","postHoc":false},{"key":"retry","label":"After one retry","output":{"period_end":{"value":"2026-08-30","source_span":{"page":1,"text":"Aug. 30, 2026"}},"current_assets":[{"label":"Cash and cash equivalents","amount":{"value":220500,"source_span":{"page":1,"text":"$ 220.5"}}},{"label":"Receivables, net","amount":{"value":118000,"source_span":{"page":1,"text":"118.0"}}},{"label":"Inventories","amount":{"value":321000,"source_span":{"page":1,"text":"321.0"}}},{"label":"Prepaid income taxes","amount":{"value":146300,"source_span":{"page":1,"text":"146.3"}}},{"label":"Prepaid expenses and other current assets","amount":{"value":147300,"source_span":{"page":1,"text":"147.3"}}}],"total_current_assets":{"value":953100,"source_span":{"page":1,"text":"953.1"}},"total_assets":{"value":13226600,"source_span":{"page":1,"text":"13,226.6"}},"current_liabilities":[{"label":"Accounts payable","amount":{"value":470000,"source_span":{"page":1,"text":"470.0"}}},{"label":"Short-term debt and current portion of long-term debt","amount":{"value":979700,"source_span":{"page":1,"text":"979.7"}}},{"label":"Accrued payroll and employee benefits","amount":{"value":596600,"source_span":{"page":1,"text":"596.6"}}},{"label":"Accrued taxes","amount":{"value":95900,"source_span":{"page":1,"text":"95.9"}}},{"label":"Unearned revenues","amount":{"value":571500,"source_span":{"page":1,"text":"571.5"}}},{"label":"Other current liabilities","amount":{"value":485300,"source_span":{"page":1,"text":"485.3"}}}],"total_current_liabilities":{"value":3199000,"source_span":{"page":1,"text":"3,199.0"}},"total_liabilities_and_equity":{"value":13226600,"source_span":{"page":1,"text":"$ 13,226.6"}}},"outcome":"REJECTED","schemaOnly":false,"violations":[{"gate":"provenance","path":"current_assets[0].amount","message":"value 220500 is not a number its quote prints (it prints 220.5)"},{"gate":"provenance","path":"current_assets[1].amount","message":"value 118000 is not a number its quote prints (it prints 118.0)"},{"gate":"provenance","path":"current_assets[2].amount","message":"value 321000 is not a number its quote prints (it prints 321.0)"},{"gate":"provenance","path":"current_assets[3].amount","message":"value 146300 is not a number its quote prints (it prints 146.3)"},{"gate":"provenance","path":"current_assets[4].amount","message":"value 147300 is not a number its quote prints (it prints 147.3)"},{"gate":"provenance","path":"total_current_assets","message":"value 953100 is not a number its quote prints (it prints 953.1)"},{"gate":"provenance","path":"total_assets","message":"value 13226600 is not a number its quote prints (it prints 13,226.6)"},{"gate":"provenance","path":"current_liabilities[0].amount","message":"value 470000 is not a number its quote prints (it prints 470.0)"},{"gate":"provenance","path":"current_liabilities[1].amount","message":"value 979700 is not a number its quote prints (it prints 979.7)"},{"gate":"provenance","path":"current_liabilities[2].amount","message":"value 596600 is not a number its quote prints (it prints 596.6)"},{"gate":"provenance","path":"current_liabilities[3].amount","message":"value 95900 is not a number its quote prints (it prints 95.9)"},{"gate":"provenance","path":"current_liabilities[4].amount","message":"value 571500 is not a number its quote prints (it prints 571.5)"},{"gate":"provenance","path":"current_liabilities[5].amount","message":"value 485300 is not a number its quote prints (it prints 485.3)"},{"gate":"provenance","path":"total_current_liabilities","message":"value 3199000 is not a number its quote prints (it prints 3,199.0)"},{"gate":"provenance","path":"total_liabilities_and_equity","message":"value 13226600 is not a number its quote prints (it prints 13,226.6)"}],"note":"The retry scaled again, with the same 15 violations.","postHoc":false}]}];
+
+const TOTALS = [
+  ["total_current_assets", "Total current assets"],
+  ["total_assets", "Total assets"],
+  ["total_current_liabilities", "Total current liabilities"],
+  ["total_liabilities_and_equity", "Total liabilities and equity"],
+];
+
+const view = { caseId: CASES[0].id, stateKey: CASES[0].states[0].key, field: null };
+
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null) n.append(kid);
+  return n;
+};
+
+const fmt = v => typeof v === "number"
+  ? v.toLocaleString("en-US", { maximumFractionDigits: 2 })
+  : String(v);
+
+function rows(output) {
+  const out = [{ path: "period_end", label: "Period end", node: output.period_end, group: null }];
+  const add = (list, prefix, groupLabel, totals) => {
+    out.push({ group: groupLabel });
+    output[prefix].forEach((line, i) =>
+      out.push({ path: `${prefix}[${i}].amount`, label: line.label, node: line.amount, section: prefix }));
+    for (const [key, label] of totals) out.push({ path: key, label, node: output[key], total: true, section: prefix });
+  };
+  add(output.current_assets, "current_assets", "Current assets",
+      [["total_current_assets", "Total current assets"], ["total_assets", "Total assets"]]);
+  add(output.current_liabilities, "current_liabilities", "Current liabilities",
+      [["total_current_liabilities", "Total current liabilities"], ["total_liabilities_and_equity", "Total liabilities and equity"]]);
+  return out;
+}
+
+function quotePattern(quote) {
+  const core = quote.replace(/[$\s]/g, "");
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  if (/^[\d,.()\-]+$/.test(core)) {
+    return new RegExp(`(?<![\\d,.])\\$?\\s*${esc(core)}(?![\\d,]|\\.\\d)`, "g");
+  }
+  return new RegExp(esc(quote).replace(/\s+/g, "\\s+"), "g");
+}
+
+function locate(lines, quote) {
+  const hits = [];
+  const re = quotePattern(quote);
+  lines.forEach((line, i) => {
+    re.lastIndex = 0;
+    let m;
+    while ((m = re.exec(line))) hits.push({ line: i, start: m.index, end: m.index + m[0].length });
+  });
+  return hits;
+}
+
+function renderTabs() {
+  const nav = document.getElementById("cases");
+  nav.replaceChildren(...CASES.map(c => el("button", {
+    role: "tab", id: `tab-${c.id}`, "aria-selected": String(c.id === view.caseId), "aria-controls": "case",
+    onclick: () => select(c.id),
+  }, el("span", { class: "tk" }, c.ticker, el("small", { text: c.company })), el("span", { class: "kind", text: c.kind }))));
+}
+
+function select(caseId, stateKey) {
+  const c = CASES.find(x => x.id === caseId) || CASES[0];
+  view.caseId = c.id;
+  view.stateKey = (c.states.find(s => s.key === stateKey) || c.states[0]).key;
+  view.field = null;
+  if (location.hash !== `#${c.id}`) history.replaceState(null, "", `#${c.id}`);
+  renderTabs();
+  renderCase();
+}
+
+function renderCase() {
+  const c = CASES.find(x => x.id === view.caseId);
+  const s = c.states.find(x => x.key === view.stateKey);
+  const prev = c.states[c.states.indexOf(s) - 1];
+  const bad = new Map();
+  for (const v of s.violations) bad.set(v.path, [...(bad.get(v.path) || []), v]);
+  const page = compare(c, s.output);
+  const problems = page.counts.total;
+  const showRegion = s.violations.some(v => v.gate === "region") || s.key === "region";
+
+  const head = el("div", { class: "case-head" },
+    el("div", { class: "meta" },
+      el("span", { text: c.datasetLabel }), el("span", { text: c.file }), el("span", { text: c.model })),
+    el("h2", { text: `${c.company}: ${c.kind.toLowerCase()}` }),
+    el("p", { text: c.summary }));
+
+  const accepted = s.outcome === "PASSED";
+  const bar = el("div", { class: "bar" },
+    el("div", { class: "seg", role: "group", "aria-label": "Contract version" },
+      c.states.map(x => el("button", { "aria-pressed": String(x.key === s.key), onclick: () => { view.stateKey = x.key; view.field = null; renderCase(); } }, x.label))),
+    el("div", { class: "pills" },
+      el("span", { class: `pill ${accepted ? "pass" : "fail"}`, text: accepted ? "Contract: accepted" : `Contract: rejected · ${s.violations.length} violation${s.violations.length === 1 ? "" : "s"}` }),
+      el("span", { class: `pill ${problems ? "fail" : "pass"}`, text: problems ? `Answer: ${problems} error${problems === 1 ? "" : "s"} against the page` : "Answer: matches the page" }),
+      s.schemaOnly ? el("span", { class: "pill warn", text: "JSON Schema alone: accepted" }) : null,
+      s.postHoc ? el("span", { class: "pill warn", text: "Post-hoc fix" }) : null),
+    el("p", { class: "note", text: s.note }));
+
+  // The answer, field by field, beside what the page prints for it
+  const pick = key => () => { view.field = view.field === key ? null : key; renderCase(); };
+  const keys = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.currentTarget.click(); } };
+  const tbody = el("tbody");
+  for (const r of rows(s.output)) {
+    if (r.group) { tbody.append(el("tr", { class: "group" }, el("td", { colspan: 5, text: r.group }))); continue; }
+    if (r.path === "total_current_assets" || r.path === "total_current_liabilities") {
+      for (const m of page.missing.filter(x => x.section === r.section)) {
+        tbody.append(el("tr", { class: `field left-out${view.field === `L${m.line}` ? " sel" : ""}`, tabindex: 0, title: `Printed at line ${m.line}; the answer has no line for it`, onclick: pick(`L${m.line}`), onkeydown: keys },
+          el("td", { text: m.label }), el("td", { class: "num", text: "—" }), el("td", { class: "q", text: "—" }),
+          el("td", { class: "pg" }, el("span", { class: "pv", text: fmt(m.value) }), el("span", { class: "dot bad", text: "left out" })),
+          el("td", { class: "st", text: "" })));
+      }
+    }
+    const vs = bad.get(r.path) || [];
+    const p = page.byPath.get(r.path);
+    const before = prev && prev.output ? valueAt(prev.output, r.path) : undefined;
+    const changed = before !== undefined && before !== r.node.value;
+    tbody.append(el("tr", {
+      class: `field${r.total ? " total" : ""}${view.field === r.path ? " sel" : ""}`, tabindex: 0,
+      title: vs.map(v => v.message).join("\n") || "Passes every check on this field",
+      onclick: pick(r.path), onkeydown: keys,
+    },
+      el("td", { text: r.label }),
+      el("td", { class: `num${changed ? " changed" : ""}` }, fmt(r.node.value), changed ? el("span", { class: "was", text: fmt(before) }) : null),
+      el("td", { class: "q", text: `"${r.node.source_span.text}"` }),
+      el("td", { class: "pg" }, p ? [
+        p.value != null ? el("span", { class: "pv", text: fmt(p.value) }) : null,
+        el("span", { class: `dot ${p.ok ? "ok" : "bad"}`, text: p.ok ? "same" : p.why }),
+      ] : null),
+      el("td", { class: "st" }, vs.length
+        ? el("span", { class: "dot bad", text: [...new Set(vs.map(v => v.gate))].join(", ") })
+        : el("span", { class: "dot ok", text: "pass" }))));
+  }
+  const answer = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "The model's answer" }), el("span", { text: "Click a row to find it on the page" })),
+    el("div", { class: "scroll" }, el("table", { class: "answer" },
+      el("thead", {}, el("tr", {}, el("th", { text: "Field" }), el("th", { text: "Value", style: "text-align:right" }), el("th", { class: "q", text: "Quote" }), el("th", { text: "Page prints" }), el("th", { text: "Contract" }))),
+      tbody)));
+
+  // The page
+  const marks = new Map();
+  let selectedHit = null, notFound = false;
+  const target = /^L\d+$/.test(view.field || "") ? Number(view.field.slice(1)) : null;
+  for (const r of rows(s.output)) {
+    if (r.group) continue;
+    const hits = locate(c.lines, r.node.source_span.text);
+    if (r.path === view.field) { selectedHit = hits[0] || null; notFound = hits.length === 0; }
+    for (const h of hits) {
+      const list = marks.get(h.line) || [];
+      const same = list.find(x => x.start === h.start);
+      if (!same) list.push({ ...h, hot: r.path === view.field });
+      else if (r.path === view.field) same.hot = true;
+      marks.set(h.line, list);
+    }
+  }
+  if (target) selectedHit = { line: target - 1 };
+  const [rs, re] = c.statement;
+  const docBody = el("tbody");
+  c.lines.forEach((line, i) => {
+    const n = i + 1;
+    const inRegion = showRegion && n >= rs && n <= re;
+    const tr = el("tr", { id: `L${n}`, class: [inRegion ? "in-region" : "", showRegion && n === re ? "region-edge" : "", showRegion && n > re ? "outside" : "", page.missing.some(m => m.line === n) ? "skipped" : "", target === n ? "target" : ""].join(" ").trim() || null });
+    const tx = el("td", { class: "tx" });
+    const list = (marks.get(i) || []).sort((a, b) => a.start - b.start);
+    let at = 0;
+    for (const m of list) {
+      if (m.start < at) continue;
+      tx.append(line.slice(at, m.start), el("mark", { class: m.hot ? "hot" : null, text: line.slice(m.start, m.end) }));
+      at = m.end;
+    }
+    tx.append(line.slice(at));
+    if (showRegion && n === re) tx.append(el("span", { class: "region-tag", text: "↑ first statement ends" }));
+    tr.append(el("td", { class: "ln", text: n }), tx);
+    docBody.append(tr);
+  });
+  const sel = view.field && rows(s.output).find(r => r.path === view.field);
+  const caption = target ? `Line ${target}: left out of the answer`
+    : sel ? (notFound ? `"${sel.node.source_span.text}" is not on the page` : `Line ${selectedHit.line + 1}: "${sel.node.source_span.text}"`)
+    : showRegion ? `Shaded: lines ${rs} to ${re}, where totals must be quoted from`
+    : page.missing.length ? "Struck through: lines the answer left out" : c.file;
+  const doc = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "The page" }), el("span", { text: caption })),
+    el("div", { class: "doc", id: "doc" }, el("table", {}, docBody)));
+
+  // Violations
+  const viol = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "What the contract reported" }), el("span", { text: s.violations.length ? "Word for word" : "" })),
+    s.violations.length
+      ? el("ul", { class: "viol" }, s.violations.map(v => el("li", {},
+          el("span", { class: "gate", text: v.gate }), el("span", { class: "path", text: v.path }), el("span", { class: "msg", text: v.message }))))
+      : el("p", { class: "empty warn", text: "Nothing. Every gate passed, so the contract accepted this answer." }));
+
+  // Everything wrong with the answer, checked against the page and the filing
+  const groups = [
+    ["Lines left out", page.missing.map(m => `${m.label} (line ${m.line}): ${fmt(m.value)}`)],
+    ["Lines the page does not print", page.absent.map(r => `${r.label}: ${fmt(r.node.value)}, quoted as "${r.node.source_span.text}"`)],
+    ["Lines with the wrong value", page.wrongLines.map(({ r, p }) => `${r.label}: ${fmt(r.node.value)}, page prints ${fmt(p.value)}${p.why === "same" ? "" : ` (${p.why})`}`)],
+    ["Totals wrong against the filing", page.wrongTotals.map(({ r, p }) => `${r.label}: ${fmt(r.node.value)}, filing ${fmt(p.value)}`)],
+  ].filter(([, items]) => items.length);
+  const errors = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "What is wrong with the answer" }), el("span", { text: "Against the page and the filing's XBRL" })),
+    groups.length
+      ? el("div", { class: "errs" }, groups.map(([title, items]) => el("div", {},
+          el("h4", { text: `${title} (${items.length})` }), el("ul", {}, items.map(t => el("li", { text: t }))))))
+      : el("p", { class: "empty", text: "Nothing. Every line matches the page and every total matches the filing." }));
+
+  document.getElementById("case").replaceChildren(head, bar,
+    el("div", { class: "grid" }, answer, doc),
+    el("div", { class: "below" }, errors, viol));
+  document.getElementById("case").setAttribute("aria-labelledby", `tab-${c.id}`);
+
+  if (selectedHit) {
+    const row = document.getElementById(`L${selectedHit.line + 1}`);
+    const box = document.getElementById("doc");
+    box.scrollTop = Math.max(0, row.offsetTop - box.clientHeight / 2);
+  }
+}
+
+const norm = label => label.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+const same = (a, b) => Math.abs(a - b) < 1e-6;
+
+// Each line of the answer matched by label to the line the page prints in the same section, and each
+// total compared with the filing's XBRL figure.
+function compare(c, output) {
+  const byPath = new Map(), missing = [], absent = [], wrongLines = [], wrongTotals = [];
+  const all = rows(output);
+  for (const section of ["current_assets", "current_liabilities"]) {
+    const open = c.expected[section].map(x => ({ ...x, section }));
+    output[section].forEach((line, i) => {
+      const path = `${section}[${i}].amount`;
+      const r = all.find(x => x.path === path);
+      const at = open.findIndex(x => norm(x.label) === norm(line.label));
+      if (at < 0) {
+        byPath.set(path, { ok: false, value: null, why: "not on page" });
+        absent.push(r);
+        return;
+      }
+      const e = open.splice(at, 1)[0];
+      const v = Number(line.amount.value);
+      let why = "";
+      if (!same(v, e.value)) {
+        if (same(v, e.value * 1000)) why = "×1,000";
+        else {
+          const elsewhere = locate(c.lines, line.amount.source_span.text).find(h => h.line + 1 !== e.line);
+          why = elsewhere ? `from line ${elsewhere.line + 1}` : "differs";
+        }
+        wrongLines.push({ r, p: { value: e.value, why } });
+      }
+      byPath.set(path, { ok: !why, value: e.value, why, line: e.line });
+    });
+    missing.push(...open);
+  }
+  for (const [key] of TOTALS) {
+    const r = all.find(x => x.path === key);
+    const v = Number(r.node.value), t = Number(c.truth[key]);
+    const ok = same(v, t);
+    const why = ok ? "" : same(v, t * 1000) ? "×1,000" : "wrong";
+    byPath.set(key, { ok, value: t, why });
+    if (!ok) wrongTotals.push({ r, p: { value: t, why } });
+  }
+  return { byPath, missing, absent, wrongLines, wrongTotals,
+           counts: { total: missing.length + absent.length + wrongLines.length + wrongTotals.length } };
+}
+
+function valueAt(output, path) {
+  const m = path.match(/^(\w+)\[(\d+)\]\.amount$/);
+  if (m) return output[m[1]][Number(m[2])]?.amount.value;
+  return output[path]?.value;
+}
+
+window.addEventListener("hashchange", () => select(location.hash.slice(1)));
+select(location.hash.slice(1) || CASES[0].id);
+</script>
+</body>
+</html>
