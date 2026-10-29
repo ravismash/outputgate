@@ -103,7 +103,7 @@ section.case { display: grid; gap: 20px; }
 .pill.warn { background: var(--warn-soft); color: var(--warn); }
 .note { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 14px; }
 
-.grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px; align-items: start; }
 .panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; min-width: 0; display: grid; }
 .panel > .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
 .panel > .ph span { font-size: 13px; color: var(--muted); }
@@ -124,6 +124,16 @@ table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nu
 .dot.ok { color: var(--pass); background: var(--pass-soft); }
 .dot.bad { color: var(--fail); background: var(--fail-soft); }
 .changed { color: var(--fail); font-weight: 600; }
+.answer td.pg { white-space: nowrap; font-family: var(--mono); font-size: 13px; }
+.answer td.pg .pv { display: inline-block; min-width: 7ch; text-align: right; margin-right: 8px; }
+.answer tr.left-out td { color: var(--fail); font-style: italic; }
+.answer tr.left-out td.pg .pv { font-style: normal; }
+.doc tr.skipped td.tx { text-decoration: line-through; text-decoration-color: var(--fail); text-decoration-thickness: 2px; }
+.doc tr.target td { background: var(--mark); }
+.errs { display: grid; gap: 14px; padding: 14px; }
+.errs h4 { margin: 0 0 6px; font: 600 14px/1.3 var(--body); color: var(--fail); }
+.errs ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font: 13px/1.45 var(--mono); }
+.empty.warn { color: var(--warn); }
 .was { display: block; font-size: 11px; color: var(--muted); text-decoration: line-through; }
 
 .doc { font: 12.5px/1.65 var(--mono); max-height: 640px; overflow: auto; }
@@ -137,7 +147,7 @@ mark { background: var(--mark-dim); color: inherit; border-radius: 2px; padding:
 mark.hot { background: var(--mark); outline: 1px solid var(--warn); }
 .region-tag { font: 600 11px/1 var(--mono); color: var(--accent); padding-left: 8px; }
 
-.below { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.below { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
 .viol { list-style: none; margin: 0; padding: 0; display: grid; }
 .viol li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
 .viol li:last-child { border-bottom: 0; }
@@ -145,10 +155,6 @@ mark.hot { background: var(--mark); outline: 1px solid var(--warn); }
 .viol .path { font: 500 13px/1.3 var(--mono); }
 .viol .msg { grid-column: 2; font: 12.5px/1.5 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
 .empty { padding: 14px; color: var(--pass); font-weight: 500; margin: 0; }
-.truth td, .truth th { padding: 8px 12px; border-bottom: 1px solid var(--rule); text-align: right; font-family: var(--mono); font-size: 13px; }
-.truth th { font: 600 11px/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-.truth td:first-child, .truth th:first-child { text-align: left; font-family: var(--body); font-size: 14px; }
-.truth tr:last-child td { border-bottom: 0; }
 
 footer { display: grid; gap: 8px; max-width: 80ch; color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); padding-top: 20px; }
 footer p { margin: 0; }
@@ -173,7 +179,7 @@ footer p { margin: 0; }
     <div class="eyebrow">outputgate · benchmark cases</div>
     <h1>Three answers that looked right</h1>
     <p class="lead">outputgate checks the structured output an LLM returns with deterministic rules: schema, types, arithmetic across fields, and provenance, which means every value carries a quote of the source and must equal the number that quote prints. No check calls a model.</p>
-    <p>The example dataset is 120 balance sheets from SEC 10-Q filings, with each filing's own XBRL figures as ground truth. The three cases below are real answers from qwen2.5:14b running locally. Pick a case, switch between contract versions, and click any field to find its quote on the page.</p>
+    <p>The example dataset is 120 balance sheets from SEC 10-Q filings, with each filing's own XBRL figures as ground truth. The three cases below are real answers from qwen2.5:14b running locally. Each case shows what the contract decided and, separately, everything that is actually wrong with the answer: lines left out, lines the page does not print, values that differ from the page, and totals that differ from the filing. Pick a case, switch between contract versions, and click any row to find it on the page.</p>
     <ul class="gates" aria-label="Gates in the contract">
       <li>schema</li><li>type</li><li>math</li><li>provenance</li><li>region</li><li>regex</li>
     </ul>
@@ -185,6 +191,7 @@ footer p { margin: 0; }
 
   <footer>
     <p>Every answer, verdict and violation on this page is read from the recorded runs: <code>results.jsonl</code> and <code>repair.jsonl</code> under <a href="https://github.com/ravismash/outputgate/tree/main/outputgate-eval/datasets">outputgate-eval/datasets</a>. The CTVA verdict under the region rule comes from re-scoring the recorded answer with the current contract, and is marked post-hoc because the rule was written after seeing that case.</p>
+    <p>The "page prints" column matches each line of the answer by label to the statement's own lines. For every case, those lines add up to the filing's XBRL total, which the build script checks.</p>
     <p>Regenerate with <code>python3 -I outputgate-eval/scripts/build_viewer.py</code>. Source and full benchmark: <a href="https://github.com/ravismash/outputgate">github.com/ravismash/outputgate</a>.</p>
   </footer>
 </div>
@@ -223,8 +230,8 @@ function rows(output) {
   const add = (list, prefix, groupLabel, totals) => {
     out.push({ group: groupLabel });
     output[prefix].forEach((line, i) =>
-      out.push({ path: `${prefix}[${i}].amount`, label: line.label, node: line.amount }));
-    for (const [key, label] of totals) out.push({ path: key, label, node: output[key], total: true });
+      out.push({ path: `${prefix}[${i}].amount`, label: line.label, node: line.amount, section: prefix }));
+    for (const [key, label] of totals) out.push({ path: key, label, node: output[key], total: true, section: prefix });
   };
   add(output.current_assets, "current_assets", "Current assets",
       [["total_current_assets", "Total current assets"], ["total_assets", "Total assets"]]);
@@ -277,7 +284,8 @@ function renderCase() {
   const prev = c.states[c.states.indexOf(s) - 1];
   const bad = new Map();
   for (const v of s.violations) bad.set(v.path, [...(bad.get(v.path) || []), v]);
-  const wrong = TOTALS.filter(([k]) => Number(s.output[k].value) !== Number(c.truth[k]));
+  const page = compare(c, s.output);
+  const problems = page.counts.total;
   const showRegion = s.violations.some(v => v.gate === "region") || s.key === "region";
 
   const head = el("div", { class: "case-head" },
@@ -291,59 +299,75 @@ function renderCase() {
     el("div", { class: "seg", role: "group", "aria-label": "Contract version" },
       c.states.map(x => el("button", { "aria-pressed": String(x.key === s.key), onclick: () => { view.stateKey = x.key; view.field = null; renderCase(); } }, x.label))),
     el("div", { class: "pills" },
-      el("span", { class: `pill ${accepted ? "pass" : "fail"}`, text: accepted ? "Accepted" : `Rejected · ${s.violations.length} violation${s.violations.length === 1 ? "" : "s"}` }),
-      el("span", { class: `pill ${wrong.length ? "fail" : "pass"}`, text: wrong.length ? `${wrong.length} of 4 totals wrong vs filing` : "Totals match filing" }),
+      el("span", { class: `pill ${accepted ? "pass" : "fail"}`, text: accepted ? "Contract: accepted" : `Contract: rejected · ${s.violations.length} violation${s.violations.length === 1 ? "" : "s"}` }),
+      el("span", { class: `pill ${problems ? "fail" : "pass"}`, text: problems ? `Answer: ${problems} error${problems === 1 ? "" : "s"} against the page` : "Answer: matches the page" }),
+      s.schemaOnly ? el("span", { class: "pill warn", text: "JSON Schema alone: accepted" }) : null,
       s.postHoc ? el("span", { class: "pill warn", text: "Post-hoc fix" }) : null),
     el("p", { class: "note", text: s.note }));
 
-  // The answer
+  // The answer, field by field, beside what the page prints for it
+  const pick = key => () => { view.field = view.field === key ? null : key; renderCase(); };
+  const keys = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.currentTarget.click(); } };
   const tbody = el("tbody");
   for (const r of rows(s.output)) {
-    if (r.group) { tbody.append(el("tr", { class: "group" }, el("td", { colspan: 4, text: r.group }))); continue; }
+    if (r.group) { tbody.append(el("tr", { class: "group" }, el("td", { colspan: 5, text: r.group }))); continue; }
+    if (r.path === "total_current_assets" || r.path === "total_current_liabilities") {
+      for (const m of page.missing.filter(x => x.section === r.section)) {
+        tbody.append(el("tr", { class: `field left-out${view.field === `L${m.line}` ? " sel" : ""}`, tabindex: 0, title: `Printed at line ${m.line}; the answer has no line for it`, onclick: pick(`L${m.line}`), onkeydown: keys },
+          el("td", { text: m.label }), el("td", { class: "num", text: "—" }), el("td", { class: "q", text: "—" }),
+          el("td", { class: "pg" }, el("span", { class: "pv", text: fmt(m.value) }), el("span", { class: "dot bad", text: "left out" })),
+          el("td", { class: "st", text: "" })));
+      }
+    }
     const vs = bad.get(r.path) || [];
+    const p = page.byPath.get(r.path);
     const before = prev && prev.output ? valueAt(prev.output, r.path) : undefined;
     const changed = before !== undefined && before !== r.node.value;
-    const tr = el("tr", {
+    tbody.append(el("tr", {
       class: `field${r.total ? " total" : ""}${view.field === r.path ? " sel" : ""}`, tabindex: 0,
       title: vs.map(v => v.message).join("\n") || "Passes every check on this field",
-      onclick: () => { view.field = view.field === r.path ? null : r.path; renderCase(); },
-      onkeydown: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.currentTarget.click(); } },
+      onclick: pick(r.path), onkeydown: keys,
     },
       el("td", { text: r.label }),
       el("td", { class: `num${changed ? " changed" : ""}` }, fmt(r.node.value), changed ? el("span", { class: "was", text: fmt(before) }) : null),
       el("td", { class: "q", text: `"${r.node.source_span.text}"` }),
+      el("td", { class: "pg" }, p ? [
+        p.value != null ? el("span", { class: "pv", text: fmt(p.value) }) : null,
+        el("span", { class: `dot ${p.ok ? "ok" : "bad"}`, text: p.ok ? "same" : p.why }),
+      ] : null),
       el("td", { class: "st" }, vs.length
         ? el("span", { class: "dot bad", text: [...new Set(vs.map(v => v.gate))].join(", ") })
-        : el("span", { class: "dot ok", text: "ok" })));
-    tbody.append(tr);
+        : el("span", { class: "dot ok", text: "pass" }))));
   }
   const answer = el("div", { class: "panel" },
-    el("div", { class: "ph" }, el("h3", { text: "The model's answer" }), el("span", { text: "Click a field to find its quote" })),
+    el("div", { class: "ph" }, el("h3", { text: "The model's answer" }), el("span", { text: "Click a row to find it on the page" })),
     el("div", { class: "scroll" }, el("table", { class: "answer" },
-      el("thead", {}, el("tr", {}, el("th", { text: "Field" }), el("th", { text: "Value", style: "text-align:right" }), el("th", { class: "q", text: "Quote" }), el("th", { text: "Check" }))),
+      el("thead", {}, el("tr", {}, el("th", { text: "Field" }), el("th", { text: "Value", style: "text-align:right" }), el("th", { class: "q", text: "Quote" }), el("th", { text: "Page prints" }), el("th", { text: "Contract" }))),
       tbody)));
 
   // The page
   const marks = new Map();
-  let selectedHit = null, missing = false;
+  let selectedHit = null, notFound = false;
+  const target = /^L\d+$/.test(view.field || "") ? Number(view.field.slice(1)) : null;
   for (const r of rows(s.output)) {
     if (r.group) continue;
     const hits = locate(c.lines, r.node.source_span.text);
-    if (r.path === view.field) { selectedHit = hits[0] || null; missing = hits.length === 0; }
+    if (r.path === view.field) { selectedHit = hits[0] || null; notFound = hits.length === 0; }
     for (const h of hits) {
-      const key = h.line;
-      const list = marks.get(key) || [];
-      if (!list.some(x => x.start === h.start)) list.push({ ...h, hot: r.path === view.field });
-      else if (r.path === view.field) list.find(x => x.start === h.start).hot = true;
-      marks.set(key, list);
+      const list = marks.get(h.line) || [];
+      const same = list.find(x => x.start === h.start);
+      if (!same) list.push({ ...h, hot: r.path === view.field });
+      else if (r.path === view.field) same.hot = true;
+      marks.set(h.line, list);
     }
   }
+  if (target) selectedHit = { line: target - 1 };
   const [rs, re] = c.statement;
   const docBody = el("tbody");
   c.lines.forEach((line, i) => {
     const n = i + 1;
     const inRegion = showRegion && n >= rs && n <= re;
-    const tr = el("tr", { id: `L${n}`, class: [inRegion ? "in-region" : "", showRegion && n === re ? "region-edge" : "", showRegion && n > re ? "outside" : ""].join(" ").trim() || null });
+    const tr = el("tr", { id: `L${n}`, class: [inRegion ? "in-region" : "", showRegion && n === re ? "region-edge" : "", showRegion && n > re ? "outside" : "", page.missing.some(m => m.line === n) ? "skipped" : "", target === n ? "target" : ""].join(" ").trim() || null });
     const tx = el("td", { class: "tx" });
     const list = (marks.get(i) || []).sort((a, b) => a.start - b.start);
     let at = 0;
@@ -358,32 +382,39 @@ function renderCase() {
     docBody.append(tr);
   });
   const sel = view.field && rows(s.output).find(r => r.path === view.field);
+  const caption = target ? `Line ${target}: left out of the answer`
+    : sel ? (notFound ? `"${sel.node.source_span.text}" is not on the page` : `Line ${selectedHit.line + 1}: "${sel.node.source_span.text}"`)
+    : showRegion ? `Shaded: lines ${rs} to ${re}, where totals must be quoted from`
+    : page.missing.length ? "Struck through: lines the answer left out" : c.file;
   const doc = el("div", { class: "panel" },
-    el("div", { class: "ph" }, el("h3", { text: "The page" }),
-      el("span", { text: sel ? (missing ? `"${sel.node.source_span.text}" is not on the page` : `Line ${selectedHit.line + 1}: "${sel.node.source_span.text}"`) : (showRegion ? `Shaded: lines ${rs} to ${re}, where totals must be quoted from` : c.file) })),
+    el("div", { class: "ph" }, el("h3", { text: "The page" }), el("span", { text: caption })),
     el("div", { class: "doc", id: "doc" }, el("table", {}, docBody)));
 
   // Violations
   const viol = el("div", { class: "panel" },
-    el("div", { class: "ph" }, el("h3", { text: "Violations" }), el("span", { text: s.violations.length ? "Word for word, as the contract reports them" : "" })),
+    el("div", { class: "ph" }, el("h3", { text: "What the contract reported" }), el("span", { text: s.violations.length ? "Word for word" : "" })),
     s.violations.length
       ? el("ul", { class: "viol" }, s.violations.map(v => el("li", {},
           el("span", { class: "gate", text: v.gate }), el("span", { class: "path", text: v.path }), el("span", { class: "msg", text: v.message }))))
-      : el("p", { class: "empty", text: "None. Every gate passed, so the contract accepted this answer." }));
+      : el("p", { class: "empty warn", text: "Nothing. Every gate passed, so the contract accepted this answer." }));
 
-  const truth = el("div", { class: "panel" },
-    el("div", { class: "ph" }, el("h3", { text: "Against the filing" }), el("span", { text: "XBRL figures, $ in millions" })),
-    el("div", { class: "scroll" }, el("table", { class: "truth" },
-      el("thead", {}, el("tr", {}, el("th", { text: "Total" }), el("th", { text: "Answer" }), el("th", { text: "Filing" }), el("th", { text: "" }))),
-      el("tbody", {}, TOTALS.map(([k, label]) => {
-        const ok = Number(s.output[k].value) === Number(c.truth[k]);
-        return el("tr", {}, el("td", { text: label }), el("td", { class: ok ? null : "changed", text: fmt(s.output[k].value) }),
-          el("td", { text: fmt(c.truth[k]) }), el("td", {}, el("span", { class: `dot ${ok ? "ok" : "bad"}`, text: ok ? "right" : "wrong" })));
-      })))));
+  // Everything wrong with the answer, checked against the page and the filing
+  const groups = [
+    ["Lines left out", page.missing.map(m => `${m.label} (line ${m.line}): ${fmt(m.value)}`)],
+    ["Lines the page does not print", page.absent.map(r => `${r.label}: ${fmt(r.node.value)}, quoted as "${r.node.source_span.text}"`)],
+    ["Lines with the wrong value", page.wrongLines.map(({ r, p }) => `${r.label}: ${fmt(r.node.value)}, page prints ${fmt(p.value)}${p.why === "same" ? "" : ` (${p.why})`}`)],
+    ["Totals wrong against the filing", page.wrongTotals.map(({ r, p }) => `${r.label}: ${fmt(r.node.value)}, filing ${fmt(p.value)}`)],
+  ].filter(([, items]) => items.length);
+  const errors = el("div", { class: "panel" },
+    el("div", { class: "ph" }, el("h3", { text: "What is wrong with the answer" }), el("span", { text: "Against the page and the filing's XBRL" })),
+    groups.length
+      ? el("div", { class: "errs" }, groups.map(([title, items]) => el("div", {},
+          el("h4", { text: `${title} (${items.length})` }), el("ul", {}, items.map(t => el("li", { text: t }))))))
+      : el("p", { class: "empty", text: "Nothing. Every line matches the page and every total matches the filing." }));
 
   document.getElementById("case").replaceChildren(head, bar,
     el("div", { class: "grid" }, answer, doc),
-    el("div", { class: "below" }, viol, truth));
+    el("div", { class: "below" }, errors, viol));
   document.getElementById("case").setAttribute("aria-labelledby", `tab-${c.id}`);
 
   if (selectedHit) {
@@ -391,6 +422,52 @@ function renderCase() {
     const box = document.getElementById("doc");
     box.scrollTop = Math.max(0, row.offsetTop - box.clientHeight / 2);
   }
+}
+
+const norm = label => label.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+const same = (a, b) => Math.abs(a - b) < 1e-6;
+
+// Each line of the answer matched by label to the line the page prints in the same section, and each
+// total compared with the filing's XBRL figure.
+function compare(c, output) {
+  const byPath = new Map(), missing = [], absent = [], wrongLines = [], wrongTotals = [];
+  const all = rows(output);
+  for (const section of ["current_assets", "current_liabilities"]) {
+    const open = c.expected[section].map(x => ({ ...x, section }));
+    output[section].forEach((line, i) => {
+      const path = `${section}[${i}].amount`;
+      const r = all.find(x => x.path === path);
+      const at = open.findIndex(x => norm(x.label) === norm(line.label));
+      if (at < 0) {
+        byPath.set(path, { ok: false, value: null, why: "not on page" });
+        absent.push(r);
+        return;
+      }
+      const e = open.splice(at, 1)[0];
+      const v = Number(line.amount.value);
+      let why = "";
+      if (!same(v, e.value)) {
+        if (same(v, e.value * 1000)) why = "×1,000";
+        else {
+          const elsewhere = locate(c.lines, line.amount.source_span.text).find(h => h.line + 1 !== e.line);
+          why = elsewhere ? `from line ${elsewhere.line + 1}` : "differs";
+        }
+        wrongLines.push({ r, p: { value: e.value, why } });
+      }
+      byPath.set(path, { ok: !why, value: e.value, why, line: e.line });
+    });
+    missing.push(...open);
+  }
+  for (const [key] of TOTALS) {
+    const r = all.find(x => x.path === key);
+    const v = Number(r.node.value), t = Number(c.truth[key]);
+    const ok = same(v, t);
+    const why = ok ? "" : same(v, t * 1000) ? "×1,000" : "wrong";
+    byPath.set(key, { ok, value: t, why });
+    if (!ok) wrongTotals.push({ r, p: { value: t, why } });
+  }
+  return { byPath, missing, absent, wrongLines, wrongTotals,
+           counts: { total: missing.length + absent.length + wrongLines.length + wrongTotals.length } };
 }
 
 function valueAt(output, path) {

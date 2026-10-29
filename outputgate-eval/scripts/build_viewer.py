@@ -36,15 +36,29 @@ def record(dataset, model, ticker, kind):
     raise KeyError(ticker)
 
 
-def document(dataset, file):
+def document(dataset, file, assets, liabilities):
+    """The statement, its XBRL totals, and the lines (by line number) that make up each total."""
     lines = (DATASETS / dataset / "documents" / file).read_text().splitlines()
     truth = json.loads((DATASETS / dataset / "documents" / "ground-truth.json").read_text())[file]
     end = next(i for i, line in enumerate(lines) if STATEMENT_END.search(line)) + 1
-    return {"lines": lines, "truth": truth, "statement": [1, end]}
+
+    def printed(numbers, total):
+        out = []
+        for n in numbers:
+            label, value = re.split(r"\s{3,}", lines[n - 1])[:2]
+            out.append({"line": n, "label": label, "value": float(value.replace("$", "").replace(",", "").strip())})
+        # The lines must add up to the filing's own total, or this list is not the statement's.
+        assert abs(sum(x["value"] for x in out) - truth[total]) < 0.05, (file, total)
+        return out
+
+    return {"lines": lines, "truth": truth, "statement": [1, end],
+            "expected": {"current_assets": printed(assets, "total_current_assets"),
+                         "current_liabilities": printed(liabilities, "total_current_liabilities")}}
 
 
-def state(key, label, output, outcome, violations, note, post_hoc=False):
-    return {"key": key, "label": label, "output": json.loads(output), "outcome": outcome,
+def state(key, label, output, outcome, violations, note, post_hoc=False, recorded=True):
+    """recorded: this output is a first answer, which benchmark.md scores schema-only too (all 60 accepted)."""
+    return {"key": key, "label": label, "output": json.loads(output), "outcome": outcome, "schemaOnly": recorded,
             "violations": [{"gate": v["gate"], "path": v["path"], "message": v["message"]} for v in violations],
             "note": note, "postHoc": post_hoc}
 
@@ -60,25 +74,28 @@ def cases():
     return [
         {"id": "exc", "ticker": "EXC", "company": "Exelon", "dataset": holdout, "datasetLabel": "Held-out set",
          "model": qwen, "file": exc["file"], "kind": "Retry rewrote its totals",
-         "summary": "The answer left out lines, so they summed to 8,507 against a printed 9,797. Given the "
-                    "violations, the retry kept its lines and changed both totals to match its own sums. "
-                    "Arithmetic passes after that edit. The quote check does not, because each total still "
-                    "quotes the number the page prints.",
-         **document(holdout, exc["file"]),
+         "summary": "The answer left out five current-asset lines and added a \"Total inventories, net\" of 1,827 "
+                    "that the page does not print, so its lines summed to 8,507 against a printed 9,797. On the "
+                    "liability side it left out one line and the two accounts payable printed in blocks below the "
+                    "table, so they summed to 5,524 against 9,008. Given the violations, the retry kept its lines "
+                    "and changed both totals to match its own sums. Arithmetic passes after that edit. The quote "
+                    "check does not, because each total still quotes the number the page prints.",
+         **document(holdout, exc["file"], [3, 4, 8, 11, 13, 14, 15, 16, 17],
+                    [29, 30, 31, 32, 33, 34, 35, 36, 37, 65, 69]),
          "states": [
              state("first", "First answer", exc["output"], exc["outcome"], exc["violations"],
                    "Rejected by arithmetic and grounding. The retry gets every violation word for word."),
              state("retry", "After one retry", exc_retry["output"], "REJECTED", exc_retry["violations_after"],
                    "Totals now equal the sums (9,797 to 8,507 and 9,008 to 5,524), and both are wrong against "
-                   "the filing. Rejected by the quote check."),
+                   "the filing. The same lines are still missing. Rejected by the quote check.", recorded=False),
          ]},
         {"id": "ctva", "ticker": "CTVA", "company": "Corteva", "dataset": holdout, "datasetLabel": "Held-out set",
          "model": qwen, "file": ctva["file"], "kind": "Quoted from the wrong statement",
-         "summary": "The page prints two near-identical statements: Corteva's, then its subsidiary EIDP's. "
-                    "The answer took two current liabilities from EIDP's (2,958 and the total 10,795; Corteva's "
-                    "total is 10,789). Every quote is on the page and every sum holds, so the frozen contract "
-                    "accepted it.",
-         **document(holdout, ctva["file"]),
+         "summary": "The page prints two near-identical statements: Corteva's, then its subsidiary EIDP's. The "
+                    "answer's current assets match Corteva's, but its accrued liabilities (2,958) and total current "
+                    "liabilities (10,795) are EIDP's; Corteva prints 2,952 and 10,789. Every quote is on the page "
+                    "and the lines add up to the total, so the frozen contract accepted it.",
+         **document(holdout, ctva["file"], [2, 3, 4, 5, 6], [17, 18, 19, 20, 21]),
          "states": [
              state("frozen", "Frozen contract", ctva["output"], ctva["outcome"], ctva["violations"],
                    "Accepted, and wrong against ground truth. This is the held-out result."),
@@ -90,10 +107,10 @@ def cases():
          ]},
         {"id": "dri", "ticker": "DRI", "company": "Darden Restaurants", "dataset": first, "datasetLabel": "Tuning set",
          "model": qwen, "file": dri["file"], "kind": "Scale multiplied by 1,000",
-         "summary": "The statement is in millions with one decimal. The answer multiplied every amount by "
-                    "1,000 (13,226,600 for \"13,226.6\") but kept the printed text as its quotes. Every quote "
+         "summary": "The statement is in millions with one decimal. The answer multiplied all 11 lines and 4 "
+                    "totals by 1,000 (13,226,600 for \"13,226.6\") but kept the printed text as its quotes. Every quote "
                     "is on the page and the sums still hold, because every figure was scaled the same way.",
-         **document(first, dri["file"]),
+         **document(first, dri["file"], [3, 4, 5, 6, 7], [16, 17, 18, 19, 20, 21]),
          "states": [
              state("first", "First contract", dri["output"], dri["outcome"], dri["violations"],
                    "Accepted, and wrong by a factor of 1,000."),
@@ -101,7 +118,7 @@ def cases():
                    "numbersMatchQuotes() checks that each value is a number its own quote prints. It was "
                    "added after this case, on the tuning set."),
              state("retry", "After one retry", dri_retry["output"], "REJECTED", dri_retry["violations_after"],
-                   "The retry scaled again, with the same 15 violations."),
+                   "The retry scaled again, with the same 15 violations.", recorded=False),
          ]},
     ]
 
