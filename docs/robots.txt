@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ravismash.github.io/outputgate/sitemap.xml

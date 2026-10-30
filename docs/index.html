@@ -6,6 +6,11 @@
 <title>Outputgate Case Viewer</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Three real LLM extractions that looked right, and the deterministic checks that decided them. Built from the recorded outputgate benchmark runs.">
+<link rel="canonical" href="https://ravismash.github.io/outputgate/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Outputgate Case Viewer">
+<meta property="og:description" content="Three real LLM extractions that looked right, and the deterministic checks that decided them.">
+<meta property="og:url" content="https://ravismash.github.io/outputgate/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
@@ -180,6 +185,7 @@ footer p { margin: 0; }
     <h1>Three answers that looked right</h1>
     <p class="lead">outputgate checks the structured output an LLM returns with deterministic rules: schema, types, arithmetic across fields, and provenance, which means every value carries a quote of the source and must equal the number that quote prints. No check calls a model.</p>
     <p>The example dataset is 120 balance sheets from SEC 10-Q filings, with each filing's own XBRL figures as ground truth. The three cases below are real answers from qwen2.5:14b running locally. Each case shows what the contract decided and, separately, everything that is actually wrong with the answer: lines left out, lines the page does not print, values that differ from the page, and totals that differ from the filing. Pick a case, switch between contract versions, and click any row to find it on the page.</p>
+    <p>For every failure in the benchmark, with the numbers, see <a href="sec-10q-llm-extraction-failures.html">how LLMs fail at SEC 10-Q balance sheet extraction</a>.</p>
     <ul class="gates" aria-label="Gates in the contract">
       <li>schema</li><li>type</li><li>math</li><li>provenance</li><li>region</li><li>regex</li>
     </ul>
