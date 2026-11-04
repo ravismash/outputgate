@@ -97,7 +97,7 @@ public final class MathGate implements Gate {
                 for (Num item : items) {
                     scale = Math.max(scale, item.value().scale());
                 }
-                BigDecimal halfUnit = BigDecimal.ONE.movePointLeft(Math.max(scale, 0)).divide(BigDecimal.TWO);
+                BigDecimal halfUnit = BigDecimal.ONE.movePointLeft(Math.max(scale, 0)).divide(BigDecimal.valueOf(2));
                 allowed = allowed.max(halfUnit.multiply(BigDecimal.valueOf(items.size() + 1L)));
             }
             if (differs(sum, total, allowed)) {
