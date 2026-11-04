@@ -20,7 +20,7 @@ match its own wrong sums, the quote check caught all 3 attempts. Details, and wh
 don't show, are under [Benchmark](#benchmark); every failure is written up in
 [How LLMs fail at SEC 10-Q balance sheet extraction](https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html).
 
-> **Status:** `0.1.0` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Java 21. MIT.
+> **Status:** `0.1.0` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Runs on Java 17+ from the next release (`0.1.0` needs Java 21). MIT.
 >
 > **Python:** grounding and arithmetic checks for Pydantic v2 are in [`python/`](python) (not yet on PyPI); see [`FRD.md`](FRD.md).
 
