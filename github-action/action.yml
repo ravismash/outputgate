@@ -1,5 +1,5 @@
 name: outputgate check
-description: Deterministically check structured LLM output and JSON fixtures against a contract (JSON Schema, cross-field math, regex, source grounding). No model calls.
+description: 'Check structured LLM output and JSON fixtures against a contract: schema, math, regex, grounding. No model calls.'
 author: ravismash
 branding:
   icon: check-square
