@@ -1,0 +1,10 @@
+{
+  "survey_id": "SV-0412",
+  "closed_on": "2026-09-30",
+  "total_responses": 200,
+  "options": [
+    {"label": "Too expensive", "count": 46, "share": 0.23},
+    {"label": "About right", "count": 118, "share": 0.59},
+    {"label": "Good value", "count": 36, "share": 0.18}
+  ]
+}

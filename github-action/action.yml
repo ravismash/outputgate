@@ -1,0 +1,96 @@
+name: outputgate check
+description: Deterministically check structured LLM output and JSON fixtures against a contract (JSON Schema, cross-field math, regex, source grounding). No model calls.
+author: ravismash
+branding:
+  icon: check-square
+  color: green
+
+inputs:
+  contract:
+    description: Path to the contract file (YAML or JSON).
+    required: true
+  inputs:
+    description: >-
+      Files, directories or globs to check, one per line or space-separated. .json files are one
+      document, .jsonl files one document per line. Globs are matched by outputgate, not the shell.
+    required: true
+  sources:
+    description: Directory of source text for grounding (<name>.txt for <name>.json). Optional.
+    required: false
+    default: ''
+  version:
+    description: outputgate release whose CLI jar to download.
+    required: false
+    default: '0.2.0'
+  jar:
+    description: Path to a local outputgate-cli jar to use instead of downloading a release.
+    required: false
+    default: ''
+  java-version:
+    description: Java version to install (17 or later). Set to "none" to use the runner's Java.
+    required: false
+    default: '17'
+  summary:
+    description: Write a Markdown table of violations to the job summary.
+    required: false
+    default: 'true'
+  quiet:
+    description: Print only rejected documents and the totals.
+    required: false
+    default: 'false'
+
+runs:
+  using: composite
+  steps:
+    - if: inputs.java-version != 'none'
+      uses: actions/setup-java@v6.0.1
+      with:
+        distribution: temurin
+        java-version: ${{ inputs.java-version }}
+
+    - name: Get the outputgate CLI
+      id: cli
+      shell: bash
+      env:
+        OG_VERSION: ${{ inputs.version }}
+        OG_JAR: ${{ inputs.jar }}
+      run: |
+        set -euo pipefail
+        if [[ -n "$OG_JAR" ]]; then
+          echo "jar=$OG_JAR" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+        if ! [[ "$OG_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+          echo "::error::version must look like 1.2.3, got '$OG_VERSION'"
+          exit 2
+        fi
+        dir="$RUNNER_TOOL_CACHE/outputgate/$OG_VERSION"
+        jar="$dir/outputgate-cli-$OG_VERSION.jar"
+        if [[ ! -f "$jar" ]]; then
+          mkdir -p "$dir"
+          base="https://github.com/ravismash/outputgate/releases/download/v$OG_VERSION"
+          curl -fsSL --retry 3 -o "$jar" "$base/outputgate-cli-$OG_VERSION.jar"
+          curl -fsSL --retry 3 -o "$jar.sha256" "$base/outputgate-cli-$OG_VERSION.jar.sha256"
+          (cd "$dir" && sha256sum --check --status "outputgate-cli-$OG_VERSION.jar.sha256") \
+            || { echo "::error::checksum mismatch for outputgate-cli-$OG_VERSION.jar"; rm -f "$jar"; exit 2; }
+        fi
+        echo "jar=$jar" >> "$GITHUB_OUTPUT"
+
+    - name: Check with outputgate
+      shell: bash
+      env:
+        OG_JAR: ${{ steps.cli.outputs.jar }}
+        OG_CONTRACT: ${{ inputs.contract }}
+        OG_INPUTS: ${{ inputs.inputs }}
+        OG_SOURCES: ${{ inputs.sources }}
+        OG_SUMMARY: ${{ inputs.summary }}
+        OG_QUIET: ${{ inputs.quiet }}
+      run: |
+        set -euo pipefail
+        set -f  # globs go to outputgate unexpanded
+        args=(check --contract "$OG_CONTRACT" --format github)
+        [[ -n "$OG_SOURCES" ]] && args+=(--sources "$OG_SOURCES")
+        [[ "$OG_SUMMARY" == "true" ]] && args+=(--summary "$GITHUB_STEP_SUMMARY")
+        [[ "$OG_QUIET" == "true" ]] && args+=(--quiet)
+        read -r -d '' -a items <<< "$OG_INPUTS" || true
+        java -jar "$OG_JAR" "${args[@]}" "${items[@]}"

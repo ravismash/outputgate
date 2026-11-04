@@ -1,0 +1,9 @@
+{
+  "survey_id": "SV-415",
+  "closed_on": "2026-09-31",
+  "total_responses": 120,
+  "options": [
+    {"label": "Easy", "count": 70, "share": 0.58},
+    {"label": "Hard", "count": 40, "share": 1.33}
+  ]
+}
