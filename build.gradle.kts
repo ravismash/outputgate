@@ -62,7 +62,8 @@ subprojects {
                 licenses {
                     license {
                         name.set("MIT License")
-                        url.set("https://opensource.org/license/mit")
+                        // LangChain4j's license check accepts only this spelling of the MIT URL.
+                        url.set("https://opensource.org/licenses/MIT")
                         distribution.set("repo")
                     }
                 }
