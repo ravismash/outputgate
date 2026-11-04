@@ -17,9 +17,10 @@ seeded defects per run where a JSON Schema caught 20. A JSON Schema accepted 3 r
 were wrong against the filings' own figures; the contract accepted 1, on the held-out set, and
 rejects it since a fix made after seeing it. When a retry loop tried to pass by editing totals to
 match its own wrong sums, the quote check caught all 3 attempts. Details, and what the numbers
-don't show, are under [Benchmark](#benchmark).
+don't show, are under [Benchmark](#benchmark); every failure is written up in
+[How LLMs fail at SEC 10-Q balance sheet extraction](https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html).
 
-> **Status:** `0.1.0` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Java 21. MIT.
+> **Status:** `0.1.0` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Runs on Java 17+ from the next release (`0.1.0` needs Java 21). MIT.
 >
 > **Python:** grounding and arithmetic checks for Pydantic v2 are in [`python/`](python) (not yet on PyPI); see [`FRD.md`](FRD.md).
 
@@ -334,7 +335,9 @@ fix, not a held-out result. Three gates were added after the in-sample run expos
 `numbersMatchQuotes()`, `sumEqualsRounded()` and `ignoringCurrencySigns()`. The READMEs for the
 [in-sample](outputgate-eval/datasets/sec-balance-sheets) and
 [held-out](outputgate-eval/datasets/sec-balance-sheets-holdout) sets list every rejection and
-retry.
+retry. Every failure, with
+the retry-trap, ×1,000 and wrong-statement cases, is on
+[this page](https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html).
 
 Run settings: temperature 0 and the output shape sent as a JSON Schema, for every model. The
 Gemini models ran through Gemini's OpenAI-compatible API, which rejects a seed, so none was sent.

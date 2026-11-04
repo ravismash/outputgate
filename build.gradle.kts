@@ -16,7 +16,7 @@ val publishedModules = mapOf(
     "outputgate-ollama" to "outputgate LlmClient for Ollama's HTTP API, with no extra dependency.",
 )
 
-// NFR (FRD p.3): Java 21, MIT; adapters live in separate modules so core stays light.
+// NFR (FRD p.3): built with Java 21, published jars target Java 17; MIT; adapters live in separate modules so core stays light.
 subprojects {
     apply(plugin = "java-library")
 
@@ -37,6 +37,10 @@ subprojects {
     tasks.withType<Test>().configureEach { useJUnitPlatform() }
 
     if (name in publishedModules) {
+        // The library jars run on Java 17 so frameworks that still support 17 (LangChain4j,
+        // Spring AI 1.x) can depend on them. Builds and tests still use the Java 21 toolchain.
+        tasks.named<JavaCompile>("compileJava") { options.release = 17 }
+
         apply(plugin = "com.vanniktech.maven.publish")
 
         // Credentials and the signing key come from Gradle properties, never from this repo:
@@ -58,7 +62,8 @@ subprojects {
                 licenses {
                     license {
                         name.set("MIT License")
-                        url.set("https://opensource.org/license/mit")
+                        // LangChain4j's license check accepts only this spelling of the MIT URL.
+                        url.set("https://opensource.org/licenses/MIT")
                         distribution.set("repo")
                     }
                 }
