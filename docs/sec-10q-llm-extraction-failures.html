@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How LLMs fail at SEC 10-Q balance sheet extraction | outputgate</title>
+<meta name="description" content="Real LLM errors extracting 120 SEC 10-Q balance sheets: totals rewritten on retry (TSLA, ADP, EXC), amounts scaled by 1,000 (DRI), a total quoted from the wrong statement (CTVA), and the deterministic checks that caught them.">
+<link rel="canonical" href="https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="outputgate">
+<meta property="og:title" content="How LLMs fail at SEC 10-Q balance sheet extraction">
+<meta property="og:description" content="Four models, 120 real 10-Q balance sheets, every rejection read by hand: retries that rewrite totals, ×1,000 scale errors and wrong-statement quotes, and the deterministic checks that caught them.">
+<meta property="og:url" content="https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html">
+<meta property="article:published_time" content="2026-10-30">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How LLMs fail at SEC 10-Q balance sheet extraction">
+<meta name="twitter:description" content="Retries that rewrite totals, ×1,000 scale errors and wrong-statement quotes, from 120 real SEC 10-Q balance sheets.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "How LLMs fail at SEC 10-Q balance sheet extraction",
+      "description": "Real LLM errors extracting 120 SEC 10-Q balance sheets, checked against each filing's XBRL values, and the deterministic checks that caught them.",
+      "datePublished": "2026-10-30",
+      "dateModified": "2026-10-30",
+      "url": "https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html",
+      "mainEntityOfPage": "https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html",
+      "inLanguage": "en",
+      "author": {"@type": "Person", "name": "ravismash", "url": "https://github.com/ravismash"},
+      "keywords": "LLM, structured output, SEC 10-Q, balance sheet extraction, XBRL, hallucination, retry loop, validation, Java, JUnit",
+      "about": [
+        {"@type": "Thing", "name": "Structured output validation for large language models"},
+        {"@type": "Thing", "name": "Form 10-Q"}
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "outputgate",
+      "description": "Deterministic contract tests for structured LLM output on the JVM: JSON schema, strict types, cross-field arithmetic, source-span provenance, regex and budget gates. No gate calls a model.",
+      "codeRepository": "https://github.com/ravismash/outputgate",
+      "programmingLanguage": "Java",
+      "license": "https://opensource.org/licenses/MIT"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root {
+  --paper: #f5f6f3; --sheet: #ffffff; --ink: #1b2430; --muted: #5d6875; --rule: #d9ddd6;
+  --accent: #1f4f8f; --accent-soft: #e3ebf6; --fail: #b3261e; --fail-soft: #fbe6e3;
+  --pass: #1d7347; --pass-soft: #e1f1e7;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12161c; --sheet: #1a2028; --ink: #e5e9ee; --muted: #9aa5b1; --rule: #2c3440;
+    --accent: #8ab4f0; --accent-soft: #1f2d42; --fail: #ff8f86; --fail-soft: #3a1c1a;
+    --pass: #6fd39b; --pass-soft: #163325; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12161c; --sheet: #1a2028; --ink: #e5e9ee; --muted: #9aa5b1; --rule: #2c3440;
+  --accent: #8ab4f0; --accent-soft: #1f2d42; --fail: #ff8f86; --fail-soft: #3a1c1a;
+  --pass: #6fd39b; --pass-soft: #163325; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--body); }
+main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+nav.crumbs { font: 13px/1.4 var(--mono); color: var(--muted); margin-bottom: 24px; }
+nav.crumbs a { color: var(--muted); }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; letter-spacing: -0.01em; }
+h1 { font-size: clamp(30px, 6vw, 44px); margin: 0 0 16px; }
+h2 { font-size: 26px; margin: 48px 0 12px; padding-top: 16px; border-top: 1px solid var(--rule); }
+h3 { font-size: 20px; margin: 28px 0 8px; }
+a { color: var(--accent); }
+.lead { font-size: 19px; }
+code { font: 0.88em var(--mono); background: var(--accent-soft); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+pre { font: 13.5px/1.5 var(--mono); background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--rule); border-radius: 6px; background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--display); font-weight: 600; }
+tr:last-child td { border-bottom: none; }
+td.num { font-family: var(--mono); white-space: nowrap; }
+.callout { background: var(--sheet); border-left: 4px solid var(--accent); padding: 12px 16px; margin: 20px 0; border-radius: 0 6px 6px 0; }
+.bad { color: var(--fail); font-weight: 600; }
+.ok { color: var(--pass); font-weight: 600; }
+ol.toc { padding-left: 20px; }
+footer { margin-top: 56px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="https://github.com/ravismash/outputgate">outputgate</a> / <a href="./">benchmark cases</a> / SEC 10-Q failures</nav>
+
+<article>
+<header>
+<h1>How LLMs fail at SEC 10-Q balance sheet extraction</h1>
+<p class="lead">Four models extracted the balance sheets of 120 companies from their latest SEC 10-Q filings. Every answer was checked by a deterministic contract, and every accepted answer was compared with the filing's own XBRL values. This page lists the real mistakes the models made, why a JSON Schema accepts them, and which check caught each one.</p>
+<p>The checks come from <a href="https://github.com/ravismash/outputgate">outputgate</a>, a Java library that tests any structured LLM output (extracted records, form fields, financial statements, tool-call arguments) against rules that never call a model. SEC balance sheets are the example dataset here because each filing ships machine-readable ground truth, and because their totals give arithmetic to check.</p>
+</header>
+
+<ol class="toc">
+  <li><a href="#results">Results at a glance</a></li>
+  <li><a href="#retry-trap">Retries that rewrite the totals (TSLA, ADP, EXC)</a></li>
+  <li><a href="#scale">Every amount multiplied by 1,000 (DRI)</a></li>
+  <li><a href="#wrong-statement">A total from the wrong statement (CTVA)</a></li>
+  <li><a href="#other">Other errors: left-out lines, subtotals, invented quotes</a></li>
+  <li><a href="#contract">The contract that caught them</a></li>
+  <li><a href="#limits">What these numbers don't show</a></li>
+</ol>
+
+<section id="results">
+<h2>Results at a glance</h2>
+<p>Each model extracted the period date, the current-asset and current-liability lines and four totals (total current assets, total assets, total current liabilities, total liabilities and equity). The contract was tuned on 60 companies, then frozen and run on 60 others. Rejected answers got one retry with every violation in the prompt.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Model</th><th>In-sample (60): first answer · after retry · accepted but wrong</th><th>Held out (60): first answer · after retry · accepted but wrong</th></tr></thead>
+<tbody>
+<tr><td>gemini-3.1-pro-preview</td><td class="num">60 · 60 · 0</td><td class="num">60 · 60 · 0</td></tr>
+<tr><td>gemini-3.5-flash</td><td class="num">60 · 60 · 0</td><td class="num">60 · 60 · 0</td></tr>
+<tr><td>gemini-3.8-flash</td><td class="num">59 · 60 · 0</td><td class="num">59 · 60 · 0</td></tr>
+<tr><td>qwen2.5:14b (local)</td><td class="num">54 · 55 · 0</td><td class="num">56 · 57 · 1</td></tr>
+</tbody></table></div>
+<p>Every rejection was a real mistake, read by hand, and a plain JSON Schema would have accepted all of them. Of 452 real answers with ground truth, a JSON Schema accepted 3 that were wrong against the filing (DRI, KDP, CTVA). The frozen contract accepted 1 (CTVA, held out); a check added afterwards rejects it.</p>
+<p>On synthetic corruptions (50 accepted answers per run, one seeded defect each), naive parsing caught 4 of 50, a JSON Schema 20 of 50, and the full contract 50 of 50 in all 8 runs. Those defects were written knowing what the gates check, so they show that each gate fires on its target, not how often models make each error.</p>
+</section>
+
+<section id="retry-trap">
+<h2>Retries that rewrite the totals (TSLA, ADP, EXC)</h2>
+<p>A common pattern for structured output is to validate, send the errors back, and ask again. When the error is "the lines don't add up to the total", the cheapest fix for the model is to change the total, not to find the missing line. That is what happened.</p>
+<h3>TSLA</h3>
+<p>qwen2.5:14b added two non-current items, printed in blocks below the table, to Tesla's current assets. Its lines summed to 78,902 while the page prints a total of 70,402. Told the sum didn't match, the retry left the lines alone and changed the total to 78,902. Schema and arithmetic now pass. The contract still rejected it:</p>
+<pre><code>[provenance] value 78902 is not a number its quote prints (it prints 70,402)</code></pre>
+<h3>ADP</h3>
+<p>qwen left out "funds held for clients" (46,413.1) and quoted several figures from the prior-year column. On retry it changed the totals to match its own sums:</p>
+<pre><code>[provenance] value 7821.0 is not a number its quote prints (it prints 12,266.5)</code></pre>
+<h3>EXC</h3>
+<p>For Exelon, qwen left out lines (they sum to 8,507; the page prints 9,797) and quoted a number that is not on the page. The retry changed both totals to match its own sums: total current assets 8,507 against 9,797 in XBRL, total current liabilities 5,524 against 9,008.</p>
+<pre><code>[provenance] source_span.text "1,827" not found in the source document (whitespace and currency signs ignored)
+[provenance] value 8507 is not a number its quote prints (it prints 9,797)</code></pre>
+<div class="callout"><strong>Across both sets, 3 of the 12 retries tried to pass by editing totals to match their own wrong sums, and the quote check caught all 3.</strong> A validator that only checks the output against itself (schema, internal sums) will be gamed by a retry loop. The checks have to be tied to the source document: each value carries a quote, the quote must be on the page, and the value must be the number its quote prints.</div>
+</section>
+
+<section id="scale">
+<h2>Every amount multiplied by 1,000 (DRI)</h2>
+<p>Darden's statement prints figures in millions with one decimal, such as "13,226.6". qwen returned 13,226,600 for total assets, 953,100 for total current assets and 3,199,000 for total current liabilities, each with the printed text quoted correctly.</p>
+<p>This passed the first contract. Every quote was on the page, and every sum still held because every amount was scaled by the same factor. A JSON Schema accepts it too: they are all valid numbers. It is the kind of error that flows straight into a database.</p>
+<p>The fix was <code>numbersMatchQuotes()</code>: a numeric value must be a number its own quote prints. The scaled answer is now rejected. The retry scaled again and was rejected again:</p>
+<pre><code>[provenance] value 220500 is not a number its quote prints (it prints 220.5)
+[provenance] value 118000 is not a number its quote prints (it prints 118.0)</code></pre>
+<p>This check was added after seeing DRI, so the in-sample set is not an independent test of it. The held-out set is: there, gemini-3.8-flash dropped a digit from KDP's total assets (8,761,900,000 for "87,619,000,000"), a plain schema accepted it, and the frozen contract rejected it.</p>
+</section>
+
+<section id="wrong-statement">
+<h2>A total from the wrong statement (CTVA)</h2>
+<p>Corteva's 10-Q prints two balance sheets one after the other: Corteva's, then its subsidiary EIDP's, with almost the same lines. qwen took Corteva's current assets and EIDP's current liabilities, giving total current liabilities of 10,795 where Corteva's is 10,789.</p>
+<p>Every quote was on the page, every number matched its quote, and every sum held, so the frozen contract accepted it. This is the one wrong answer that got through on the held-out set. Grounding checks that a value is in the source, not that it comes from the right part of it.</p>
+<p>The fix was <code>ProvenanceGate.within(Region, fields...)</code>, which requires the date and the four totals to be quoted from the first statement on the page, from the top through its first "liabilities and equity" total. qwen's 10,795 is printed only in EIDP's statement, so CTVA is now rejected. Re-scoring every recorded answer of all four models in both sets changes exactly one verdict, this one, and every run still catches 50 of 50 corruptions. It was written after seeing CTVA, so it is a fix, not a held-out result.</p>
+<p>The <a href="./">benchmark case viewer</a> shows the CTVA answer beside the page, with each quote highlighted.</p>
+</section>
+
+<section id="other">
+<h2>Other errors: left-out lines, subtotals, invented quotes</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Filing</th><th>Model</th><th>What was wrong</th><th>Caught by</th><th>After one retry</th></tr></thead>
+<tbody>
+<tr><td>BBY</td><td>qwen, gemini-3.8-flash</td><td>A current liability printed in a separate block below the table was left out: lines sum to 7,808, not 8,936</td><td>arithmetic</td><td>gemini fixed it; qwen did not</td></tr>
+<tr><td>GOOGL</td><td>qwen</td><td>Listed a subtotal and the lines inside it</td><td>arithmetic</td><td class="ok">Fixed</td></tr>
+<tr><td>TXN</td><td>qwen</td><td>Listed a subtotal and the lines inside it</td><td>arithmetic</td><td class="bad">Not fixed</td></tr>
+<tr><td>MO</td><td>qwen</td><td>Quoted a number that is not on the page</td><td>grounding</td><td class="bad">Not fixed</td></tr>
+<tr><td>KDP</td><td>gemini-3.8-flash</td><td>Dropped a digit from total assets</td><td>quote value, arithmetic</td><td class="ok">Fixed</td></tr>
+<tr><td>MCHP</td><td>qwen</td><td>Listed two printed totals as current-liability lines</td><td>arithmetic</td><td class="ok">Fixed</td></tr>
+<tr><td>PSX</td><td>qwen</td><td>Listed each section's printed total as a line and left out other lines</td><td>arithmetic</td><td class="bad">Not fixed</td></tr>
+</tbody></table></div>
+<p>The pattern: models struggle most with layout, not reading. Lines printed outside the main table get dropped or wrongly added, and subtotals get listed beside the lines they sum. Arithmetic across fields catches those; quotes checked against the page catch the rest.</p>
+</section>
+
+<section id="contract">
+<h2>The contract that caught them</h2>
+<p>This is the balance-sheet contract from the repository's examples. Swap the field paths and it applies to any structured output with parts that must add up and values that must come from a source.</p>
+<pre><code>Contract contract = Contract.builder()
+        .gate(TypeGate.of(BalanceSheet.class))
+        .gate(MathGate.builder()
+                .sumEqualsRounded("current_assets[*].amount", "total_current_assets")
+                .sumEqualsRounded("current_liabilities[*].amount", "total_current_liabilities")
+                .custom("total_assets = total_liabilities_and_equity", n -&gt;
+                        n.get("total_assets").compareTo(n.get("total_liabilities_and_equity")) == 0)
+                .tolerance(1)
+                .build())
+        .gate(ProvenanceGate.builder()
+                .require("period_end", "current_assets[*].amount", "total_current_assets", "total_assets",
+                        "current_liabilities[*].amount", "total_current_liabilities",
+                        "total_liabilities_and_equity")
+                .groundedIgnoringWhitespace()
+                .ignoringCurrencySigns()
+                .numbersMatchQuotes()
+                .within(FIRST_STATEMENT, "period_end", "total_current_assets", "total_assets",
+                        "total_current_liabilities", "total_liabilities_and_equity")
+                .build())
+        .gate(RegexGate.builder().isoDate("period_end").build())
+        .build();
+
+Verdict verdict = contract.evaluate(output, EvalContext.empty().withSource(document));</code></pre>
+<p>An output either passes every gate or is rejected with every violation listed, so the same contract can fail a JUnit build, score a golden set, or decide at runtime whether to accept an answer, retry it, or send it to a person. Install from Maven Central as <code>io.github.ravismash:outputgate-core:0.1.0</code>; see the <a href="https://github.com/ravismash/outputgate#install">README</a>.</p>
+</section>
+
+<section id="limits">
+<h2>What these numbers don't show</h2>
+<ul>
+<li>Three gates (<code>numbersMatchQuotes()</code>, <code>sumEqualsRounded()</code>, <code>ignoringCurrencySigns()</code>) were added after the in-sample run exposed gaps, so the in-sample set is not an independent test of them. The held-out tables are the frozen contract's.</li>
+<li>Ground truth covers four totals per filing, and XBRL values were available for 58 of 60 in-sample and 55 of 60 held-out filings.</li>
+<li>The cost of a strict contract is the answers it turns away. Each rejection is a document a pipeline would route to a person.</li>
+<li>outputgate checks what can be written as an invariant: shape, arithmetic, provenance, patterns and budgets. It does not judge tone or relevance.</li>
+</ul>
+</section>
+</article>
+
+<footer>
+<p>Every number on this page is taken from the dataset READMEs and recorded runs in the repository: <a href="https://github.com/ravismash/outputgate/tree/main/outputgate-eval/datasets/sec-balance-sheets">in-sample set</a>, <a href="https://github.com/ravismash/outputgate/tree/main/outputgate-eval/datasets/sec-balance-sheets-holdout">held-out set</a>, and the <a href="https://github.com/ravismash/outputgate/releases/download/v0.1.0/outputgate-balance-sheet-benchmark.pdf">benchmark report (PDF)</a>. The harness to run the same benchmark on your own documents is in <a href="https://github.com/ravismash/outputgate/tree/main/outputgate-eval">outputgate-eval</a>.</p>
+<p>outputgate is MIT licensed. <a href="https://github.com/ravismash/outputgate">Source on GitHub</a>.</p>
+</footer>
+</main>
+</body>
+</html>
