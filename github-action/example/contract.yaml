@@ -1,0 +1,10 @@
+# A contract for survey results a model summarised from raw responses.
+schema: record.schema.json
+regex:
+  - require: { path: survey_id, pattern: "SV-\\d{4}" }
+  - isoDate: closed_on
+math:
+  tolerance: 0.01
+  rules:
+    - sumEquals: { items: "options[*].count", total: total_responses }
+    - range: { path: "options[*].share", min: 0, max: 1 }

@@ -55,6 +55,18 @@ Maven:
 </dependency>
 ```
 
+### Command line and GitHub Action
+
+`outputgate-cli` checks JSON files against a contract written in YAML, with no Java code, so any
+project can gate structured LLM output, golden files or fixtures in CI:
+
+```sh
+java -jar outputgate-cli-<version>.jar check --contract contract.yaml "llm-outputs/**/*.json"
+```
+
+The jar is attached to each GitHub release. [`github-action/`](github-action) wraps it as a GitHub
+Action that annotates violations on the pull request; its README documents the contract format.
+
 `outputgate-example` and `outputgate-eval` (the harness that reads real PDF invoices and runs
 models over them) stay in this repository and are not published.
 

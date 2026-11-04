@@ -61,7 +61,16 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
 
+      # The command-line runner, which the GitHub Action (github-action/) downloads by version.
+      - name: Build the CLI jar
+        run: |
+          ./gradlew :outputgate-cli:shadowJar -Pversion=${{ steps.version.outputs.version }} --no-daemon --console=plain
+          mkdir -p dist
+          cp "outputgate-cli/build/libs/outputgate-cli-${{ steps.version.outputs.version }}-all.jar" \
+            "dist/outputgate-cli-${{ steps.version.outputs.version }}.jar"
+          (cd dist && sha256sum "outputgate-cli-${{ steps.version.outputs.version }}.jar" > "outputgate-cli-${{ steps.version.outputs.version }}.jar.sha256")
+
       - name: Create the GitHub release
-        run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
+        run: gh release create "$GITHUB_REF_NAME" dist/* --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
         env:
           GH_TOKEN: ${{ github.token }}

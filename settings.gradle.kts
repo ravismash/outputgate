@@ -5,4 +5,4 @@ plugins {
 
 rootProject.name = "outputgate"
 
-include("outputgate-core", "outputgate-junit", "outputgate-example", "outputgate-spring-ai", "outputgate-langchain4j", "outputgate-ollama", "outputgate-eval")
+include("outputgate-core", "outputgate-junit", "outputgate-example", "outputgate-spring-ai", "outputgate-langchain4j", "outputgate-ollama", "outputgate-eval", "outputgate-cli")

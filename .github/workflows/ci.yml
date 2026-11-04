@@ -82,6 +82,53 @@ jobs:
       - name: Test against ${{ matrix.version }}
         run: ./gradlew :${{ matrix.module }}:test -P${{ matrix.property }}=${{ matrix.version }} --no-daemon --console=plain
 
+  # Runs the GitHub Action (github-action/) on its examples with a CLI jar built from this commit:
+  # the good outputs must pass, and the bad one must fail the step.
+  action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-java@v6.0.1
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v6.4.0
+
+      - name: Build the CLI jar
+        run: |
+          ./gradlew :outputgate-cli:shadowJar --no-daemon --console=plain
+          echo "OG_JAR=$(ls "$PWD"/outputgate-cli/build/libs/outputgate-cli-*-all.jar)" >> "$GITHUB_ENV"
+
+      - name: Good outputs pass
+        uses: ./github-action
+        with:
+          jar: ${{ env.OG_JAR }}
+          java-version: none
+          contract: github-action/example/contract.yaml
+          inputs: |
+            github-action/example/outputs/*.json
+            github-action/example/outputs/runs.jsonl
+
+      - name: A bad output fails
+        id: bad
+        continue-on-error: true
+        uses: ./github-action
+        with:
+          jar: ${{ env.OG_JAR }}
+          java-version: none
+          contract: github-action/example/contract.yaml
+          inputs: github-action/example/outputs/bad
+          summary: 'false'
+
+      - name: Expect the bad output to have failed
+        if: steps.bad.outcome != 'failure'
+        run: |
+          echo "::error::the action passed an output that breaks the contract"
+          exit 1
+
   python:
     runs-on: ubuntu-latest
     timeout-minutes: 10
