@@ -50,6 +50,7 @@ import java.util.Set;
  *   ignoringTypography: true
  *   joiningHyphenatedLines: true
  *   ignoringDigitGrouping: true
+ *   scale: { field: units, values: [total] }   # or a list of these, one per scale
  * </pre>
  */
 public final class ContractFile {
@@ -59,7 +60,8 @@ public final class ContractFile {
 
     private static final Set<String> TOP = Set.of("schema", "regex", "math", "provenance");
     private static final Set<String> PROVENANCE = Set.of("require", "optional", "grounded", "numbersMatchQuotes",
-            "ignoringCurrencySigns", "ignoringTypography", "joiningHyphenatedLines", "ignoringDigitGrouping");
+            "ignoringCurrencySigns", "ignoringTypography", "joiningHyphenatedLines", "ignoringDigitGrouping", "scale");
+    private static final Set<String> SCALE = Set.of("field", "values");
 
     private ContractFile() {}
 
@@ -245,6 +247,13 @@ public final class ContractFile {
         }
         if (flag(node, "ignoringDigitGrouping")) {
             b.ignoringDigitGrouping();
+        }
+        JsonNode scale = node.get("scale");
+        if (scale != null) {
+            for (JsonNode one : scale.isArray() ? list(scale, "provenance scale") : List.of(scale)) {
+                keys(one, SCALE, "provenance scale");
+                b.scale(text(one, "field", "provenance scale"), texts(one.get("values"), "provenance scale values"));
+            }
         }
         return b.build();
     }

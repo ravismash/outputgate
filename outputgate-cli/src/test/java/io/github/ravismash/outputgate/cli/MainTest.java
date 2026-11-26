@@ -148,6 +148,38 @@ class MainTest {
     }
 
     @Test
+    void scaleRejectsValuesCopiedFromAThousandsTable() throws IOException {
+        Files.writeString(dir.resolve("contract.yaml"), """
+                provenance:
+                  require: [units, total]
+                  grounded: ignoring-whitespace
+                  scale: { field: units, values: [total] }
+                """);
+        Files.createDirectories(dir.resolve("src"));
+        Files.writeString(dir.resolve("src/good.txt"), "(in thousands)\nTotal  48,310");
+        Files.writeString(dir.resolve("out/good.json"), """
+                {"units": {"value": 1000, "source_span": {"page": 1, "text": "(in thousands)"}},
+                 "total": {"value": 48310000, "source_span": {"page": 1, "text": "Total  48,310"}}}
+                """);
+        assertEquals(Main.PASSED, run("check", "-c", "contract.yaml", "-s", "src", "out/good.json"), stdout());
+
+        Files.writeString(dir.resolve("out/good.json"), """
+                {"units": {"value": 1000, "source_span": {"page": 1, "text": "(in thousands)"}},
+                 "total": {"value": 48310, "source_span": {"page": 1, "text": "Total  48,310"}}}
+                """);
+        assertEquals(Main.REJECTED, run("check", "-c", "contract.yaml", "-s", "src", "out/good.json"), stdout());
+        assertTrue(stdout().contains("times the scale 1000"), stdout());
+
+        Files.writeString(dir.resolve("typo.yaml"), """
+                provenance:
+                  require: [units, total]
+                  scale: { field: units, value: [total] }
+                """);
+        assertEquals(Main.ERROR, run("check", "-c", "typo.yaml", "out"));
+        assertTrue(err.toString(StandardCharsets.UTF_8).contains("unknown key 'value'"), err.toString());
+    }
+
+    @Test
     void contractErrorsExitTwo() throws IOException {
         Files.writeString(dir.resolve("typo.yaml"), """
                 math:

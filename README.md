@@ -111,12 +111,32 @@ The code and that output are run as a test on every build
 | `SchemaGate` | JSON Schema 2020-12, from a string or the classpath. The schema itself is checked against the 2020-12 meta-schema when the gate is built | `SchemaGate.fromClasspath("schemas/invoice.schema.json")` |
 | `TypeGate<T>` | Strict binding to a Java type: unknown properties, null primitives, missing record/constructor properties, float-for-int and text-for-number all fail, with Jackson's message | `TypeGate.of(Invoice.class)` |
 | `MathGate` | Cross-field arithmetic with an absolute tolerance: `sumEquals`, `equalsSum`, `productEquals`, `range` and custom rules; `sumEqualsRounded` also allows half a unit of the last printed digit per figure, for figures rounded where they were printed | `.productEquals("line_items[*].amount", "line_items[*].quantity", "line_items[*].unit_price")` |
-| `ProvenanceGate` | Required fields carry evidence, `{value, source_span: {page, text}}`. With `grounded()`, each span's text must occur literally on the page it names; `optional(...)` fields may be null but are checked when present; `groundedIgnoringWhitespace()` ignores spaces and line breaks and reads any hyphen or dash as `-`, and still requires everything else to match exactly (for PDF or OCR text); `ignoringCurrencySigns()` also lets a quote add or drop a currency sign; `ignoringTypography()`, `joiningHyphenatedLines()` and `ignoringDigitGrouping()` fold ligatures, words broken across lines and thousands separators (see [PDF and OCR text](#pdf-and-ocr-text)); `numbersMatchQuotes()` requires each numeric value to be a number its own quote prints, so a value scaled or retyped away from a real quote is caught; `within(region, fields...)` requires those fields' quotes to lie inside a `Region` of the document (from a line matching one pattern through or up to a line matching another), so a value copied from a neighbouring table or section that prints the same labels is caught | `.require("total", "line_items[*].amount").grounded()`, `.within(Region.from("^Line items").before("^Notes"), "total")` |
+| `ProvenanceGate` | Required fields carry evidence, `{value, source_span: {page, text}}`. With `grounded()`, each span's text must occur literally on the page it names; `optional(...)` fields may be null but are checked when present; `groundedIgnoringWhitespace()` ignores spaces and line breaks and reads any hyphen or dash as `-`, and still requires everything else to match exactly (for PDF or OCR text); `ignoringCurrencySigns()` also lets a quote add or drop a currency sign; `ignoringTypography()`, `joiningHyphenatedLines()` and `ignoringDigitGrouping()` fold ligatures, words broken across lines and thousands separators (see [PDF and OCR text](#pdf-and-ocr-text)); `numbersMatchQuotes()` requires each numeric value to be a number its own quote prints, so a value scaled or retyped away from a real quote is caught; `scale(scaleField, fields...)` pins units: the output states the scale in an evidence field of its own (`{"value": 1000, "source_span": {"page": 1, "text": "(in thousands)"}}`), its quote must state that scale (thousands, lakhs, millions, crores or billions; none for 1), a scale of 1 is rejected when its page states one, and each listed field must be a number its quote prints times the scale, so a value copied as printed from an "in thousands" table is caught (see [Units and scale](#units-and-scale)); `within(region, fields...)` requires those fields' quotes to lie inside a `Region` of the document (from a line matching one pattern through or up to a line matching another), so a value copied from a neighbouring table or section that prints the same labels is caught | `.require("total", "line_items[*].amount").grounded()`, `.within(Region.from("^Line items").before("^Notes"), "total")` |
 | `RegexGate` | Text rules per field: `require` (whole value), `forbid` (any part), `isoDate`, `currencyCode` (ISO 4217) | `.isoDate("invoice_date").currencyCode("currency")` |
 | `BudgetGate` | Ceilings on the call: cost, latency, output tokens (inclusive) | `.maxCost(0.01).maxLatency(Duration.ofSeconds(5))` |
 
 Before any gate runs, output that is not exactly one JSON value is rejected as `json-parse`:
 prose around a code block, trailing text, duplicate keys and empty output included.
+
+### Units and scale
+
+Financial and statistical tables often print figures in thousands or millions and say so once,
+in a header such as "(in thousands, except per share data)". A model that copies 48,310 from such
+a table has quoted the page faithfully, so grounding and `numbersMatchQuotes()` pass, yet anyone
+who reads the field in base units is off by a factor of 1,000. `scale` closes that gap:
+
+```java
+ProvenanceGate.builder()
+    .require("units", "total_assets")
+    .groundedIgnoringWhitespace()
+    .scale("units", "total_assets")   // total_assets must be 48310000 when units quotes "in thousands"
+    .build();
+```
+
+The scale field is a required field like any other, so a missing one blocks. A model that states
+1 has to quote a line that names no scale, and with grounding the page it quotes must name none
+either. In a YAML contract: `scale: { field: units, values: [total_assets] }`, or a list of these
+for outputs that hold tables in different units.
 
 ### PDF and OCR text
 

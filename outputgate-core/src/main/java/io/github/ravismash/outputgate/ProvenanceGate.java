@@ -20,6 +20,8 @@ import java.util.regex.Pattern;
  * is a violation, never a pass; an {@link Builder#optional optional} field may be missing or null,
  * but when it has a value it is checked like a required one. With
  * {@link Builder#numbersMatchQuotes()}, a numeric value must also be a number its own quote prints.
+ * With {@link Builder#scale}, a numeric value must be a number its quote prints times the scale the
+ * output states for it ("in thousands"), and that scale is checked against its own quote and page.
  * With {@link Builder#within}, a field's quote must also lie inside a {@link Region} of the page, such
  * as one table of several that print the same labels. For text from a PDF or OCR,
  * {@link Builder#ignoringTypography()}, {@link Builder#joiningHyphenatedLines()} and
@@ -46,9 +48,30 @@ public final class ProvenanceGate implements Gate {
     private final boolean joinHyphenatedLines;
     private final boolean ignoreGrouping;
     private final List<Scope> scopes;
+    private final List<Scale> scales;
 
     /** Fields whose quotes must lie inside a region. */
     private record Scope(Region region, List<String> paths) {}
+
+    /** Fields printed in the units that the evidence field at {@code path} states. */
+    private record Scale(String path, List<String> values) {}
+
+    /**
+     * A statement of units as tables print it: "in" or "(" and an optional currency sign or
+     * three-letter code, then a scale word, as in "(in thousands)", "($ in millions)", "in USD
+     * billions" or "(Rs. in crores)" read as "in crores". Prose like "thousands of customers" has
+     * neither "in" nor "(" before the word, so it is not one.
+     */
+    private static final Pattern SCALE_PHRASE = Pattern.compile(
+            "(?i)(?:\\bin\\s+|\\(\\s*)(?:\\p{Sc}\\s*|[a-z]{3}\\s+)?(thousand|lakh|million|crore|billion)s?\\b");
+
+    /** What each scale word multiplies by. */
+    private static final Map<String, BigDecimal> FACTORS = Map.of(
+            "thousand", new BigDecimal("1000"),
+            "lakh", new BigDecimal("100000"),
+            "million", new BigDecimal("1000000"),
+            "crore", new BigDecimal("10000000"),
+            "billion", new BigDecimal("1000000000"));
 
     /** Currency signs ($, €, £, ¥, ₹ and the rest of Unicode's Sc category). */
     private static final Pattern CURRENCY = Pattern.compile("\\p{Sc}");
@@ -80,6 +103,7 @@ public final class ProvenanceGate implements Gate {
         this.joinHyphenatedLines = b.joinHyphenatedLines;
         this.ignoreGrouping = b.ignoreGrouping;
         this.scopes = List.copyOf(b.scopes);
+        this.scales = List.copyOf(b.scales);
     }
 
     /** Starts a new provenance gate. */
@@ -97,8 +121,8 @@ public final class ProvenanceGate implements Gate {
         List<Violation> out = new ArrayList<>();
         List<List<String>> pages = null;
         Map<Region, Optional<Located>> regions = null;
+        Optional<SourceDocument> source = grounded ? context.source() : Optional.empty();
         if (grounded) {
-            Optional<SourceDocument> source = context.source();
             if (source.isEmpty()) {
                 out.add(new Violation(NAME, "", "grounding is on but the context has no source document"));
             } else {
@@ -111,7 +135,83 @@ public final class ProvenanceGate implements Gate {
         }
         check(output, paths, false, pages, regions, out);
         check(output, optionalPaths, true, pages, regions, out);
+        for (Scale scale : scales) {
+            checkScale(output, scale, source, out);
+        }
         return out;
+    }
+
+    /**
+     * Checks a stated scale and the values printed in it. The scale must be 1 or a scale word's
+     * factor, its quote must name that word (or, for 1, no scale at all), and with grounding the page
+     * it quotes must not print a scale when it claims 1. Then each value must be a number its quote
+     * prints times that factor. A scale that fails is reported once and its values are not checked
+     * against it; the output is rejected either way.
+     */
+    private void checkScale(JsonNode output, Scale scale, Optional<SourceDocument> source, List<Violation> out) {
+        JsonNode evidence = Paths.resolve(output, scale.path(), false).get(0).node();
+        if (problem(evidence) != null) {
+            return; // reported as a required field
+        }
+        String problem = null;
+        JsonNode value = evidence.get("value");
+        BigDecimal factor = value.isNumber() ? value.decimalValue().stripTrailingZeros() : null;
+        String quote = evidence.get("source_span").get("text").asText();
+        List<String> named = scaleWords(quote);
+        if (factor == null || (factor.compareTo(BigDecimal.ONE) != 0 && FACTORS.values().stream().noneMatch(f -> f.compareTo(factor) == 0))) {
+            problem = "scale must be 1, 1000 (thousands), 100000 (lakhs), 1000000 (millions), 10000000 (crores) or"
+                    + " 1000000000 (billions), not " + value;
+        } else if (factor.compareTo(BigDecimal.ONE) == 0 && !named.isEmpty()) {
+            problem = "scale is 1 but its quote \"" + quote + "\" says the figures are in " + named.get(0) + "s";
+        } else if (factor.compareTo(BigDecimal.ONE) != 0 && !named.contains(word(factor))) {
+            problem = "scale is " + factor.toPlainString() + " (" + word(factor) + "s) but its quote \"" + quote + "\" "
+                    + (named.isEmpty() ? "states no scale; quote the line that says \"in " + word(factor) + "s\""
+                            : "says " + named.get(0) + "s");
+        } else if (factor.compareTo(BigDecimal.ONE) == 0 && source.isPresent()) {
+            long page = evidence.get("source_span").get("page").asLong();
+            if (page <= source.get().pages().size()) {
+                List<String> printed = scaleWords(source.get().pages().get((int) page - 1));
+                if (!printed.isEmpty()) {
+                    problem = "scale is 1 but page " + page + " states figures in " + printed.get(0)
+                            + "s; quote that line and give its scale";
+                }
+            }
+        }
+        if (problem != null) {
+            out.add(new Violation(NAME, scale.path(), problem));
+            return;
+        }
+        for (String path : scale.values()) {
+            for (Paths.Hit hit : Paths.resolve(output, path, false)) {
+                if (problem(hit.node()) == null) {
+                    String wrong = unquotedNumber(hit.node(), factor);
+                    if (wrong != null) {
+                        out.add(new Violation(NAME, hit.path(), wrong));
+                    }
+                }
+            }
+        }
+    }
+
+    /** The scale words that the text's unit statements name, in order, singular and lower case. */
+    private static List<String> scaleWords(String text) {
+        List<String> words = new ArrayList<>();
+        Matcher m = SCALE_PHRASE.matcher(text);
+        while (m.find()) {
+            words.add(m.group(1).toLowerCase(java.util.Locale.ROOT));
+        }
+        return words;
+    }
+
+    /** The scale word for a factor from {@link #FACTORS}. */
+    private static String word(BigDecimal factor) {
+        return FACTORS.entrySet().stream().filter(e -> e.getValue().compareTo(factor) == 0)
+                .map(Map.Entry::getKey).findFirst().orElseThrow();
+    }
+
+    /** A scale field, or a value in one: {@link #checkScale} checks its number instead. */
+    private boolean scaled(String path) {
+        return scales.stream().anyMatch(s -> s.path().equals(path) || s.values().contains(path));
     }
 
     /** A region found in the document, with its text on each page as grounding compares it. */
@@ -135,8 +235,8 @@ public final class ProvenanceGate implements Gate {
                     continue;
                 }
                 String problem = problem(hit.node());
-                if (problem == null && numbersMatchQuotes) {
-                    problem = unquotedNumber(hit.node());
+                if (problem == null && numbersMatchQuotes && !scaled(path)) {
+                    problem = unquotedNumber(hit.node(), BigDecimal.ONE);
                 }
                 if (problem == null && pages != null) {
                     problem = ungrounded(hit.node().get("source_span"), pages);
@@ -196,29 +296,34 @@ public final class ProvenanceGate implements Gate {
      * Why a numeric value is not a number its quote prints, or null when it is (or the value is
      * not a number). Numbers in the quote are read with "," as grouping and "." as the decimal
      * point, and compared by size: the sign is left to other checks, since documents print
-     * negatives as "(1,203)", "-1,203" or "1,203 CR".
+     * negatives as "(1,203)", "-1,203" or "1,203 CR". With a {@code factor} other than 1, the value
+     * must be a printed number times it.
      */
-    private String unquotedNumber(JsonNode evidence) {
+    private String unquotedNumber(JsonNode evidence, BigDecimal factor) {
         JsonNode value = evidence.get("value");
         if (!value.isNumber()) {
             return null;
         }
         BigDecimal wanted = value.decimalValue().abs();
+        boolean one = factor.compareTo(BigDecimal.ONE) == 0;
         String quote = fold(evidence.get("source_span").get("text").asText());
         List<String> printed = new ArrayList<>();
         Matcher m = NUMBER.matcher(quote);
         while (m.find()) {
             String digits = m.group().replace(",", "");
             try {
-                if (new BigDecimal(digits).compareTo(wanted) == 0) {
+                BigDecimal number = new BigDecimal(digits);
+                if (number.multiply(factor).compareTo(wanted) == 0) {
                     return null;
                 }
-                printed.add(m.group());
+                printed.add(one ? m.group() : m.group() + " (" + number.multiply(factor).toPlainString() + " in "
+                        + word(factor) + "s)");
             } catch (NumberFormatException e) {
                 // a stray "," run is not a number
             }
         }
-        return "value " + value.decimalValue().toPlainString() + " is not a number its quote prints ("
+        return "value " + value.decimalValue().toPlainString() + " is not a number its quote prints"
+                + (one ? "" : " times the scale " + factor.toPlainString()) + " ("
                 + (printed.isEmpty() ? "the quote has no number" : "it prints " + String.join(", ", printed)) + ")";
     }
 
@@ -321,6 +426,7 @@ public final class ProvenanceGate implements Gate {
         private boolean joinHyphenatedLines;
         private boolean ignoreGrouping;
         private final List<Scope> scopes = new ArrayList<>();
+        private final List<Scale> scales = new ArrayList<>();
 
         private Builder() {}
 
@@ -470,8 +576,43 @@ public final class ProvenanceGate implements Gate {
         }
 
         /**
+         * Pins the units of numeric fields. A table headed "(in thousands)" prints 13,226 for
+         * 13,226,000; a value copied as printed passes {@link #numbersMatchQuotes()} and is still a
+         * thousand times too small for anyone reading it in base units. With this, the output states
+         * the scale in an evidence field of its own, {@code {"value": 1000, "source_span": {"page": 1,
+         * "text": "(in thousands, except per share data)"}}}, and the gate checks:
+         *
+         * <ul>
+         *   <li>the scale is 1, 1000 (thousands), 100000 (lakhs), 1000000 (millions), 10000000 (crores)
+         *       or 1000000000 (billions);
+         *   <li>its quote states that scale: "in thousands", "($ in millions)", "(thousands)", "in USD
+         *       billions" and the like; for 1 it must state none;
+         *   <li>with grounding, its quote is on its page like any other field's, and a scale of 1 is
+         *       rejected when that page states figures in a scale;
+         *   <li>each of {@code valuePaths} is in base units: a number its quote prints times the scale
+         *       (13226000 quoted as "13,226" with scale 1000). The same reading as
+         *       {@link #numbersMatchQuotes()} applies, and it replaces that check for these fields.
+         * </ul>
+         *
+         * A model that reports values as printed, or states the wrong scale, or drops the scale line,
+         * is rejected. Call it once per scale, for outputs that hold tables in different units.
+         *
+         * @param scalePath a required field, without {@code [*]}, holding the scale and its quote
+         * @param valuePaths required or optional fields printed in that scale
+         * @return this builder
+         */
+        public Builder scale(String scalePath, String... valuePaths) {
+            if (scalePath == null || valuePaths.length == 0) {
+                throw new IllegalArgumentException("scale needs a scale field and at least one value field");
+            }
+            scales.add(new Scale(Paths.validate(scalePath), Arrays.stream(valuePaths).map(Paths::validate).toList()));
+            return this;
+        }
+
+        /**
          * Builds the gate; a provenance gate that requires nothing would pass everything, so that is
-         * an error, and so is a region with grounding off or on a field the gate doesn't check.
+         * an error, and so is a region with grounding off or on a field the gate doesn't check, and a
+         * scale whose fields the gate doesn't check.
          *
          * @return the gate
          */
@@ -486,6 +627,22 @@ public final class ProvenanceGate implements Gate {
                 for (String path : scope.paths()) {
                     if (!paths.contains(path) && !optionalPaths.contains(path)) {
                         throw new IllegalStateException("within names " + path + ", which is not a required or optional field");
+                    }
+                }
+            }
+            for (Scale scale : scales) {
+                if (!paths.contains(scale.path())) {
+                    throw new IllegalStateException("scale field " + scale.path() + " must be a required field");
+                }
+                if (scale.path().contains("[*]")) {
+                    throw new IllegalStateException("scale field " + scale.path() + " must name one field, without [*]");
+                }
+                for (String path : scale.values()) {
+                    if (path.equals(scale.path())) {
+                        throw new IllegalStateException("scale field " + path + " cannot be one of its own values");
+                    }
+                    if (!paths.contains(path) && !optionalPaths.contains(path)) {
+                        throw new IllegalStateException("scale names " + path + ", which is not a required or optional field");
                     }
                 }
             }
