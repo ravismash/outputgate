@@ -2,7 +2,7 @@ import json
 from decimal import Decimal
 
 from inspect_ai import eval as inspect_eval
-from inspect_ai.model import ModelOutput, get_model
+from inspect_ai.model import ModelOutput, ModelUsage, get_model
 
 from sec_balance_sheets.scorer import consistent, correct, parse, schema_valid
 from sec_balance_sheets.sec_balance_sheets import load_samples, sec_balance_sheets
@@ -91,12 +91,20 @@ def test_decimal_amounts_compare_exactly():
     assert correct({k: Decimal(str(v)) for k, v in AAPL_TRUTH.items()}, AAPL_TRUTH)
 
 
-def test_end_to_end_with_mock_model():
-    outputs = [ModelOutput.from_content("mockllm/model", json.dumps(AAPL)), ModelOutput.from_content("mockllm/model", "sorry")]
+def mock_output(content):
+    # Explicit usage keeps mockllm from counting tokens, which downloads a
+    # tiktoken file and so fails offline.
+    output = ModelOutput.from_content("mockllm/model", content)
+    output.usage = ModelUsage(input_tokens=1, output_tokens=1, total_tokens=2)
+    return output
+
+
+def test_end_to_end_with_mock_model(tmp_path):
+    outputs = [mock_output(json.dumps(AAPL)), mock_output("sorry")]
     model = get_model("mockllm/model", custom_outputs=outputs)
     task = sec_balance_sheets(split="tuning")
     task.dataset = task.dataset.filter(lambda s: s.id in ("AAPL-2026-06-27", "ABBV-2026-06-30"))
-    [log] = inspect_eval(task, model=model, display="none", log_dir="/tmp/inspect-test-logs")
+    [log] = inspect_eval(task, model=model, display="none", log_dir=str(tmp_path))
     assert log.status == "success"
     metrics = {s.name: {k: v.value for k, v in s.metrics.items()} for s in log.results.scores}
     flat = {f"{name}/{k}": v for name, m in metrics.items() for k, v in m.items()}
