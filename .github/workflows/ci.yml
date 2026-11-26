@@ -154,3 +154,19 @@ jobs:
 
       - name: Test
         run: pytest -q
+
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-python@v6.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Install
+        run: pip install -e ".[test]"
+
+      - name: Test
+        run: pytest -q
