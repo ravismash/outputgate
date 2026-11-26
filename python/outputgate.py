@@ -13,6 +13,10 @@ its own arithmetic, before the answer reaches application state. No check calls 
 - ``within(region)`` scopes a field's quote to one part of the document (a table, a section, one of
   two statements that print the same labels): grounding proves a quote is on the page, a region
   proves it comes from the right part of it.
+- ``GroundedScale``, ``ScaledNumber`` and ``scaled`` pin units: a table headed "(in thousands)"
+  prints 48,310 for 48,310,000, and a value copied as printed is quoted faithfully yet a thousand
+  times too small. The answer states the scale with its own quote, and each value must be a number
+  its quote prints times that scale.
 - ``sum_equals_rounded`` lets items miss their total by half a unit of the last printed digit per
   figure, for figures each rounded where they were printed.
 
@@ -56,12 +60,15 @@ __all__ = [
     "Grounded",
     "GroundedNumber",
     "GroundedText",
+    "GroundedScale",
+    "ScaledNumber",
     "GroundedModel",
     "Violation",
     "sum_equals_rounded",
     "assert_sum_equals_rounded",
     "equals",
     "at_most",
+    "scaled",
     "matches",
     "forbids",
     "describe",
@@ -73,6 +80,31 @@ _SHAPE_ONLY = "outputgate.shape_only"
 _WHITESPACE = re.compile(r"\s+")
 _HYPHEN = re.compile("[­‐-―−]")
 _NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?|\.\d+")
+
+# A statement of units as tables print it: "in" or "(" and an optional currency sign or three-letter
+# code, then a scale word, as in "(in thousands)", "($ in millions)" or "in USD billions". Prose like
+# "thousands of customers" has neither "in" nor "(" before the word, so it is not one.
+_SCALE_PHRASE = re.compile(
+    r"(?:\bin\s+|\(\s*)(?:[$\u00a2-\u00a5\u20a0-\u20cf]\s*|[a-z]{3}\s+)?(thousand|lakh|million|crore|billion)s?\b",
+    re.IGNORECASE)
+_FACTORS = {"thousand": Decimal(1000), "lakh": Decimal(100000), "million": Decimal(1000000),
+            "crore": Decimal(10000000), "billion": Decimal(1000000000)}
+_WORDS = {v: k for k, v in _FACTORS.items()}
+
+
+def _scale_words(text: str) -> list[str]:
+    """The scale words that the text's unit statements name, in order, singular and lower case."""
+    return [m.group(1).lower() for m in _SCALE_PHRASE.finditer(text)]
+
+
+def _printed_numbers(quote: str) -> list[tuple[str, Decimal]]:
+    """Each number the quote prints, as written and as a value ("," read as grouping)."""
+    out = []
+    for m in _NUMBER.finditer(quote):
+        digits = m.group().replace(",", "")
+        if digits:
+            out.append((m.group(), Decimal(digits)))
+    return out
 
 
 _LINE_BREAK = re.compile(r"\r\n|[\n\x0b\x0c\r\x85\u2028\u2029]")
@@ -339,6 +371,78 @@ class GroundedNumber(Grounded):
         it_prints = f"it prints {', '.join(printed)}" if printed else "the quote has no number"
         return (f"value {_plain(self.value)} is not a number its quote prints ({it_prints}). "
                 f"Use the number the quote prints; do not change a value to make another check pass")
+
+
+class ScaledNumber(GroundedNumber):
+    """A number in base units, read from a quote printed in a scale ("(in thousands)"). On its own
+    it must equal a number its quote prints times 1 or a scale word's factor; ``scaled`` in
+    ``checks()`` pins it to the scale the answer states, which is the check that matters.
+    """
+
+    model_config = ConfigDict(extra="forbid", json_schema_extra={
+        "description": "A number from the source in base units: the number its text prints times the stated scale"})
+
+    def _value_problem(self, source: Source) -> Optional[str]:
+        if not source.numbers_match_quotes:
+            return None
+        wanted = abs(self.value)
+        printed = _printed_numbers(self.quote)
+        for _, n in printed:
+            if any(n * f == wanted for f in (Decimal(1), *_FACTORS.values())):
+                return None
+        it_prints = f"it prints {', '.join(p for p, _ in printed)}" if printed else "the quote has no number"
+        return (f"value {_plain(self.value)} is not a number its quote prints, at any scale ({it_prints})")
+
+
+class GroundedScale(Grounded):
+    """The scale the figures are printed in, ``{"value": 1000, "source_span": {..., "text": "(in
+    thousands)"}}``. The value is 1, 1000 (thousands), 100000 (lakhs), 1000000 (millions), 10000000
+    (crores) or 1000000000 (billions); its quote must state that scale, and for 1 no scale at all;
+    and a scale of 1 is rejected when the page it quotes states one.
+    """
+
+    model_config = ConfigDict(extra="forbid", json_schema_extra={
+        "description": "The scale the figures are printed in (1, 1000 for thousands, 1000000 for millions, ...) "
+                       "and the line that states it"})
+
+    value: Annotated[Decimal, BeforeValidator(_number_only), Field(allow_inf_nan=False),
+                     WithJsonSchema({"type": "number"})]
+
+    def _value_problem(self, source: Source) -> Optional[str]:
+        factor = self.value
+        named = _scale_words(self.quote)
+        if factor != 1 and factor not in _WORDS:
+            return ("scale must be 1, 1000 (thousands), 100000 (lakhs), 1000000 (millions), 10000000 (crores) or "
+                    f"1000000000 (billions), not {_plain(factor)}")
+        if factor == 1:
+            if named:
+                return f'scale is 1 but its quote "{self.quote}" says the figures are in {named[0]}s'
+            on_page = _scale_words(source.pages[self.source_span.page - 1])
+            if on_page:
+                return (f"scale is 1 but page {self.source_span.page} states figures in {on_page[0]}s; "
+                        "quote that line and give its scale")
+            return None
+        word = _WORDS[factor]
+        if word in named:
+            return None
+        said = f"says {named[0]}s" if named else f'states no scale; quote the line that says "in {word}s"'
+        return f'scale is {_plain(factor.normalize())} ({word}s) but its quote "{self.quote}" {said}'
+
+
+def scaled(value: GroundedNumber, scale: GroundedScale, *, path: str) -> Optional[Violation]:
+    """``value`` is in base units: a number its quote prints times ``scale``. Use it in
+    ``GroundedModel.checks()`` for each ``ScaledNumber``, as in ``scaled(self.total, self.scale,
+    path="total")``.
+    """
+    factor = scale.value
+    wanted = abs(value.value)
+    printed = _printed_numbers(value.quote)
+    if any(n * factor == wanted for _, n in printed):
+        return None
+    it_prints = (", ".join(f"{p} ({_plain((n * factor).normalize())} at that scale)" for p, n in printed)
+                 if printed else "the quote has no number")
+    return Violation(path, f"value {_plain(value.value)} is not a number its quote prints times the scale "
+                           f"{_plain(factor.normalize())} ({it_prints})", "scale")
 
 
 class GroundedText(Grounded):
