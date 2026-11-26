@@ -20,7 +20,7 @@ match its own wrong sums, the quote check caught all 3 attempts. Details, and wh
 don't show, are under [Benchmark](#benchmark); every failure is written up in
 [How LLMs fail at SEC 10-Q balance sheet extraction](https://ravismash.github.io/outputgate/sec-10q-llm-extraction-failures.html).
 
-> **Status:** `0.1.0` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Runs on Java 17+ from the next release (`0.1.0` needs Java 21). MIT.
+> **Status:** `0.2.1` on [Maven Central](https://central.sonatype.com/namespace/io.github.ravismash). Java 17+. MIT.
 >
 > **Python:** grounding and arithmetic checks for Pydantic v2 are in [`python/`](python) (not yet on PyPI); see [`FRD.md`](FRD.md).
 
@@ -30,12 +30,12 @@ The modules are on Maven Central under `io.github.ravismash`. Gradle:
 
 ```kotlin
 dependencies {
-    implementation("io.github.ravismash:outputgate-core:0.1.0")
-    testImplementation("io.github.ravismash:outputgate-junit:0.1.0")
+    implementation("io.github.ravismash:outputgate-core:0.2.1")
+    testImplementation("io.github.ravismash:outputgate-junit:0.2.1")
     // One adapter, if you call a model through it:
-    // implementation("io.github.ravismash:outputgate-spring-ai:0.1.0")
-    // implementation("io.github.ravismash:outputgate-langchain4j:0.1.0")
-    // implementation("io.github.ravismash:outputgate-ollama:0.1.0")
+    // implementation("io.github.ravismash:outputgate-spring-ai:0.2.1")
+    // implementation("io.github.ravismash:outputgate-langchain4j:0.2.1")
+    // implementation("io.github.ravismash:outputgate-ollama:0.2.1")
 }
 ```
 
@@ -45,12 +45,12 @@ Maven:
 <dependency>
     <groupId>io.github.ravismash</groupId>
     <artifactId>outputgate-core</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.1</version>
 </dependency>
 <dependency>
     <groupId>io.github.ravismash</groupId>
     <artifactId>outputgate-junit</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.1</version>
     <scope>test</scope>
 </dependency>
 ```

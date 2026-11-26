@@ -34,7 +34,11 @@ except ValidationError as e:
 `Source` docstring. When a document prints the same labels in more than one place (a summary and a
 detail table, a parent's statement and a subsidiary's), scope a field to the part it must come from
 with `Annotated[GroundedNumber, within(Region(start=r"^Detail", before=r"^Notes"))]`: its quote
-must then be inside that region on its page, not just somewhere on the page. [`examples/balance_sheet.py`](examples/balance_sheet.py) is the SEC balance-sheet
+must then be inside that region on its page, not just somewhere on the page. When a table states its figures in a scale ("(in thousands)"), give
+the answer a `units: GroundedScale` field that quotes that line, type the figures as
+`ScaledNumber`, and yield `scaled(self.total, self.units, path="total")` from `checks()`: a figure
+copied as printed, a wrong scale, or a scale of 1 on a page that states one is then rejected.
+[`examples/balance_sheet.py`](examples/balance_sheet.py) is the SEC balance-sheet
 contract from `outputgate-eval`, written with these types.
 
 ## Tests
